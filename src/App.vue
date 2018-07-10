@@ -1,29 +1,31 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-  </div>
+  <List :state=state :actions=actions :getters=getters></List>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from './components/HelloWorld.vue';
+import { Mixins } from 'vue-mixin-decorator';
+import { StoreHelperMixin } from './mixins/store_helper';
+import * as ns from './namespace_maps';
+import List from './modules/todo/components/list.vue';
+import { TodoActions } from './modules/todo/store/actions';
 
 @Component({
   components: {
-    HelloWorld,
+    List,
   },
 })
-export default class App extends Vue {}
-</script>
+export default class App extends Mixins<StoreHelperMixin>(StoreHelperMixin) {
+  get state() {
+    return this.getState(ns.todoModuleName);
+  }
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  get actions() {
+    return this.getActions(ns.todoModuleName);
+  }
+
+  get getters() {
+    return this.getGetters(ns.todoModuleName);
+  }
 }
-</style>
+</script>

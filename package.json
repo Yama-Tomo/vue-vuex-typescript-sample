@@ -3,23 +3,33 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "serve": "vue-cli-service serve src/index.ts",
+    "serve:pub": "vue-cli-service serve src/index.ts --host=0.0.0.0",
+    "build:prod": "webpack --mode production",
+    "build:dev": "./node_modules/.bin/webpack --color --progess --watch --mode development",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "style-loader": "^0.21.0",
     "vue": "^2.5.16",
     "vue-class-component": "^6.0.0",
     "vue-property-decorator": "^6.0.0",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "vuex-type-helper": "^1.2.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.0-beta.15",
     "@vue/cli-plugin-typescript": "^3.0.0-beta.15",
     "@vue/cli-service": "^3.0.0-beta.15",
+    "javascript-typescript-langserver": "^2.10.0",
+    "mini-css-extract-plugin": "^0.4.1",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
-    "vue-template-compiler": "^2.5.16"
+    "vue-language-server": "0.0.32",
+    "vue-mixin-decorator": "^1.0.0",
+    "vue-template-compiler": "^2.5.16",
+    "webpack": "^4.15.1",
+    "webpack-cli": "^3.0.8"
   },
   "browserslist": [
     "> 1%",
