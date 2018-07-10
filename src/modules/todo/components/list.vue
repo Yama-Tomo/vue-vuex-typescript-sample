@@ -78,7 +78,6 @@ export default class List extends Vue {
   }
 
   get todos() {
-
     return this.state.todos;
   }
 
