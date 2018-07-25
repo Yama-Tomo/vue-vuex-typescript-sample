@@ -5,8 +5,9 @@
   "scripts": {
     "serve": "vue-cli-service serve src/index.ts",
     "serve:pub": "vue-cli-service serve src/index.ts --host=0.0.0.0",
-    "build:prod": "webpack --mode production",
-    "build:dev": "./node_modules/.bin/webpack --color --progess --watch --mode development",
+    "build:prod": "NODE_ENV=production webpack --mode production",
+    "build:dev": "webpack --color --progess --watch --mode development",
+    "build:prod_to_rails": "npm run build:prod && cp -a dist ../",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -29,7 +30,8 @@
     "vue-mixin-decorator": "^1.0.0",
     "vue-template-compiler": "^2.5.16",
     "webpack": "^4.15.1",
-    "webpack-cli": "^3.0.8"
+    "webpack-cli": "^3.0.8",
+    "webpack-manifest-plugin": "^2.0.3"
   },
   "browserslist": [
     "> 1%",

@@ -1,16 +1,19 @@
+const devMode = process.env.NODE_ENV !== 'production'
+
 const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const devMode = process.env.NODE_ENV !== 'production'
+const ManifestPlugin = require('webpack-manifest-plugin')
+const filename = devMode ? '[name]' : '[name]-[hash]'
 
 module.exports = {
   entry: './src/index.ts',
   output: {
     path: path.resolve(__dirname, './dist'),
-    publicPath: 'dist/',
-    filename: 'index.js'
+    publicPath: '/assets/',
+    filename: `${filename}.js`,
   },
   module: {
     rules: [
@@ -76,8 +79,8 @@ module.exports = {
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
       filename: 'style.css'
-    })
-
+    }),
+    new ManifestPlugin(),
     //new CopyWebpackPlugin([
     //  { from: 'src/assets', to: 'assets' }
     //]),
