@@ -1,25 +1,14 @@
 import Vue from 'vue';
 import App from './App.vue';
-import store, { initialStateResolvers } from './store';
+import store from './store';
+import initialStateResolver from './initial_state_resolver';
 
 Vue.config.productionTip = false;
 
 const initialState = (window as any).__INITIAL_STATE__;
 
 if (initialState instanceof Object) {
-  const replaceState: { [key: string]: any } = {};
-
-  for (const moduleName in initialState) {
-    if (!initialStateResolvers[moduleName]) {
-      continue;
-    }
-
-    replaceState[moduleName] = initialStateResolvers[moduleName](initialState[moduleName]);
-  }
-
-  if (Object.keys(replaceState).length) {
-    store.replaceState(replaceState);
-  }
+  initialStateResolver(initialState, store);
 }
 
 new Vue({
