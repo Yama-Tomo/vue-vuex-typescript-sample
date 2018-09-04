@@ -23,7 +23,7 @@ export class StoreHelperMixin extends Vue {
     return this.$store.state[module];
   }
 
-  public getGetters<K extends keyof GettersMaps>(module: K): Getters<K> {
+  public getGetters<K extends keyof GettersMaps>(module: K): Getters<GettersMaps[K]> {
     return Object.keys(this.$store.getters).reduce((getters: any, name: string) => {
       const namespacePaths = name.split('/');
 
@@ -40,7 +40,7 @@ export class StoreHelperMixin extends Vue {
     }, {});
   }
 
-  public getActions<K extends keyof ActionMaps>(module: K): Actions<K> {
+  public getActions<K extends keyof ActionMaps>(module: K): Actions<ActionMaps[K]> {
     return Object.keys((this.$store as any)._actions).reduce((actions: any, name: string) => {
       const namespacePaths = name.split('/');
 
