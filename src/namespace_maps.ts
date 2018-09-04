@@ -3,7 +3,7 @@ import { TodoActions } from './modules/todo/store/actions';
 import { TodoGetters } from './modules/todo/store/getters';
 import { todoStore, initialStateResolver as todoInitialStateResolver } from './modules/todo/store';
 
-export const todoModuleName = 'todoModule';
+export const todoModuleName = 'todo_module';
 
 export interface StateMaps {
   [todoModuleName]: TodoState;

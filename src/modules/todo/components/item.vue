@@ -36,7 +36,7 @@ import { HTMLElementEvent } from '../../../types';
   },
 })
 export default class Item extends Vue {
-  @Prop()
+  @Prop(Object)
   public todo!: Todo;
   @Prop()
   public actions!: Actions<TodoActions>;

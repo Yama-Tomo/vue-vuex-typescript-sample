@@ -10,6 +10,7 @@ export interface TodoMutations {
     text?: string,
     done?: boolean,
   };
+  setFullState: TodoState;
 }
 
 export const mutations: DefineMutations<TodoMutations, TodoState> = {
@@ -27,5 +28,8 @@ export const mutations: DefineMutations<TodoMutations, TodoState> = {
     if (done !== undefined) {
       todo.done = done;
     }
+  },
+  setFullState(state, value) {
+    state.todos = value.todos;
   },
 };

@@ -21,6 +21,7 @@ export interface TodoActions {
     done: boolean,
   };
   clearCompleted: {};
+  setFullState: TodoState;
 }
 
 export const actions: DefineActions<TodoActions, TodoState, TodoMutations> = {
@@ -45,5 +46,8 @@ export const actions: DefineActions<TodoActions, TodoState, TodoMutations> = {
     state.todos.filter((todo) => todo.done).forEach((todo) => {
       commit('removeTodo', todo);
     });
+  },
+  setFullState({ commit }, value) {
+    commit('setFullState', value);
   },
 };
