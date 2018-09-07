@@ -49,7 +49,9 @@ module.exports = {
 //  css: ['~/assets/css/main.css'],
   css: [],
   build: {
-    quit: true,
+    stats: {
+      warningsFilter: /export .* was not found in/,
+    }
   },
   modules: [
     '~/nuxt_with_typescript.js'
