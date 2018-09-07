@@ -43,7 +43,7 @@ module.exports = function() {
 
     const friendlyErrorsWebpackPlugin = config.plugins.find((plugin) => plugin.constructor.name === 'FriendlyErrorsWebpackPlugin');
     if (friendlyErrorsWebpackPlugin) {
-      (friendlyErrorsWebpackPlugin.logLevel  = 2);
+      friendlyErrorsWebpackPlugin.logLevel = 2;
     }
   })
 }
