@@ -46,9 +46,9 @@ module.exports = {
   /*
   ** Build configuration
   */
-//  css: ['~/assets/css/main.css'],
-  css: [],
+  css: ['~/assets/css/main.scss'],
   build: {
+    extractCSS: { allChunks: true },
     stats: {
       warningsFilter: /export .* was not found in/,
     }
