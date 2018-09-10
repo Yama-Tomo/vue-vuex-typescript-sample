@@ -1,5 +1,9 @@
 <template>
-  <List :state=state :actions=actions :getters=getters></List>
+  <div>
+    <List :state=state :actions=actions :getters=getters></List>
+    <hr />
+    <nuxt-link to="/about">about</nuxt-link>
+  </div>
 </template>
 
 <script lang="ts">
@@ -48,3 +52,4 @@ export default class Index extends Mixins<StoreHelperMixin>(StoreHelperMixin) {
   }
 }
 </script>
+
