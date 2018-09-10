@@ -9,7 +9,8 @@
     "build:dev": "webpack --color --progess --watch --mode development",
     "build:nuxt": "nuxt build",
     "lint": "vue-cli-service lint",
-    "nuxt": "nuxt"
+    "nuxt": "nuxt",
+    "start": "nuxt start"
   },
   "config": {
     "nuxt": {
