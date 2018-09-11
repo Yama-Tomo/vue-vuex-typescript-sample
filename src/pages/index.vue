@@ -8,14 +8,12 @@
 
 <script lang="ts">
 import Component from 'nuxt-class-component';
-import { Vue } from 'vue-property-decorator';
 import { Mixins } from 'vue-mixin-decorator';
 import { StoreHelper, StoreHelperMixin, Actions } from '../mixins/store_helper';
 import * as ns from '../namespace_maps';
 import List from '../modules/todo/components/list.vue';
 import { TodoActions } from '../modules/todo/store/actions';
 import { initialStateResolver } from '../modules/todo/store/index';
-
 import { Store } from 'vuex';
 
 @Component({
@@ -34,7 +32,7 @@ export default class Index extends Mixins<StoreHelperMixin>(StoreHelperMixin) {
         { text: 'aaaa', done: false },
         { text: 'bbbb', done: true },
       ]});
-      const actions = (new StoreHelper(store)).getActions(ns.todoModuleName);
+      const actions: Actions<TodoActions> = (new StoreHelper(store)).getActions(ns.todoModuleName);
       actions.setFullState(state);
     });
   }
