@@ -55,7 +55,8 @@ module.exports = {
   },
   modules: [
     '~/nuxt_with_typescript.js',
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/auth',
   ],
   axios: {
     prefix: '/api',
@@ -63,5 +64,22 @@ module.exports = {
   },
   proxy: {
     '/api': 'http://localhost:3101'
+  },
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login:  { url: '/users/sign_in' },
+          logout: { url: '/users/sign_out', method: 'delete' },
+          user:  { url: '/users/show', propertyName: 'user' },
+        }
+      }
+    },
+    redirect: {
+      home: '/'
+    }
+  },
+  router: {
+    middleware: ['auth']
   },
 }
