@@ -54,7 +54,14 @@ module.exports = {
     }
   },
   modules: [
-    '~/nuxt_with_typescript.js'
+    '~/nuxt_with_typescript.js',
+    '@nuxtjs/axios'
   ],
-  axios: {}
+  axios: {
+    prefix: '/api',
+    proxy: true,
+  },
+  proxy: {
+    '/api': 'http://localhost:3101'
+  },
 }
