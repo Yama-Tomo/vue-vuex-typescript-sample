@@ -20,6 +20,7 @@ import { Store } from 'vuex';
   components: {
     List,
   },
+  auth: false,
 })
 export default class Index extends Mixins<StoreHelperMixin>(StoreHelperMixin) {
   public fetch({ store }: { store: Store<any> }) {
