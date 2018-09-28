@@ -12,10 +12,19 @@
         <img src="~/assets/image/nuxt_logo.png">
       </li>
     </ul>
-    <hr />
-    <nuxt-link to="/">Home</nuxt-link>
   </div>
 </template>
+
+<script lang="ts">
+import Component from 'nuxt-class-component';
+import { Vue } from 'vue-property-decorator';
+
+@Component({
+  auth: false,
+})
+export default class About extends Vue {
+}
+</script>
 
 <style scoped lang="scss">
 img {

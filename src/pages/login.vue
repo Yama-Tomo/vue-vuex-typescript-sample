@@ -10,8 +10,6 @@
       <input type="password" v-model="password">
     </div>
     <button @click="onLoginButtonClick">login</button>
-    <hr />
-    <nuxt-link to="/">Home</nuxt-link>
   </div>
 </template>
 

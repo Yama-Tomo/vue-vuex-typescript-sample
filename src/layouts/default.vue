@@ -5,10 +5,16 @@
       <nuxt-link to="/login" v-if="!isLoggedIn">sign in</nuxt-link>
     </div>
     <nuxt class="container" />
+    <hr />
+    <div class="container">
+      <nuxt-link to="/" v-if="currentPath != '/'">home</nuxt-link>
+      <nuxt-link to="/about" v-if="currentPath != '/about'">about</nuxt-link>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
+/// <reference types="vue-router" />
 import Component from 'nuxt-class-component';
 import { Mixins } from 'vue-mixin-decorator';
 import { StoreHelperMixin } from '../mixins/store_helper';
@@ -19,6 +25,10 @@ import { AuthState } from '../modules/auth/store/state';
 export default class DefaultLayout extends Mixins<StoreHelperMixin>(StoreHelperMixin) {
   get isLoggedIn(): boolean {
     return (this.getState(ns.authModuleName) as AuthState).loggedIn;
+  }
+
+  get currentPath(): string {
+    return this.$route.path;
   }
 }
 </script>

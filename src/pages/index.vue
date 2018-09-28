@@ -1,8 +1,6 @@
 <template>
   <div>
     <List :state=state :actions=actions :getters=getters></List>
-    <hr />
-    <nuxt-link to="/about">about</nuxt-link>
   </div>
 </template>
 
