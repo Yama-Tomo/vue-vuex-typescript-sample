@@ -63,6 +63,7 @@ module.exports = {
     '/api': 'http://localhost:3101'
   },
   auth: {
+    plugins: ['~/plugins/auth/redirect.js'],
     strategies: {
       local: {
         endpoints: {
