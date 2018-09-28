@@ -49,9 +49,6 @@ module.exports = {
   css: ['~/assets/css/main.scss'],
   build: {
     extractCSS: { allChunks: true },
-    stats: {
-      warningsFilter: /export .* was not found in/,
-    }
   },
   modules: [
     '~/nuxt_with_typescript.js',
