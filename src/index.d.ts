@@ -5,3 +5,12 @@ declare module 'vue/types/options' {
     auth?: boolean;
   }
 }
+
+declare module "vue/types/vue" {
+  interface Vue {
+    $auth: {
+      loginWith: (strategy: string, params: any) => Promise<any>;
+      redirect: (name: string, noRouter?: Boolean) => void;
+    };
+  }
+}
