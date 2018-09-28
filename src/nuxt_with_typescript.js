@@ -1,5 +1,26 @@
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 
+// https://github.com/TypeStrong/ts-loader/issues/653#issuecomment-390889335
+const ModuleDependencyWarning = require("webpack/lib/ModuleDependencyWarning")
+class IgnoreNotFoundExportPlugin {
+  apply(compiler) {
+    const messageRegExp = /export '.*'( \(reexported as '.*'\))? was not found in/
+    function doneHook(stats) {
+      stats.compilation.warnings = stats.compilation.warnings.filter(function(warn) {
+        if (warn instanceof ModuleDependencyWarning && messageRegExp.test(warn.message)) {
+          return false
+        }
+        return true;
+      })
+    }
+    if (compiler.hooks) {
+      compiler.hooks.done.tap("IgnoreNotFoundExportPlugin", doneHook)
+    } else {
+      compiler.plugin("done", doneHook)
+    }
+  }
+}
+
 module.exports = function() {
   this.nuxt.options.extensions.push('ts')
 
@@ -36,14 +57,6 @@ module.exports = function() {
       vue: true,
     }));
 
-    if (config.entry.app && config.entry.app instanceof Array) {
-      // https://github.com/webpack-contrib/webpack-hot-middleware#config
-      config.entry.app = config.entry.app.map((entry) => entry.replace(/webpack-hot-middleware\/client\?/, 'webpack-hot-middleware/client?quiet=true&'));
-    }
-
-    const friendlyErrorsWebpackPlugin = config.plugins.find((plugin) => plugin.constructor.name === 'FriendlyErrorsWebpackPlugin');
-    if (friendlyErrorsWebpackPlugin) {
-      friendlyErrorsWebpackPlugin.logLevel = 2;
-    }
+    config.plugins.push(new IgnoreNotFoundExportPlugin());
   })
 }
