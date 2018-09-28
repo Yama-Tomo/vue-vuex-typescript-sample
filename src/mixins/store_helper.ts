@@ -12,44 +12,38 @@ export type Getters<G> = {
 };
 
 export class StoreHelper {
-  public store: Store<any>;
-
-  constructor(store: Store<any>) {
-    this.store = store;
+  public static getState<K extends keyof StateMaps>(store: Store<any>, module: K): StateMaps[K] {
+    return store.state[module];
   }
 
-  public getState<K extends keyof StateMaps>(module: K): StateMaps[K] {
-    return this.store.state[module];
-  }
-
-  public getGetters<K extends keyof GettersMaps>(module: K): Getters<GettersMaps[K]> {
-    return Object.keys(this.store.getters).reduce((getters: any, name: string) => {
+  public static getGetters<K extends keyof GettersMaps>(store: Store<any>, module: K): Getters<GettersMaps[K]> {
+    return Object.keys(store.getters).reduce((getters: any, name: string) => {
       const namespacePaths = name.split('/');
 
       if (namespacePaths.length === 1) {
-        getters[name] = this.store.getters[name];
+        getters[name] = store.getters[name];
       } else {
         if (module !== namespacePaths[0]) {
            return getters;
         }
-        getters[namespacePaths[1]] = this.store.getters[name];
+        getters[namespacePaths[1]] = store.getters[name];
       }
 
       return getters;
     }, {});
   }
 
-  public getActions<K extends keyof ActionMaps>(module: K): Actions<ActionMaps[K]> {
-    return Object.keys((this.store as any)._actions).reduce((actions: any, name: string) => {
+  public static getActions<K extends keyof ActionMaps>(store: Store<any>, module: K): Actions<ActionMaps[K]> {
+    return Object.keys((store as any)._actions).reduce((actions: any, name: string) => {
       const namespacePaths = name.split('/');
 
       if (namespacePaths.length === 1) {
-        actions[name] = (payload: any) => this.store.dispatch(name, payload);
+        actions[name] = (payload: any) => store.dispatch(name, payload);
       } else {
         if (module !== namespacePaths[0]) {
            return actions;
         }
-        actions[namespacePaths[1]] = (payload: any) => this.store.dispatch(name, payload);
+        actions[namespacePaths[1]] = (payload: any) => store.dispatch(name, payload);
       }
 
       return actions;
@@ -64,6 +58,16 @@ export class StoreHelper {
  */
 @Mixin
 export class StoreHelperMixin extends Vue {
-  public storeHelper = new StoreHelper(this.$store);
+  public getState<K extends keyof StateMaps>(module: K) {
+    return StoreHelper.getState(this.$store, module);
+  }
+
+  public getGetters<K extends keyof GettersMaps>(module: K) {
+    return StoreHelper.getGetters(this.$store, module);
+  }
+
+  public getActions<K extends keyof ActionMaps>(module: K) {
+    return StoreHelper.getActions(this.$store, module);
+  }
 }
 

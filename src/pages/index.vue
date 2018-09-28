@@ -33,21 +33,21 @@ export default class Index extends Mixins<StoreHelperMixin>(StoreHelperMixin) {
         { text: 'aaaa', done: false },
         { text: 'bbbb', done: true },
       ]});
-      const actions: Actions<TodoActions> = (new StoreHelper(store)).getActions(ns.todoModuleName);
+      const actions: Actions<TodoActions> = StoreHelper.getActions(store, ns.todoModuleName);
       actions.setFullState(state);
     });
   }
 
   get state() {
-    return this.storeHelper.getState(ns.todoModuleName);
+    return this.getState(ns.todoModuleName);
   }
 
   get actions() {
-    return this.storeHelper.getActions(ns.todoModuleName);
+    return this.getActions(ns.todoModuleName);
   }
 
   get getters() {
-    return this.storeHelper.getGetters(ns.todoModuleName);
+    return this.getGetters(ns.todoModuleName);
   }
 }
 </script>
