@@ -1,9 +1,7 @@
 import { Vue } from 'vue-property-decorator';
 import { Store } from 'vuex';
-import { Dispatcher, Dispatch } from 'vuex-type-helper';
 import { Mixin } from 'vue-mixin-decorator';
 import { StateMaps, ActionMaps, GettersMaps } from '../namespace_maps';
-import { TodoActions } from '../modules/todo/store/actions';
 
 export type Actions<A> = {
   [K in keyof A]: (payload: A[K]) => Promise<any> | void
