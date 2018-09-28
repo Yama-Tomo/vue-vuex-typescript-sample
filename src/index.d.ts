@@ -11,6 +11,7 @@ declare module "vue/types/vue" {
     $auth: {
       loginWith: (strategy: string, params: any) => Promise<any>;
       redirect: (name: string, noRouter?: Boolean) => void;
+      logout: () => Promise<any>;
     };
   }
 }
