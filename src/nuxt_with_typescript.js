@@ -40,11 +40,10 @@ module.exports = function() {
       )
     );
 
-    for (let rule of config.module.rules) {
-      if (rule.loader === 'vue-loader') {
-        rule.options.loaders = rule.options.loaders || {};
-        rule.options.loaders.ts = tsLoader;
-      }
+    const vueLoader = config.module.rules.find(el => el.loader === 'vue-loader');
+    if (vueLoader !== undefined) {
+      vueLoader.options.loaders = vueLoader.options.loaders || {};
+      vueLoader.options.loaders.ts = tsLoader;
     }
 
     if (config.resolve.extensions.indexOf('.ts') === -1) {
