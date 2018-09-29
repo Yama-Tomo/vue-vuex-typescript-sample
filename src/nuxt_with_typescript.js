@@ -46,6 +46,15 @@ module.exports = function() {
       vueLoader.options.loaders.ts = tsLoader;
     }
 
+    if (this.requiredModules['nuxt-i18n'] && this.requiredModules['nuxt-i18n'].options.vueI18nLoader) {
+      // NOTE: no correctly detect vue-loader version on nuxt-18n when added property for typescript build to loader.options.loaders
+      // manually add module rules for vue-loader after 15.0.0
+      config.module.rules.push({
+        resourceQuery: /blockType=i18n/,
+        loader: '@kazupon/vue-i18n-loader'
+      });
+    }
+
     if (config.resolve.extensions.indexOf('.ts') === -1) {
       config.resolve.extensions.push('.ts')
     }
