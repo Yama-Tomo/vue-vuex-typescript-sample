@@ -51,7 +51,7 @@ module.exports = function() {
       // manually add module rules for vue-loader after 15.0.0
       config.module.rules.push({
         resourceQuery: /blockType=i18n/,
-        loader: '@kazupon/vue-i18n-loader'
+        loader: ['@kazupon/vue-i18n-loader', 'yaml-loader']
       });
     }
 
