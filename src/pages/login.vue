@@ -17,7 +17,9 @@
 import Component from 'nuxt-class-component';
 import { Vue } from 'vue-property-decorator';
 
-@Component
+@Component({
+  auth: false,
+})
 export default class Login extends Vue {
   public username = '';
   public password = '';
