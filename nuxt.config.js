@@ -54,6 +54,24 @@ module.exports = {
     '~/nuxt_with_typescript.js',
     '@nuxtjs/axios',
     '@nuxtjs/auth',
+    ['nuxt-i18n', {
+      parsePages: false,
+      defaultLocale: 'en',
+      // TODO: https://github.com/nuxt/nuxt.js/issues/3957
+      seo: false,
+      locales: [{
+        code: 'en',
+        iso: 'en-US'
+      }, {
+        code: 'ja',
+        iso: 'ja'
+      }],
+      strategy: 'prefix',
+      detectBrowserLanguage: {
+        useCookie: false
+      },
+      vueI18nLoader: true,
+    }],
   ],
   axios: {
     prefix: '/api',
