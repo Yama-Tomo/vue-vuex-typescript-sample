@@ -1,16 +1,18 @@
+<i18n src="~/locales/ja.yml"></i18n>
+<i18n src="~/locales/en.yml"></i18n>
 <template>
   <div>
     <header class="header">Vuex tutorial with typescript and Nuxt.js</header>
     <div class="signin">
-      <nuxt-link :to="localePath('login')" v-if="!isLoggedIn">sign in</nuxt-link>
-      <a href="" @click.prevent="signout" v-if="isLoggedIn">sign out</a>
+      <nuxt-link :to="localePath('login')" v-if="!isLoggedIn">{{ $t('link.sign_in') }}</nuxt-link>
+      <a href="" @click.prevent="signout" v-if="isLoggedIn">{{ $t('link.sign_out') }}</a>
     </div>
     <nuxt class="container" />
     <hr />
     <div class="container">
-      <nuxt-link :to="localePath('index')" v-if="currentPath != '/'">home</nuxt-link>
-      <nuxt-link :to="localePath('about')" v-if="currentPath != '/about'">about</nuxt-link>
-      <nuxt-link :to="localePath('secret')" v-if="currentPath != '/secret' && isLoggedIn">secret</nuxt-link>
+      <nuxt-link :to="localePath('index')" v-if="currentPath != '/'">{{ $t('link.home') }}</nuxt-link>
+      <nuxt-link :to="localePath('about')" v-if="currentPath != '/about'">{{ $t('link.about') }}</nuxt-link>
+      <nuxt-link :to="localePath('secret')" v-if="currentPath != '/secret' && isLoggedIn">{{ $t('link.secret') }}</nuxt-link>
     </div>
   </div>
 </template>
