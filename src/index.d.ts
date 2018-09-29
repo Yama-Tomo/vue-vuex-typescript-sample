@@ -6,11 +6,11 @@ declare module 'vue/types/options' {
   }
 }
 
-declare module "vue/types/vue" {
+declare module 'vue/types/vue' {
   interface Vue {
     $auth: {
       loginWith: (strategy: string, params: any) => Promise<any>;
-      redirect: (name: string, noRouter?: Boolean) => void;
+      redirect: (name: string, noRouter?: boolean) => void;
       logout: () => Promise<any>;
     };
   }
