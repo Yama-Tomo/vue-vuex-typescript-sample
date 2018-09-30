@@ -12,7 +12,7 @@
     <div class="container">
       <nuxt-link :to="localePath('index')" v-if="currentPath != localePath('index')">{{ $t('link.home') }}</nuxt-link>
       <nuxt-link :to="localePath('about')" v-if="currentPath != localePath('about')">{{ $t('link.about') }}</nuxt-link>
-      <nuxt-link :to="localePath('secret')" v-if="currentPath != localePath('secret') && isLoggedIn">{{ $t('link.secret') }}</nuxt-link>
+      <nuxt-link :to="localePath('secret')" v-if="currentPath != localePath('secret')">{{ $t('link.secret') }}</nuxt-link>
       <br>
       {{ $t('other_lang') }}:
       <nuxt-link
