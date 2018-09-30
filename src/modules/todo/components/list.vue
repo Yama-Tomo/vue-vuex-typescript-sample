@@ -46,7 +46,7 @@
 </template>
 
 <script lang='ts'>
-import { Component, Vue, Prop } from 'vue-property-decorator';
+import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { TodoState } from '../store/state';
 import { Todo } from '../data/todo';
 import { TodoActions } from '../store/actions';
@@ -55,6 +55,7 @@ import { Actions, Getters } from '../../../mixins/store_helper';
 import { TodoGetters } from '../store/getters';
 import Item from './item.vue';
 import VueI18n from 'vue-i18n';
+import { Route } from 'vue-router';
 
 @Component({
   components: {
@@ -72,6 +73,21 @@ export default class List extends Vue {
   public i18n!: VueI18n;
 
   public visibility: string = 'all';
+
+  @Watch('$route')
+  public onRouteChanged(route: Route) {
+    this.filterByRouteHash(route);
+  }
+
+  public mounted() {
+    this.filterByRouteHash(this.$route);
+  }
+
+  public filterByRouteHash(route: Route) {
+    if (route.hash) {
+      this.visibility = route.hash.replace(/#\//, '');
+    }
+  }
 
   get filters() {
     return {
