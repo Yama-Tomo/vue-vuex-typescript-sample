@@ -4,15 +4,15 @@
   <div>
     <header class="header">Vuex tutorial with typescript and Nuxt.js</header>
     <div class="signin">
-      <nuxt-link :to="localePath('login')" v-if="!isLoggedIn">{{ $t('link.sign_in') }}</nuxt-link>
+      <nuxt-link :to="localePath('login')" v-if="!isLoggedIn && currentPath != localePath('login')">{{ $t('link.sign_in') }}</nuxt-link>
       <a href="" @click.prevent="signout" v-if="isLoggedIn">{{ $t('link.sign_out') }}</a>
     </div>
     <nuxt class="container" />
     <hr />
     <div class="container">
-      <nuxt-link :to="localePath('index')" v-if="currentPath != '/'">{{ $t('link.home') }}</nuxt-link>
-      <nuxt-link :to="localePath('about')" v-if="currentPath != '/about'">{{ $t('link.about') }}</nuxt-link>
-      <nuxt-link :to="localePath('secret')" v-if="currentPath != '/secret' && isLoggedIn">{{ $t('link.secret') }}</nuxt-link>
+      <nuxt-link :to="localePath('index')" v-if="currentPath != localePath('index')">{{ $t('link.home') }}</nuxt-link>
+      <nuxt-link :to="localePath('about')" v-if="currentPath != localePath('about')">{{ $t('link.about') }}</nuxt-link>
+      <nuxt-link :to="localePath('secret')" v-if="currentPath != localePath('secret') && isLoggedIn">{{ $t('link.secret') }}</nuxt-link>
     </div>
   </div>
 </template>
