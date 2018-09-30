@@ -1,4 +1,5 @@
 import Vue, { ComponentOptions } from 'vue';
+import { Route } from 'vue-router';
 
 declare module 'vue/types/options' {
   interface ComponentOptions<V extends Vue> {
@@ -13,5 +14,6 @@ declare module 'vue/types/vue' {
       redirect: (name: string, noRouter?: boolean) => void;
       logout: () => Promise<any>;
     };
+    $route: Route;
   }
 }

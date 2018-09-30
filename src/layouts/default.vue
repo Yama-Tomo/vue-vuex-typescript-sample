@@ -16,7 +16,6 @@
 </template>
 
 <script lang="ts">
-/// <reference types="vue-router" />
 import Component from 'nuxt-class-component';
 import { Mixins } from 'vue-mixin-decorator';
 import { StoreHelperMixin } from '../mixins/store_helper';
