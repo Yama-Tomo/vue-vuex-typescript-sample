@@ -6,7 +6,7 @@
         :checked="todo.done"
         @change="toggleTodo(todo)">
       <label v-text="todo.text" @dblclick="editing = true"></label>
-      <button class="destroy" @click="removeTodo(todo)">remove</button>
+      <button class="destroy" @click="removeTodo(todo)">{{ i18n.t('todo.remove') }}</button>
     </div>
     <input class="edit"
       v-show="editing"
@@ -24,6 +24,7 @@ import { Todo } from '../data/todo';
 import { Actions } from '../../../mixins/store_helper';
 import { TodoActions } from '../store/actions';
 import { HTMLElementEvent } from '../../../types';
+import VueI18n from 'vue-i18n';
 
 @Component({
   components: {},
@@ -40,6 +41,8 @@ export default class Item extends Vue {
   public todo!: Todo;
   @Prop()
   public actions!: Actions<TodoActions>;
+  @Prop(Object)
+  public i18n!: VueI18n;
 
   public editing: boolean = false;
 
