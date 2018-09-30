@@ -13,6 +13,13 @@
       <nuxt-link :to="localePath('index')" v-if="currentPath != localePath('index')">{{ $t('link.home') }}</nuxt-link>
       <nuxt-link :to="localePath('about')" v-if="currentPath != localePath('about')">{{ $t('link.about') }}</nuxt-link>
       <nuxt-link :to="localePath('secret')" v-if="currentPath != localePath('secret') && isLoggedIn">{{ $t('link.secret') }}</nuxt-link>
+      <br>
+      {{ $t('other_lang') }}:
+      <nuxt-link
+        v-for="locale in locales"
+        v-if="locale.code !== $i18n.locale"
+        :key="locale.code"
+        :to="switchLocalePath(locale.code)">{{ locale.code }}</nuxt-link>
     </div>
   </div>
 </template>
@@ -36,6 +43,10 @@ export default class DefaultLayout extends Mixins<StoreHelperMixin>(StoreHelperM
 
   get currentPath(): string {
     return this.$route.path;
+  }
+
+  get locales(): {[key: string]: {[key: string]: string}} {
+    return (this.$root.$i18n as any).locales as {[key: string]: {[key: string]: string}};
   }
 }
 </script>
