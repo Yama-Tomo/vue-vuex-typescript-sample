@@ -56,7 +56,9 @@ export default class DefaultLayout extends Mixins<StoreHelperMixin>(StoreHelperM
 }
 
 .signin {
+  float: right;
   text-align: right;
-  margin-right: 5px;
+  margin-top: 10px;
+  margin-right: 15px;
 }
 </style>
