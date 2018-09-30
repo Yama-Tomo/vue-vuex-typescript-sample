@@ -30,7 +30,7 @@ export default class Login extends Vue {
         email: this.username,
         password: this.password,
       },
-    }});
+    }}).then(() => this.$auth.redirect('home'));
   }
 }
 </script>

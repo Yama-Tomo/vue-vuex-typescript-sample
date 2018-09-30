@@ -34,7 +34,7 @@ import { AuthState } from '../modules/auth/store/state';
 @Component
 export default class DefaultLayout extends Mixins<StoreHelperMixin>(StoreHelperMixin) {
   public signout() {
-    this.$auth.logout().then(() => this.$auth.redirect('home'));
+    this.$auth.logout().then(() => this.$auth.redirect('index'));
   }
 
   get isLoggedIn(): boolean {
