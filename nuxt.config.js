@@ -54,7 +54,7 @@ module.exports = {
     }
   },
   modules: [
-    '~/nuxt_with_typescript.js',
+    '~/modules/typescript.js',
     '@nuxtjs/axios',
     '@nuxtjs/auth',
     ['nuxt-i18n', {
