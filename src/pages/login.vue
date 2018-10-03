@@ -2,8 +2,8 @@
   <div>
     <h1>login</h1>
     <div>
-      <label>User Name</label><br>
-      <input type="text" v-model="username">
+      <label>email</label><br>
+      <input type="text" v-model="email">
     </div>
     <div>
       <label>Password</label><br>
@@ -21,13 +21,13 @@ import { Vue } from 'vue-property-decorator';
   auth: false,
 })
 export default class Login extends Vue {
-  public username = '';
+  public email = '';
   public password = '';
 
   public onLoginButtonClick() {
     this.$auth.loginWith('local', { data: {
       user: {
-        email: this.username,
+        email: this.email,
         password: this.password,
       },
     }}).then(() => this.$auth.redirect('home'));
