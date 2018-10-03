@@ -12,19 +12,29 @@
       <label>Password</label><br>
       <input type="password" v-model="password">
     </div>
-    <button @click="onLoginButtonClick">login</button>
+    <button @click="onLoginButtonClick" :disabled="isAuthenticateProgress">
+      <template v-if="isAuthenticateProgress">
+        checking...
+      </template>
+      <template v-else>
+        sign in
+      </template>
+    </button>
   </div>
 </template>
 
 <script lang="ts">
 import Component from 'nuxt-class-component';
-import { Vue } from 'vue-property-decorator';
+import { Mixins } from 'vue-mixin-decorator';
+import { StoreHelperMixin } from '../mixins/store_helper';
 import { AxiosError } from 'axios';
+import * as ns from '../namespace_maps';
+import { AuthState } from '../modules/auth/store/state';
 
 @Component({
   auth: false,
 })
-export default class Login extends Vue {
+export default class Login extends Mixins<StoreHelperMixin>(StoreHelperMixin) {
   public email = '';
   public password = '';
   public isInvalid = false;
@@ -44,6 +54,9 @@ export default class Login extends Vue {
        }
     });
   }
+
+  get authState(): AuthState { return this.getState(ns.authModuleName); }
+  get isAuthenticateProgress(): boolean { return this.authState.busy; }
 }
 </script>
 <style lang="scss" scoped>
