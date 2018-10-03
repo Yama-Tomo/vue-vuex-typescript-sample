@@ -1,6 +1,9 @@
 <template>
   <div>
     <h1>login</h1>
+    <div class="error" v-if="isInvalid">
+      email or password is incorrect
+    </div>
     <div>
       <label>email</label><br>
       <input type="text" v-model="email">
@@ -16,6 +19,7 @@
 <script lang="ts">
 import Component from 'nuxt-class-component';
 import { Vue } from 'vue-property-decorator';
+import { AxiosError } from 'axios';
 
 @Component({
   auth: false,
@@ -23,17 +27,30 @@ import { Vue } from 'vue-property-decorator';
 export default class Login extends Vue {
   public email = '';
   public password = '';
+  public isInvalid = false;
 
   public onLoginButtonClick() {
+    this.isInvalid = false;
     this.$auth.loginWith('local', { data: {
       user: {
         email: this.email,
         password: this.password,
       },
-    }}).then(() => this.$auth.redirect('home'));
+    }})
+    .then(() => this.$auth.redirect('home'))
+    .catch((data: AxiosError) => {
+       if (data.response && data.response.status === 401) {
+         this.isInvalid = true;
+       }
+    });
   }
 }
 </script>
+<style lang="scss" scoped>
+.error {
+  color: #ff5458;
+}
+</style>
 
 <style scoped lang="scss">
 button {
