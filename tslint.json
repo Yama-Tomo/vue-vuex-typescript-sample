@@ -15,6 +15,7 @@
     "ordered-imports": false,
     "object-literal-sort-keys": false,
     "no-consecutive-blank-lines": false,
-    "max-classes-per-file": [true, 3, "exclude-class-expressions"]
+    "max-classes-per-file": [true, 3, "exclude-class-expressions"],
+    "no-empty-interface": false
   }
 }
