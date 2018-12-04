@@ -1,23 +1,17 @@
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 
 // https://github.com/TypeStrong/ts-loader/issues/653#issuecomment-390889335
-const ModuleDependencyWarning = require("webpack/lib/ModuleDependencyWarning")
 class IgnoreNotFoundExportPlugin {
   apply(compiler) {
-    const messageRegExp = /export '.*'( \(reexported as '.*'\))? was not found in/
-    function doneHook(stats) {
-      stats.compilation.warnings = stats.compilation.warnings.filter(function(warn) {
-        if (warn instanceof ModuleDependencyWarning && messageRegExp.test(warn.message)) {
+    compiler.hooks.done.tap('warnfix-plugin', (stats) => {
+      const messageRegExp = /export '.* was not found in/
+      stats.compilation.warnings = stats.compilation.warnings.filter((warn) => {
+        if (warn.name === 'ModuleDependencyWarning' && messageRegExp.test(warn.message)) {
           return false
         }
-        return true;
+        return true
       })
-    }
-    if (compiler.hooks) {
-      compiler.hooks.done.tap("IgnoreNotFoundExportPlugin", doneHook)
-    } else {
-      compiler.plugin("done", doneHook)
-    }
+    })
   }
 }
 
@@ -59,11 +53,14 @@ module.exports = function() {
       config.resolve.extensions.push('.ts')
     }
 
-    config.plugins.push(new ForkTsCheckerWebpackPlugin({
-      workers: 2,
-      tslint: true,
-      vue: true,
-    }));
+    if (config.name === 'client') {
+      config.plugins.push(new ForkTsCheckerWebpackPlugin({
+        workers: ForkTsCheckerWebpackPlugin.ONE_CPU,
+        tslint: true,
+        vue: true,
+        logger: consola,
+      }));
+    }
 
     config.plugins.push(new IgnoreNotFoundExportPlugin());
   })
