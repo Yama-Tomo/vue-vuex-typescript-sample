@@ -3,13 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve src/index.ts",
-    "serve:pub": "vue-cli-service serve src/index.ts --host=0.0.0.0",
-    "build:prod": "NODE_ENV=production webpack --mode production",
-    "build:dev": "webpack --color --progess --watch --mode development",
-    "build:nuxt": "nuxt build",
     "lint": "vue-cli-service lint",
-    "nuxt": "nuxt",
+    "dev": "nuxt",
+    "build": "nuxt build",
     "start": "nuxt start"
   },
   "config": {

@@ -10,5 +10,5 @@
 
 ```
 $ npm install 
-$ npm run nuxt
+$ npm run dev
 ```
