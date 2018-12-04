@@ -4,7 +4,7 @@
   <div>
     <header class="header">Vuex tutorial with typescript and Nuxt.js</header>
     <div class="signin">
-      <nuxt-link :to="localePath('login')" v-if="!isLoggedIn && currentPath != localePath('login')">{{ $t('link.sign_in') }}</nuxt-link>
+      <nuxt-link :to="toLoginWithRedirectParam" v-if="!isLoggedIn && currentPath != localePath('login')">{{ $t('link.sign_in') }}</nuxt-link>
       <a href="" @click.prevent="signout" v-if="isLoggedIn">{{ $t('link.sign_out') }}</a>
     </div>
     <nuxt class="container" />
@@ -34,7 +34,7 @@ import { AuthState } from '../modules/auth/store/state';
 @Component
 export default class DefaultLayout extends Mixins<StoreHelperMixin>(StoreHelperMixin) {
   public signout() {
-    this.$auth.logout().then(() => this.$auth.redirect('index'));
+    this.$auth.logout();
   }
 
   get isLoggedIn(): boolean {
@@ -43,6 +43,10 @@ export default class DefaultLayout extends Mixins<StoreHelperMixin>(StoreHelperM
 
   get currentPath(): string {
     return this.$route.path;
+  }
+
+  get toLoginWithRedirectParam(): string {
+    return this.localePath('login') + '?redirect=' + encodeURIComponent(this.$route.fullPath);
   }
 
   get locales(): {[key: string]: {[key: string]: string}} {

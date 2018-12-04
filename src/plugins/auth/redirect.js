@@ -24,7 +24,7 @@ export default function ({ app }) {
 
       let isUseRedirectParam = false
       if (name === 'home') {
-        const redirect = this.$storage.getUniversal('redirect') || this.ctx.route.query.redirect;
+        const redirect = this.ctx.route.query.redirect || this.$storage.getUniversal('redirect')
         this.$storage.setUniversal('redirect', null);
 
         if (isRelativeURL(redirect)) {
