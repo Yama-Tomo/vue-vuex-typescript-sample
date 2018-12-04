@@ -23,8 +23,7 @@
 </template>
 
 <script lang="ts">
-import Component from 'nuxt-class-component';
-import { Vue } from 'vue-property-decorator';
+import { Vue, Component } from 'nuxt-property-decorator';
 
 @Component({
   auth: false,

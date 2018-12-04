@@ -19,7 +19,7 @@
 </template>
 
 <script lang='ts'>
-import { Component, Vue, Prop } from 'vue-property-decorator';
+import { Component, Vue, Prop } from 'nuxt-property-decorator';
 import { Todo } from '../data/todo';
 import { Actions } from '../../../mixins/store_helper';
 import { TodoActions } from '../store/actions';

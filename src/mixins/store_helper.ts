@@ -1,4 +1,4 @@
-import { Vue } from 'vue-property-decorator';
+import { Vue } from 'nuxt-property-decorator';
 import { Store } from 'vuex';
 import { Mixin } from 'vue-mixin-decorator';
 import { StateMaps, ActionMaps, GettersMaps } from '../namespace_maps';

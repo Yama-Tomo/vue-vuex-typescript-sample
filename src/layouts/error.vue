@@ -7,8 +7,7 @@
 </template>
 
 <script lang="ts">
-import Component from 'nuxt-class-component';
-import { Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from 'nuxt-property-decorator';
 import { Nuxt } from '../types';
 
 @Component

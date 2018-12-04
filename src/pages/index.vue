@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import Component from 'nuxt-class-component';
+import { Component } from 'nuxt-property-decorator';
 import { Mixins } from 'vue-mixin-decorator';
 import { StoreHelper, StoreHelperMixin, Actions } from '../mixins/store_helper';
 import * as ns from '../namespace_maps';

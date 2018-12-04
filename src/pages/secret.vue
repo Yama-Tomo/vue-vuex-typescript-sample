@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import Component from 'nuxt-class-component';
+import { Component } from 'nuxt-property-decorator';
 import { StoreHelperMixin } from '../mixins/store_helper';
 import { Mixins } from 'vue-mixin-decorator';
 import * as ns from '../namespace_maps';

@@ -46,7 +46,7 @@
 </template>
 
 <script lang='ts'>
-import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
+import { Component, Vue, Prop, Watch } from 'nuxt-property-decorator';
 import { TodoState } from '../store/state';
 import { Todo } from '../data/todo';
 import { TodoActions } from '../store/actions';
