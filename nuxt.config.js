@@ -96,7 +96,8 @@ module.exports = {
     },
     fullPathRedirect: true,
     redirect: {
-      home: '/'
+      home: '/index',
+      logout: '/index',
     }
   },
   router: {

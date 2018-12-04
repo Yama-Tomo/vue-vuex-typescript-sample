@@ -20,20 +20,23 @@ export default function ({ app }) {
     if (this.options.rewriteRedirects) {
       if (name === 'login' && isRelativeURL(from) && !isSameURL(to, from)) {
         this.$storage.setUniversal('redirect', from)
-
-        if (typeof app.localePath == 'function') {
-          // NOTE: get localized login uri on installed nuxt-i18n
-          to = app.localePath('login');
-        }
       }
 
+      let isUseRedirectParam = false
       if (name === 'home') {
         const redirect = this.$storage.getUniversal('redirect') || this.ctx.route.query.redirect;
         this.$storage.setUniversal('redirect', null);
 
         if (isRelativeURL(redirect)) {
           to = redirect
+          isUseRedirectParam = true
         }
+      }
+
+      const isRewriteLocalizedUrl = typeof app.localePath == 'function'
+      if (isRewriteLocalizedUrl && !isUseRedirectParam) {
+        // NOTE: get localized login uri on installed nuxt-i18n
+        to = app.localePath(to.replace(/^\//, ''));
       }
     }
 
