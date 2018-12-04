@@ -1,4 +1,6 @@
+const path = require('path')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+const HardSourceWebpackPlugin    = require('hard-source-webpack-plugin')
 
 // https://github.com/TypeStrong/ts-loader/issues/653#issuecomment-390889335
 class IgnoreNotFoundExportPlugin {
@@ -25,19 +27,19 @@ module.exports = function() {
         appendTsSuffixTo: [/\.vue$/],
         transpileOnly: true
       },
-    };
+    }
 
     config.module.rules.push(
       Object.assign(
         { test: /((client|server)\.js)|(\.tsx?)$/ },
         tsLoader
       )
-    );
+    )
 
-    const vueLoader = config.module.rules.find(el => el.loader === 'vue-loader');
+    const vueLoader = config.module.rules.find(el => el.loader === 'vue-loader')
     if (vueLoader !== undefined) {
-      vueLoader.options.loaders = vueLoader.options.loaders || {};
-      vueLoader.options.loaders.ts = tsLoader;
+      vueLoader.options.loaders = vueLoader.options.loaders || {}
+      vueLoader.options.loaders.ts = tsLoader
     }
 
     if (this.requiredModules['nuxt-i18n'] && this.requiredModules['nuxt-i18n'].options.vueI18nLoader) {
@@ -46,7 +48,7 @@ module.exports = function() {
       config.module.rules.push({
         resourceQuery: /blockType=i18n/,
         loader: ['@kazupon/vue-i18n-loader', 'yaml-loader']
-      });
+      })
     }
 
     if (config.resolve.extensions.indexOf('.ts') === -1) {
@@ -59,9 +61,12 @@ module.exports = function() {
         tslint: true,
         vue: true,
         logger: consola,
-      }));
+      }))
     }
 
-    config.plugins.push(new IgnoreNotFoundExportPlugin());
+    config.plugins.push(new IgnoreNotFoundExportPlugin())
+    config.plugins.push(new HardSourceWebpackPlugin({
+      cacheDirectory: path.resolve(__dirname, '../../node_modules/.cache/hard-source/[confighash]')
+    }))
   })
 }

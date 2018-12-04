@@ -29,10 +29,11 @@
     "@vue/cli-plugin-babel": "^3.0.4",
     "@vue/cli-plugin-typescript": "^3.0.4",
     "@vue/cli-service": "^3.0.4",
-    "typescript": "^3.1",
+    "hard-source-webpack-plugin": "github:chronweigle/hard-source-webpack-plugin#add-prefix",
     "mini-css-extract-plugin": "^0.4.1",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
+    "typescript": "^3.1",
     "vue-mixin-decorator": "^1.0.0",
     "yaml-loader": "^0.5.0"
   },
