@@ -49,7 +49,7 @@ export default function ({ app }) {
         this.ctx.redirect(to)
       }
     } else {
-      this.ctx.redirect(to, { ...this.ctx.route.query, redirect: from })
+      this.ctx.redirect(to, { redirect: from })
     }
   };
 
