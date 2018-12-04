@@ -94,6 +94,7 @@ module.exports = {
         }
       }
     },
+    fullPathRedirect: true,
     redirect: {
       home: '/'
     }
