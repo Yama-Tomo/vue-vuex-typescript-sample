@@ -6,6 +6,6 @@ import { modules } from './namespace_maps';
 Vue.config.productionTip = false;
 
 new Vue({
-  store: store(modules.todo),
+  store: store(modules.todo, (window as any).__INITIAL_STATE__),
   render: (h) => h(App),
 }).$mount('#app');

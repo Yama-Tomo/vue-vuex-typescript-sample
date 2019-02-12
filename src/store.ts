@@ -5,10 +5,10 @@ import todoStore from './modules/todo/store';
 
 Vue.use(Vuex);
 
-export default (moduleName: string) => {
+export default (moduleName: string, initialState?: any) => {
   const storeModules = (() => {
     if (moduleName === modules.todo) {
-      return { [modules.todo]: todoStore() };
+      return { [modules.todo]: todoStore(initialState) };
     }
 
     throw new Error('invalid module name');

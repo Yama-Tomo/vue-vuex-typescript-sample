@@ -1,10 +1,13 @@
-import defaultState from './state';
+import defaultState, { initialStateResolver } from './state';
 import mutations from './mutations';
 import actions from './actions';
 import getters from './getters';
 
-export default () => {
+export default (initialState?: any) => {
   const state = defaultState();
+  if (initialState) {
+    initialStateResolver(state, initialState);
+  }
 
   return {
     namespaced: true,
