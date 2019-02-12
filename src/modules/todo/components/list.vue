@@ -124,3 +124,9 @@ export default class List extends Vue {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+h1 {
+  color: #333;
+}
+</style>
