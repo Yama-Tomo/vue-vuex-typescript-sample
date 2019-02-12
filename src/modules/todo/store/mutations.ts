@@ -1,4 +1,4 @@
-import { DefineGetters, DefineMutations, DefineActions, Dispatcher, Committer } from 'vuex-type-helper';
+import { DefineMutations } from 'vuex-type-helper';
 import { Todo } from '../data/todo';
 import { TodoState } from './state';
 
