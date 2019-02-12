@@ -1,4 +1,6 @@
+const isDev = process.env.NODE_ENV !== 'production'
 const path = require('path');
+const filename = isDev ? 'index' : 'index-[hash]'
 
 class IgnoreNotFoundExportPlugin {
   apply(compiler) {
@@ -18,7 +20,7 @@ module.exports = {
   productionSourceMap: false,
   configureWebpack: config => {
     config.entry = './src/index.ts';
-    config.output.filename = 'index.js';
+    config.output.filename = `${filename}.js`;
     config.output.path = path.resolve(__dirname, './dist');
 
     config.plugins.unshift(new IgnoreNotFoundExportPlugin())
