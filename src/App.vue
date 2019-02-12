@@ -5,7 +5,7 @@
 <script lang="ts">
 import { Component, Mixins } from 'vue-property-decorator';
 import { StoreHelperMixin } from './mixins/store_helper';
-import * as ns from './namespace_maps';
+import { modules } from './namespace_maps';
 import List from './modules/todo/components/list.vue';
 
 @Component({
@@ -15,15 +15,15 @@ import List from './modules/todo/components/list.vue';
 })
 export default class App extends Mixins(StoreHelperMixin) {
   get state() {
-    return this.getState(ns.todoModuleName);
+    return this.getState(modules.todo);
   }
 
   get actions() {
-    return this.getActions(ns.todoModuleName);
+    return this.getActions(modules.todo);
   }
 
   get getters() {
-    return this.getGetters(ns.todoModuleName);
+    return this.getGetters(modules.todo);
   }
 }
 </script>

@@ -2,16 +2,18 @@ import { TodoState } from './modules/todo/store/state';
 import { TodoActions } from './modules/todo/store/actions';
 import { TodoGetters } from './modules/todo/store/getters';
 
-export const todoModuleName = 'todoModule';
+export namespace modules {
+  export const todo = 'todoModule';
+}
 
 export interface StateMaps {
-  [todoModuleName]: TodoState;
+  [modules.todo]: TodoState;
 }
 
 export interface ActionMaps {
-  [todoModuleName]: TodoActions;
+  [modules.todo]: TodoActions;
 }
 
 export interface GettersMaps {
-  [todoModuleName]: TodoGetters;
+  [modules.todo]: TodoGetters;
 }
