@@ -3,8 +3,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import { Mixins } from 'vue-mixin-decorator';
+import { Component, Mixins } from 'vue-property-decorator';
 import { StoreHelperMixin } from './mixins/store_helper';
 import * as ns from './namespace_maps';
 import List from './modules/todo/components/list.vue';
@@ -14,7 +13,7 @@ import List from './modules/todo/components/list.vue';
     List,
   },
 })
-export default class App extends Mixins<StoreHelperMixin>(StoreHelperMixin) {
+export default class App extends Mixins(StoreHelperMixin) {
   get state() {
     return this.getState(ns.todoModuleName);
   }
