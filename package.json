@@ -3,10 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve src/index.ts",
-    "serve:pub": "vue-cli-service serve src/index.ts --host=0.0.0.0",
-    "build:prod": "webpack --mode production",
-    "build:dev": "./node_modules/.bin/webpack --color --progess --watch --mode development",
+    "dev": "NODE_ENV=development vue-cli-service serve src/index.ts",
+    "build": "NODE_ENV=production vue-cli-service build --mode production",
+    "build:dev": "NODE_ENV=development vue-cli-service build --mode development",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

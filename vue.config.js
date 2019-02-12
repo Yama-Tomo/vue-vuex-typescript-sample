@@ -15,6 +15,7 @@ class IgnoreNotFoundExportPlugin {
 }
 
 module.exports = {
+  productionSourceMap: false,
   configureWebpack: config => {
     config.entry = './src/index.ts';
     config.output.filename = 'index.js';
