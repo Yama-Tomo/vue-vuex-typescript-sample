@@ -47,7 +47,7 @@
 <script lang='ts'>
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import { TodoState } from '../store/state';
-import { Todo } from '../data/todo';
+import Todo from '../store/state/todo';
 import { TodoActions } from '../store/actions';
 import { HTMLElementEvent } from '../../../types';
 import { Actions, Getters } from '../../../mixins/store_helper';

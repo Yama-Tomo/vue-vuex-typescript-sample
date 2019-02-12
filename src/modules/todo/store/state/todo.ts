@@ -1,4 +1,4 @@
-export class Todo {
+export default class Todo {
   public text: string;
   public done: boolean;
 
