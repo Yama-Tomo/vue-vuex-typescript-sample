@@ -1,9 +1,10 @@
 import Todo from './state/todo';
+import {modules} from '@/namespace_maps';
 
 export interface TodoState {
   todos: Todo[];
 }
 
-export const state: TodoState = {
+export default (): TodoState => ({
   todos: [],
-};
+});
