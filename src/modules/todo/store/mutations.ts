@@ -12,7 +12,7 @@ export interface TodoMutations {
   };
 }
 
-export const mutations: DefineMutations<TodoMutations, TodoState> = {
+const mutations: DefineMutations<TodoMutations, TodoState> = {
   addTodo(state, todo) {
     state.todos.push(todo);
   },
@@ -29,3 +29,5 @@ export const mutations: DefineMutations<TodoMutations, TodoState> = {
     }
   },
 };
+
+export default mutations;

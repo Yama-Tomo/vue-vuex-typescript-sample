@@ -23,7 +23,7 @@ export interface TodoActions {
   clearCompleted: {};
 }
 
-export const actions: DefineActions<TodoActions, TodoState, TodoMutations> = {
+const actions: DefineActions<TodoActions, TodoState, TodoMutations> = {
   addTodo({ commit }, { text }) {
     commit('addTodo', new Todo(text, false));
   },
@@ -47,3 +47,5 @@ export const actions: DefineActions<TodoActions, TodoState, TodoMutations> = {
     });
   },
 };
+
+export default actions;

@@ -7,9 +7,11 @@ export interface TodoGetters {
   latest: (limit: number) => Todo[];
 }
 
-export const getters: DefineGetters<TodoGetters, TodoState> = {
+const getters: DefineGetters<TodoGetters, TodoState> = {
   reverse: (state) => [...state.todos].reverse(),
   latest: (state, that) => ((limit) => {
     return that.reverse.slice(0, limit - 1);
   }),
 };
+
+export default getters;
