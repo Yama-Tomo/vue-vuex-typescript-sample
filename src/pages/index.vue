@@ -12,7 +12,6 @@ import { StoreHelper, StoreHelperMixin, Actions } from '../mixins/store_helper';
 import { modules } from '../namespace_maps';
 import List from '../components/todo/list.vue';
 import { TodoActions } from '../store_modules/todo/actions';
-import { initialStateResolver } from '../store_modules/todo/index';
 import { Store } from 'vuex';
 
 @Component({
@@ -22,19 +21,9 @@ import { Store } from 'vuex';
   auth: false,
 })
 export default class Index extends mixins(StoreHelperMixin) {
-  public fetch({ store }: { store: Store<any> }) {
-    return new Promise((resolve: () => void, reject: () => void) => {
-      setTimeout(() => {
-        resolve();
-      }, 1500);
-    }).then(() => {
-      const state = initialStateResolver({ todos: [
-        { text: 'aaaa', done: false },
-        { text: 'bbbb', done: true },
-      ]});
-      const actions: Actions<TodoActions> = StoreHelper.getActions(store, modules.todo);
-      actions.setFullState(state);
-    });
+  public async fetch({ store }: { store: Store<any> }) {
+    const actions: Actions<TodoActions> = StoreHelper.getActions(store, modules.todo);
+    await actions.fetchInitialState(undefined);
   }
 
   get state() {
