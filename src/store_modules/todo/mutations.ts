@@ -1,6 +1,6 @@
 import { DefineGetters, DefineMutations, DefineActions, Dispatcher, Committer } from 'vuex-type-helper';
-import { Todo } from '../data/todo';
-import { TodoState } from './state';
+import Todo from './state/todo';
+import defaultState, { TodoState } from './state';
 
 export interface TodoMutations {
   addTodo: Todo;
@@ -10,7 +10,8 @@ export interface TodoMutations {
     text?: string,
     done?: boolean,
   };
-  setFullState: TodoState;
+  resetState: undefined;
+  setInitialState: TodoState;
 }
 
 export const mutations: DefineMutations<TodoMutations, TodoState> = {
@@ -29,7 +30,15 @@ export const mutations: DefineMutations<TodoMutations, TodoState> = {
       todo.done = done;
     }
   },
-  setFullState(state, value) {
+  resetState(state) {
+    const resetState = defaultState();
+    for (const key of Object.keys(state) as Array<keyof TodoState>) {
+      state[key] = resetState[key];
+    }
+  },
+  setInitialState(state, value) {
     state.todos = value.todos;
   },
 };
+
+export default mutations;

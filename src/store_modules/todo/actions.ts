@@ -1,6 +1,6 @@
 import { DefineActions } from 'vuex-type-helper';
-import { Todo } from '../data/todo';
-import { TodoState } from './state';
+import Todo from './state/todo';
+import { initialStateResolver, TodoState } from './state';
 import { TodoMutations } from './mutations';
 
 export interface TodoActions {
@@ -21,12 +21,12 @@ export interface TodoActions {
     done: boolean,
   };
   clearCompleted: {};
-  setFullState: TodoState;
+  fetchInitialState: undefined;
 }
 
 export const actions: DefineActions<TodoActions, TodoState, TodoMutations> = {
   addTodo({ commit }, { text }) {
-    commit('addTodo', new Todo(text, false));
+    commit('addTodo', { text, done: false });
   },
   removeTodo({ commit }, { todo }) {
     commit('removeTodo', todo);
@@ -47,7 +47,19 @@ export const actions: DefineActions<TodoActions, TodoState, TodoMutations> = {
       commit('removeTodo', todo);
     });
   },
-  setFullState({ commit }, value) {
-    commit('setFullState', value);
+  fetchInitialState({ commit }) {
+    return new Promise((resolve: () => void, reject: () => void) => {
+      setTimeout(() => resolve(), 1500);
+    }).then(() => {
+      commit('resetState', undefined);
+
+      const initialState = initialStateResolver({ todos: [
+        { text: 'aaaa', done: false },
+        { text: 'bbbb', done: true },
+      ]});
+      commit('setInitialState', initialState);
+    });
   },
 };
+
+export default actions;

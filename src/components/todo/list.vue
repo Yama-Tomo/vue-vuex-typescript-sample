@@ -47,12 +47,12 @@
 
 <script lang='ts'>
 import { Component, Vue, Prop, Watch } from 'nuxt-property-decorator';
-import { TodoState } from '../store/state';
-import { Todo } from '../data/todo';
-import { TodoActions } from '../store/actions';
-import { HTMLElementEvent } from '../../../types';
-import { Actions, Getters } from '../../../mixins/store_helper';
-import { TodoGetters } from '../store/getters';
+import { TodoState } from '../../store_modules/todo/state';
+import Todo from '../../store_modules/todo/state/todo';
+import { TodoActions } from '../../store_modules/todo/actions';
+import { HTMLElementEvent } from '@/index';
+import { Actions, Getters } from '../../mixins/store_helper';
+import { TodoGetters } from '../../store_modules/todo/getters';
 import Item from './item.vue';
 import VueI18n from 'vue-i18n';
 import { Route } from 'vue-router';

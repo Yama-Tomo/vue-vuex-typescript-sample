@@ -24,24 +24,23 @@
 </template>
 
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
-import { Mixins } from 'vue-mixin-decorator';
+import { Component, mixins } from 'nuxt-property-decorator';
 import { StoreHelper, StoreHelperMixin } from '../mixins/store_helper';
 import { AxiosError } from 'axios';
-import * as ns from '../namespace_maps';
-import { AuthState } from '../modules/auth/store/state';
-import { NuxtContext } from '../index';
+import { modules } from '../namespace_maps';
+import { AuthState } from '../store_modules/auth/state';
+import { Nuxt } from '@/index';
 
 @Component({
   auth: false,
 })
-export default class Login extends Mixins<StoreHelperMixin>(StoreHelperMixin) {
+export default class Login extends mixins(StoreHelperMixin) {
   public email = '';
   public password = '';
   public isInvalid = false;
 
-  public async fetch(ctx: NuxtContext) {
-    const authState: AuthState = StoreHelper.getState(ctx.store, ns.authModuleName);
+  public async fetch(ctx: Nuxt.Context) {
+    const authState: AuthState = StoreHelper.getState(ctx.store, modules.auth);
     if (authState.loggedIn) {
       ctx.redirect(ctx.app.localePath('index'));
       return;
@@ -64,7 +63,7 @@ export default class Login extends Mixins<StoreHelperMixin>(StoreHelperMixin) {
     });
   }
 
-  get authState(): AuthState { return this.getState(ns.authModuleName); }
+  get authState(): AuthState { return this.getState(modules.auth); }
   get isAuthenticateProgress(): boolean { return this.authState.busy; }
 }
 </script>

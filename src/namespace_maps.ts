@@ -1,26 +1,23 @@
-import { TodoState } from './modules/todo/store/state';
-import { TodoActions } from './modules/todo/store/actions';
-import { TodoGetters } from './modules/todo/store/getters';
-import { todoStore } from './modules/todo/store';
-import { AuthState } from './modules/auth/store/state';
+import { TodoState } from './store_modules/todo/state';
+import { TodoActions } from './store_modules/todo/actions';
+import { TodoGetters } from './store_modules/todo/getters';
+import { AuthState } from './store_modules/auth/state';
 
-export const todoModuleName = 'todo_module';
-export const authModuleName = 'auth';
+export namespace modules {
+  export const todo = 'todo';
+  export const auth = 'auth';
+}
 
 export interface StateMaps {
-  [todoModuleName]: TodoState;
-  [authModuleName]: AuthState;
+  [modules.todo]: TodoState;
+  [modules.auth]: AuthState;
 }
 
 export interface ActionMaps {
-  [todoModuleName]: TodoActions;
+  [modules.todo]: TodoActions;
 }
 
 export interface GettersMaps {
-  [todoModuleName]: TodoGetters;
+  [modules.todo]: TodoGetters;
 }
-
-export const stores = {
-  [todoModuleName]: todoStore,
-};
 

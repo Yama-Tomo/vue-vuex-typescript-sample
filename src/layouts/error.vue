@@ -8,12 +8,15 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'nuxt-property-decorator';
-import { Nuxt } from '../types';
+import { Nuxt } from '@/index';
+
+// NOTE: 直接 Nuxt.Errorをコンポーネント内で参照するとビルドが通らないので暫定対応
+type Error = Nuxt.Error;
 
 @Component
 export default class About extends Vue {
   @Prop(Object)
-  public error!: Nuxt.Error;
+  public error!: Error;
 
   get statusCode(): number { return this.error.statusCode; }
 }
