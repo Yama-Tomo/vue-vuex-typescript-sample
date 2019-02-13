@@ -11,8 +11,8 @@ import { Component, mixins } from 'nuxt-property-decorator';
 import { StoreHelper, StoreHelperMixin, Actions } from '../mixins/store_helper';
 import * as ns from '../namespace_maps';
 import List from '../store_modules/todo/components/list.vue';
-import { TodoActions } from '../store_modules/todo/store/actions';
-import { initialStateResolver } from '../store_modules/todo/store/index';
+import { TodoActions } from '../store_modules/todo/actions';
+import { initialStateResolver } from '../store_modules/todo/index';
 import { Store } from 'vuex';
 
 @Component({

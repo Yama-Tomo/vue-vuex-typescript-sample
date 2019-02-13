@@ -1,8 +1,8 @@
-import { TodoState } from './store_modules/todo/store/state';
-import { TodoActions } from './store_modules/todo/store/actions';
-import { TodoGetters } from './store_modules/todo/store/getters';
+import { TodoState } from './store_modules/todo/state';
+import { TodoActions } from './store_modules/todo/actions';
+import { TodoGetters } from './store_modules/todo/getters';
 import { todoStore } from './app_modules/todo/store';
-import { AuthState } from './store_modules/auth/store/state';
+import { AuthState } from './store_modules/auth/state';
 
 export const todoModuleName = 'todo_module';
 export const authModuleName = 'auth';

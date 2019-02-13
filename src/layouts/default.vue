@@ -28,7 +28,7 @@
 import { Component, mixins } from 'nuxt-property-decorator';
 import { StoreHelperMixin } from '../mixins/store_helper';
 import * as ns from '../namespace_maps';
-import { AuthState } from '../store_modules/auth/store/state';
+import { AuthState } from '../store_modules/auth/state';
 
 @Component
 export default class DefaultLayout extends mixins(StoreHelperMixin) {
