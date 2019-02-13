@@ -1,7 +1,6 @@
 import { TodoState } from './store_modules/todo/state';
 import { TodoActions } from './store_modules/todo/actions';
 import { TodoGetters } from './store_modules/todo/getters';
-import { todoStore } from './app_modules/todo/store';
 import { AuthState } from './store_modules/auth/state';
 
 export namespace modules {
@@ -21,8 +20,4 @@ export interface ActionMaps {
 export interface GettersMaps {
   [modules.todo]: TodoGetters;
 }
-
-export const stores = {
-  [modules.todo]: todoStore,
-};
 
