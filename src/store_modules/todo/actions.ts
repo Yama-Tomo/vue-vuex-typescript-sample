@@ -51,3 +51,5 @@ export const actions: DefineActions<TodoActions, TodoState, TodoMutations> = {
     commit('setFullState', value);
   },
 };
+
+export default actions;

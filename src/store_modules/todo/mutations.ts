@@ -33,3 +33,5 @@ export const mutations: DefineMutations<TodoMutations, TodoState> = {
     state.todos = value.todos;
   },
 };
+
+export default mutations;

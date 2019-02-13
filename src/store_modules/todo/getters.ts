@@ -13,3 +13,5 @@ export const getters: DefineGetters<TodoGetters, TodoState> = {
     return that.reverse.slice(0, limit - 1);
   }),
 };
+
+export default getters;
