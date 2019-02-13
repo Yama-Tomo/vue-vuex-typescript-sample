@@ -7,8 +7,7 @@
 </template>
 
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
-import { Mixins } from 'vue-mixin-decorator';
+import { Component, mixins } from 'nuxt-property-decorator';
 import { StoreHelper, StoreHelperMixin, Actions } from '../mixins/store_helper';
 import * as ns from '../namespace_maps';
 import List from '../modules/todo/components/list.vue';
@@ -22,7 +21,7 @@ import { Store } from 'vuex';
   },
   auth: false,
 })
-export default class Index extends Mixins<StoreHelperMixin>(StoreHelperMixin) {
+export default class Index extends mixins(StoreHelperMixin) {
   public fetch({ store }: { store: Store<any> }) {
     return new Promise((resolve: () => void, reject: () => void) => {
       setTimeout(() => {

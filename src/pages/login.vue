@@ -24,8 +24,7 @@
 </template>
 
 <script lang="ts">
-import { Component } from 'nuxt-property-decorator';
-import { Mixins } from 'vue-mixin-decorator';
+import { Component, mixins } from 'nuxt-property-decorator';
 import { StoreHelper, StoreHelperMixin } from '../mixins/store_helper';
 import { AxiosError } from 'axios';
 import * as ns from '../namespace_maps';
@@ -35,7 +34,7 @@ import { NuxtContext } from '../index';
 @Component({
   auth: false,
 })
-export default class Login extends Mixins<StoreHelperMixin>(StoreHelperMixin) {
+export default class Login extends mixins(StoreHelperMixin) {
   public email = '';
   public password = '';
   public isInvalid = false;

@@ -1,6 +1,5 @@
-import { Vue } from 'nuxt-property-decorator';
+import { Vue, Component } from 'nuxt-property-decorator';
 import { Store } from 'vuex';
-import { Mixin } from 'vue-mixin-decorator';
 import { StateMaps, ActionMaps, GettersMaps } from '../namespace_maps';
 
 export type Actions<A> = {
@@ -56,7 +55,7 @@ export class StoreHelper {
  * componentがストアに依存しないよう全てのコンポーネントでこのmixinを使用せずに
  * container componentでの使用にとどめ，propsでstate, getter, actionを渡す実装がよいでしょう
  */
-@Mixin
+@Component
 export class StoreHelperMixin extends Vue {
   public getState<K extends keyof StateMaps>(module: K) {
     return StoreHelper.getState(this.$store, module);
