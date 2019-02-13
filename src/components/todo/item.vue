@@ -23,7 +23,7 @@ import { Component, Vue, Prop } from 'nuxt-property-decorator';
 import Todo from '../../store_modules/todo/state/todo';
 import { Actions } from '../../mixins/store_helper';
 import { TodoActions } from '../../store_modules/todo/actions';
-import { HTMLElementEvent } from '../../types';
+import { HTMLElementEvent } from '@/index';
 import VueI18n from 'vue-i18n';
 
 @Component({

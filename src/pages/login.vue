@@ -29,7 +29,7 @@ import { StoreHelper, StoreHelperMixin } from '../mixins/store_helper';
 import { AxiosError } from 'axios';
 import { modules } from '../namespace_maps';
 import { AuthState } from '../store_modules/auth/state';
-import { NuxtContext } from '../index';
+import { Nuxt } from '@/index';
 
 @Component({
   auth: false,
@@ -39,7 +39,7 @@ export default class Login extends mixins(StoreHelperMixin) {
   public password = '';
   public isInvalid = false;
 
-  public async fetch(ctx: NuxtContext) {
+  public async fetch(ctx: Nuxt.Context) {
     const authState: AuthState = StoreHelper.getState(ctx.store, modules.auth);
     if (authState.loggedIn) {
       ctx.redirect(ctx.app.localePath('index'));
