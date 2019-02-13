@@ -51,6 +51,8 @@ export const actions: DefineActions<TodoActions, TodoState, TodoMutations> = {
     return new Promise((resolve: () => void, reject: () => void) => {
       setTimeout(() => resolve(), 1500);
     }).then(() => {
+      commit('resetState', undefined);
+
       const initialState = initialStateResolver({ todos: [
         { text: 'aaaa', done: false },
         { text: 'bbbb', done: true },
