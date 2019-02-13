@@ -4,6 +4,9 @@ export interface TodoState {
   todos: Todo[];
 }
 
-export const state: TodoState = {
+const defaultState = (): TodoState => ({
   todos: [],
-};
+});
+
+export default defaultState;
+
