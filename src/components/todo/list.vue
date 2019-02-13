@@ -1,11 +1,11 @@
 <template>
   <section class="todoapp">
     <header class="header">
-      <h1>{{ i18n.t('todo.title') }}</h1>
+      <h1>{{ $t('todo.title') }}</h1>
       <input class="new-todo"
         autofocus
         autocomplete="off"
-        :placeholder="i18n.t('todo.input_placeholder')"
+        :placeholder="$t('todo.input_placeholder')"
         @keyup.enter="addTodo($event)">
     </header>
     <section class="main" v-show="todos.length">
@@ -20,26 +20,25 @@
           :key="index"
           :todo="todo"
           :actions="actions"
-          :i18n="i18n"
         />
       </ul>
     </section>
     <footer class="footer" v-show="todos.length">
       <span class="todo-count">
         <strong>{{ remaining }}</strong>
-        {{ i18n.t('todo.item_unit', {unit: pluralize(remaining, '')}) }}
+        {{ $t('todo.item_unit', {unit: pluralize(remaining, '')}) }}
       </span>
       <ul class="filters">
         <li v-for="(val, key) in filters">
           <a :href="'#/' + key"
             :class="{ selected: visibility === key }"
-            @click="visibility = key">{{ i18n.t(`todo.filter.${key}`) }}</a>
+            @click="visibility = key">{{ $t(`todo.filter.${key}`) }}</a>
         </li>
       </ul>
       <button class="clear-completed"
         v-show="todos.length > remaining"
         @click="clearCompleted">
-        {{ i18n.t('todo.clear') }}
+        {{ $t('todo.clear') }}
       </button>
     </footer>
   </section>
@@ -54,7 +53,6 @@ import { HTMLElementEvent } from '@/index';
 import { Actions, Getters } from '../../mixins/store_helper';
 import { TodoGetters } from '../../store_modules/todo/getters';
 import Item from './item.vue';
-import VueI18n from 'vue-i18n';
 import { Route } from 'vue-router';
 
 @Component({
@@ -69,8 +67,6 @@ export default class List extends Vue {
   public actions!: Actions<TodoActions>;
   @Prop()
   public getters!: Getters<TodoGetters>;
-  @Prop(Object)
-  public i18n!: VueI18n;
 
   public visibility: string = 'all';
 

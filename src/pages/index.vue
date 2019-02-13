@@ -1,8 +1,6 @@
-<i18n src="~/locales/pages/index/ja.yml"></i18n>
-<i18n src="~/locales/pages/index/en.yml"></i18n>
 <template>
   <div>
-    <List :state=state :actions=actions :getters=getters :i18n="$i18n"></List>
+    <List :state=state :actions=actions :getters=getters></List>
   </div>
 </template>
 

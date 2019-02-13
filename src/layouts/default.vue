@@ -1,5 +1,3 @@
-<i18n src="~/locales/ja.yml"></i18n>
-<i18n src="~/locales/en.yml"></i18n>
 <template>
   <div>
     <header class="header">Vuex tutorial with typescript and Nuxt.js</header>

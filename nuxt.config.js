@@ -49,20 +49,16 @@ module.exports = {
     ['nuxt-i18n', {
       parsePages: false,
       defaultLocale: 'en',
-      // TODO: https://github.com/nuxt/nuxt.js/issues/3957
-      seo: false,
-      locales: [{
-        code: 'en',
-        iso: 'en-US'
-      }, {
-        code: 'ja',
-        iso: 'ja'
-      }],
+      lazy: true,
+      locales: [
+        { code: 'en', iso: 'en-US', file: 'en.ts' },
+        { code: 'ja', iso: 'ja',  file: 'ja.ts' },
+      ],
+      langDir: 'i18n/',
       strategy: 'prefix',
       detectBrowserLanguage: {
         useCookie: false
       },
-      vueI18nLoader: true,
     }],
   ],
   axios: {

@@ -34,6 +34,11 @@ module.exports = function(config, ctx) {
       type: 'javascript/auto',
       loader: ['@kazupon/vue-i18n-loader', 'yaml-loader']
     });
+  } else {
+    config.module.rules.push({
+      test: /\.ya?ml$/,
+      loaders: ['json-loader', 'yaml-loader']
+    });
   }
 
   config.plugins.push(new IgnoreNotFoundExportPlugin());
