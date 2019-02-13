@@ -1,0 +1,10 @@
+todo:
+  title: Todos
+  input_placeholder: What needs to be done?
+  remove: remove
+  item_unit: item{unit} left
+  clear: Clear completed
+  filter:
+    all: All
+    active: Active
+    completed: Completed

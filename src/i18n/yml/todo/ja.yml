@@ -1,0 +1,10 @@
+todo:
+  title: TODOリスト
+  input_placeholder: TODOを入力してください
+  remove: 削除
+  item_unit: 件未着手です
+  clear: 完了済みを削除
+  filter:
+    all: すべて
+    active: 未着手
+    completed: 完了済み
