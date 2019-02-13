@@ -26,7 +26,7 @@ export interface TodoActions {
 
 export const actions: DefineActions<TodoActions, TodoState, TodoMutations> = {
   addTodo({ commit }, { text }) {
-    commit('addTodo', new Todo(text, false));
+    commit('addTodo', { text, done: false });
   },
   removeTodo({ commit }, { todo }) {
     commit('removeTodo', todo);

@@ -24,7 +24,7 @@ export const initialStateResolver = (initialState: any): TodoState => {
     const todo = todos[i];
 
     if (typeof todo === 'object' && todo.hasOwnProperty('text') && todo.hasOwnProperty('done')) {
-      state.todos.push(new Todo(todo.text as string, !!todo.done));
+      state.todos.push({ text: todo.text as string, done: !!todo.done });
     }
   }
 
