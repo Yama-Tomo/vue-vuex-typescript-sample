@@ -28,7 +28,7 @@ import { Component, mixins } from 'nuxt-property-decorator';
 import { StoreHelper, StoreHelperMixin } from '../mixins/store_helper';
 import { AxiosError } from 'axios';
 import * as ns from '../namespace_maps';
-import { AuthState } from '../modules/auth/store/state';
+import { AuthState } from '../store_modules/auth/store/state';
 import { NuxtContext } from '../index';
 
 @Component({
