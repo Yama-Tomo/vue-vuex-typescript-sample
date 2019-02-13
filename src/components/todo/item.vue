@@ -20,10 +20,10 @@
 
 <script lang='ts'>
 import { Component, Vue, Prop } from 'nuxt-property-decorator';
-import Todo from '../state/todo';
-import { Actions } from '../../../mixins/store_helper';
-import { TodoActions } from '../actions';
-import { HTMLElementEvent } from '../../../types';
+import Todo from '../../store_modules/todo/state/todo';
+import { Actions } from '../../mixins/store_helper';
+import { TodoActions } from '../../store_modules/todo/actions';
+import { HTMLElementEvent } from '../../types';
 import VueI18n from 'vue-i18n';
 
 @Component({
