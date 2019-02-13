@@ -23,10 +23,10 @@
     "nuxt": "2.4.3",
     "nuxt-i18n": "5.8.1",
     "nuxt-property-decorator": "2.0.1",
-    "vuex-type-helper": "1.2.0"
+    "vuex-type-helper": "1.2.1"
   },
   "devDependencies": {
-    "@types/lodash": "4.14.120",
+    "@types/lodash": "4.14.121",
     "@vue/cli-plugin-babel": "3.4.0",
     "@vue/cli-plugin-typescript": "3.4.0",
     "@vue/cli-service": "3.4.0",
