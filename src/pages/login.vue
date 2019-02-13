@@ -27,7 +27,7 @@
 import { Component, mixins } from 'nuxt-property-decorator';
 import { StoreHelper, StoreHelperMixin } from '../mixins/store_helper';
 import { AxiosError } from 'axios';
-import * as ns from '../namespace_maps';
+import { modules } from '../namespace_maps';
 import { AuthState } from '../store_modules/auth/state';
 import { NuxtContext } from '../index';
 
@@ -40,7 +40,7 @@ export default class Login extends mixins(StoreHelperMixin) {
   public isInvalid = false;
 
   public async fetch(ctx: NuxtContext) {
-    const authState: AuthState = StoreHelper.getState(ctx.store, ns.authModuleName);
+    const authState: AuthState = StoreHelper.getState(ctx.store, modules.auth);
     if (authState.loggedIn) {
       ctx.redirect(ctx.app.localePath('index'));
       return;
@@ -63,7 +63,7 @@ export default class Login extends mixins(StoreHelperMixin) {
     });
   }
 
-  get authState(): AuthState { return this.getState(ns.authModuleName); }
+  get authState(): AuthState { return this.getState(modules.auth); }
   get isAuthenticateProgress(): boolean { return this.authState.busy; }
 }
 </script>

@@ -27,7 +27,7 @@
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
 import { StoreHelperMixin } from '../mixins/store_helper';
-import * as ns from '../namespace_maps';
+import { modules } from '../namespace_maps';
 import { AuthState } from '../store_modules/auth/state';
 
 @Component
@@ -37,7 +37,7 @@ export default class DefaultLayout extends mixins(StoreHelperMixin) {
   }
 
   get isLoggedIn(): boolean {
-    return (this.getState(ns.authModuleName) as AuthState).loggedIn;
+    return (this.getState(modules.auth) as AuthState).loggedIn;
   }
 
   get currentPath(): string {
