@@ -1,5 +1,5 @@
 import { DefineGetters, DefineMutations, DefineActions, Dispatcher, Committer } from 'vuex-type-helper';
-import { Todo } from '../data/todo';
+import Todo from './state/todo';
 import { TodoState } from './state';
 
 export interface TodoMutations {

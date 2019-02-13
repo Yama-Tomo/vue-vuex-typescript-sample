@@ -1,4 +1,4 @@
-import { Todo } from '../data/todo';
+import Todo from './state/todo';
 import { state, TodoState } from './state';
 import { mutations } from './mutations';
 import { actions } from './actions';
