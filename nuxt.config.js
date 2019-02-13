@@ -48,10 +48,12 @@ module.exports = {
   */
   css: ['~/assets/css/main.scss'],
   build: {
-    extractCSS: { allChunks: true },
+    useForkTsChecker: true,
+    extractCSS: true,
+    extend: require('./extend.webpack.config'),
     stats: {
       warningsFilter: /export .* was not found in/,
-    }
+    },
   },
   modules: [
     '@nuxtjs/axios',
