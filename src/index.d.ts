@@ -5,6 +5,7 @@ import { NuxtAxiosInstance } from '@nuxtjs/axios';
 import VueI18n, { IVueI18n } from 'vue-i18n';
 // NOTE: 型定義を手動でimportしないとコンポーネント内でlocalePathがコンパイルエラーで呼び出せないのでここでimportしておく
 import NuxtI18n from 'nuxt-i18n/types/vue';
+import { OutgoingMessage } from 'http';
 
 export interface HTMLElementEvent<T extends HTMLElement> extends Event {
   target: T;
@@ -21,7 +22,7 @@ export namespace Nuxt {
     query: { [key: string]: any };
     nuxtState: object;
     req: Request;
-    res: Response;
+    res: OutgoingMessage;
     params: { [key: string]: any };
     redirect: (path: string) => void;
     error: (params: { statusCode?: Number; message?: String }) => void;
