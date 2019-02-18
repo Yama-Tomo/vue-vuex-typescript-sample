@@ -15,7 +15,7 @@
     }
   },
   "dependencies": {
-    "@nuxtjs/auth": "4.5.3",
+    "@nuxtjs/auth": "github:Yama-Tomo/auth-module#feature/allow_redirect_setting_by_function",
     "@nuxtjs/axios": "5.3.6",
     "@types/node": "10.12.26",
     "autoprefixer": "9.4.7",
