@@ -62,6 +62,9 @@ module.exports = {
       },
     }],
   ],
+  plugins: [
+    '~/plugins/axios_cookie_proxy.ts',
+  ],
   axios: {
     prefix: '/api',
     proxy: true,
