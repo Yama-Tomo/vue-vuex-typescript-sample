@@ -34,6 +34,8 @@ export namespace Nuxt {
         options: { [key: string]: any }
         strategies: { [key: string]: any }
         redirect: (name: string, noRouter?: boolean) => void,
+        loginWith: (strategy: string, params: any) => Promise<any>;
+        logout: () => Promise<any>;
         // TODO: _errorListeners, $storage, $stateの定義を充実させる
       }
       i18n: VueI18n
@@ -78,6 +80,15 @@ declare module 'vue/types/vue' {
     };
     $axios: NuxtAxiosInstance;
     $route: Route;
+  }
+}
+
+
+declare global {
+  namespace NodeJS {
+    interface Process {
+      server: boolean;
+    }
   }
 }
 
