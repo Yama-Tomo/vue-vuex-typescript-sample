@@ -3,7 +3,7 @@
     <header class="header">Vuex tutorial with typescript and Nuxt.js</header>
     <div class="signin">
       <nuxt-link :to="toLoginWithRedirectParam" v-if="!isLoggedIn && currentPath != localePath('login')">{{ $t('link.sign_in') }}</nuxt-link>
-      <a href="" @click.prevent="signout" v-if="isLoggedIn">{{ $t('link.sign_out') }}</a>
+      <a :href="localePath('logout')" v-if="isLoggedIn">{{ $t('link.sign_out') }}</a>
     </div>
     <nuxt class="container" />
     <hr />
