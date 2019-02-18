@@ -10,6 +10,7 @@ const argv = parseArgs(process.argv.slice(2), {
 
 const port = argv.port || process.env.PORT || process.env.npm_package_config_nuxt_port || '3100'
 const host = argv.hostname || process.env.HOST || process.env.npm_package_config_nuxt_host || 'localhost'
+const bodyParser = require('body-parser')
 
 module.exports = {
   env: {
@@ -61,6 +62,9 @@ module.exports = {
       },
     }],
   ],
+  plugins: [
+    '~/plugins/axios_cookie_proxy.ts',
+  ],
   axios: {
     prefix: '/api',
     proxy: true,
@@ -69,23 +73,24 @@ module.exports = {
     '/api': 'http://localhost:3101'
   },
   auth: {
-    plugins: ['~/plugins/auth/redirect.js'],
+    plugins: ['~/plugins/auth/redirect.ts'],
     strategies: {
       local: {
         endpoints: {
           login:  { url: '/users/sign_in' },
           logout: { url: '/users/sign_out', method: 'delete' },
           user:  { url: '/users/show', propertyName: 'user' },
-        }
-      }
+        },
+        tokenRequired: false,
+      },
     },
+    rewriteRedirects: false,
     fullPathRedirect: true,
-    redirect: {
-      home: '/index',
-      logout: '/index',
-    }
   },
   router: {
     middleware: ['auth']
   },
+  serverMiddleware: [
+    bodyParser.urlencoded({ extended: true })
+  ]
 }

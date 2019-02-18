@@ -15,10 +15,11 @@
     }
   },
   "dependencies": {
-    "@nuxtjs/auth": "4.5.3",
+    "@nuxtjs/auth": "github:Yama-Tomo/auth-module#feature/allow_redirect_setting_by_function",
     "@nuxtjs/axios": "5.3.6",
     "@types/node": "10.12.26",
     "autoprefixer": "9.4.7",
+    "body-parser": "1.18.3",
     "lodash": "4.17.11",
     "nuxt": "2.4.3",
     "nuxt-i18n": "5.8.3",

@@ -1,25 +1,20 @@
 <template>
   <div>
     <h1>login</h1>
-    <div class="error" v-if="isInvalid">
-      email or password is incorrect
-    </div>
-    <div>
-      <label>email</label><br>
-      <input type="text" v-model="email">
-    </div>
-    <div>
-      <label>Password</label><br>
-      <input type="password" v-model="password">
-    </div>
-    <button @click="onLoginButtonClick" :disabled="isAuthenticateProgress">
-      <template v-if="isAuthenticateProgress">
-        checking...
-      </template>
-      <template v-else>
-        sign in
-      </template>
-    </button>
+    <form :action="currentPath" method="post" ref="form">
+      <div class="error" v-if="isInvalid">
+        email or password is incorrect
+      </div>
+      <div>
+        <label>email</label><br>
+        <input type="text" v-model="email" name="email">
+      </div>
+      <div>
+        <label>Password</label><br>
+        <input type="password" v-model="password" name="password">
+      </div>
+      <button @click="onSignInClick" :disabled="busy">sign in</button>
+    </form>
   </div>
 </template>
 
@@ -31,6 +26,9 @@ import { modules } from '../namespace_maps';
 import { AuthState } from '../store_modules/auth/state';
 import { Nuxt } from '@/index';
 
+
+interface PostParams { email: string; password: string; }
+
 @Component({
   auth: false,
 })
@@ -38,33 +36,39 @@ export default class Login extends mixins(StoreHelperMixin) {
   public email = '';
   public password = '';
   public isInvalid = false;
+  public busy = false;
 
-  public async fetch(ctx: Nuxt.Context) {
+  public async asyncData(ctx: Nuxt.Context): Promise<Partial<Login>|void> {
     const authState: AuthState = StoreHelper.getState(ctx.store, modules.auth);
     if (authState.loggedIn) {
-      ctx.redirect(ctx.app.localePath('index'));
+      ctx.app.$auth.redirect('home');
       return;
+    }
+
+    if (process.server && ctx.req.method === 'POST' && ctx.req.body !== null) {
+      const postParams: PostParams = ctx.req.body as any;
+      const data = {
+        user: { email: postParams.email, password: postParams.password },
+      };
+
+      return ctx.app.$auth.loginWith('local', { data }).then(() => {
+        return ctx.app.$auth.redirect('home');
+      }).catch((error: AxiosError) => {
+        return { email: postParams.email, isInvalid: true };
+      });
     }
   }
 
-  public onLoginButtonClick() {
-    this.isInvalid = false;
-    this.$auth.loginWith('local', { data: {
-      user: {
-        email: this.email,
-        password: this.password,
-      },
-    }})
-    .then(() => this.$auth.redirect('home'))
-    .catch((data: AxiosError) => {
-       if (data.response && data.response.status === 401) {
-         this.isInvalid = true;
-       }
-    });
+  public onSignInClick() {
+    this.busy = true;
+    (this.$refs.form as HTMLFormElement).submit();
+  }
+
+  get currentPath(): string {
+    return this.$route.fullPath;
   }
 
   get authState(): AuthState { return this.getState(modules.auth); }
-  get isAuthenticateProgress(): boolean { return this.authState.busy; }
 }
 </script>
 <style lang="scss" scoped>
