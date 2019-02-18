@@ -73,21 +73,19 @@ module.exports = {
     '/api': 'http://localhost:3101'
   },
   auth: {
-    plugins: ['~/plugins/auth/redirect.js'],
+    plugins: ['~/plugins/auth/redirect.ts'],
     strategies: {
       local: {
         endpoints: {
           login:  { url: '/users/sign_in' },
           logout: { url: '/users/sign_out', method: 'delete' },
           user:  { url: '/users/show', propertyName: 'user' },
-        }
-      }
+        },
+        tokenRequired: false,
+      },
     },
+    rewriteRedirects: false,
     fullPathRedirect: true,
-    redirect: {
-      home: '/index',
-      logout: '/index',
-    }
   },
   router: {
     middleware: ['auth']
