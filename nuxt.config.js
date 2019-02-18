@@ -10,6 +10,7 @@ const argv = parseArgs(process.argv.slice(2), {
 
 const port = argv.port || process.env.PORT || process.env.npm_package_config_nuxt_port || '3100'
 const host = argv.hostname || process.env.HOST || process.env.npm_package_config_nuxt_host || 'localhost'
+const bodyParser = require('body-parser')
 
 module.exports = {
   env: {
@@ -88,4 +89,7 @@ module.exports = {
   router: {
     middleware: ['auth']
   },
+  serverMiddleware: [
+    bodyParser.urlencoded({ extended: true })
+  ]
 }
