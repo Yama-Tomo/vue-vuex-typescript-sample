@@ -50,6 +50,7 @@ module.exports = {
     ['nuxt-i18n', {
       parsePages: false,
       defaultLocale: 'en',
+      rootRedirect: 'en',
       lazy: true,
       locales: [
         { code: 'en', iso: 'en-US', file: 'en.ts' },
@@ -58,7 +59,7 @@ module.exports = {
       langDir: 'i18n/',
       strategy: 'prefix',
       detectBrowserLanguage: {
-        useCookie: false
+        useCookie: true,
       },
     }],
   ],
