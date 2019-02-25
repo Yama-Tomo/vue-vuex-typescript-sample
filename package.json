@@ -6,7 +6,7 @@
     "lint": "vue-cli-service lint",
     "dev": "nuxt",
     "build": "nuxt build",
-    "start": "nuxt start"
+    "start": "server/index.js"
   },
   "config": {
     "nuxt": {
