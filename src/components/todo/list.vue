@@ -49,7 +49,7 @@ import { Component, Vue, Prop, Watch } from 'nuxt-property-decorator';
 import { TodoState } from '../../store_modules/todo/state';
 import Todo from '../../store_modules/todo/state/todo';
 import { TodoActions } from '../../store_modules/todo/actions';
-import { HTMLElementEvent } from '@/index';
+import { HTMLElementEvent } from '@/types/dom';
 import { Actions, Getters } from '../../mixins/store_helper';
 import { TodoGetters } from '../../store_modules/todo/getters';
 import Item from './item.vue';

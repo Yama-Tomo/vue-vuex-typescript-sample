@@ -1,4 +1,4 @@
-import { Nuxt } from '@/index';
+import { Nuxt } from '@/types/nuxt';
 
 export default async (ctx: Nuxt.Context) => {
   if (!process.server) {

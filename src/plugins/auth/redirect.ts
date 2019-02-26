@@ -1,4 +1,4 @@
-import { Nuxt } from '@/index';
+import { Nuxt } from '@/types/nuxt';
 
 export default (ctx: Nuxt.Context) => {
   ctx.app.$auth.options.redirect = {

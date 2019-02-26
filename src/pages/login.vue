@@ -24,7 +24,7 @@ import { StoreHelper, StoreHelperMixin } from '../mixins/store_helper';
 import { AxiosError } from 'axios';
 import { modules } from '../namespace_maps';
 import { AuthState } from '../store_modules/auth/state';
-import { Nuxt } from '@/index';
+import { Nuxt } from '@/types/nuxt';
 
 
 interface PostParams { email: string; password: string; }
