@@ -4,7 +4,7 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 import Todo from '../store/state/todo';
 import { Actions } from '../../../mixins/store_helper';
 import { TodoActions } from '../store/actions';
-import { HTMLElementEvent } from '../../../types';
+import { HTMLElementEvent } from '../../../types/dom';
 import * as vts from 'vue-tsx-support';
 
 const template = (h: CreateElement, self: Item) => {

@@ -49,7 +49,7 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 import { TodoState } from '../store/state';
 import Todo from '../store/state/todo';
 import { TodoActions } from '../store/actions';
-import { HTMLElementEvent } from '../../../types';
+import { HTMLElementEvent } from '../../../types/dom';
 import { Actions, Getters } from '../../../mixins/store_helper';
 import { TodoGetters } from '../store/getters';
 import Item from './item.vue';
