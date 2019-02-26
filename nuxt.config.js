@@ -38,6 +38,22 @@ module.exports = {
       warningsFilter: /export .* was not found in/,
     },
   },
+  hooks: {
+    ready: (nuxt) => {
+      process.on('SIGINT', () => {
+        console.log('received sigint signal')
+        nuxt.close(() => {
+          process.exit(0)
+        })
+      })
+    },
+    listen: () => {
+      if (typeof process.send === 'function') {
+        console.log('process send ready')
+        process.send('ready')
+      }
+    },
+  },
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/auth',
