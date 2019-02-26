@@ -23,7 +23,6 @@
     "node-sass": "4.11.0",
     "sass-loader": "7.1.0",
     "typescript": "3.3.3333",
-    "vue-language-server": "0.0.45",
     "vue-template-compiler": "2.6.7",
     "vue-tsx-support": "2.2.2",
     "webpack-manifest-plugin": "2.0.4"
