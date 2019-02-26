@@ -6,7 +6,7 @@
     "lint": "vue-cli-service lint",
     "dev": "nuxt",
     "build": "nuxt build",
-    "start": "server/index.js"
+    "start": "nuxt start"
   },
   "dependencies": {
     "@nuxtjs/auth": "github:Yama-Tomo/auth-module#feature/allow_redirect_setting_by_function",
