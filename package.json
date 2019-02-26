@@ -8,12 +8,6 @@
     "build": "nuxt build",
     "start": "server/index.js"
   },
-  "config": {
-    "nuxt": {
-      "host": "0.0.0.0",
-      "port": "3100"
-    }
-  },
   "dependencies": {
     "@nuxtjs/auth": "github:Yama-Tomo/auth-module#feature/allow_redirect_setting_by_function",
     "@nuxtjs/axios": "5.3.6",

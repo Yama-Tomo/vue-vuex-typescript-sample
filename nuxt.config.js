@@ -1,18 +1,12 @@
-const parseArgs = require('minimist')
-const argv = parseArgs(process.argv.slice(2), {
-  alias: {
-    H: 'hostname',
-    p: 'port'
-  },
-  string: ['H'],
-  unknown: parameter => false
-})
-
-const port = argv.port || process.env.PORT || process.env.npm_package_config_nuxt_port || '3100'
-const host = argv.hostname || process.env.HOST || process.env.npm_package_config_nuxt_host || 'localhost'
+const port = process.env.NUXT_PORT || 3100
+const host = process.env.NUXT_HOST || '0.0.0.0'
 const bodyParser = require('body-parser')
 
 module.exports = {
+  server: {
+    host,
+    port,
+  },
   env: {
     baseUrl: process.env.BASE_URL || `http://${host}:${port}`
   },
