@@ -1,0 +1,54 @@
+version: 2
+
+references:
+  node_runtime_config: &node_runtime_config
+    working_directory: ~/work
+    docker:
+      - image: node:10.15.1-alpine
+
+jobs:
+  renovate:
+    <<: *node_runtime_config
+    steps:
+      - run:
+          name: run renovate
+          command: |
+            npm config set unsafe-perm true
+            npm i -g npm
+            npm i -g renovate
+            renovate Yama-Tomo/vue-vuex-typescript-sample
+
+  build:
+    parallelism: 1
+    <<: *node_runtime_config
+    steps:
+      - checkout
+      - run:
+          command: apk add --no-cache --update ca-certificates
+      - restore_cache:
+          keys:
+            - nuxt-node-modules-v1-{{ checksum "package-lock.json" }}
+      - run:  
+          command: npm i --no-progress
+      - run:
+          command: npm run build
+      - save_cache:
+          key: nuxt-node-modules-v1-{{ checksum "package-lock.json" }}
+          paths: node_modules
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
+
+  renovate:
+    triggers:
+      - schedule:
+          cron: "0 0 * * 1-4" # mon-thu am 9:00 by UTC
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - renovate
