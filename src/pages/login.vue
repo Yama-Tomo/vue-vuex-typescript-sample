@@ -22,7 +22,7 @@
 import { Component, mixins } from 'nuxt-property-decorator';
 import { StoreHelper, StoreHelperMixin } from '../mixins/store_helper';
 import { AxiosError } from 'axios';
-import { modules } from '../namespace_maps';
+import { modules } from '../store_modules/module_mapper';
 import { AuthState } from '../store_modules/auth/state';
 import { Nuxt } from '@/types/nuxt';
 

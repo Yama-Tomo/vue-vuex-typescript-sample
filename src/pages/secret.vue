@@ -12,7 +12,7 @@
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
 import { StoreHelperMixin } from '../mixins/store_helper';
-import { modules } from '../namespace_maps';
+import { modules } from '../store_modules/module_mapper';
 import { AuthState } from '../store_modules/auth/state';
 
 @Component

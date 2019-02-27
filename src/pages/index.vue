@@ -7,7 +7,7 @@
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
 import { StoreHelper, StoreHelperMixin, Actions } from '../mixins/store_helper';
-import { modules } from '../namespace_maps';
+import { modules } from '../store_modules/module_mapper';
 import List from '../components/todo/list.vue';
 import { TodoActions } from '../store_modules/todo/actions';
 import { Store } from 'vuex';

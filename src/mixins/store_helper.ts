@@ -1,6 +1,6 @@
 import { Vue, Component } from 'nuxt-property-decorator';
 import { Store } from 'vuex';
-import { StateMaps, ActionMaps, GettersMaps } from '../namespace_maps';
+import { StateMaps, ActionMaps, GettersMaps } from '../store_modules/module_mapper';
 
 export type Actions<A> = {
   [K in keyof A]: (payload: A[K]) => Promise<any> | void
