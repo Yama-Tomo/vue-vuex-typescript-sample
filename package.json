@@ -14,7 +14,7 @@
     "@types/node": "10.12.27",
     "body-parser": "1.18.3",
     "lodash": "4.17.11",
-    "nuxt": "2.4.3",
+    "nuxt": "2.4.5",
     "nuxt-i18n": "5.8.4",
     "nuxt-property-decorator": "2.0.1",
     "vuex-type-helper": "1.2.1"
