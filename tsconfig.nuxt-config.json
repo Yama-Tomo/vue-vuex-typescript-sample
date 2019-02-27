@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "sourceMap": false,
+    "outDir": ".nuxt/ts-compiled/"
+  },
+  "include": [
+    "nuxt.config.ts"
+  ]
+}

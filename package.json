@@ -5,7 +5,7 @@
   "scripts": {
     "lint": "vue-cli-service lint",
     "dev": "nuxt-ts",
-    "build": "nuxt-ts build && tsc nuxt.config.ts",
+    "build": "nuxt-ts build && tsc -p tsconfig.nuxt-config.json",
     "start": "nuxt start"
   },
   "dependencies": {
