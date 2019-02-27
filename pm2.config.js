@@ -6,7 +6,7 @@ module.exports = {
     name            : 'nuxt-sample-app',
     cwd             : `${basePath}/current`,
     script          : './node_modules/.bin/nuxt',
-    args            : 'start',
+    args            : 'start -c .nuxt/ts-compiled/nuxt.config.js',
     exec_mode       : 'cluster',
     instances       : 2,
     wait_ready      : true,

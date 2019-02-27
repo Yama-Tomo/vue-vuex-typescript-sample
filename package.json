@@ -6,7 +6,7 @@
     "lint": "vue-cli-service lint",
     "dev": "nuxt-ts",
     "build": "nuxt-ts build && tsc -p tsconfig.nuxt-config.json",
-    "start": "nuxt start"
+    "start": "nuxt start -c .nuxt/ts-compiled/nuxt.config.js"
   },
   "dependencies": {
     "@nuxtjs/auth": "github:Yama-Tomo/auth-module#feature/allow_redirect_setting_by_function",
