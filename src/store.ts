@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { modules } from './namespace_maps';
+import { modules } from './modules/module_mapper';
 import todoStore from './modules/todo/store';
 
 Vue.use(Vuex);

@@ -1,5 +1,5 @@
 import Todo from './state/todo';
-import {modules} from '@/namespace_maps';
+import {modules} from '@/modules/module_mapper';
 
 export interface TodoState {
   todos: Todo[];

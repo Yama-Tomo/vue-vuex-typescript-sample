@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import App from './App.vue';
 import store from './store';
-import { modules } from './namespace_maps';
+import { modules } from './modules/module_mapper';
 
 Vue.config.productionTip = false;
 

@@ -1,5 +1,5 @@
 import { Component, Vue } from 'vue-property-decorator';
-import { StateMaps, ActionMaps, GettersMaps } from '../namespace_maps';
+import { StateMaps, ActionMaps, GettersMaps } from '../modules/module_mapper';
 
 export type Actions<A> = {
   [K in keyof A]: (payload: A[K]) => Promise<any> | void
