@@ -1,6 +1,6 @@
-import { TodoState } from './modules/todo/store/state';
-import { TodoActions } from './modules/todo/store/actions';
-import { TodoGetters } from './modules/todo/store/getters';
+import { TodoState } from './todo/store/state';
+import { TodoActions } from './todo/store/actions';
+import { TodoGetters } from './todo/store/getters';
 
 export namespace modules {
   export const todo = 'todoModule';
