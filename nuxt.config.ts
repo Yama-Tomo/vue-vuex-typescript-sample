@@ -1,4 +1,5 @@
 import bodyParser from 'body-parser';
+import passThroughMiddleware from './src/serverMiddleware/passThrough';
 import extendWebpackConfig from './extend.webpack.config';
 
 const port = process.env.NUXT_PORT || 3100;
@@ -33,6 +34,9 @@ export default {
       warningsFilter: /export .* was not found in/,
     },
   },
+  watch: [
+    '~/serverMiddleware/*.ts',
+  ],
   hooks: {
     ready: (nuxt: any) => {
       process.on('SIGINT', () => {
@@ -100,5 +104,6 @@ export default {
   },
   serverMiddleware: [
     bodyParser.urlencoded({ extended: true }),
+    passThroughMiddleware,
   ],
 };
