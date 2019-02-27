@@ -1,14 +1,15 @@
-const port = process.env.NUXT_PORT || 3100
-const host = process.env.NUXT_HOST || '0.0.0.0'
-const bodyParser = require('body-parser')
+import bodyParser from 'body-parser';
+import extendWebpackConfig from './extend.webpack.config';
 
-module.exports = {
+const port = process.env.NUXT_PORT || 3100;
+const host = process.env.NUXT_HOST || '0.0.0.0';
+
+export default {
   server: {
-    host,
-    port,
+    host, port,
   },
   env: {
-    baseUrl: process.env.BASE_URL || `http://${host}:${port}`
+    baseUrl: process.env.BASE_URL || `http://${host}:${port}`,
   },
   srcDir: 'src',
   head: {
@@ -20,37 +21,31 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-    ]
+    ],
   },
-  /*
-  ** Customize the progress-bar color
-  */
   loading: { color: '#3B8070' },
-  /*
-  ** Build configuration
-  */
   css: ['~/assets/css/main.scss'],
   build: {
-    useForkTsChecker: true,
+    // useForkTsChecker: true,
     extractCSS: true,
-    extend: require('./extend.webpack.config'),
+    extend: extendWebpackConfig,
     stats: {
       warningsFilter: /export .* was not found in/,
     },
   },
   hooks: {
-    ready: (nuxt) => {
+    ready: (nuxt: any) => {
       process.on('SIGINT', () => {
-        console.log('received sigint signal')
+        console.log('received sigint signal');
         nuxt.close(() => {
-          process.exit(0)
-        })
-      })
+          process.exit(0);
+        });
+      });
     },
     listen: () => {
       if (typeof process.send === 'function') {
-        console.log('process send ready')
-        process.send('ready')
+        console.log('process send ready');
+        process.send('ready');
       }
     },
   },
@@ -83,7 +78,7 @@ module.exports = {
     proxy: true,
   },
   proxy: {
-    '/api': 'http://localhost:3101'
+    '/api': 'http://localhost:3101',
   },
   auth: {
     plugins: ['~/plugins/auth/redirect.ts'],
@@ -101,9 +96,9 @@ module.exports = {
     fullPathRedirect: true,
   },
   router: {
-    middleware: ['auth']
+    middleware: ['auth'],
   },
   serverMiddleware: [
-    bodyParser.urlencoded({ extended: true })
-  ]
-}
+    bodyParser.urlencoded({ extended: true }),
+  ],
+};
