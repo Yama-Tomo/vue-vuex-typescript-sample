@@ -1,5 +1,5 @@
 import bodyParser from 'body-parser';
-import passThroughMiddleware from './src/serverMiddleware/passThrough';
+import passThroughMiddleware from './src/server_middleware/pass_through';
 import extendWebpackConfig from './extend.webpack.config';
 
 const port = process.env.NUXT_PORT || 3100;
