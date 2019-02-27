@@ -2,15 +2,11 @@ import { Nuxt } from './nuxt';
 
 declare module 'vue/types/options' {
   interface ComponentOptions<V extends Vue> {
-    layout?: string;
-    middleware?: string | string[];
-    fetch?: (context: Nuxt.Context) => void;
-    asyncData?: (context: Nuxt.Context) => void;
-    scrollToTop?: boolean;
-    transition?: string | object | function;
-    validate?: (context: Nuxt.Context) => boolean;
-    head?: () => { [key: string]: any };
+    layout?: string | ((ctx: Nuxt.Context) => string);
     auth?: boolean;
+    asyncData?(ctx: Nuxt.Context): object | undefined;
+    fetch?(ctx: Nuxt.Context): Promise<void> | void;
+    validate?(ctx: Nuxt.Context): Promise<boolean> | boolean;
   }
 }
 
