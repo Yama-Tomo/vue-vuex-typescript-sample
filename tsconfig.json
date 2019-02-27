@@ -13,7 +13,9 @@
     "allowJs": true,
     "baseUrl": ".",
     "types": [
-      "node"    ],
+      "node",
+      "@nuxt/vue-app"
+    ],
     "paths": {
       "@/*": [
         "src/*"
