@@ -20,7 +20,10 @@
     "vuex-type-helper": "1.2.1"
   },
   "devDependencies": {
+    "@types/body-parser": "1.17.0",
+    "@types/hard-source-webpack-plugin": "1.0.0",
     "@types/lodash": "4.14.121",
+    "@types/webpack": "4.4.25",
     "@vue/cli-plugin-babel": "3.4.1",
     "@vue/cli-plugin-typescript": "3.4.1",
     "@vue/cli-service": "3.4.1",
