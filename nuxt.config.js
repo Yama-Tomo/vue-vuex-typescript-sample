@@ -77,6 +77,8 @@ module.exports = {
     '~/plugins/axios_cookie_proxy.ts',
   ],
   axios: {
+    host,
+    port,
     prefix: '/api',
     proxy: true,
   },
