@@ -1,7 +1,7 @@
-import { TodoState } from './store_modules/todo/state';
-import { TodoActions } from './store_modules/todo/actions';
-import { TodoGetters } from './store_modules/todo/getters';
-import { AuthState } from './store_modules/auth/state';
+import { TodoState } from './todo/state';
+import { TodoActions } from './todo/actions';
+import { TodoGetters } from './todo/getters';
+import { AuthState } from './auth/state';
 
 export namespace modules {
   export const todo = 'todo';
