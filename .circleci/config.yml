@@ -7,17 +7,6 @@ references:
       - image: node:10.15.1-alpine
 
 jobs:
-  renovate:
-    <<: *node_runtime_config
-    steps:
-      - run:
-          name: run renovate
-          command: |
-            npm config set unsafe-perm true
-            npm i -g npm
-            npm i -g renovate
-            renovate Yama-Tomo/vue-vuex-typescript-sample
-
   build:
     parallelism: 1
     <<: *node_runtime_config
@@ -41,14 +30,3 @@ workflows:
   build:
     jobs:
       - build
-
-  renovate:
-    triggers:
-      - schedule:
-          cron: "0 0 * * 1-4" # mon-thu am 9:00 by UTC
-          filters:
-            branches:
-              only:
-                - master
-    jobs:
-      - renovate
