@@ -18,7 +18,7 @@
     "@vue/cli-plugin-babel": "3.5.0",
     "@vue/cli-plugin-typescript": "3.5.0",
     "@vue/cli-service": "3.5.0",
-    "javascript-typescript-langserver": "2.11.2",
+    "javascript-typescript-langserver": "2.11.3",
     "node-sass": "4.11.0",
     "sass-loader": "7.1.0",
     "typescript": "3.3.3333",
