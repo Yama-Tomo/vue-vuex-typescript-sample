@@ -4,7 +4,7 @@ references:
   node_runtime_config: &node_runtime_config
     working_directory: ~/work
     docker:
-      - image: node:10.15.2-alpine
+      - image: node:10.15.3-alpine
 
 jobs:
   build:
