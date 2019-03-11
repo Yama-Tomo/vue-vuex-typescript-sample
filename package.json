@@ -22,7 +22,7 @@
   "devDependencies": {
     "@types/body-parser": "1.17.0",
     "@types/hard-source-webpack-plugin": "1.0.0",
-    "@types/lodash": "4.14.122",
+    "@types/lodash": "4.14.123",
     "@types/webpack": "4.4.25",
     "@vue/cli-plugin-babel": "3.5.0",
     "@vue/cli-plugin-typescript": "3.5.0",
