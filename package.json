@@ -11,7 +11,7 @@
   "dependencies": {
     "@nuxtjs/auth": "github:Yama-Tomo/auth-module#feature/allow_redirect_setting_by_function",
     "@nuxtjs/axios": "5.4.1",
-    "@types/node": "10.14.1",
+    "@types/node": "10.14.2",
     "body-parser": "1.18.3",
     "lodash": "4.17.11",
     "nuxt": "2.4.5",
