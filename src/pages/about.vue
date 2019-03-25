@@ -5,11 +5,11 @@
     <h2>using libraries</h2>
     <ul>
       <li>
-        typescript v3<br />
+        typescript v3<br>
         <img src="~/assets/image/typescript_logo.png">
       </li>
       <li>
-        nuxt.js v2<br />
+        nuxt.js v2<br>
         <img src="~/assets/image/nuxt_logo.png">
       </li>
       <li>

@@ -1,14 +1,14 @@
-import { DefineGetters, DefineMutations, DefineActions, Dispatcher, Committer } from 'vuex-type-helper';
-import Todo from './state/todo';
+import { DefineMutations } from 'vuex-type-helper';
+import { Todo } from './state/todo';
 import defaultState, { TodoState } from './state';
 
 export interface TodoMutations {
   addTodo: Todo;
   removeTodo: Todo;
   updateTodo: {
-    todo: Todo,
-    text?: string,
-    done?: boolean,
+    todo: Todo;
+    text?: string;
+    done?: boolean;
   };
   resetState: undefined;
   setInitialState: TodoState;

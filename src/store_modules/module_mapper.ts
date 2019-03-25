@@ -20,4 +20,3 @@ export interface ActionMaps {
 export interface GettersMaps {
   [modules.todo]: TodoGetters;
 }
-

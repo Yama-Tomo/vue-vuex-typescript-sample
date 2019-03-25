@@ -10,4 +10,3 @@ export interface AuthState {
   strategy: string;
   user: User;
 }
-

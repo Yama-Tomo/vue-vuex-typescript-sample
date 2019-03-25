@@ -1,19 +1,21 @@
 <template>
   <div>
     <h1>login</h1>
-    <form :action="currentPath" method="post" ref="form">
-      <div class="error" v-if="isInvalid">
+    <form ref="form" :action="currentPath" method="post">
+      <div v-if="isInvalid" class="error">
         email or password is incorrect
       </div>
       <div>
         <label>email</label><br>
-        <input type="text" v-model="email" name="email">
+        <input v-model="email" type="text" name="email">
       </div>
       <div>
         <label>Password</label><br>
-        <input type="password" v-model="password" name="password">
+        <input v-model="password" type="password" name="password">
       </div>
-      <button @click="onSignInClick" :disabled="busy">sign in</button>
+      <button :disabled="busy" @click="onSignInClick">
+        sign in
+      </button>
     </form>
   </div>
 </template>
@@ -21,13 +23,11 @@
 <script lang="ts">
 import { Component, mixins } from 'nuxt-property-decorator';
 import { StoreHelper, StoreHelperMixin } from '../mixins/store_helper';
-import { AxiosError } from 'axios';
 import { modules } from '../store_modules/module_mapper';
 import { AuthState } from '../store_modules/auth/state';
 import { Nuxt } from '@/types/nuxt';
 
-
-interface PostParams { email: string; password: string; }
+interface PostParams { email: string; password: string }
 
 @Component({
   auth: false,
@@ -38,7 +38,7 @@ export default class Login extends mixins(StoreHelperMixin) {
   public isInvalid = false;
   public busy = false;
 
-  public async asyncData(ctx: Nuxt.Context): Promise<Partial<Login>|void> {
+  public asyncData(ctx: Nuxt.Context): Promise<Partial<Login>|void>|void {
     const authState: AuthState = StoreHelper.getState(ctx.store, modules.auth);
     if (authState.loggedIn) {
       ctx.app.$auth.redirect('home');
@@ -53,7 +53,7 @@ export default class Login extends mixins(StoreHelperMixin) {
 
       return ctx.app.$auth.loginWith('local', { data }).then(() => {
         return ctx.app.$auth.redirect('home');
-      }).catch((error: AxiosError) => {
+      }).catch(() => {
         return { email: postParams.email, isInvalid: true };
       });
     }

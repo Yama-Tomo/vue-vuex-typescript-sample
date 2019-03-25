@@ -40,6 +40,7 @@ export default {
   hooks: {
     ready: (nuxt: any) => {
       process.on('SIGINT', () => {
+        // eslint-disable-next-line no-console
         console.log('received sigint signal');
         nuxt.close(() => {
           process.exit(0);
@@ -48,6 +49,7 @@ export default {
     },
     listen: () => {
       if (typeof process.send === 'function') {
+        // eslint-disable-next-line no-console
         console.log('process send ready');
         process.send('ready');
       }
@@ -63,7 +65,7 @@ export default {
       lazy: true,
       locales: [
         { code: 'en', iso: 'en-US', file: 'en.ts' },
-        { code: 'ja', iso: 'ja',  file: 'ja.ts' },
+        { code: 'ja', iso: 'ja', file: 'ja.ts' },
       ],
       langDir: 'i18n/',
       strategy: 'prefix',
@@ -89,9 +91,9 @@ export default {
     strategies: {
       local: {
         endpoints: {
-          login:  { url: '/users/sign_in' },
+          login: { url: '/users/sign_in' },
           logout: { url: '/users/sign_out', method: 'delete' },
-          user:  { url: '/users/show', propertyName: 'user' },
+          user: { url: '/users/show', propertyName: 'user' },
         },
         tokenRequired: false,
       },

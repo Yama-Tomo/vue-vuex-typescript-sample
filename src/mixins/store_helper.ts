@@ -23,7 +23,7 @@ export class StoreHelper {
         getters[name] = store.getters[name];
       } else {
         if (module !== namespacePaths[0]) {
-           return getters;
+          return getters;
         }
         getters[namespacePaths[1]] = store.getters[name];
       }
@@ -40,7 +40,7 @@ export class StoreHelper {
         actions[name] = (payload: any) => store.dispatch(name, payload);
       } else {
         if (module !== namespacePaths[0]) {
-           return actions;
+          return actions;
         }
         actions[namespacePaths[1]] = (payload: any) => store.dispatch(name, payload);
       }
@@ -69,4 +69,3 @@ export class StoreHelperMixin extends Vue {
     return StoreHelper.getActions(this.$store, module);
   }
 }
-

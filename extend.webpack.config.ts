@@ -1,6 +1,6 @@
+import * as path from 'path';
 import { Configuration, Compiler } from 'webpack';
 import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
-import { Nuxt } from './src/types/nuxt';
 
 // tslint:disable-next-line:no-var-requires
 const defaultConfigHash = require('hard-source-webpack-plugin/lib/defaultConfigHash');
@@ -17,7 +17,7 @@ class IgnoreNotFoundExportPlugin {
   }
 }
 
-export default function(config: Configuration, ctx: Nuxt.Context) {
+export default function (config: Configuration) {
   const useVueI18nLoader = (() => {
     // @ts-ignore
     // TODO: remove any
@@ -44,8 +44,8 @@ export default function(config: Configuration, ctx: Nuxt.Context) {
   if (config.plugins) {
     config.plugins.push(new IgnoreNotFoundExportPlugin());
     config.plugins.push(new HardSourceWebpackPlugin({
-      cacheDirectory: __dirname + '/node_modules/.cache/hard-source/[confighash]',
-      configHash: ((webpackConfig?: Configuration) => defaultConfigHash(webpackConfig) + '-' + process.env.NODE_ENV),
+      cacheDirectory: path.resolve('./node_modules/.cache/hard-source/[confighash]'),
+      configHash: (webpackConfig?: Configuration) => defaultConfigHash(webpackConfig) + '-' + process.env.NODE_ENV,
     }));
 
     config.plugins.push(new (HardSourceWebpackPlugin as any).ExcludeModulePlugin([

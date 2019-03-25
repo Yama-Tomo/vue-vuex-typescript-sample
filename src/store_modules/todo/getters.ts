@@ -1,5 +1,5 @@
 import { DefineGetters } from 'vuex-type-helper';
-import Todo from './state/todo';
+import { Todo } from './state/todo';
 import { TodoState } from './state';
 
 export interface TodoGetters {
@@ -8,10 +8,10 @@ export interface TodoGetters {
 }
 
 export const getters: DefineGetters<TodoGetters, TodoState> = {
-  reverse: (state) => [...state.todos].reverse(),
-  latest: (state, that) => ((limit) => {
+  reverse: state => [...state.todos].reverse(),
+  latest: (state, that) => (limit) => {
     return that.reverse.slice(0, limit - 1);
-  }),
+  },
 };
 
 export default getters;

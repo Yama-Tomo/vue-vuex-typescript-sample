@@ -1,26 +1,32 @@
 <template>
   <li class="todo" :class="{ completed: todo.done, editing: editing }">
     <div class="view">
-      <input class="toggle"
+      <input
+        class="toggle"
         type="checkbox"
         :checked="todo.done"
-        @change="toggleTodo(todo)">
-      <label v-text="todo.text" @dblclick="editing = true"></label>
-      <button class="destroy" @click="removeTodo(todo)">{{ $t('todo.remove') }}</button>
+        @change="toggleTodo(todo)"
+      >
+      <label @dblclick="editing = true" v-text="todo.text" />
+      <button class="destroy" @click="removeTodo(todo)">
+        {{ $t('todo.remove') }}
+      </button>
     </div>
-    <input class="edit"
+    <input
       v-show="editing"
       v-focus="editing"
+      class="edit"
       :value="todo.text"
       @keyup.enter="doneEdit"
       @keyup.esc="cancelEdit"
-      @blur="doneEdit">
+      @blur="doneEdit"
+    >
   </li>
 </template>
 
 <script lang='ts'>
 import { Component, Vue, Prop } from 'nuxt-property-decorator';
-import Todo from '../../store_modules/todo/state/todo';
+import { Todo } from '../../store_modules/todo/state/todo';
 import { Actions } from '../../mixins/store_helper';
 import { TodoActions } from '../../store_modules/todo/actions';
 import { HTMLElementEvent } from '@/types/dom';
@@ -28,7 +34,7 @@ import { HTMLElementEvent } from '@/types/dom';
 @Component({
   components: {},
   directives: {
-    focus(el, value, vnode) {
+    focus(el, value) {
       if (value) {
         el.focus();
       }
@@ -44,15 +50,15 @@ export default class Item extends Vue {
   public editing: boolean = false;
 
   public editTodo(text: string) {
-    return this.actions.editTodo({todo: this.todo, text});
+    return this.actions.editTodo({ todo: this.todo, text });
   }
 
   public toggleTodo() {
-    this.actions.toggleTodo({todo: this.todo});
+    this.actions.toggleTodo({ todo: this.todo });
   }
 
   public removeTodo() {
-    this.actions.removeTodo({todo: this.todo});
+    this.actions.removeTodo({ todo: this.todo });
   }
 
   public doneEdit(e: HTMLElementEvent<HTMLInputElement>) {
@@ -70,6 +76,5 @@ export default class Item extends Vue {
     e.target.value = this.todo.text;
     this.editing = false;
   }
-
 }
 </script>

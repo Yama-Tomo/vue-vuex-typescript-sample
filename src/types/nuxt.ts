@@ -1,3 +1,4 @@
+import { OutgoingMessage } from 'http';
 import Vue from 'vue';
 import { Route } from 'vue-router';
 import { Store } from 'vuex';
@@ -5,8 +6,8 @@ import { Context as OrgContext } from '@nuxt/vue-app/types';
 import { NuxtAxiosInstance } from '@nuxtjs/axios';
 import VueI18n, { IVueI18n } from 'vue-i18n';
 // NOTE: 型定義を手動でimportしないとコンポーネント内でlocalePathがコンパイルエラーで呼び出せないのでここでimportしておく
+// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
 import NuxtI18n from 'nuxt-i18n/types/vue';
-import { OutgoingMessage } from 'http';
 
 interface AuthModule {
   ctx: Nuxt.Context;
@@ -18,7 +19,7 @@ interface AuthModule {
   // TODO: _errorListeners, $storage, $stateの定義を充実させる
 }
 
-type ReplacedTypeNuxtContext<T> = { [K in keyof T]: T[K] extends Response ? OutgoingMessage : T[K] };
+type ReplacedTypeNuxtContext<T> = { [K in keyof T]: T[K] extends Response ? OutgoingMessage : T[K] }
 
 export namespace Nuxt {
   export interface Context extends ReplacedTypeNuxtContext<OrgContext> {
@@ -39,4 +40,3 @@ export namespace Nuxt {
     message: string;
   }
 }
-

@@ -1,23 +1,37 @@
 <template>
   <div>
-    <header class="header">Vuex tutorial with typescript and Nuxt.js</header>
+    <header class="header">
+      Vuex tutorial with typescript and Nuxt.js
+    </header>
     <div class="signin">
-      <nuxt-link :to="toLoginWithRedirectParam" v-if="!isLoggedIn && currentPath != localePath('login')">{{ $t('link.sign_in') }}</nuxt-link>
-      <a :href="localePath('logout')" v-if="isLoggedIn">{{ $t('link.sign_out') }}</a>
+      <nuxt-link v-if="!isLoggedIn && currentPath != localePath('login')" :to="toLoginWithRedirectParam">
+        {{ $t('link.sign_in') }}
+      </nuxt-link>
+      <a v-if="isLoggedIn" :href="localePath('logout')">{{ $t('link.sign_out') }}</a>
     </div>
     <nuxt class="container" />
-    <hr />
+    <hr>
     <div class="container">
-      <nuxt-link :to="localePath('index')" v-if="currentPath != localePath('index')">{{ $t('link.home') }}</nuxt-link>
-      <nuxt-link :to="localePath('about')" v-if="currentPath != localePath('about')">{{ $t('link.about') }}</nuxt-link>
-      <nuxt-link :to="localePath('secret')" v-if="currentPath != localePath('secret')">{{ $t('link.secret') }}</nuxt-link>
+      <nuxt-link v-if="currentPath != localePath('index')" :to="localePath('index')">
+        {{ $t('link.home') }}
+      </nuxt-link>
+      <nuxt-link v-if="currentPath != localePath('about')" :to="localePath('about')">
+        {{ $t('link.about') }}
+      </nuxt-link>
+      <nuxt-link v-if="currentPath != localePath('secret')" :to="localePath('secret')">
+        {{ $t('link.secret') }}
+      </nuxt-link>
       <br>
       {{ $t('other_lang') }}:
-      <nuxt-link
-        v-for="locale in locales"
-        v-if="locale.code !== $i18n.locale"
-        :key="locale.code"
-        :to="switchLocalePath(locale.code)">{{ locale.code }}</nuxt-link>
+      <template v-for="locale in locales">
+        <nuxt-link
+          v-if="locale.code !== $i18n.locale"
+          :key="locale.code"
+          :to="switchLocalePath(locale.code)"
+        >
+          {{ locale.code }}
+        </nuxt-link>
+      </template>
     </div>
   </div>
 </template>
