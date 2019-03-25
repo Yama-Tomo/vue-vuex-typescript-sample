@@ -5,7 +5,7 @@ module.exports = {
   apps : [{
     name            : 'nuxt-sample-app',
     cwd             : `${basePath}/current`,
-    script          : './node_modules/.bin/nuxt',
+    script          : './server.js',
     args            : 'start -c .nuxt/ts-compiled/nuxt.config.js',
     exec_mode       : 'cluster',
     instances       : 2,
@@ -15,6 +15,9 @@ module.exports = {
     error_file      : `${basePath}/logs/err.log`,
     out_file        : `${basePath}/logs/out.log`,
     merge_logs      : true,
-    log_date_format : 'YYYY-MM-DD HH:mm Z'
+    log_date_format : 'YYYY-MM-DD HH:mm Z',
+    env: {
+      NO_RESTORE_TSCONFIG: true
+    },
   }],
 }
