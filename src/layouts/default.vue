@@ -42,6 +42,8 @@ import { StoreHelperMixin } from '../mixins/store_helper';
 import { modules } from '../store_modules/module_mapper';
 import { AuthState } from '../store_modules/auth/state';
 
+type Locales = { [key: string]: { [key: string]: string } }
+
 @Component
 export default class DefaultLayout extends mixins(StoreHelperMixin) {
   public signout() {
@@ -60,8 +62,8 @@ export default class DefaultLayout extends mixins(StoreHelperMixin) {
     return this.localePath('login') + '?redirect=' + encodeURIComponent(this.$route.fullPath);
   }
 
-  get locales(): {[key: string]: {[key: string]: string}} {
-    return (this.$root.$i18n as any).locales as {[key: string]: {[key: string]: string}};
+  get locales(): Locales {
+    return (this.$root.$i18n as any).locales as Locales;
   }
 }
 </script>
