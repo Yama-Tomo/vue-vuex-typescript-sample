@@ -15,7 +15,6 @@
   "dependencies": {
     "@nuxtjs/auth": "github:Yama-Tomo/auth-module#feature/allow_redirect_setting_by_function",
     "@nuxtjs/axios": "5.4.1",
-    "@types/node": "10.14.3",
     "body-parser": "1.18.3",
     "lodash": "4.17.11",
     "nuxt": "2.5.1",
@@ -29,6 +28,7 @@
     "@types/body-parser": "1.17.0",
     "@types/hard-source-webpack-plugin": "1.0.0",
     "@types/lodash": "4.14.123",
+    "@types/node": "10.14.3",
     "@types/webpack": "4.4.26",
     "@typescript-eslint/eslint-plugin": "^1.5.0",
     "eslint": "^5.15.3",
