@@ -20,7 +20,8 @@ class IgnoreNotFoundExportPlugin {
 export default function(config: Configuration, ctx: Nuxt.Context) {
   const useVueI18nLoader = (() => {
     // @ts-ignore
-    const nuxtI18n = (this as any).context.options.modules.find((module: unknown) => {
+    // TODO: remove any
+    const nuxtI18n = (this as any).buildContext.options.modules.find((module: unknown) => {
       if (Array.isArray(module)) {
         return module[0] === 'nuxt-i18n';
       }
