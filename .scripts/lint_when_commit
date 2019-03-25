@@ -1,0 +1,9 @@
+#!/bin/bash
+
+list=$(git diff --cached --name-only | grep -E '\.tsx?$|\.js$|\.vue$')
+
+if [ -n "$list" ]; then
+  echo -e '\033[0;33mLint checks......\n \033[0;39m'
+
+  eslint --format codeframe --color $list
+fi
