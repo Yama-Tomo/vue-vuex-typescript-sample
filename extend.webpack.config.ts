@@ -49,7 +49,7 @@ export default function (config: Configuration) {
     }));
 
     config.plugins.push(new (HardSourceWebpackPlugin as any).ExcludeModulePlugin([
-      { test: /extract-css-chunks-webpack-plugin[\\/]dist[\\/]hotLoader/ },
+      { test: /extract-css-chunks-webpack-plugin[\\/]dist[\\/]loader/ },
     ]));
   }
 }
