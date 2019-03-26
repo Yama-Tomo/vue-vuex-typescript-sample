@@ -5,20 +5,20 @@ import { TodoMutations } from './mutations';
 
 export interface TodoActions {
   addTodo: {
-    text: string,
+    text: string;
   };
   removeTodo: {
-    todo: Todo,
+    todo: Todo;
   };
   editTodo: {
-    todo: Todo,
-    text: string,
+    todo: Todo;
+    text: string;
   };
   toggleTodo: {
-    todo: Todo,
+    todo: Todo;
   };
   toggleAll: {
-    done: boolean,
+    done: boolean;
   };
   clearCompleted: {};
 }
@@ -42,7 +42,7 @@ const actions: DefineActions<TodoActions, TodoState, TodoMutations> = {
     });
   },
   clearCompleted({ state, commit }) {
-    state.todos.filter((todo) => todo.done).forEach((todo) => {
+    state.todos.filter(todo => todo.done).forEach((todo) => {
       commit('removeTodo', todo);
     });
   },

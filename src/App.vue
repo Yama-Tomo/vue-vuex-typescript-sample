@@ -1,5 +1,5 @@
 <template>
-  <List :state=state :actions=actions :getters=getters></List>
+  <List :state="state" :actions="actions" :getters="getters" />
 </template>
 
 <script lang="ts">

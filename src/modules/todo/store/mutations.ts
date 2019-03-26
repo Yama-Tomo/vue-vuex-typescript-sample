@@ -6,9 +6,9 @@ export interface TodoMutations {
   addTodo: Todo;
   removeTodo: Todo;
   updateTodo: {
-    todo: Todo,
-    text?: string,
-    done?: boolean,
+    todo: Todo;
+    text?: string;
+    done?: boolean;
   };
 }
 

@@ -1,5 +1,5 @@
 import Todo from './state/todo';
-import {modules} from '@/modules/module_mapper';
+import { modules } from '@/modules/module_mapper';
 
 export interface TodoState {
   todos: Todo[];
@@ -27,4 +27,3 @@ export const initialStateResolver = (state: TodoState, initialState: any) => {
     }
   }
 };
-

@@ -7,5 +7,5 @@ Vue.config.productionTip = false;
 
 new Vue({
   store: store(modules.todo, (window as any).__INITIAL_STATE__),
-  render: (h) => h(App),
+  render: h => h(App),
 }).$mount('#app');
