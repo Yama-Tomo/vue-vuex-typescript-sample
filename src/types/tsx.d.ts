@@ -1,3 +1,5 @@
+import 'vue-tsx-support/enable-check';
+
 declare global {
   namespace JSX {
     // tslint:disable no-empty-interface
