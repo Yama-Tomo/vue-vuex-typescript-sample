@@ -2,18 +2,23 @@
   <section class="todoapp">
     <header class="header">
       <h1>todos</h1>
-      <input class="new-todo"
+      <input
+        class="new-todo"
         autofocus
         autocomplete="off"
         placeholder="What needs to be done?"
-        @keyup.enter="addTodo($event)">
+        @keyup.enter="addTodo($event)"
+      >
     </header>
-    <section class="main" v-show="todos.length">
-      <input class="toggle-all" id="toggle-all"
+    <section v-show="todos.length" class="main">
+      <input
+        id="toggle-all"
+        class="toggle-all"
         type="checkbox"
         :checked="allChecked"
-        @change="toggleAll(!allChecked)">
-      <label for="toggle-all"></label>
+        @change="toggleAll(!allChecked)"
+      >
+      <label for="toggle-all" />
       <ul class="todo-list">
         <Item
           v-for="(todo, index) in filteredTodos"
@@ -23,21 +28,25 @@
         />
       </ul>
     </section>
-    <footer class="footer" v-show="todos.length">
+    <footer v-show="todos.length" class="footer">
       <span class="todo-count">
         <strong>{{ remaining }}</strong>
         {{ pluralize(remaining, 'item') }} left
       </span>
       <ul class="filters">
-        <li v-for="(val, key) in filters">
-          <a :href="'#/' + key"
+        <li v-for="(val, key) in filters" :key="key">
+          <a
+            :href="'#/' + key"
             :class="{ selected: visibility === key }"
-            @click="visibility = key">{{ capitalize(key) }}</a>
+            @click="visibility = key"
+          >{{ capitalize(key) }}</a>
         </li>
       </ul>
-      <button class="clear-completed"
+      <button
         v-show="todos.length > remaining"
-        @click="clearCompleted">
+        class="clear-completed"
+        @click="clearCompleted"
+      >
         Clear completed
       </button>
     </footer>
@@ -72,8 +81,8 @@ export default class List extends Vue {
   get filters() {
     return {
       all: (todos: Todo[]) => todos,
-      active: (todos: Todo[]) => todos.filter((todo) => !todo.done),
-      completed: (todos: Todo[]) => todos.filter((todo) => todo.done),
+      active: (todos: Todo[]) => todos.filter(todo => !todo.done),
+      completed: (todos: Todo[]) => todos.filter(todo => todo.done),
     };
   }
 
@@ -82,7 +91,7 @@ export default class List extends Vue {
   }
 
   get allChecked(): boolean {
-    return this.todos.every((todo) => todo.done);
+    return this.todos.every(todo => todo.done);
   }
 
   get filteredTodos() {
@@ -94,7 +103,7 @@ export default class List extends Vue {
   }
 
   get remaining() {
-    return this.todos.filter((todo) => !todo.done).length;
+    return this.todos.filter(todo => !todo.done).length;
   }
 
   public addTodo(e: HTMLElementEvent<HTMLInputElement>): void {
@@ -103,12 +112,12 @@ export default class List extends Vue {
       return;
     }
 
-    this.actions.addTodo({text});
+    this.actions.addTodo({ text });
     e.target.value = '';
   }
 
   public toggleAll(done: boolean): void {
-    this.actions.toggleAll({done});
+    this.actions.toggleAll({ done });
   }
 
   public clearCompleted(): void {

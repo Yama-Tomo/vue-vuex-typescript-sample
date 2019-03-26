@@ -1,11 +1,11 @@
 <script lang='tsx'>
 import { CreateElement } from 'vue';
 import { Component, Vue, Prop } from 'vue-property-decorator';
+import * as vts from 'vue-tsx-support';
 import Todo from '../store/state/todo';
 import { Actions } from '../../../mixins/store_helper';
 import { TodoActions } from '../store/actions';
 import { HTMLElementEvent } from '../../../types/dom';
-import * as vts from 'vue-tsx-support';
 
 const template = (h: CreateElement, self: Item) => {
   return (
@@ -17,10 +17,10 @@ const template = (h: CreateElement, self: Item) => {
       ].join(' ') }
     >
       <div class='view'>
-         <input class='toggle' type='checkbox'
-           checked={ self.todo.done }
-           onChange={ () => self.toggleTodo() }
-         />
+        <input class='toggle' type='checkbox'
+          checked={ self.todo.done }
+          onChange={ () => self.toggleTodo() }
+        />
         <label onDblclick={ () => self.changeEditMode() }>
           { self.todo.text }
         </label>
@@ -28,13 +28,12 @@ const template = (h: CreateElement, self: Item) => {
       </div>
       <input class='edit' ref='inputText' value={ self.todo.text }
         v-show={ self.editing }
-        onKeyup={ (e) => self.onKeyup(e) }
-        onBlur={ (e) => self.doneEdit(e) }
+        onKeyup={ e => self.onKeyup(e) }
+        onBlur={ e => self.doneEdit(e) }
       />
     </li>
   );
 };
-
 
 @Component
 export class Item extends Vue {
@@ -55,15 +54,15 @@ export class Item extends Vue {
   }
 
   public editTodo(text: string) {
-    return this.actions.editTodo({todo: this.todo, text});
+    return this.actions.editTodo({ todo: this.todo, text });
   }
 
   public toggleTodo() {
-    this.actions.toggleTodo({todo: this.todo});
+    this.actions.toggleTodo({ todo: this.todo });
   }
 
   public removeTodo() {
-    this.actions.removeTodo({todo: this.todo});
+    this.actions.removeTodo({ todo: this.todo });
   }
 
   public onKeyup(e: Event) {
