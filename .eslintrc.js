@@ -1,8 +1,10 @@
 // NOTE: how to apply eslint on intellij https://intellij-support.jetbrains.com/hc/en-us/community/posts/115000225170-ESLint-and-ts-Typescript-files
 module.exports = {
+  root: true,
   plugins: ['@typescript-eslint', 'babel'],
   parserOptions: {
-    parser: '@typescript-eslint/parser'
+    parser: '@typescript-eslint/parser',
+    sourceType: 'module',
   },
   rules: {
     semi: 'off',
@@ -16,3 +18,4 @@ module.exports = {
     '@nuxtjs',
   ]
 }
+
