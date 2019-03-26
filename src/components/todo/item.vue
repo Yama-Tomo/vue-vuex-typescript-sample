@@ -1,53 +1,66 @@
-<template>
-  <li class="todo" :class="{ completed: todo.done, editing: editing }">
-    <div class="view">
-      <input
-        class="toggle"
-        type="checkbox"
-        :checked="todo.done"
-        @change="toggleTodo(todo)"
-      >
-      <label @dblclick="editing = true" v-text="todo.text" />
-      <button class="destroy" @click="removeTodo(todo)">
-        {{ $t('todo.remove') }}
-      </button>
-    </div>
-    <input
-      v-show="editing"
-      v-focus="editing"
-      class="edit"
-      :value="todo.text"
-      @keyup.enter="doneEdit"
-      @keyup.esc="cancelEdit"
-      @blur="doneEdit"
-    >
-  </li>
-</template>
-
-<script lang='ts'>
+<script lang='tsx'>
 import { Component, Vue, Prop } from 'nuxt-property-decorator';
+import { CreateElement } from 'vue';
+import * as vts from 'vue-tsx-support';
 import { Todo } from '../../store_modules/todo/state/todo';
 import { Actions } from '../../mixins/store_helper';
 import { TodoActions } from '../../store_modules/todo/actions';
-import { HTMLElementEvent } from '@/types/dom';
+import { InputEvent } from '@/types/dom';
 
-@Component({
-  components: {},
-  directives: {
-    focus(el, value) {
-      if (value) {
-        el.focus();
-      }
-    },
-  },
-})
-export default class Item extends Vue {
+const template = (h: CreateElement, self: Item) => {
+  return (
+    <li
+      class={[
+        'todo',
+        ...self.todo.done ? ['completed'] : [],
+        ...self.editing ? ['editing'] : [],
+      ].join(' ')}>
+      <div class="view">
+        <input
+          class="toggle"
+          type="checkbox"
+          checked={self.todo.done}
+          onChange={() => self.toggleTodo()}
+        />
+        <label onDblclick={() => self.changeEditMode()}>
+          {self.todo.text}
+        </label>
+        <button
+          class="destroy"
+          onClick={() => self.removeTodo()}>
+          {self.$t('todo.remove')}
+        </button>
+      </div>
+      <input
+        v-show={self.editing}
+        ref="inputText"
+        class="edit"
+        value={self.todo.text}
+        onKeyup={e => self.onKeyUp(e)}
+        onKeypress={e => self.onKeyPress(e)}
+        onBlur={e => self.doneEdit(e)}
+      />
+    </li>
+  );
+};
+
+@Component
+class Item extends Vue {
   @Prop(Object)
   public todo!: Todo;
   @Prop()
   public actions!: Actions<TodoActions>;
 
   public editing: boolean = false;
+
+  public render(h: CreateElement) {
+    return template(h, this);
+  }
+
+  public changeEditMode() {
+    this.editing = true;
+    this.$nextTick(() => (this.$refs.inputText as HTMLInputElement).focus());
+  }
 
   public editTodo(text: string) {
     return this.actions.editTodo({ todo: this.todo, text });
@@ -61,8 +74,22 @@ export default class Item extends Vue {
     this.actions.removeTodo({ todo: this.todo });
   }
 
-  public doneEdit(e: HTMLElementEvent<HTMLInputElement>) {
-    const value = e.target.value.trim();
+  public onKeyPress(e: Event) {
+    const keyCode = (e as KeyboardEvent).key;
+    if (keyCode === 'Enter') {
+      this.doneEdit(e);
+    }
+  }
+
+  public onKeyUp(e: Event) {
+    const keyCode = (e as KeyboardEvent).key;
+    if (keyCode === 'Escape') {
+      this.cancelEdit(e);
+    }
+  }
+
+  public doneEdit(e: Event) {
+    const value = (e as InputEvent).target.value.trim();
 
     if (!value) {
       this.removeTodo();
@@ -72,9 +99,30 @@ export default class Item extends Vue {
     }
   }
 
-  public cancelEdit(e: HTMLElementEvent<HTMLInputElement>) {
-    e.target.value = this.todo.text;
+  public cancelEdit(e: Event) {
+    (e as InputEvent).target.value = this.todo.text;
     this.editing = false;
   }
 }
+
+export default vts.ofType<Partial<Item>>().convert(Item);
 </script>
+
+<style lang="scss" scoped>
+label {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.editing {
+  label {
+    color: #888;
+  }
+}
+
+.completed {
+  label {
+    text-decoration: line-through;
+  }
+}
+</style>
