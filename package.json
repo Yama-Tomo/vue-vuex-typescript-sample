@@ -6,8 +6,12 @@
     "dev": "NODE_ENV=development vue-cli-service serve --port 3100 src/index.ts",
     "build": "NODE_ENV=production vue-cli-service build --mode production",
     "build:dev": "NODE_ENV=development vue-cli-service build --mode development",
-    "lint": "vue-cli-service lint"
+    "lint": "eslint --ext .ts,.js,.vue --format codeframe --color .",
+    "lint:commit": ".scripts/lint_when_commit"
   },
+  "pre-commit": [
+    "lint:commit"
+  ],
   "dependencies": {
     "vue": "2.6.10",
     "vue-property-decorator": "8.1.0",
