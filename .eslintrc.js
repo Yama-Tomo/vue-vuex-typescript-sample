@@ -16,6 +16,18 @@ module.exports = {
   },
   extends: [
     '@nuxtjs',
-  ]
+  ],
+  env: {
+    jest: true,
+  },
+  globals: {
+    page: true,
+    browser: true,
+    context: true,
+    jestPuppeteer: true,
+    url: true,
+    user: true,
+    timeout: true,
+  },
 }
 
