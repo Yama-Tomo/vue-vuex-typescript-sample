@@ -7,7 +7,7 @@ import { NuxtAxiosInstance } from '@nuxtjs/axios';
 import VueI18n, { IVueI18n } from 'vue-i18n';
 // NOTE: 型定義を手動でimportしないとコンポーネント内でlocalePathがコンパイルエラーで呼び出せないのでここでimportしておく
 // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-import NuxtI18n from 'nuxt-i18n/types/vue';
+import NuxtI18n from 'nuxt-i18n/types/';
 
 interface AuthModule {
   ctx: Nuxt.Context;
