@@ -7,7 +7,8 @@
     "lint:commit": ".scripts/lint_when_commit",
     "dev": "nuxt",
     "build": "nuxt build && tsc -p tsconfig.nuxt-config.json",
-    "start": "./server.js start -c .nuxt/ts-compiled/nuxt.config.js"
+    "start": "./server.js start -c .nuxt/ts-compiled/nuxt.config.js",
+    "postinstall": "sed -ie 's#^  await fsExtra.writeJSON#//&#g' node_modules/@nuxt/typescript/dist/typescript.js"
   },
   "pre-commit": [
     "lint:commit"
