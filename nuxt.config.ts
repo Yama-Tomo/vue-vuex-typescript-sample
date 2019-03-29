@@ -69,9 +69,7 @@ export default {
       ],
       langDir: 'i18n/',
       strategy: 'prefix',
-      detectBrowserLanguage: {
-        useCookie: true,
-      },
+      detectBrowserLanguage: false,
     }],
   ],
   plugins: [
