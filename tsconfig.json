@@ -13,10 +13,6 @@
     "sourceMap": true,
     "allowJs": true,
     "baseUrl": ".",
-    "types": [
-      "node",
-      "@nuxt/vue-app"
-    ],
     "paths": {
       "@/*": [
         "src/*"
@@ -30,14 +26,9 @@
     ],
     "skipLibCheck": true
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "tests/**/*.ts",
-    "tests/**/*.tsx"
-  ],
   "exclude": [
-    "node_modules"
+    ".nuxt",  
+    "node_modules",
+    "__api"
   ]
 }
