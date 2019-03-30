@@ -1,0 +1,26 @@
+version: '3'
+services:
+  backend:
+    image: yamatomo/ruby:2.4.1-node-gosu
+    environment:
+      LOCAL_UID:
+      LOCAL_GID:
+    working_dir: /app
+    volumes:
+      - ./__api:/app
+    command: /bin/bash -c "bundle install --path vendor/bundle && bundle exec rails db:migrate && bundle exec rake db:seed && bundle exec rails s -p 3101 -b '0.0.0.0'"
+
+  puppeteer:
+    image: yamatomo/puppeteer:latest
+    environment:
+      IS_DOCKER: 'true'
+      BACKEND_HOST: http://backend:3101
+      LOCAL_UID:
+      LOCAL_GID:
+    working_dir: /app
+    volumes:
+      - ./:/app
+    command: /bin/bash -c "./docker/puppeteer/wait_for_backend.sh && npm i --no-progress && npm run test -- -i"
+    depends_on:
+      - backend
+
