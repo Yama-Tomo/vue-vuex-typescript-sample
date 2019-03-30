@@ -1,7 +1,27 @@
-FROM buildkite/puppeteer:latest
+FROM node:10-alpine
 
-RUN apt-get update && apt-get -y install git procps gosu && npm i -g npm
-COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+WORKDIR /app
+
+RUN apk update && apk upgrade \
+    && echo @edge http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories \
+    && echo @edge http://nl.alpinelinux.org/alpine/edge/main >> /etc/apk/repositories \
+    && apk add --no-cache \
+      chromium@edge \
+      nss@edge \
+      freetype@edge \
+      harfbuzz@edge \
+      ttf-freefont@edge \
+      su-exec \
+      procps \
+      git \
+    && npm i -g npm \
+    && rm -rf /var/lib/apt/lists/* \
+              /var/cache/apk/* \
+              /usr/share/man \
+              /root/.npm \
+              /tmp/*
+
+COPY docker/puppeteer/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD bash -c "npm i --no-progress && npm run test -- -i"
