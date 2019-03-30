@@ -82,7 +82,7 @@ export default {
     proxy: true,
   },
   proxy: {
-    '/api': 'http://localhost:3101',
+    '/api': process.env.BACKEND_HOST || 'http://localhost:3101',
   },
   auth: {
     plugins: ['~/plugins/auth/redirect.ts'],
