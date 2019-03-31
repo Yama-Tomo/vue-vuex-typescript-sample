@@ -1,4 +1,4 @@
-FROM ruby:2.4.5-alpine
+FROM ruby:2.6.2-alpine
 
 WORKDIR /app
 COPY __api/Gemfile* ./
