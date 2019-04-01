@@ -1,7 +1,7 @@
 version: '3'
 services:
   backend:
-    image: yamatomo/ruby:vue-vuex-typescript-sample
+    image: yamatomo/vue-vuex-typescript-sample:ruby
     environment:
       LOCAL_UID:
       LOCAL_GID:
@@ -10,7 +10,7 @@ services:
     command: /bin/sh -c "bundle install && bundle exec rails db:migrate && bundle exec rake db:seed && bundle exec rails s -p 3101 -b '0.0.0.0'"
 
   puppeteer:
-    image: yamatomo/puppeteer:latest
+    image: yamatomo/vue-vuex-typescript-sample:puppeteer
     environment:
       IS_DOCKER: 'true'
       BACKEND_HOST: http://backend:3101
