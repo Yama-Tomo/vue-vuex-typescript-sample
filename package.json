@@ -6,7 +6,7 @@
     "lint": "eslint --ext .ts,.tsx,.js,.vue --format codeframe --color .",
     "lint:commit": ".scripts/lint_when_commit",
     "dev": "nuxt",
-    "test": "jest",
+    "test": "NUXT_PORT=4444 jest",
     "build": "nuxt build && tsc -p tsconfig.nuxt-config.json",
     "start": "./server.js start -c .nuxt/ts-compiled/nuxt.config.js",
     "start:with_ts_node": "nuxt start",
