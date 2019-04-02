@@ -11,7 +11,8 @@ module.exports = {
   },
   browserContext: 'incognito',
   server: {
-    command: 'npm run dev',
+    // NOTE: start with ts-node because ts-jest need tsconfig.json
+    command: 'npm run build && npm run start:with_ts_node',
     port: process.env.NUXT_PORT ? Number(process.env.NUXT_PORT) : 3100,
     launchTimeout: 50000,
   },
