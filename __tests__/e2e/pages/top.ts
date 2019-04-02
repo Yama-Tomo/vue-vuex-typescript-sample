@@ -14,7 +14,7 @@ export default class Top {
 
   public async open(cb?: () => void) {
     const baseUrl = url.base;
-    await page.goto(`${baseUrl}/ja`);
+    await page.goto(`${baseUrl}/ja`, { waitUntil: 'networkidle2' });
     if (!cb) {
       await this.assertThisPageVisited();
     } else {

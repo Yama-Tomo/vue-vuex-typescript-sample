@@ -7,7 +7,7 @@ module.exports = {
       ...process.env.IS_DOCKER ? ['--no-sandbox', '--disable-dev-shm-usage'] : [],
     ],
     // NOTE: https://github.com/GoogleChrome/puppeteer/issues/1648
-    slowMo: 20,
+    slowMo: 10,
   },
   browserContext: 'incognito',
   server: {

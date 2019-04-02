@@ -12,7 +12,7 @@ export default class Login {
 
   public async open(cb?: () => void) {
     const baseUrl = url.base;
-    await page.goto(`${baseUrl}/ja/login`);
+    await page.goto(`${baseUrl}/ja/login`, { waitUntil: 'networkidle2' });
     if (!cb) {
       await this.assertThisPageVisited();
     } else {
