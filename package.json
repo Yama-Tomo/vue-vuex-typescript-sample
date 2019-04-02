@@ -9,6 +9,7 @@
     "test": "jest",
     "build": "nuxt build && tsc -p tsconfig.nuxt-config.json",
     "start": "./server.js start -c .nuxt/ts-compiled/nuxt.config.js",
+    "start:with_ts_node": "nuxt start",
     "postinstall": "sed -ie 's#^  await fsExtra.writeJSON#//&#g' node_modules/@nuxt/typescript/dist/typescript.js"
   },
   "pre-commit": [
