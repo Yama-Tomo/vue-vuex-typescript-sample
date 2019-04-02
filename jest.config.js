@@ -7,7 +7,7 @@ module.exports = {
     url: {
       base: process.env.base_url ? process.env.base_url : `http://localhost:${process.env.NUXT_PORT || 3100}`,
     },
-    timeout: 30000,
+    timeout: 60000,
     user: {
       email: process.env.user_email || '',
       password: process.env.user_password || '',

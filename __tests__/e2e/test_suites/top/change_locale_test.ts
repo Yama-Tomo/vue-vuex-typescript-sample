@@ -10,7 +10,7 @@ describe('i18n feature', () => {
     await topPage.gotoOtherLangThisPage();
 
     const currentUrl = await page.url();
-    await page.reload();
+    await page.reload({ waitUntil: 'networkidle2' });
 
     expect(await page.url()).toEqual(currentUrl);
 

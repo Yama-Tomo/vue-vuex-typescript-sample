@@ -11,7 +11,7 @@ export default class Secret {
 
   public async open(cb?: () => void) {
     const baseUrl = url.base;
-    await page.goto(`${baseUrl}/ja/secret`);
+    await page.goto(`${baseUrl}/ja/secret`, { waitUntil: 'networkidle2' });
     if (!cb) {
       await this.assertThisPageVisited();
     } else {
