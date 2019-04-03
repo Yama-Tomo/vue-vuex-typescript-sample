@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "0.0.1",
-    "@typescript-eslint/eslint-plugin": "1.5.0",
+    "@typescript-eslint/eslint-plugin": "1.6.0",
     "@vue/cli-plugin-babel": "3.5.5",
     "@vue/cli-plugin-typescript": "3.5.3",
     "@vue/cli-service": "3.5.3",
