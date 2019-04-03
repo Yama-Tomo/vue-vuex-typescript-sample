@@ -1,5 +1,4 @@
-module.exports = {
-  preset: 'jest-puppeteer',
+const config = {
   globals: {
     'ts-jest': {
       tsConfig: 'tsconfig.jest.json',
@@ -31,3 +30,12 @@ module.exports = {
     'node',
   ],
 };
+
+const isNeedPuppeteer = !process.argv.filter(arg => arg.indexOf('__tests__/') !== -1).length ||
+  process.argv.filter(arg => arg.indexOf('__tests__/e2e') !== -1).length;
+
+if (isNeedPuppeteer) {
+  config.preset = 'jest-puppeteer';
+}
+
+module.exports = config;
