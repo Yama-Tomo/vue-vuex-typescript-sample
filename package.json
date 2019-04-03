@@ -48,7 +48,7 @@
     "eslint-plugin-standard": "4.0.0",
     "eslint-plugin-vue": "5.2.2",
     "hard-source-webpack-plugin": "0.13.1",
-    "jest": "24.6.0",
+    "jest": "24.7.0",
     "jest-puppeteer": "4.1.0",
     "json-loader": "0.5.7",
     "node-sass": "4.11.0",
