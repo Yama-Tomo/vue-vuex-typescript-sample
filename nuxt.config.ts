@@ -4,6 +4,7 @@ import extendWebpackConfig from './extend.webpack.config';
 
 const port = process.env.NUXT_PORT || 3100;
 const host = process.env.NUXT_HOST || '0.0.0.0';
+const isDev = process.env.NODE_ENV === 'development';
 
 export default {
   server: {
@@ -27,8 +28,7 @@ export default {
   loading: { color: '#3B8070' },
   css: ['~/assets/css/main.scss'],
   build: {
-    // useForkTsChecker: true,
-    extractCSS: true,
+    extractCSS: !isDev,
     extend: extendWebpackConfig,
     stats: {
       warningsFilter: /export .* was not found in/,
