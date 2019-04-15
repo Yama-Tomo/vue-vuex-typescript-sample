@@ -65,7 +65,7 @@
     "ts-jest": "24.0.2",
     "ts-node": "8.1.0",
     "typescript": "3.4.3",
-    "vue-tsx-support": "2.2.2",
+    "vue-tsx-support": "2.3.0",
     "yaml-loader": "0.5.0"
   },
   "browserslist": [
