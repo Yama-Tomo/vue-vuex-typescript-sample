@@ -4,16 +4,12 @@
   "private": true,
   "scripts": {
     "lint": "eslint --ext .ts,.tsx,.js,.vue --format codeframe --color .",
-    "lint:commit": ".scripts/lint_when_commit",
     "dev": "nuxt",
     "test": "NUXT_PORT=4444 jest",
     "build": "nuxt build && tsc -p tsconfig.nuxt-config.json",
     "start": "./server.js start -c .nuxt/ts-compiled/nuxt.config.js",
     "start:with_ts_node": "nuxt start"
   },
-  "pre-commit": [
-    "lint:commit"
-  ],
   "dependencies": {
     "@nuxtjs/auth": "github:Yama-Tomo/auth-module#feature/allow_redirect_setting_by_function",
     "@nuxtjs/axios": "5.4.1",
@@ -53,7 +49,6 @@
     "jest-puppeteer": "4.1.1",
     "json-loader": "0.5.7",
     "node-sass": "4.11.0",
-    "pre-commit": "1.2.2",
     "puppeteer": "1.14.0",
     "sass-loader": "7.1.0",
     "ts-jest": "24.0.2",
