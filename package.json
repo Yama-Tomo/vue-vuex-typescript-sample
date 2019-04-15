@@ -39,7 +39,7 @@
     "sass-loader": "7.1.0",
     "typescript": "3.4.3",
     "vue-template-compiler": "2.6.10",
-    "vue-tsx-support": "2.2.2",
+    "vue-tsx-support": "2.3.0",
     "webpack-manifest-plugin": "2.0.4"
   },
   "browserslist": [
