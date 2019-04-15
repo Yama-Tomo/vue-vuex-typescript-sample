@@ -1,4 +1,4 @@
-<script lang='tsx'>
+<script lang="tsx">
 import { Component, Vue, Prop } from 'nuxt-property-decorator';
 import { CreateElement } from 'vue';
 import * as vts from 'vue-tsx-support';
@@ -12,9 +12,10 @@ const template = (h: CreateElement, self: Item) => {
     <li
       class={[
         'todo',
-        ...self.todo.done ? ['completed'] : [],
-        ...self.editing ? ['editing'] : [],
-      ].join(' ')}>
+        ...(self.todo.done ? ['completed'] : []),
+        ...(self.editing ? ['editing'] : []),
+      ].join(' ')}
+    >
       <div class="view">
         <input
           class="toggle"
@@ -22,12 +23,8 @@ const template = (h: CreateElement, self: Item) => {
           checked={self.todo.done}
           onChange={() => self.toggleTodo()}
         />
-        <label onDblclick={() => self.changeEditMode()}>
-          {self.todo.text}
-        </label>
-        <button
-          class="destroy"
-          onClick={() => self.removeTodo()}>
+        <label onDblclick={() => self.changeEditMode()}>{self.todo.text}</label>
+        <button class="destroy" onClick={() => self.removeTodo()}>
           {self.$t('todo.remove')}
         </button>
       </div>

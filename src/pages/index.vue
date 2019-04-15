@@ -20,7 +20,10 @@ import { TodoActions } from '../store_modules/todo/actions';
 })
 export default class Index extends mixins(StoreHelperMixin) {
   public async fetch({ store }: { store: Store<any> }) {
-    const actions: Actions<TodoActions> = StoreHelper.getActions(store, modules.todo);
+    const actions: Actions<TodoActions> = StoreHelper.getActions(
+      store,
+      modules.todo
+    );
     await actions.fetchInitialState(undefined);
   }
 

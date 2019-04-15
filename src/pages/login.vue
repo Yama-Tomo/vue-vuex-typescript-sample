@@ -6,12 +6,12 @@
         email or password is incorrect
       </div>
       <div>
-        <label>email</label><br>
-        <input v-model="email" type="text" name="email">
+        <label>email</label><br />
+        <input v-model="email" type="text" name="email" />
       </div>
       <div>
-        <label>Password</label><br>
-        <input v-model="password" type="password" name="password">
+        <label>Password</label><br />
+        <input v-model="password" type="password" name="password" />
       </div>
       <button :disabled="busy" @click="onSignInClick">
         sign in
@@ -27,7 +27,10 @@ import { modules } from '../store_modules/module_mapper';
 import { AuthState } from '../store_modules/auth/state';
 import { Nuxt } from '@/types/nuxt';
 
-interface PostParams { email: string; password: string }
+interface PostParams {
+  email: string;
+  password: string;
+}
 
 @Component({
   auth: false,
@@ -38,7 +41,7 @@ export default class Login extends mixins(StoreHelperMixin) {
   public isInvalid = false;
   public busy = false;
 
-  public asyncData(ctx: Nuxt.Context): Promise<Partial<Login>|void>|void {
+  public asyncData(ctx: Nuxt.Context): Promise<Partial<Login> | void> | void {
     const authState: AuthState = StoreHelper.getState(ctx.store, modules.auth);
     if (authState.loggedIn) {
       ctx.app.$auth.redirect('home');
@@ -51,11 +54,14 @@ export default class Login extends mixins(StoreHelperMixin) {
         user: { email: postParams.email, password: postParams.password },
       };
 
-      return ctx.app.$auth.loginWith('local', { data }).then(() => {
-        return ctx.app.$auth.redirect('home');
-      }).catch(() => {
-        return { email: postParams.email, isInvalid: true };
-      });
+      return ctx.app.$auth
+        .loginWith('local', { data })
+        .then(() => {
+          return ctx.app.$auth.redirect('home');
+        })
+        .catch(() => {
+          return { email: postParams.email, isInvalid: true };
+        });
     }
   }
 
@@ -68,7 +74,9 @@ export default class Login extends mixins(StoreHelperMixin) {
     return this.$route.fullPath;
   }
 
-  get authState(): AuthState { return this.getState(modules.auth); }
+  get authState(): AuthState {
+    return this.getState(modules.auth);
+  }
 }
 </script>
 <style lang="scss" scoped>

@@ -38,14 +38,16 @@ export const actions: DefineActions<TodoActions, TodoState, TodoMutations> = {
     commit('updateTodo', { todo, done: !todo.done });
   },
   toggleAll({ state, commit }, { done }) {
-    state.todos.forEach((todo) => {
+    state.todos.forEach(todo => {
       commit('updateTodo', { todo, done });
     });
   },
   clearCompleted({ state, commit }) {
-    state.todos.filter(todo => todo.done).forEach((todo) => {
-      commit('removeTodo', todo);
-    });
+    state.todos
+      .filter(todo => todo.done)
+      .forEach(todo => {
+        commit('removeTodo', todo);
+      });
   },
   fetchInitialState({ commit }) {
     return new Promise((resolve: () => void) => {
@@ -53,10 +55,9 @@ export const actions: DefineActions<TodoActions, TodoState, TodoMutations> = {
     }).then(() => {
       commit('resetState', undefined);
 
-      const initialState = initialStateResolver({ todos: [
-        { text: 'aaaa', done: false },
-        { text: 'bbbb', done: true },
-      ] });
+      const initialState = initialStateResolver({
+        todos: [{ text: 'aaaa', done: false }, { text: 'bbbb', done: true }],
+      });
       commit('setInitialState', initialState);
     });
   },

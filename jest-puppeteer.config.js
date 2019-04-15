@@ -4,7 +4,9 @@ module.exports = {
     headless: process.env.HEADLESS !== 'false',
     args: [
       ...['--lang=ja'],
-      ...process.env.IS_DOCKER ? ['--no-sandbox', '--disable-dev-shm-usage'] : [],
+      ...(process.env.IS_DOCKER
+        ? ['--no-sandbox', '--disable-dev-shm-usage']
+        : []),
     ],
     // NOTE: https://github.com/GoogleChrome/puppeteer/issues/1648
     slowMo: 10,

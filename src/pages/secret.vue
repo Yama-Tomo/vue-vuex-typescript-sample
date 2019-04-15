@@ -2,8 +2,8 @@
   <div>
     <h1>Secret</h1>
     This is secret page.
-    <br>
-    <br>
+    <br />
+    <br />
     your email address
     {{ email }}
   </div>

@@ -21,7 +21,10 @@ export default class Login {
   }
 
   public async assertThisPageVisited() {
-    await this.page.waitForSelector('#__layout > div > div:nth-child(3) > form', { visible: true });
+    await this.page.waitForSelector(
+      '#__layout > div > div:nth-child(3) > form',
+      { visible: true }
+    );
   }
 
   public async doLogin(email: string, password: string, cb?: () => void) {

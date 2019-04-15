@@ -1,4 +1,4 @@
-<script lang='tsx'>
+<script lang="tsx">
 import { Component, Vue, Prop, Watch } from 'nuxt-property-decorator';
 import { Route } from 'vue-router';
 import { CreateElement } from 'vue';
@@ -35,20 +35,25 @@ const template = (h: CreateElement, self: List) => {
           select all
         </label>
         <ul class="todo-list">
-          {self.filteredTodos.map(todo => <Item todo={todo} actions={self.actions} />)}
+          {self.filteredTodos.map(todo => (
+            <Item todo={todo} actions={self.actions} />
+          ))}
         </ul>
       </section>
       <footer v-show={self.todos.length} class="footer">
         <span class="todo-count">
           <strong>{self.remaining}</strong>
-          {self.$t('todo.item_unit', { unit: self.pluralize(self.remaining, '') })}
+          {self.$t('todo.item_unit', {
+            unit: self.pluralize(self.remaining, ''),
+          })}
         </span>
         <ul class="filters">
           {self.objectToArray(self.filters).map(filter => (
             <li>
-              {self.visibility === filter.key
-                ? self.$t(`todo.filter.${filter.key}`)
-                : <a
+              {self.visibility === filter.key ? (
+                self.$t(`todo.filter.${filter.key}`)
+              ) : (
+                <a
                   href={`#/${filter.key}`}
                   class={self.visibility === filter.key ? 'selected' : ''}
                   onClick={() => {
@@ -57,12 +62,12 @@ const template = (h: CreateElement, self: List) => {
                 >
                   {self.$t(`todo.filter.${filter.key}`)}
                 </a>
-              }
+              )}
             </li>
           ))}
         </ul>
         <button
-          v-show={ self.todos.length > self.remaining }
+          v-show={self.todos.length > self.remaining}
           class="clear-completed"
           onClick={self.clearCompleted}
         >
@@ -124,7 +129,11 @@ class List extends Vue {
   }
 
   get filteredTodos() {
-    if (this.visibility === 'all' || this.visibility === 'active' || this.visibility === 'completed') {
+    if (
+      this.visibility === 'all' ||
+      this.visibility === 'active' ||
+      this.visibility === 'completed'
+    ) {
       return this.filters[this.visibility](this.todos);
     }
 
@@ -156,7 +165,7 @@ class List extends Vue {
   }
 
   public pluralize(wordLength: number, word: string): string {
-    return wordLength === 1 ? word : (word + 's');
+    return wordLength === 1 ? word : word + 's';
   }
 
   public capitalize(word: string): string {

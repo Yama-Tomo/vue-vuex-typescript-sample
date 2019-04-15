@@ -6,7 +6,7 @@ export interface User {
 export interface AuthState {
   busy: boolean;
   loggedIn: boolean;
-  redirect: null|string;
+  redirect: null | string;
   strategy: string;
   user: User;
 }

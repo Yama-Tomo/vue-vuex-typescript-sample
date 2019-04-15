@@ -23,7 +23,10 @@ export default class Top {
   }
 
   public async assertThisPageVisited() {
-    await this.page.waitForSelector('#__layout > div > div:nth-child(3) > section > header > h1', { visible: true });
+    await this.page.waitForSelector(
+      '#__layout > div > div:nth-child(3) > section > header > h1',
+      { visible: true }
+    );
   }
 
   public async gotoLogin(cb?: () => void) {
@@ -38,15 +41,21 @@ export default class Top {
 
   public async inputTodo(todoContent: string) {
     // eslint-disable-next-line quotes
-    await this.page.type('#__layout > div > div:nth-child(3) > section > header > input', todoContent + "\n");
+    await this.page.type(
+      '#__layout > div > div:nth-child(3) > section > header > input',
+      todoContent + '\n'
+    );
   }
 
-  public async editTodo(todoContent: string, liElement: ElementHandle<Element>) {
+  public async editTodo(
+    todoContent: string,
+    liElement: ElementHandle<Element>
+  ) {
     await getElement(liElement, 'label').then(e => e.click({ clickCount: 2 }));
     await page.waitFor(100);
 
     const inputEle = await (() => {
-      return liElement.$('input.edit').then((e) => {
+      return liElement.$('input.edit').then(e => {
         if (e === null) throw new Error('not found input element');
 
         return e;
@@ -55,16 +64,20 @@ export default class Top {
 
     await deleteAll(inputEle);
     // eslint-disable-next-line quotes
-    await inputEle.type(todoContent + "\n");
+    await inputEle.type(todoContent + '\n');
     await page.waitFor(100);
   }
 
   public getTodoElements() {
-    return this.page.$$('#__layout > div > div:nth-child(3) > section > section > ul > li');
+    return this.page.$$(
+      '#__layout > div > div:nth-child(3) > section > section > ul > li'
+    );
   }
 
   public getTodoContent(liElement: ElementHandle<Element>) {
-    return getElement(liElement, 'label').then(e => page.evaluate(_e => (_e as Element).textContent, e));
+    return getElement(liElement, 'label').then(e =>
+      page.evaluate(_e => (_e as Element).textContent, e)
+    );
   }
 
   public removeTodo(liElement: ElementHandle<Element>) {
@@ -72,30 +85,44 @@ export default class Top {
   }
 
   public completeTodo(liElement: ElementHandle<Element>) {
-    return getElement(liElement, 'input[type=\'checkbox\']').then(e => e.click());
+    return getElement(liElement, "input[type='checkbox']").then(e => e.click());
   }
 
   public getActiveTodoElements() {
-    return this.page.$$('#__layout > div > div:nth-child(3) > section > section > ul > li input[type=\'checkbox\']:checked');
+    return this.page.$$(
+      "#__layout > div > div:nth-child(3) > section > section > ul > li input[type='checkbox']:checked"
+    );
   }
 
   public getCompletedTodoElements() {
-    return this.page.$$('#__layout > div > div:nth-child(3) > section > section > ul > li input[type=\'checkbox\']:not(:checked)');
+    return this.page.$$(
+      "#__layout > div > div:nth-child(3) > section > section > ul > li input[type='checkbox']:not(:checked)"
+    );
   }
 
   public filterActiveTodo() {
-    return this.page.click('#__layout > div > div:nth-child(3) > section > footer > ul > li:nth-child(2) > a');
+    return this.page.click(
+      '#__layout > div > div:nth-child(3) > section > footer > ul > li:nth-child(2) > a'
+    );
   }
 
   public filterCompletedTodo() {
-    return this.page.click('#__layout > div > div:nth-child(3) > section > footer > ul > li:nth-child(3) > a');
+    return this.page.click(
+      '#__layout > div > div:nth-child(3) > section > footer > ul > li:nth-child(3) > a'
+    );
   }
 
   public async gotoOtherLangThisPage(cb?: () => void) {
     const currentUrl = await this.page.url();
 
-    await this.page.click('#__layout > div > div:nth-child(5) > a:nth-child(4)');
-    await this.page.waitForFunction(c => window.location.href !== c, { polling: 'raf' }, currentUrl);
+    await this.page.click(
+      '#__layout > div > div:nth-child(5) > a:nth-child(4)'
+    );
+    await this.page.waitForFunction(
+      c => window.location.href !== c,
+      { polling: 'raf' },
+      currentUrl
+    );
 
     if (!cb) {
       await this.assertThisPageVisited();

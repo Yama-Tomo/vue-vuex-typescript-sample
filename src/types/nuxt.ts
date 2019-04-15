@@ -19,7 +19,9 @@ interface AuthModule {
   // TODO: _errorListeners, $storage, $stateの定義を充実させる
 }
 
-type ReplacedTypeNuxtContext<T> = { [K in keyof T]: T[K] extends Response ? OutgoingMessage : T[K] }
+type ReplacedTypeNuxtContext<T> = {
+  [K in keyof T]: T[K] extends Response ? OutgoingMessage : T[K]
+};
 
 export namespace Nuxt {
   export interface Context extends ReplacedTypeNuxtContext<OrgContext> {

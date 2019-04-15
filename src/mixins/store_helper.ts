@@ -1,21 +1,29 @@
 import { Vue, Component } from 'nuxt-property-decorator';
 import { Store } from 'vuex';
-import { StateMaps, ActionMaps, GettersMaps } from '../store_modules/module_mapper';
+import {
+  StateMaps,
+  ActionMaps,
+  GettersMaps,
+} from '../store_modules/module_mapper';
 
 export type Actions<A> = {
   [K in keyof A]: (payload: A[K]) => Promise<any> | void
 };
 
-export type Getters<G> = {
-  [K in keyof G]: G[K]
-};
+export type Getters<G> = { [K in keyof G]: G[K] };
 
 export class StoreHelper {
-  public static getState<K extends keyof StateMaps>(store: Store<any>, module: K): StateMaps[K] {
+  public static getState<K extends keyof StateMaps>(
+    store: Store<any>,
+    module: K
+  ): StateMaps[K] {
     return store.state[module];
   }
 
-  public static getGetters<K extends keyof GettersMaps>(store: Store<any>, module: K): Getters<GettersMaps[K]> {
+  public static getGetters<K extends keyof GettersMaps>(
+    store: Store<any>,
+    module: K
+  ): Getters<GettersMaps[K]> {
     return Object.keys(store.getters).reduce((getters: any, name: string) => {
       const namespacePaths = name.split('/');
 
@@ -32,21 +40,28 @@ export class StoreHelper {
     }, {});
   }
 
-  public static getActions<K extends keyof ActionMaps>(store: Store<any>, module: K): Actions<ActionMaps[K]> {
-    return Object.keys((store as any)._actions).reduce((actions: any, name: string) => {
-      const namespacePaths = name.split('/');
+  public static getActions<K extends keyof ActionMaps>(
+    store: Store<any>,
+    module: K
+  ): Actions<ActionMaps[K]> {
+    return Object.keys((store as any)._actions).reduce(
+      (actions: any, name: string) => {
+        const namespacePaths = name.split('/');
 
-      if (namespacePaths.length === 1) {
-        actions[name] = (payload: any) => store.dispatch(name, payload);
-      } else {
-        if (module !== namespacePaths[0]) {
-          return actions;
+        if (namespacePaths.length === 1) {
+          actions[name] = (payload: any) => store.dispatch(name, payload);
+        } else {
+          if (module !== namespacePaths[0]) {
+            return actions;
+          }
+          actions[namespacePaths[1]] = (payload: any) =>
+            store.dispatch(name, payload);
         }
-        actions[namespacePaths[1]] = (payload: any) => store.dispatch(name, payload);
-      }
 
-      return actions;
-    }, {});
+        return actions;
+      },
+      {}
+    );
   }
 }
 

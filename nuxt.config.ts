@@ -8,7 +8,8 @@ const isDev = process.env.NODE_ENV === 'development';
 
 export default {
   server: {
-    host, port,
+    host,
+    port,
   },
   env: {
     baseUrl: process.env.BASE_URL || `http://${host}:${port}`,
@@ -21,9 +22,7 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'Nuxt.js project' },
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-    ],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
   loading: { color: '#3B8070' },
   css: ['~/assets/css/main.scss'],
@@ -34,9 +33,7 @@ export default {
       warningsFilter: /export .* was not found in/,
     },
   },
-  watch: [
-    '~/serverMiddleware/*.ts',
-  ],
+  watch: ['~/serverMiddleware/*.ts'],
   hooks: {
     ready: (nuxt: any) => {
       process.on('SIGINT', () => {
@@ -58,23 +55,24 @@ export default {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/auth',
-    ['nuxt-i18n', {
-      parsePages: false,
-      defaultLocale: 'en',
-      rootRedirect: 'en',
-      lazy: true,
-      locales: [
-        { code: 'en', iso: 'en-US', file: 'en.ts' },
-        { code: 'ja', iso: 'ja', file: 'ja.ts' },
-      ],
-      langDir: 'i18n/',
-      strategy: 'prefix',
-      detectBrowserLanguage: false,
-    }],
+    [
+      'nuxt-i18n',
+      {
+        parsePages: false,
+        defaultLocale: 'en',
+        rootRedirect: 'en',
+        lazy: true,
+        locales: [
+          { code: 'en', iso: 'en-US', file: 'en.ts' },
+          { code: 'ja', iso: 'ja', file: 'ja.ts' },
+        ],
+        langDir: 'i18n/',
+        strategy: 'prefix',
+        detectBrowserLanguage: false,
+      },
+    ],
   ],
-  plugins: [
-    '~/plugins/axios_cookie_proxy.ts',
-  ],
+  plugins: ['~/plugins/axios_cookie_proxy.ts'],
   axios: {
     host,
     port,

@@ -4,7 +4,9 @@ const config = {
       tsConfig: 'tsconfig.jest.json',
     },
     url: {
-      base: process.env.base_url ? process.env.base_url : `http://localhost:${process.env.NUXT_PORT || 3100}`,
+      base: process.env.base_url
+        ? process.env.base_url
+        : `http://localhost:${process.env.NUXT_PORT || 3100}`,
     },
     timeout: 60000,
     user: {
@@ -21,17 +23,11 @@ const config = {
     '^@/(.*)$': '<rootDir>/src/$1',
     '^~/(.*)$': '<rootDir>/src/$1',
   },
-  moduleFileExtensions: [
-    'ts',
-    'tsx',
-    'js',
-    'jsx',
-    'json',
-    'node',
-  ],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
 };
 
-const isNeedPuppeteer = !process.argv.filter(arg => arg.indexOf('__tests__/') !== -1).length ||
+const isNeedPuppeteer =
+  !process.argv.filter(arg => arg.indexOf('__tests__/') !== -1).length ||
   process.argv.filter(arg => arg.indexOf('__tests__/e2e') !== -1).length;
 
 if (isNeedPuppeteer) {

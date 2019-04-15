@@ -24,6 +24,8 @@ export default class About extends Vue {
   @Prop(Object)
   public error!: Error;
 
-  get statusCode(): number { return this.error.statusCode; }
+  get statusCode(): number {
+    return this.error.statusCode;
+  }
 }
 </script>

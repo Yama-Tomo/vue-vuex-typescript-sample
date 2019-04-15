@@ -4,24 +4,38 @@
       Vuex tutorial with typescript and Nuxt.js
     </header>
     <div class="signin">
-      <nuxt-link v-if="!isLoggedIn && currentPath != localePath('login')" :to="toLoginWithRedirectParam">
+      <nuxt-link
+        v-if="!isLoggedIn && currentPath != localePath('login')"
+        :to="toLoginWithRedirectParam"
+      >
         {{ $t('link.sign_in') }}
       </nuxt-link>
-      <a v-if="isLoggedIn" :href="localePath('logout')">{{ $t('link.sign_out') }}</a>
+      <a v-if="isLoggedIn" :href="localePath('logout')">{{
+        $t('link.sign_out')
+      }}</a>
     </div>
     <nuxt class="container" />
-    <hr>
+    <hr />
     <div class="container">
-      <nuxt-link v-if="currentPath != localePath('index')" :to="localePath('index')">
+      <nuxt-link
+        v-if="currentPath != localePath('index')"
+        :to="localePath('index')"
+      >
         {{ $t('link.home') }}
       </nuxt-link>
-      <nuxt-link v-if="currentPath != localePath('about')" :to="localePath('about')">
+      <nuxt-link
+        v-if="currentPath != localePath('about')"
+        :to="localePath('about')"
+      >
         {{ $t('link.about') }}
       </nuxt-link>
-      <nuxt-link v-if="currentPath != localePath('secret')" :to="localePath('secret')">
+      <nuxt-link
+        v-if="currentPath != localePath('secret')"
+        :to="localePath('secret')"
+      >
         {{ $t('link.secret') }}
       </nuxt-link>
-      <br>
+      <br />
       {{ $t('other_lang') }}:
       <template v-for="locale in locales">
         <nuxt-link
@@ -42,7 +56,7 @@ import { StoreHelperMixin } from '../mixins/store_helper';
 import { modules } from '../store_modules/module_mapper';
 import { AuthState } from '../store_modules/auth/state';
 
-type Locales = { [key: string]: { [key: string]: string } }
+type Locales = { [key: string]: { [key: string]: string } };
 
 @Component
 export default class DefaultLayout extends mixins(StoreHelperMixin) {
@@ -59,7 +73,11 @@ export default class DefaultLayout extends mixins(StoreHelperMixin) {
   }
 
   get toLoginWithRedirectParam(): string {
-    return this.localePath('login') + '?redirect=' + encodeURIComponent(this.$route.fullPath);
+    return (
+      this.localePath('login') +
+      '?redirect=' +
+      encodeURIComponent(this.$route.fullPath)
+    );
   }
 
   get locales(): Locales {
@@ -69,7 +87,7 @@ export default class DefaultLayout extends mixins(StoreHelperMixin) {
 </script>
 
 <style scoped lang="scss">
-@import "../assets/css/variables";
+@import '../assets/css/variables';
 
 .header {
   background-color: $nuxt-color;
