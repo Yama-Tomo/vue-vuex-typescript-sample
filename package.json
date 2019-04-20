@@ -41,7 +41,7 @@
     "@types/node": "10.14.5",
     "@types/puppeteer": "1.12.3",
     "@types/webpack": "4.4.27",
-    "@typescript-eslint/eslint-plugin": "1.6.0",
+    "@typescript-eslint/eslint-plugin": "1.7.0",
     "eslint": "5.16.0",
     "eslint-config-prettier": "4.1.0",
     "eslint-config-standard": "12.0.0",
