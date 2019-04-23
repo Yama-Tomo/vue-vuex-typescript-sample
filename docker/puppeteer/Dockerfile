@@ -15,6 +15,7 @@ RUN apk update && apk upgrade \
       procps \
       git \
     && npm i -g npm \
+    && npm i -g yarn \
     && rm -rf /var/lib/apt/lists/* \
               /var/cache/apk/* \
               /usr/share/man \
@@ -24,4 +25,4 @@ RUN apk update && apk upgrade \
 COPY docker/puppeteer/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
-CMD bash -c "npm i --no-progress && npm run test -- -i"
+CMD bash -c "yarn --no-progress && yarn test -i"

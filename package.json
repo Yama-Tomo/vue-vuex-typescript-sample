@@ -17,7 +17,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": ["npm run lint -- --fix", "git add"]
+    "*.{js,jsx,ts,tsx}": ["yarn lint --fix", "git add"]
   },
   "dependencies": {
     "@nuxtjs/auth": "github:Yama-Tomo/auth-module#feature/allow_redirect_setting_by_function",
