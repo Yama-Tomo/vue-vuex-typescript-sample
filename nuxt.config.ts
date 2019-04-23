@@ -72,7 +72,10 @@ export default {
       },
     ],
   ],
-  plugins: ['~/plugins/axios_cookie_proxy.ts'],
+  plugins: [
+    '~/plugins/axios_cookie_proxy.ts',
+    { src: '~/plugins/external_lib_import.ts', ssr: false },
+  ],
   axios: {
     host,
     port,
