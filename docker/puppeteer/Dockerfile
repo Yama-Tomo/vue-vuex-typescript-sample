@@ -22,7 +22,7 @@ RUN apk update && apk upgrade \
               /root/.npm \
               /tmp/*
 
-COPY docker/puppeteer/entrypoint.sh /usr/local/bin/entrypoint.sh
+COPY puppeteer/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD bash -c "yarn --no-progress && yarn test -i"
