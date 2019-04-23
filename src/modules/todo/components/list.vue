@@ -8,7 +8,7 @@
         autocomplete="off"
         placeholder="What needs to be done?"
         @keyup.enter="addTodo($event)"
-      >
+      />
     </header>
     <section v-show="todos.length" class="main">
       <input
@@ -17,7 +17,7 @@
         type="checkbox"
         :checked="allChecked"
         @change="toggleAll(!allChecked)"
-      >
+      />
       <label for="toggle-all" />
       <ul class="todo-list">
         <Item
@@ -39,7 +39,8 @@
             :href="'#/' + key"
             :class="{ selected: visibility === key }"
             @click="visibility = key"
-          >{{ capitalize(key) }}</a>
+            >{{ capitalize(key) }}</a
+          >
         </li>
       </ul>
       <button
@@ -53,7 +54,7 @@
   </section>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import { TodoState } from '../store/state';
 import Todo from '../store/state/todo';
@@ -95,7 +96,11 @@ export default class List extends Vue {
   }
 
   get filteredTodos() {
-    if (this.visibility === 'all' || this.visibility === 'active' || this.visibility === 'completed') {
+    if (
+      this.visibility === 'all' ||
+      this.visibility === 'active' ||
+      this.visibility === 'completed'
+    ) {
       return this.filters[this.visibility](this.todos);
     }
 
@@ -125,7 +130,7 @@ export default class List extends Vue {
   }
 
   public pluralize(wordLength: number, word: string): string {
-    return wordLength === 1 ? word : (word + 's');
+    return wordLength === 1 ? word : word + 's';
   }
 
   public capitalize(word: string): string {

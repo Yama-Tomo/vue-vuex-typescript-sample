@@ -10,7 +10,8 @@ export default (): TodoState => ({
 });
 
 export const initialStateResolver = (state: TodoState, initialState: any) => {
-  const canStateSetup = initialState.hasOwnProperty(modules.todo) &&
+  const canStateSetup =
+    initialState.hasOwnProperty(modules.todo) &&
     initialState[modules.todo].hasOwnProperty('todos') &&
     Array.isArray(initialState[modules.todo].todos);
 
@@ -22,7 +23,11 @@ export const initialStateResolver = (state: TodoState, initialState: any) => {
   for (let i = 0; i <= todos.length; i++) {
     const todo = todos[i];
 
-    if (typeof todo === 'object' && todo.hasOwnProperty('text') && todo.hasOwnProperty('done')) {
+    if (
+      typeof todo === 'object' &&
+      todo.hasOwnProperty('text') &&
+      todo.hasOwnProperty('done')
+    ) {
       state.todos.push(new Todo(todo.text as string, !!todo.done));
     }
   }

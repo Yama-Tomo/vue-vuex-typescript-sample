@@ -5,9 +5,7 @@ export type Actions<A> = {
   [K in keyof A]: (payload: A[K]) => Promise<any> | void
 };
 
-export type Getters<G> = {
-  [K in keyof G]: G[K]
-};
+export type Getters<G> = { [K in keyof G]: G[K] };
 
 /**
  * vuexがinjectするストアからstate, getter, actionを型付けしつつ返します
@@ -20,37 +18,48 @@ export class StoreHelperMixin extends Vue {
     return this.$store.state[module];
   }
 
-  public getGetters<K extends keyof GettersMaps>(module: K): Getters<GettersMaps[K]> {
-    return Object.keys(this.$store.getters).reduce((getters: any, name: string) => {
-      const namespacePaths = name.split('/');
+  public getGetters<K extends keyof GettersMaps>(
+    module: K
+  ): Getters<GettersMaps[K]> {
+    return Object.keys(this.$store.getters).reduce(
+      (getters: any, name: string) => {
+        const namespacePaths = name.split('/');
 
-      if (namespacePaths.length === 1) {
-        getters[name] = this.$store.getters[name];
-      } else {
-        if (module !== namespacePaths[0]) {
-          return getters;
+        if (namespacePaths.length === 1) {
+          getters[name] = this.$store.getters[name];
+        } else {
+          if (module !== namespacePaths[0]) {
+            return getters;
+          }
+          getters[namespacePaths[1]] = this.$store.getters[name];
         }
-        getters[namespacePaths[1]] = this.$store.getters[name];
-      }
 
-      return getters;
-    }, {});
+        return getters;
+      },
+      {}
+    );
   }
 
-  public getActions<K extends keyof ActionMaps>(module: K): Actions<ActionMaps[K]> {
-    return Object.keys((this.$store as any)._actions).reduce((actions: any, name: string) => {
-      const namespacePaths = name.split('/');
+  public getActions<K extends keyof ActionMaps>(
+    module: K
+  ): Actions<ActionMaps[K]> {
+    return Object.keys((this.$store as any)._actions).reduce(
+      (actions: any, name: string) => {
+        const namespacePaths = name.split('/');
 
-      if (namespacePaths.length === 1) {
-        actions[name] = (payload: any) => this.$store.dispatch(name, payload);
-      } else {
-        if (module !== namespacePaths[0]) {
-          return actions;
+        if (namespacePaths.length === 1) {
+          actions[name] = (payload: any) => this.$store.dispatch(name, payload);
+        } else {
+          if (module !== namespacePaths[0]) {
+            return actions;
+          }
+          actions[namespacePaths[1]] = (payload: any) =>
+            this.$store.dispatch(name, payload);
         }
-        actions[namespacePaths[1]] = (payload: any) => this.$store.dispatch(name, payload);
-      }
 
-      return actions;
-    }, {});
+        return actions;
+      },
+      {}
+    );
   }
 }
