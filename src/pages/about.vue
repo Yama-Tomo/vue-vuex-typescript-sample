@@ -26,11 +26,32 @@
 
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator';
+import ExternalLibWrapper from '@/utils/external_lib_wrapper';
 
 @Component({
   auth: false,
 })
-export default class About extends Vue {}
+export default class About extends Vue {
+  public head() {
+    return {
+      script: [
+        {
+          src: 'https://code.jquery.com/jquery-3.4.0.js',
+          integrity: 'sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo=',
+          crossorigin: 'anonymous',
+        },
+      ],
+    };
+  }
+
+  public async created() {
+    if (this.$importJQuery) {
+      await this.$importJQuery();
+      // eslint-disable-next-line no-unused-vars,@typescript-eslint/no-unused-vars
+      const jqueryVersion = ExternalLibWrapper.jquery.fn.jquery;
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">

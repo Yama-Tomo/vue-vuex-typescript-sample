@@ -16,5 +16,6 @@ declare module 'vue/types/vue' {
       loginWith: (strategy: string, params: any) => Promise<any>;
       logout: () => Promise<any>;
     };
+    $importJQuery?: () => void;
   }
 }
