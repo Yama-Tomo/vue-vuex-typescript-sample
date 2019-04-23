@@ -18,7 +18,7 @@ services:
       LOCAL_GID:
     volumes:
       - ./:/app
-    command: /bin/sh -c "./docker/puppeteer/wait_for_backend.sh && npm i --no-progress && npm run test -- -i"
+    command: /bin/sh -c "./docker/puppeteer/wait_for_backend.sh && yarn --no-progress && yarn test -i"
     depends_on:
       - backend
 

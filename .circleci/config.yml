@@ -7,14 +7,14 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - nuxt-node-modules-v2-{{ checksum "package-lock.json" }}
+            - nuxt-node-modules-v2-{{ checksum "yarn.lock" }}
       - run:
           command: |
             LOCAL_UID=$(id -u $USER) LOCAL_GID=$(id -g $USER) \
             docker-compose -f docker-compose-circleci.yml run \
               -e user_password=$E2E_USER_PASSWORD -e user_email=$E2E_USER_EMAIL --rm puppeteer
       - save_cache:
-          key: nuxt-node-modules-v2-{{ checksum "package-lock.json" }}
+          key: nuxt-node-modules-v2-{{ checksum "yarn.lock" }}
           paths: node_modules
 
 workflows:
