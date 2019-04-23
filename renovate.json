@@ -8,6 +8,9 @@
   "minor": {
     "groupName": "all dependencies [minor]"
   },
+  "bundler": {
+    "enabled": true
+  },
   "patch": {
     "groupName": "all dependencies [patch]",
     "automerge": true
