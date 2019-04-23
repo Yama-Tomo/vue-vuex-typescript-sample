@@ -37,14 +37,16 @@ const actions: DefineActions<TodoActions, TodoState, TodoMutations> = {
     commit('updateTodo', { todo, done: !todo.done });
   },
   toggleAll({ state, commit }, { done }) {
-    state.todos.forEach((todo) => {
+    state.todos.forEach(todo => {
       commit('updateTodo', { todo, done });
     });
   },
   clearCompleted({ state, commit }) {
-    state.todos.filter(todo => todo.done).forEach((todo) => {
-      commit('removeTodo', todo);
-    });
+    state.todos
+      .filter(todo => todo.done)
+      .forEach(todo => {
+        commit('removeTodo', todo);
+      });
   },
 };
 

@@ -1,4 +1,4 @@
-<script lang='tsx'>
+<script lang="tsx">
 import { CreateElement } from 'vue';
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import * as vts from 'vue-tsx-support';
@@ -10,26 +10,31 @@ import { HTMLElementEvent } from '../../../types/dom';
 const template = (h: CreateElement, self: Item) => {
   return (
     <li
-      class={ [
+      class={[
         'todo',
-        ...self.todo.done ? ['completed'] : [],
-        ...self.editing ? ['editing'] : [],
-      ].join(' ') }
+        ...(self.todo.done ? ['completed'] : []),
+        ...(self.editing ? ['editing'] : []),
+      ].join(' ')}
     >
-      <div class='view'>
-        <input class='toggle' type='checkbox'
-          checked={ self.todo.done }
-          onChange={ () => self.toggleTodo() }
+      <div class="view">
+        <input
+          class="toggle"
+          type="checkbox"
+          checked={self.todo.done}
+          onChange={() => self.toggleTodo()}
         />
-        <label onDblclick={ () => self.changeEditMode() }>
-          { self.todo.text }
-        </label>
-        <button class='destroy' onClick={ () => self.removeTodo() }>remove</button>
+        <label onDblclick={() => self.changeEditMode()}>{self.todo.text}</label>
+        <button class="destroy" onClick={() => self.removeTodo()}>
+          remove
+        </button>
       </div>
-      <input class='edit' ref='inputText' value={ self.todo.text }
-        v-show={ self.editing }
-        onKeyup={ e => self.onKeyup(e) }
-        onBlur={ e => self.doneEdit(e) }
+      <input
+        class="edit"
+        ref="inputText"
+        value={self.todo.text}
+        v-show={self.editing}
+        onKeyup={e => self.onKeyup(e)}
+        onBlur={e => self.doneEdit(e)}
       />
     </li>
   );
