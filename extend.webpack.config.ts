@@ -21,6 +21,10 @@ class IgnoreNotFoundExportPlugin {
 }
 
 export default function(config: Configuration) {
+  config.externals = {
+    jquery: 'jQuery',
+  };
+
   const useVueI18nLoader = (() => {
     // @ts-ignore
     // TODO: remove any
