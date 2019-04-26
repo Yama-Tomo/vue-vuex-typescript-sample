@@ -1,4 +1,3 @@
-import { OutgoingMessage } from 'http';
 import Vue from 'vue';
 import { Route } from 'vue-router';
 import { Store } from 'vuex';
@@ -19,12 +18,8 @@ interface AuthModule {
   // TODO: _errorListeners, $storage, $stateの定義を充実させる
 }
 
-type ReplacedTypeNuxtContext<T> = {
-  [K in keyof T]: T[K] extends Response ? OutgoingMessage : T[K]
-};
-
 export namespace Nuxt {
-  export interface Context extends ReplacedTypeNuxtContext<OrgContext> {
+  export interface Context extends OrgContext {
     $axios: NuxtAxiosInstance;
     app: Vue & {
       $auth: AuthModule;
