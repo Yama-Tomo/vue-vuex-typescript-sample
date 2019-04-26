@@ -20,6 +20,7 @@ interface AuthModule {
 
 export namespace Nuxt {
   export interface Context extends OrgContext {
+    req: OrgContext['req'] & { body: any };
     $axios: NuxtAxiosInstance;
     app: Vue & {
       $auth: AuthModule;
