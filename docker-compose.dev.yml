@@ -1,0 +1,21 @@
+version: '3.3'
+
+services:
+  backend:
+    image: rust:1.34-slim
+    environment:
+      LANG: ja_JP.UTF-8
+    volumes:
+      - host-dir-on-nfs:/app
+    ports:
+      - '1080:8080'
+    tty: true
+    stdin_open: true
+
+volumes:
+  host-dir-on-nfs:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=host.docker.internal,actimeo=1
+      device: ":${PWD}/__api_new"
