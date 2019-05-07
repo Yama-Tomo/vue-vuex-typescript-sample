@@ -1,0 +1,9 @@
+FROM rust:1.34-slim
+
+WORKDIR /tmp
+
+RUN apt-get update \
+    && apt-get install -y pkg-config libssl-dev \
+    && cargo install cargo-edit cargo-watch
+
+CMD bash

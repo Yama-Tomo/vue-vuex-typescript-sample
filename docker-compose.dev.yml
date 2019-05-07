@@ -2,11 +2,14 @@ version: '3.3'
 
 services:
   backend:
-    image: rust:1.34-slim
+    build:
+      dockerfile: ../docker/rust/Dockerfile.dev
+      context: __api_new
     environment:
       LANG: ja_JP.UTF-8
     volumes:
       - host-dir-on-nfs:/app
+      - /app/target
     ports:
       - '1080:8080'
     tty: true
