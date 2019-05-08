@@ -8808,10 +8808,10 @@ vuex-type-helper@1.2.2:
   resolved "https://registry.yarnpkg.com/vuex-type-helper/-/vuex-type-helper-1.2.2.tgz#a0d4d1d440bbb64df5b469bc65001935372b1a73"
   integrity sha512-s8SKx952+eKyfgne2i74rup2u6vEfV12rFO0o43XpmU2SPtprnx+9Dm0g3eWiKmfoiCLkVhUshwwFb9pfo7LpQ==
 
-vuex@3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/vuex/-/vuex-3.1.0.tgz#634b81515cf0cfe976bd1ffe9601755e51f843b9"
-  integrity sha512-mdHeHT/7u4BncpUZMlxNaIdcN/HIt1GsGG5LKByArvYG/v6DvHcOxvDCts+7SRdCoIRGllK8IMZvQtQXLppDYg==
+vuex@3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/vuex/-/vuex-3.1.1.tgz#0c264bfe30cdbccf96ab9db3177d211828a5910e"
+  integrity sha512-ER5moSbLZuNSMBFnEBVGhQ1uCBNJslH9W/Dw2W7GZN23UQA69uapP5GTT9Vm8Trc0PzBSVt6LzF3hGjmv41xcg==
 
 watchpack@^1.5.0:
   version "1.6.0"
