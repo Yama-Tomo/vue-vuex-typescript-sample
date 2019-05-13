@@ -2,8 +2,9 @@ import * as path from 'path';
 import { Configuration, Compiler } from 'webpack';
 import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
 
-// tslint:disable-next-line:no-var-requires
-const defaultConfigHash = require('hard-source-webpack-plugin/lib/defaultConfigHash');
+const defaultConfigHash: (
+  config: Configuration
+) => string = require('hard-source-webpack-plugin/lib/defaultConfigHash');
 
 // https://github.com/TypeStrong/ts-loader/issues/653#issuecomment-390889335
 class IgnoreNotFoundExportPlugin {
@@ -63,12 +64,13 @@ export default function(config: Configuration) {
           './node_modules/.cache/hard-source/[confighash]'
         ),
         configHash: (webpackConfig?: Configuration) =>
-          defaultConfigHash(webpackConfig) + '-' + process.env.NODE_ENV,
+          (webpackConfig ? defaultConfigHash(webpackConfig) : '') +
+          `-${process.env.NODE_ENV}`,
       })
     );
 
     config.plugins.push(
-      new (HardSourceWebpackPlugin as any).ExcludeModulePlugin([
+      new HardSourceWebpackPlugin.ExcludeModulePlugin([
         { test: /extract-css-chunks-webpack-plugin[\\/]dist[\\/]loader/ },
       ])
     );
