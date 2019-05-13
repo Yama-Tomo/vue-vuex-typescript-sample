@@ -2,6 +2,7 @@ import Vue from 'vue';
 import { Route } from 'vue-router';
 import { Store } from 'vuex';
 import { Context as OrgContext } from '@nuxt/vue-app/types';
+// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
 import { NuxtAxiosInstance } from '@nuxtjs/axios';
 import VueI18n, { IVueI18n } from 'vue-i18n';
 // NOTE: 型定義を手動でimportしないとコンポーネント内でlocalePathがコンパイルエラーで呼び出せないのでここでimportしておく
@@ -21,7 +22,6 @@ interface AuthModule {
 export namespace Nuxt {
   export interface Context extends OrgContext {
     req: OrgContext['req'] & { body: any };
-    $axios: NuxtAxiosInstance;
     app: Vue & {
       $auth: AuthModule;
       store: Store<any>;
