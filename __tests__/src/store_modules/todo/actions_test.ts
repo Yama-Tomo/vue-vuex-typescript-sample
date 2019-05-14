@@ -17,7 +17,7 @@ const { context, commit } = actionContextHelper<
   {},
   TodoActions,
   TodoMutations
->();
+>({ todos: [] });
 
 afterEach(() => jest.resetAllMocks());
 
