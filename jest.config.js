@@ -15,6 +15,7 @@ const config = {
     },
   },
   transform: {
+    '.*\\.(vue)$': 'vue-jest',
     '\\.(ts|tsx)$': 'ts-jest',
   },
   testMatch: ['**/__tests__/**/*_test.[jt]s?(x)'],
@@ -23,10 +24,11 @@ const config = {
     '^@/(.*)$': '<rootDir>/src/$1',
     '^~/(.*)$': '<rootDir>/src/$1',
   },
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node', 'vue'],
   coverageDirectory: './coverage/',
   collectCoverage: true,
   collectCoverageFrom: ['./src/**'],
+  snapshotSerializers: ['jest-serializer-vue'],
 };
 
 const isNeedPuppeteer =
