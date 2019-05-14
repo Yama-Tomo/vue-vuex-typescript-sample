@@ -9,7 +9,8 @@
     "build": "nuxt build && tsc -p tsconfig.nuxt-config.json",
     "start": "./server.js start -c .nuxt/ts-compiled/nuxt.config.js",
     "start:with_ts_node": "nuxt start",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "coverage": "codecov"
   },
   "husky": {
     "hooks": {
