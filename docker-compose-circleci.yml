@@ -16,9 +16,10 @@ services:
       BACKEND_HOST: http://backend:3101
       LOCAL_UID:
       LOCAL_GID:
+      CODECOV_TOKEN:
     volumes:
       - ./:/app
-    command: /bin/sh -c "./docker/puppeteer/wait_for_backend.sh && yarn --no-progress && yarn test -i"
+    command: /bin/sh -c "./docker/puppeteer/wait_for_backend.sh && yarn --no-progress && yarn test -i && yarn coverage"
     depends_on:
       - backend
 

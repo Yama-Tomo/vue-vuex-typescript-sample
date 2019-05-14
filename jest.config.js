@@ -24,6 +24,9 @@ const config = {
     '^~/(.*)$': '<rootDir>/src/$1',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  coverageDirectory: './coverage/',
+  collectCoverage: true,
+  collectCoverageFrom: ['./src/**'],
 };
 
 const isNeedPuppeteer =
