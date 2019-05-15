@@ -29,6 +29,9 @@ export default {
   build: {
     extractCSS: !isDev,
     extend: extendWebpackConfig,
+    typescript: {
+      ignoreNotFoundWarnings: true,
+    },
   },
   watch: ['~/serverMiddleware/*.ts'],
   hooks: {
