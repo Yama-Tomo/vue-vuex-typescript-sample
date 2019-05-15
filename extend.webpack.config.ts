@@ -1,25 +1,10 @@
 import * as path from 'path';
-import { Configuration, Compiler } from 'webpack';
+import { Configuration } from 'webpack';
 import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
 
 const defaultConfigHash: (
   config: Configuration
 ) => string = require('hard-source-webpack-plugin/lib/defaultConfigHash');
-
-// https://github.com/TypeStrong/ts-loader/issues/653#issuecomment-390889335
-class IgnoreNotFoundExportPlugin {
-  public apply(compiler: Compiler) {
-    compiler.hooks.done.tap('warnfix-plugin', stats => {
-      const messageRegExp = /export .* was not found in/;
-      stats.compilation.warnings = stats.compilation.warnings.filter(warn => {
-        return !(
-          warn.name === 'ModuleDependencyWarning' &&
-          messageRegExp.test(warn.message)
-        );
-      });
-    });
-  }
-}
 
 export default function(config: Configuration) {
   config.externals = {
@@ -57,7 +42,6 @@ export default function(config: Configuration) {
   }
 
   if (config.plugins) {
-    config.plugins.push(new IgnoreNotFoundExportPlugin());
     config.plugins.push(
       new HardSourceWebpackPlugin({
         cacheDirectory: path.resolve(
