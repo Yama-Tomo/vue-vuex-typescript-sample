@@ -3,6 +3,14 @@ const config = {
     'ts-jest': {
       tsConfig: 'tsconfig.jest.json',
     },
+    'vue-jest': {
+      babelConfig: {
+        presets: [
+          ['@babel/preset-env', { useBuiltIns: 'entry', corejs: 3 }],
+          '@vue/babel-preset-jsx',
+        ],
+      },
+    },
     url: {
       base: process.env.base_url
         ? process.env.base_url
