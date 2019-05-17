@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly 1`] = `
+<li
+  class="todo editing"
+>
+  <div
+    class="view"
+  >
+    <input
+      class="toggle"
+      type="checkbox"
+    />
+    <label>
+      aaa
+    </label>
+    <button
+      class="destroy"
+    >
+      [Mocked i18n] todo.remove
+    </button>
+  </div>
+  <input
+    class="edit"
+  />
+</li>
+`;
