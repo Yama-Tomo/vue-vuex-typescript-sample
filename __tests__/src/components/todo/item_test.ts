@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import { mount } from '@vue/test-utils';
 import Component from '@/components/todo/item.vue';
 import { TodoActions } from '@/store_modules/todo/actions';
