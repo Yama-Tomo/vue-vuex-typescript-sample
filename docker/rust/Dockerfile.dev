@@ -4,6 +4,8 @@ WORKDIR /tmp
 
 RUN apt-get update \
     && apt-get install -y pkg-config libssl-dev \
-    && cargo install cargo-edit cargo-watch
+    && apt-get install -y sqlite3 libsqlite3-dev \
+    && cargo install cargo-edit cargo-watch \
+    && cargo install diesel_cli --no-default-features --features sqlite
 
 CMD bash
