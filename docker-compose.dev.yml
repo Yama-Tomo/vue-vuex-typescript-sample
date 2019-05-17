@@ -8,17 +8,11 @@ services:
     environment:
       LANG: ja_JP.UTF-8
     volumes:
-      - host-dir-on-nfs:/app
+      - ./__api_new:/app
       - /app/target
+      - /app/tmp
     ports:
       - '1080:8080'
     tty: true
     stdin_open: true
 
-volumes:
-  host-dir-on-nfs:
-    driver: local
-    driver_opts:
-      type: nfs
-      o: addr=host.docker.internal,actimeo=1
-      device: ":${PWD}/__api_new"
