@@ -1,0 +1,29 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "baseBranches": ["nuxt", "vue"],
+  "timezone": "Asia/Tokyo",
+  "labels": ["renovate"],
+  "minor": {
+    "groupName": "all dependencies [minor]"
+  },
+  "bundler": {
+    "enabled": true
+  },
+  "patch": {
+    "groupName": "all dependencies [patch]",
+    "automerge": true
+  },
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": [
+      "before 10am on the first day of the month"
+    ]
+  },
+  "force": {
+    "lockFileMaintenance": {
+      "enabled": true
+    }
+  }
+}
