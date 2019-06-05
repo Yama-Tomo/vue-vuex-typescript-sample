@@ -19,7 +19,7 @@ services:
       CODECOV_TOKEN:
     volumes:
       - ./:/app
-    command: /bin/sh -c "./docker/puppeteer/wait_for_backend.sh && yarn --no-progress && yarn test -i && yarn coverage"
+    command: /bin/sh -c "./docker/puppeteer/wait_for_backend.sh && yarn --no-progress && yarn test -i --silent --ci && yarn coverage"
     depends_on:
       - backend
 
