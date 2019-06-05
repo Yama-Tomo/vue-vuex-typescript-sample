@@ -18,11 +18,11 @@ export default (ctx: Nuxt.Context) => {
   ctx.$axios.interceptors.response.use(response => {
     const cookie: string[] | null = response.headers['set-cookie'];
 
-    if (cookie && cookie.length) {
+    if (Array.isArray(cookie) && cookie.length) {
       // NOTE: バックエンドに通信した際に送られるcookieをそのままSSRのレスポンスにも乗っける
       ctx.res.setHeader('Set-Cookie', cookie);
       // NOTE: 複数回，axiosを使った通信に対応するため送られてきたcookieをデフォルトのヘッダーに代入
-      ctx.$axios.defaults.headers.common.cookie = cookie;
+      ctx.$axios.defaults.headers.common.cookie = cookie.join('; ');
     }
 
     return response;
