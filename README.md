@@ -3,6 +3,8 @@
 [![CircleCI](https://circleci.com/gh/Yama-Tomo/vue-vuex-typescript-sample/tree/nuxt.svg?style=shield)](https://circleci.com/gh/Yama-Tomo/vue-vuex-typescript-sample/tree/nuxt)
 [![codecov](https://codecov.io/gh/Yama-Tomo/vue-vuex-typescript-sample/branch/nuxt/graph/badge.svg)](https://codecov.io/gh/Yama-Tomo/vue-vuex-typescript-sample)
 
+:arrow_right: [vue.js only branch](https://github.com/Yama-Tomo/vue-vuex-typescript-sample/tree/vue)
+
 ## get started
 
 - starting api server
