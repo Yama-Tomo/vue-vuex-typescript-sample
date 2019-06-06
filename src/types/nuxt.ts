@@ -17,6 +17,7 @@ interface AuthModule {
   loginWith: (strategy: string, params: any) => Promise<any>;
   logout: () => Promise<any>;
   // TODO: _errorListeners, $storage, $stateの定義を充実させる
+  onRedirect: (cb: (to: string, from: string) => string | undefined) => void;
 }
 
 export namespace Nuxt {

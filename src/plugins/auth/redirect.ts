@@ -7,16 +7,26 @@ export const redirect = {
 };
 
 export default (ctx: Nuxt.Context) => {
-  ctx.app.$auth.options.redirect = {
-    logout: (context: Nuxt.Context) => context.app.localePath('index'),
-    login: (context: Nuxt.Context) => {
-      return `${context.app.localePath('login')}?redirect=${encodeURIComponent(
-        context.route.fullPath
-      )}`;
-    },
-    home: (context: Nuxt.Context) =>
-      context.query.redirect
-        ? context.query.redirect
-        : context.app.localePath('index'),
-  };
+  ctx.app.$auth.onRedirect((to: string) => {
+    if (to === redirect.login) {
+      const redirectUrl = encodeURIComponent(ctx.route.fullPath);
+      return `${ctx.app.localePath('login')}?redirect=${redirectUrl}`;
+    }
+
+    if (to === redirect.logout) {
+      return ctx.app.localePath('index');
+    }
+
+    if (to === redirect.home) {
+      if (ctx.query.redirect) {
+        const redirectUrl = String(ctx.query.redirect);
+        delete ctx.query.redirect;
+        return redirectUrl;
+      }
+
+      return ctx.app.localePath('index');
+    }
+
+    return to;
+  });
 };
