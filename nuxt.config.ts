@@ -1,6 +1,7 @@
 import bodyParser from 'body-parser';
 import passThroughMiddleware from './src/server_middleware/pass_through';
 import extendWebpackConfig from './extend.webpack.config';
+import { redirect as AuthRedirect } from './src/plugins/auth/redirect';
 
 const port = process.env.NUXT_PORT || 3100;
 const host = process.env.NUXT_HOST || '0.0.0.0';
@@ -97,6 +98,7 @@ export default {
         tokenRequired: false,
       },
     },
+    ...{ redirect: AuthRedirect },
     rewriteRedirects: false,
     fullPathRedirect: true,
   },

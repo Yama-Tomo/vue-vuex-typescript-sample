@@ -1,5 +1,11 @@
 import { Nuxt } from '@/types/nuxt';
 
+export const redirect = {
+  login: '/login',
+  logout: '/logout',
+  home: '/home',
+};
+
 export default (ctx: Nuxt.Context) => {
   ctx.app.$auth.options.redirect = {
     logout: (context: Nuxt.Context) => context.app.localePath('index'),
