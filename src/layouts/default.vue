@@ -6,11 +6,11 @@
     <div class="signin">
       <nuxt-link
         v-if="!isLoggedIn && currentPath != localePath('login')"
-        :to="toLoginWithRedirectParam"
+        :to="localePath('login') + redirectParam"
       >
         {{ $t('link.sign_in') }}
       </nuxt-link>
-      <a v-if="isLoggedIn" :href="localePath('logout')">{{
+      <a v-if="isLoggedIn" :href="localePath('logout') + redirectParam">{{
         $t('link.sign_out')
       }}</a>
     </div>
@@ -72,12 +72,8 @@ export default class DefaultLayout extends mixins(StoreHelperMixin) {
     return this.$route.path;
   }
 
-  get toLoginWithRedirectParam(): string {
-    return (
-      this.localePath('login') +
-      '?redirect=' +
-      encodeURIComponent(this.$route.fullPath)
-    );
+  get redirectParam(): string {
+    return '?redirect=' + encodeURIComponent(this.$route.fullPath);
   }
 
   get locales(): Locales {
