@@ -34,7 +34,7 @@ const config = {
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node', 'vue'],
   coverageDirectory: './coverage/',
-  collectCoverage: true,
+  collectCoverage: false,
   collectCoverageFrom: ['./src/**'],
   snapshotSerializers: ['jest-serializer-vue'],
 };
