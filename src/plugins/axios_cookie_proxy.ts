@@ -28,7 +28,7 @@ export default (ctx: Nuxt.Context) => {
             }
 
             const [key] = v.split('=');
-            if (cookie.find(v => v.indexOf(key) < 0)) {
+            if (!cookie.some(v => v.indexOf(key) >= 0)) {
               cookie.push(v);
             }
           });
