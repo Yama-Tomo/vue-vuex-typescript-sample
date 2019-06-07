@@ -14,24 +14,21 @@ export default (ctx: Nuxt.Context) => {
       const currentCookie = ctx.res.getHeader('Set-Cookie');
 
       if (currentCookie) {
-        const castCurrentCookie = Array.isArray(currentCookie)
-          ? currentCookie
-          : isNum(currentCookie)
-          ? [String(currentCookie)]
-          : [currentCookie];
+        ((): (string | undefined)[] =>
+          Array.isArray(currentCookie)
+            ? currentCookie
+            : isNum(currentCookie)
+            ? [String(currentCookie)]
+            : [currentCookie])().forEach(v => {
+          if (!v) {
+            return;
+          }
 
-        (castCurrentCookie as (string | undefined)[])
-          .filter(v => v)
-          .forEach(v => {
-            if (!v) {
-              return;
-            }
-
-            const [key] = v.split('=');
-            if (!cookie.some(v => v.indexOf(key) >= 0)) {
-              cookie.push(v);
-            }
-          });
+          const [key] = v.split('=');
+          if (!cookie.some(v => v.indexOf(key) >= 0)) {
+            cookie.push(v);
+          }
+        });
       }
 
       ctx.res.setHeader('Set-Cookie', cookie);
