@@ -71,7 +71,7 @@
     "puppeteer": "1.17.0",
     "sass-loader": "7.1.0",
     "ts-jest": "24.0.2",
-    "ts-node": "8.2.0",
+    "ts-node": "8.3.0",
     "typescript": "3.5.1",
     "vue-jest": "3.0.4",
     "vue-tsx-support": "2.3.0",
