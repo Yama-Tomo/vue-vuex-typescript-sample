@@ -6,10 +6,10 @@ import * as vts from 'vue-tsx-support';
 import { TodoState } from '../../store_modules/todo/state';
 import { Todo } from '../../store_modules/todo/state/todo';
 import { TodoActions } from '../../store_modules/todo/actions';
-import { InputEvent } from '@/types/dom';
 import { Actions, Getters } from '../../mixins/store_helper';
 import { TodoGetters } from '../../store_modules/todo/getters';
 import Item from './item.vue';
+import { InputEvent } from '@/types/dom';
 
 const template = (h: CreateElement, self: List) => {
   return (

@@ -5,11 +5,11 @@ jest.mock('@/store_modules/todo/state', () => ({
   initialStateResolver: jest.fn(),
 }));
 
+import { Store } from 'vuex';
+import actionContextHelper from '../../../utils/action_context_helper';
 import actions, { TodoActions } from '@/store_modules/todo/actions';
 import { TodoMutations } from '@/store_modules/todo/mutations';
 import { TodoState, initialStateResolver } from '@/store_modules/todo/state';
-import actionContextHelper from '../../../utils/action_context_helper';
-import { Store } from 'vuex';
 
 const store = {} as Store<TodoState>;
 const { context, commit } = actionContextHelper<

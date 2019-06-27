@@ -1,5 +1,5 @@
-import { Nuxt } from '@/types/nuxt';
 import isNum from 'lodash/isNumber';
+import { Nuxt } from '@/types/nuxt';
 
 export default (ctx: Nuxt.Context) => {
   if (!process.server) {

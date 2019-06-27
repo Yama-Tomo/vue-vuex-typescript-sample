@@ -1,3 +1,4 @@
+/* eslint-disable no-redeclare */
 declare global {
   const url: {
     base: string;

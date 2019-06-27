@@ -2,9 +2,9 @@
  * @jest-environment jsdom
  */
 
+import { AxiosResponse } from 'axios';
 import { Nuxt } from '@/types/nuxt';
 import plugin from '@/plugins/axios_cookie_proxy';
-import { AxiosResponse } from 'axios';
 import Mock = jest.Mock;
 
 let target: Parameters<Nuxt.Context['app']['$axios']['onResponse']>[0];
