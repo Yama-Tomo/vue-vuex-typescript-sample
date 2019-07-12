@@ -18,7 +18,7 @@ describe('i18n feature', () => {
 
       await topPage.gotoLogin();
       await loginPage.doLogin(user.email, user.password);
-      expect(currentUrl.indexOf(await page.url()) !== -1).toBeTruthy();
+      expect(currentUrl.includes(await page.url())).toBeTruthy();
     },
     timeout
   );
