@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 
 references:
   node_runtime_config: &node_runtime_config
@@ -6,27 +6,46 @@ references:
     docker:
       - image: node:12.6-alpine
 
+commands:
+  yarn_install:
+    steps:
+      - restore_cache:
+          keys:
+            - nuxt-node-modules-v2-{{ checksum "yarn.lock" }}
+      - run:
+          command: |
+            [ "`which yarn`" != "" ] && yarn || true
+  save_node_module_cache:
+    steps:
+      - save_cache:
+          key: nuxt-node-modules-v2-{{ checksum "yarn.lock" }}
+          paths: node_modules
+
 jobs:
-  build:
-    parallelism: 1
+  lint:
     <<: *node_runtime_config
     steps:
       - checkout
       - run:
           command: apk add --no-cache --update ca-certificates
-      - restore_cache:
-          keys:
-            - nuxt-node-modules-v1-{{ checksum "package-lock.json" }}
-      - run:  
-          command: npm i --no-progress
+      - yarn_install
       - run:
-          command: npm run build
-      - save_cache:
-          key: nuxt-node-modules-v1-{{ checksum "package-lock.json" }}
-          paths: node_modules
+          command: yarn lint .
+      - save_node_module_cache
+  build:
+    <<: *node_runtime_config
+    steps:
+      - checkout
+      - run:
+          command: apk add --no-cache --update ca-certificates
+      - yarn_install
+      - run:
+          command: yarn build
+      - save_node_module_cache
 
 workflows:
   version: 2
   build:
     jobs:
+      - lint
       - build
