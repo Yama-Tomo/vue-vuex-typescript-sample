@@ -10,7 +10,7 @@ export default <T1, T2, T3, T4>(
   const commit = jest.fn();
 
   const context = ({
-    commit: commit,
+    commit,
     state,
   } as any) as ActionContext<T1, T2, T3, T4>;
 

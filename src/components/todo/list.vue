@@ -176,7 +176,7 @@ class List extends Vue {
     const array: Array<{ key: keyof T; value: T[keyof T] }> = [];
 
     for (const key of Object.keys(obj) as Array<keyof T>) {
-      array.push({ key: key, value: obj[key] });
+      array.push({ key, value: obj[key] });
     }
 
     return array;
