@@ -27,7 +27,7 @@
     "@nuxtjs/auth": "4.8.1",
     "@nuxtjs/axios": "5.5.4",
     "body-parser": "1.19.0",
-    "lodash": "4.17.13",
+    "lodash": "4.17.14",
     "nuxt": "2.8.1",
     "nuxt-i18n": "5.12.7",
     "nuxt-property-decorator": "2.3.0",
@@ -73,7 +73,7 @@
     "sass-loader": "7.1.0",
     "ts-jest": "24.0.2",
     "ts-node": "8.3.0",
-    "typescript": "3.5.2",
+    "typescript": "3.5.3",
     "vue-jest": "3.0.4",
     "vue-tsx-support": "2.3.0",
     "yaml-loader": "0.5.0"
