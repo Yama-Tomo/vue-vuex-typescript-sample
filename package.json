@@ -15,7 +15,10 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": ["yarn lint --fix", "git add"]
+    "*.{js,jsx,ts,tsx}": [
+      "yarn lint --fix",
+      "git add"
+    ]
   },
   "dependencies": {
     "vue": "2.6.10",
@@ -26,6 +29,7 @@
   "devDependencies": {
     "@nuxtjs/eslint-config": "1.0.1",
     "@typescript-eslint/eslint-plugin": "1.11.0",
+    "@typescript-eslint/parser": "1.11.0",
     "@vue/cli-plugin-babel": "3.9.2",
     "@vue/cli-plugin-typescript": "3.9.0",
     "@vue/cli-service": "3.9.2",
