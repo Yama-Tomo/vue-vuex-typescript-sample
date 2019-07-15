@@ -1,5 +1,10 @@
 version: 2.1
 
+parameters:
+  run_api_trigger_jobs:
+    type: boolean
+    default: false
+
 commands:
   yarn_install:
     steps:
@@ -21,30 +26,52 @@ jobs:
     docker:
       - image: node:12.6-alpine
     steps:
-      - checkout
-      - run:
-          name: install depend packages
-          command: apk add --no-cache --update ca-certificates
-      - yarn_install
-      - run:
-          command: yarn lint .
-      - save_node_module_cache
+      - run: ':' # declared noop command because in order to use the conditional step need one or more tasks or the when statement
+      - unless:
+          condition: << pipeline.parameters.run_api_trigger_jobs >>
+          steps:
+            - checkout
+            - run:
+                name: install depend packages
+                command: apk add --no-cache --update ca-certificates
+            - yarn_install
+            - run:
+                command: yarn lint .
+            - save_node_module_cache
 
   test:
     machine: true
     steps:
-      - checkout
-      - yarn_install
-      - run:
-          command: |
-            LOCAL_UID=$(id -u $USER) LOCAL_GID=$(id -g $USER) \
-            docker-compose -f docker-compose-circleci.yml run \
-              -e user_password=$E2E_USER_PASSWORD -e user_email=$E2E_USER_EMAIL --rm puppeteer
-      - save_node_module_cache
+      - run: ':'
+      - unless:
+          condition: << pipeline.parameters.run_api_trigger_jobs >>
+          steps:
+            - checkout
+            - yarn_install
+            - run:
+                command: |
+                  LOCAL_UID=$(id -u $USER) LOCAL_GID=$(id -g $USER) \
+                  docker-compose -f docker-compose-circleci.yml run \
+                    -e user_password=$E2E_USER_PASSWORD -e user_email=$E2E_USER_EMAIL --rm puppeteer
+            - save_node_module_cache
+
+  something:
+    docker:
+      - image: node:12.6-alpine
+    steps:
+      - run: ':'
+      - when:
+          condition: << pipeline.parameters.run_api_trigger_jobs >>
+          steps:
+            - run: echo "run something"
 
 workflows:
-  version: 2
   build:
     jobs:
       - lint
       - test
+  ## how to trigger bellow workflow
+  # curl -u ${TOKEN}: --header 'Content-Type: application/json' -X POST -d '{"parameters": {"run_api_trigger_jobs": true}, "branch": "'${BRANCH}'"}' https://circleci.com/api/v2/project/gh/Yama-Tomo/vue-vuex-typescript-sample/pipeline
+  trigger_api:
+    jobs:
+      - something
