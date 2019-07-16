@@ -42,7 +42,7 @@
     "@types/jest": "24.0.15",
     "@types/jest-environment-puppeteer": "4.0.0",
     "@types/lodash": "4.14.136",
-    "@types/node": "12.6.4",
+    "@types/node": "12.6.5",
     "@types/puppeteer": "1.12.4",
     "@types/webpack": "4.4.35",
     "@typescript-eslint/eslint-plugin": "1.12.0",
@@ -75,7 +75,7 @@
     "ts-node": "8.3.0",
     "typescript": "3.5.3",
     "vue-jest": "3.0.4",
-    "vue-tsx-support": "2.3.0",
+    "vue-tsx-support": "2.3.1",
     "yaml-loader": "0.5.0"
   },
   "browserslist": [
