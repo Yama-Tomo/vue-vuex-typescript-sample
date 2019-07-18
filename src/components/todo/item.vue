@@ -102,7 +102,7 @@ class Item extends Vue {
   }
 }
 
-type Props = Pick<Item, 'todo' | 'actions'>
+type Props = Pick<Item, 'todo' | 'actions'>;
 export default vts.ofType<Props>().convert(Item);
 </script>
 

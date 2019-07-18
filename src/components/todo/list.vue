@@ -183,7 +183,7 @@ class List extends Vue {
   }
 }
 
-type Props = Pick<List, 'state' | 'actions' | 'getters'>
+type Props = Pick<List, 'state' | 'actions' | 'getters'>;
 export default vts.ofType<Props>().convert(List);
 </script>
 
