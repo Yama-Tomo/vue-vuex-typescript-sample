@@ -9,6 +9,7 @@ const config = {
           ['@babel/preset-env', { useBuiltIns: 'entry', corejs: 3 }],
           '@vue/babel-preset-jsx',
         ],
+        plugins: ['rewire'],
       },
     },
     url: {
