@@ -1,0 +1,10 @@
+ul.filters {
+  padding: 0px;
+
+  li {
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+    display: inline-block;
+  }
+}
