@@ -102,7 +102,8 @@ class Item extends Vue {
   }
 }
 
-export default vts.ofType<Partial<Item>>().convert(Item);
+type Props = Pick<Item, 'todo' | 'actions'>
+export default vts.ofType<Props>().convert(Item);
 </script>
 
 <style lang="scss" scoped>

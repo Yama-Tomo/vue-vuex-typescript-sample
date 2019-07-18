@@ -183,7 +183,8 @@ class List extends Vue {
   }
 }
 
-export default vts.ofType<Partial<List>>().convert(List);
+type Props = Pick<List, 'state' | 'actions' | 'getters'>
+export default vts.ofType<Props>().convert(List);
 </script>
 
 <style lang="scss" scoped>
