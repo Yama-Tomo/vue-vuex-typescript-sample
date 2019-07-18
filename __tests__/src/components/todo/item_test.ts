@@ -3,7 +3,7 @@
  */
 
 import { mount } from '@vue/test-utils';
-import Component from '@/components/todo/item.vue';
+import * as Component from '@/components/todo/item.vue';
 import { TodoActions } from '@/store_modules/todo/actions';
 import { Todo } from '@/store_modules/todo/state/todo';
 
@@ -27,7 +27,7 @@ const getWrapper = (arg?: {
     },
   };
 
-  return mount(Component, options);
+  return mount(Component.default, options);
 };
 
 describe('behaviors', () => {
@@ -101,6 +101,16 @@ describe('behaviors', () => {
     inputEl.setValue('');
     inputEl.trigger('keypress', { key: 'Enter' });
     expect(actionMock.mock.calls[0]).toEqual([{ todo: defaultTodoState }]);
+  });
+});
+
+describe('unit-tests', () => {
+  test('liのclass属性のテスト', () => {
+    const func = (Component as any).__get__('liClass');
+    expect(func({ text: 'aaa', done: true }, true)).toEqual(
+      'todo completed editing'
+    );
+    expect(func({ text: 'aaa', done: true }, false)).toEqual('todo completed');
   });
 });
 
