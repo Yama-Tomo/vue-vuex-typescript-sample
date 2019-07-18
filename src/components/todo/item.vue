@@ -7,15 +7,23 @@ import { Actions } from '../../mixins/store_helper';
 import { TodoActions } from '../../store_modules/todo/actions';
 import { InputEvent } from '@/types/dom';
 
+const liClass = (todo: Todo, editing: boolean) => {
+  const stack = ['todo'];
+
+  if (todo.done) {
+    stack.push('completed');
+  }
+
+  if (editing) {
+    stack.push('editing');
+  }
+
+  return stack.join(' ');
+};
+
 const template = (h: CreateElement, self: Item) => {
   return (
-    <li
-      class={[
-        'todo',
-        ...(self.todo.done ? ['completed'] : []),
-        ...(self.editing ? ['editing'] : []),
-      ].join(' ')}
-    >
+    <li class={liClass(self.todo, self.editing)}>
       <div class="view">
         <input
           class="toggle"
