@@ -27,7 +27,7 @@
     "@nuxtjs/auth": "4.8.1",
     "@nuxtjs/axios": "5.5.4",
     "body-parser": "1.19.0",
-    "lodash": "4.17.14",
+    "lodash": "4.17.15",
     "nuxt": "2.8.1",
     "nuxt-i18n": "5.12.7",
     "nuxt-property-decorator": "2.3.0",
