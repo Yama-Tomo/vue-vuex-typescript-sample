@@ -34,6 +34,7 @@
     "vuex-type-helper": "1.2.2"
   },
   "devDependencies": {
+    "@babel/runtime-corejs2": "7.5.5",
     "@nuxt/typescript": "2.8.1",
     "@nuxtjs/eslint-config": "1.0.1",
     "@types/body-parser": "1.17.0",
@@ -51,6 +52,7 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-plugin-rewire": "1.2.0",
     "codecov": "3.5.0",
+    "core-js": "2",
     "eslint": "6.0.1",
     "eslint-config-prettier": "6.0.0",
     "eslint-config-standard": "13.0.1",
