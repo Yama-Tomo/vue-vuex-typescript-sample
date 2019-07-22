@@ -7,7 +7,7 @@ import {
 } from '../store_modules/module_mapper';
 
 export type Actions<A> = {
-  [K in keyof A]: (payload: A[K]) => Promise<any> | void
+  [K in keyof A]: (payload: A[K]) => Promise<any> | void;
 };
 
 export type Getters<G> = { [K in keyof G]: G[K] };
