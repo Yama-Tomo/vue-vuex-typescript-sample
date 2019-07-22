@@ -1,7 +1,5 @@
-import { TodoState } from './todo/state';
-import { TodoActions } from './todo/actions';
-import { TodoGetters } from './todo/getters';
-import { AuthState } from './auth/state';
+import * as Todo from './todo/';
+import * as Auth from './auth/';
 
 export namespace modules {
   export const todo = 'todo';
@@ -9,14 +7,14 @@ export namespace modules {
 }
 
 export interface StateMaps {
-  [modules.todo]: TodoState;
-  [modules.auth]: AuthState;
+  [modules.todo]: Todo.TodoState;
+  [modules.auth]: Auth.AuthState;
 }
 
 export interface ActionMaps {
-  [modules.todo]: TodoActions;
+  [modules.todo]: Todo.TodoActions;
 }
 
 export interface GettersMaps {
-  [modules.todo]: TodoGetters;
+  [modules.todo]: Todo.TodoGetters;
 }
