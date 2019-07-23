@@ -18,34 +18,11 @@ export default function(...args: Args) {
     jquery: 'jQuery',
   };
 
-  const useVueI18nLoader = (() => {
-    // @ts-ignore
-    // TODO: remove any
-    const nuxtI18n = (this as any).buildContext.options.modules.find(
-      (module: unknown) => {
-        if (Array.isArray(module)) {
-          return module[0] === 'nuxt-i18n';
-        }
-        return false;
-      }
-    );
-
-    return nuxtI18n !== undefined && !!nuxtI18n[1].vueI18nLoader;
-  })();
-
   if (config.module) {
-    if (useVueI18nLoader) {
-      config.module.rules.push({
-        resourceQuery: /blockType=i18n/,
-        type: 'javascript/auto',
-        loader: ['@kazupon/vue-i18n-loader', 'yaml-loader'],
-      });
-    } else {
-      config.module.rules.push({
-        test: /\.ya?ml$/,
-        loaders: ['json-loader', 'yaml-loader'],
-      });
-    }
+    config.module.rules.push({
+      test: /\.ya?ml$/,
+      loaders: ['json-loader', 'yaml-loader'],
+    });
   }
 
   if (config.plugins) {
@@ -65,6 +42,7 @@ export default function(...args: Args) {
       );
     }
 
+    console.log(config.plugins.map(v => v.constructor.name));
     config.plugins.push(
       new HardSourceWebpackPlugin({
         cacheDirectory: path.resolve(
