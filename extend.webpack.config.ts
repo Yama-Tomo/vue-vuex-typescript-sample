@@ -1,12 +1,17 @@
 import * as path from 'path';
 import { Configuration } from 'webpack';
 import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
+import { Build } from '@nuxt/config/types';
 
 const defaultConfigHash: (
   config: Configuration
 ) => string = require('hard-source-webpack-plugin/lib/defaultConfigHash');
 
-export default function(config: Configuration) {
+type Args = Parameters<NonNullable<Build['extend']>>;
+export default function(...args: Args) {
+  const config = args[0];
+  const ctx = args[1];
+
   config.externals = {
     jquery: 'jQuery',
   };
