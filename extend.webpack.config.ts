@@ -42,6 +42,10 @@ export default function(config: Configuration) {
   }
 
   if (config.plugins) {
+    config.plugins = config.plugins.filter(
+      p => p.constructor.name !== 'ForkTsCheckerWebpackPlugin'
+    );
+
     config.plugins.push(
       new HardSourceWebpackPlugin({
         cacheDirectory: path.resolve(
