@@ -1,6 +1,8 @@
 import * as path from 'path';
 import { Configuration } from 'webpack';
 import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import consola from 'consola';
 import { Build } from '@nuxt/config/types';
 
 const defaultConfigHash: (
@@ -50,6 +52,18 @@ export default function(...args: Args) {
     config.plugins = config.plugins.filter(
       p => p.constructor.name !== 'ForkTsCheckerWebpackPlugin'
     );
+
+    if (ctx.isClient) {
+      config.plugins.push(
+        new ForkTsCheckerWebpackPlugin({
+          vue: true,
+          tsconfig: path.resolve('tsconfig.json'),
+          eslint: true,
+          formatter: 'codeframe',
+          logger: consola,
+        })
+      );
+    }
 
     config.plugins.push(
       new HardSourceWebpackPlugin({
