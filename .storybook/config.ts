@@ -6,8 +6,8 @@ import VueI18n from 'vue-i18n';
 Vue.use(Vuex);
 Vue.use(VueI18n);
 
-const req = require.context('../stories', true, /.story.tsx?$/);
 function loadStories() {
+  const req = require.context('../stories', true, /.story.tsx?$/);
   req.keys().forEach(filename => req(filename));
 }
 
