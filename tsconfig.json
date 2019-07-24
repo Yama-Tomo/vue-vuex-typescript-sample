@@ -29,6 +29,7 @@
   "exclude": [
     ".nuxt",  
     "node_modules",
-    "__api"
+    "__api",
+    "storybook-static"
   ]
 }

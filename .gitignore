@@ -2,6 +2,7 @@
 node_modules
 /dist
 /.nuxt
+/storybook-static
 
 # local env files
 .env.local
