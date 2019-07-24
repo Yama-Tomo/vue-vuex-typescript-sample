@@ -16,8 +16,13 @@ module.exports = async ({ config, mode }) => {
 
   const nuxtWebpack = await nuxtWebpackConfig();
 
+  const excludeNuxtRules = ['/\\.vue$/i', '/\\.jsx?$/i', '/\\.scss$/i'];
   const rules = nuxtWebpack.module.rules
-    .filter(rule => !['/\\.vue$/i', '/\\.jsx?$/i'].includes(rule.test.toString()));
+    .filter(rule => !excludeNuxtRules.includes(rule.test.toString()))
+    .concat({
+      test: /\.s?css$/,
+      loaders: ['style-loader', 'css-loader', 'sass-loader']
+    });
 
   const plugins = nuxtWebpack.plugins
     .filter(plugin => ['WarningIgnorePlugin', 'ForkTsCheckerWebpackPlugin'].includes(plugin.constructor.name));
