@@ -2,6 +2,9 @@ const config = {
   globals: {
     'ts-jest': {
       tsConfig: 'tsconfig.jest.json',
+      babelConfig: {
+        plugins: ['require-context-hook'],
+      },
     },
     'vue-jest': {
       babelConfig: {
