@@ -24,8 +24,13 @@ module.exports = async ({ config, mode }) => {
       loaders: ['style-loader', 'css-loader', 'sass-loader']
     });
 
+  const pickNuxtPlugin = ['WarningIgnorePlugin'];
+  if (mode === 'DEVELOPMENT') {
+    pickNuxtPlugin.push('ForkTsCheckerWebpackPlugin');
+  }
+
   const plugins = nuxtWebpack.plugins
-    .filter(plugin => ['WarningIgnorePlugin', 'ForkTsCheckerWebpackPlugin'].includes(plugin.constructor.name));
+    .filter(plugin => pickNuxtPlugin.includes(plugin.constructor.name));
 
   config.plugins = config.plugins.concat(plugins);
   config.module.rules = config.module.rules.concat(rules);
