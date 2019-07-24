@@ -11,7 +11,8 @@
     "start:with_ts_node": "nuxt start",
     "lint-staged": "lint-staged",
     "coverage": "codecov",
-    "sb": "start-storybook -p 6006"
+    "sb": "start-storybook -p 6006",
+    "sb:build": "build-storybook"
   },
   "husky": {
     "hooks": {
