@@ -27,6 +27,7 @@ const config = {
   transform: {
     '.*\\.(vue)$': 'vue-jest',
     '\\.(ts|tsx)$': 'ts-jest',
+    '\\.yml$': 'jest-yaml-transform',
   },
   testMatch: ['**/__tests__/**/*_test.[jt]s?(x)'],
   testPathIgnorePatterns: ['node_modules', '__api'],
