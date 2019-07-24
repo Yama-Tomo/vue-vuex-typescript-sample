@@ -3,6 +3,10 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import VueI18n from 'vue-i18n';
 
+if (process.env.NODE_ENV === 'test') {
+  require('babel-plugin-require-context-hook/register')();
+}
+
 Vue.use(Vuex);
 Vue.use(VueI18n);
 
