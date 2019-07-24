@@ -47,6 +47,13 @@ jobs:
           condition: << pipeline.parameters.run_api_trigger_jobs >>
           steps:
             - checkout
+            - run:
+                name: setup git lfs
+                command: |
+                  curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+                  sudo apt-get install -y git-lfs
+                  git lfs install
+                  git lfs pull
             - yarn_install
             - run:
                 name: jest
