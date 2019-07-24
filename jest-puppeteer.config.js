@@ -1,6 +1,6 @@
 module.exports = {
   launch: {
-    executablePath: process.env.IS_DOCKER ? '/usr/bin/chromium-browser' : '',
+    executablePath: process.env.BROWSER_BIN_PATH || '',
     headless: process.env.HEADLESS !== 'false',
     args: [
       ...['--lang=ja'],
