@@ -12,7 +12,8 @@
     "lint-staged": "lint-staged",
     "coverage": "codecov",
     "sb": "start-storybook -p 6006",
-    "sb:build": "build-storybook"
+    "sb:build": "build-storybook",
+    "postinstall": ".npm_scripts/uninstall_specific_packages.sh"
   },
   "husky": {
     "hooks": {
