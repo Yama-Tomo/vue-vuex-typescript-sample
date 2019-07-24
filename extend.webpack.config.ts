@@ -42,7 +42,6 @@ export default function(...args: Args) {
       );
     }
 
-    console.log(config.plugins.map(v => v.constructor.name));
     config.plugins.push(
       new HardSourceWebpackPlugin({
         cacheDirectory: path.resolve(
