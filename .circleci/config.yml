@@ -93,6 +93,9 @@ jobs:
             - store_test_results:
                 path: reports
             - store_artifacts:
+                path: __tests__/storyshots/__image_snapshots__/__diff_output__
+                destination: /fail_images
+            - store_artifacts:
                 path: storybook-static
                 destination: /storybook
 
