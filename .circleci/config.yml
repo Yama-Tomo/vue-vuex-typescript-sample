@@ -86,9 +86,15 @@ jobs:
                   JEST_JUNIT_OUTPUT=reports/jest/results.xml \
                   LOCAL_UID=$(id -u $USER) LOCAL_GID=$(id -g $USER) \
                   docker-compose -f docker-compose-circleci.yml run --rm puppeteer
+            - run:
+                command: rm -rf storybook-static # not store artifact on fail test
+                when: on_fail
             - save_node_module_cache
             - store_test_results:
                 path: reports
+            - store_artifacts:
+                path: storybook-static
+                destination: /storybook
 
   something:
     docker:
