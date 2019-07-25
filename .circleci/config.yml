@@ -98,6 +98,32 @@ jobs:
             - store_artifacts:
                 path: storybook-static
                 destination: /storybook
+            - persist_to_workspace:
+                root: .
+                paths:
+                  - __tests__
+
+  push_snapshot:
+    machine: true
+    steps:
+      - checkout
+      - setup_git_lfs
+      - attach_workspace:
+          at: .
+      - run:
+          name: publish
+          command: |
+            git add __tests__
+
+            if [ `git diff --cached --name-only | wc -l` -eq 0 ]; then
+              echo 'skip: no update snapshot'
+              exit 0
+            fi
+
+            git config user.email "mazda13bturbo@gmail.com"
+            git config user.name "Yama-Tomo"
+            git commit -m "[ci skip] chore: update snapshot files" -m "" -m "relate: $CIRCLE_SHA1"
+            git push origin nuxt
 
   something:
     docker:
@@ -114,6 +140,13 @@ workflows:
     jobs:
       - lint
       - test
+      - push_snapshot:
+          requires:
+            - test
+          filters:
+            branches:
+              only:
+                - nuxt
   ## how to trigger bellow workflow
   # curl -u ${TOKEN}: --header 'Content-Type: application/json' -X POST -d '{"parameters": {"run_api_trigger_jobs": true}, "branch": "'${BRANCH}'"}' https://circleci.com/api/v2/project/gh/Yama-Tomo/vue-vuex-typescript-sample/pipeline
   trigger_api:
