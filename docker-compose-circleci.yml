@@ -21,6 +21,7 @@ services:
       E2E_USER_EMAIL:
       E2E_USER_PASSWORD:
       TEST_ARGS:
+      JEST_JUNIT_OUTPUT:
     volumes:
       - ./:/app
     command: /bin/sh -c "./docker/puppeteer/wait_for_backend.sh && yarn --no-progress && yarn test $TEST_ARGS && yarn coverage"

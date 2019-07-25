@@ -51,12 +51,15 @@ jobs:
             - run:
                 name: jest
                 command: |
-                  TEST_ARGS="-i --silent --ci --coverage"
+                  TEST_ARGS="-i --silent --ci --coverage --reporters=jest-junit"
                   export TEST_ARGS
 
+                  JEST_JUNIT_OUTPUT=reports/jest/results.xml \
                   LOCAL_UID=$(id -u $USER) LOCAL_GID=$(id -g $USER) \
                   docker-compose -f docker-compose-circleci.yml run --rm puppeteer
             - save_node_module_cache
+            - store_test_results:
+                path: reports
 
   something:
     docker:

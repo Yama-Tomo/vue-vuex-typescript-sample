@@ -23,6 +23,7 @@ const config = {
       password: process.env.E2E_USER_PASSWORD || '',
     },
   },
+  reporters: ['default', 'jest-junit'],
   transform: {
     '.*\\.(vue)$': 'vue-jest',
     '\\.(ts|tsx)$': 'ts-jest',
