@@ -17,3 +17,9 @@
 $ yarn
 $ yarn dev
 ```
+
+## note
+
+This repository is manage expect files of snapshot testing by `git lfs`, so you need to install git lfs.
+
+Already installed git hooks by husky if you already clone this repository, In that case, please install the hooks manually by `git lfs update --manual` after install `git lfs`
