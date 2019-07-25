@@ -19,6 +19,24 @@ commands:
       - save_cache:
           key: nuxt-node-modules-v2-{{ checksum "yarn.lock" }}
           paths: node_modules
+  setup_git_lfs:
+    steps:
+      - restore_cache:
+          keys:
+            - git-lfs--v2.8.0
+      - run:
+          name: setup git lfs
+          command: |
+            if [ ! -e ~/bin/git-lfs ]; then
+              curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+              sudo apt-get install -y git-lfs
+              cp -a /usr/bin/git-lfs ~/bin
+            fi
+            git lfs install
+            git lfs pull
+      - save_cache:
+          key: git-lfs--v2.8.0
+          paths: ~/bin/git-lfs
 
 jobs:
   lint:
@@ -47,13 +65,7 @@ jobs:
           condition: << pipeline.parameters.run_api_trigger_jobs >>
           steps:
             - checkout
-            - run:
-                name: setup git lfs
-                command: |
-                  curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
-                  sudo apt-get install -y git-lfs
-                  git lfs install
-                  git lfs pull
+            - setup_git_lfs
             - yarn_install
             - run:
                 name: jest
