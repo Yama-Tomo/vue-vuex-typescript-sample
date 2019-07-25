@@ -59,6 +59,7 @@ jobs:
                 name: jest
                 command: |
                   TEST_ARGS="-i --silent --ci --coverage --reporters=jest-junit"
+                  [ "$CIRCLE_BRANCH" = "nuxt" ] && TEST_ARGS="$TEST_ARGS -u"
                   export TEST_ARGS
 
                   JEST_JUNIT_OUTPUT=reports/jest/results.xml \
