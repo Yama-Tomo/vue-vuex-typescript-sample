@@ -20,9 +20,10 @@ services:
       BROWSER_BIN_PATH: /usr/bin/chromium-browser
       E2E_USER_EMAIL:
       E2E_USER_PASSWORD:
+      TEST_ARGS:
     volumes:
       - ./:/app
-    command: /bin/sh -c "./docker/puppeteer/wait_for_backend.sh && yarn --no-progress && yarn test -i --silent --ci --coverage && yarn coverage"
+    command: /bin/sh -c "./docker/puppeteer/wait_for_backend.sh && yarn --no-progress && yarn test $TEST_ARGS && yarn coverage"
     depends_on:
       - backend
 

@@ -51,6 +51,9 @@ jobs:
             - run:
                 name: jest
                 command: |
+                  TEST_ARGS="-i --silent --ci --coverage"
+                  export TEST_ARGS
+
                   LOCAL_UID=$(id -u $USER) LOCAL_GID=$(id -g $USER) \
                   docker-compose -f docker-compose-circleci.yml run --rm puppeteer
             - save_node_module_cache
