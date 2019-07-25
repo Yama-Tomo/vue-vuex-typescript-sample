@@ -69,10 +69,12 @@ jobs:
             - run:
                 name: fetch visual testing expect files
                 command: |
-                  git fetch origin nuxt
-                  mkdir __temp
-                  git archive origin/nuxt:__tests__ | tar -x -C __temp
+                  git checkout nuxt
+                  git lfs pull
+                  git pull origin nuxt
+                  cp -a __tests__ __temp
                   find __temp -type f | grep -v  -e '__snapshots__' -e '__image_snapshots__' | xargs rm -f
+                  git checkout $CIRCLE_BRANCH
                   cp -a __temp/* __tests__/
                   rm -rf __temp
             - yarn_install
