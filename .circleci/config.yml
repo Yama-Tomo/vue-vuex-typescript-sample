@@ -49,6 +49,7 @@ jobs:
             - checkout
             - yarn_install
             - run:
+                name: jest
                 command: |
                   LOCAL_UID=$(id -u $USER) LOCAL_GID=$(id -g $USER) \
                   docker-compose -f docker-compose-circleci.yml run \
