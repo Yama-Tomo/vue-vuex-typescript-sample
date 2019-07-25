@@ -79,7 +79,7 @@
     "jest-puppeteer": "4.3.0",
     "jest-serializer-vue": "2.0.2",
     "json-loader": "0.5.7",
-    "lint-staged": "9.2.0",
+    "lint-staged": "9.2.1",
     "node-sass": "4.12.0",
     "prettier": "1.18.2",
     "puppeteer": "1.18.1",
