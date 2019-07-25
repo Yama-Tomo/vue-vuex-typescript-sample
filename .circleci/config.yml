@@ -52,8 +52,7 @@ jobs:
                 name: jest
                 command: |
                   LOCAL_UID=$(id -u $USER) LOCAL_GID=$(id -g $USER) \
-                  docker-compose -f docker-compose-circleci.yml run \
-                    -e user_password=$E2E_USER_PASSWORD -e user_email=$E2E_USER_EMAIL --rm puppeteer
+                  docker-compose -f docker-compose-circleci.yml run --rm puppeteer
             - save_node_module_cache
 
   something:

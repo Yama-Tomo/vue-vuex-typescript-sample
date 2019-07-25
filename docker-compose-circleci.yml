@@ -18,6 +18,8 @@ services:
       LOCAL_GID:
       CODECOV_TOKEN:
       BROWSER_BIN_PATH: /usr/bin/chromium-browser
+      E2E_USER_EMAIL:
+      E2E_USER_PASSWORD:
     volumes:
       - ./:/app
     command: /bin/sh -c "./docker/puppeteer/wait_for_backend.sh && yarn --no-progress && yarn test -i --silent --ci --coverage && yarn coverage"

@@ -19,8 +19,8 @@ const config = {
     },
     timeout: 60000,
     user: {
-      email: process.env.user_email || '',
-      password: process.env.user_password || '',
+      email: process.env.E2E_USER_EMAIL || '',
+      password: process.env.E2E_USER_PASSWORD || '',
     },
   },
   transform: {
