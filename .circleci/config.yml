@@ -66,6 +66,15 @@ jobs:
           steps:
             - checkout
             - setup_git_lfs
+            - run:
+                name: fetch visual testing expect files
+                command: |
+                  git fetch origin nuxt
+                  mkdir __temp
+                  git archive origin/nuxt:__tests__ | tar -x -C __temp
+                  find __temp -type f | grep -v  -e '__snapshots__' -e '__image_snapshots__' | xargs rm -f
+                  cp -a __temp/* __tests__/
+                  rm -rf __temp
             - yarn_install
             - run:
                 name: jest
