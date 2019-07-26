@@ -42,7 +42,7 @@ jobs:
   lint:
     working_directory: /home/circleci/project
     docker:
-      - image: node:12.6-alpine
+      - image: node:12.7-alpine
     steps:
       - run: ':' # declared noop command because in order to use the conditional step need one or more tasks or the when statement
       - unless:
@@ -129,7 +129,7 @@ jobs:
 
   something:
     docker:
-      - image: node:12.6-alpine
+      - image: node:12.7-alpine
     steps:
       - run: ':'
       - when:
