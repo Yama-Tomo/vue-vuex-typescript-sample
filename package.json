@@ -6,7 +6,7 @@
     "lint": "eslint --ext .ts,.tsx,.js,.vue --format codeframe --color",
     "dev": "nuxt",
     "test": "NUXT_PORT=4444 jest",
-    "test:use-docker": "LOCAL_UID=$(id -u $USER) LOCAL_GID=$(id -g $USER) docker-compose -f docker-compose-circleci.yml -f docker-compose-local.yml run --rm puppeteer",
+    "test:use-docker": "docker-compose -f docker-compose-circleci.yml -f docker-compose-local.yml run --rm puppeteer",
     "build": "nuxt build && tsc -p tsconfig.nuxt-config.json",
     "start": "./server.js start -c .nuxt/ts-compiled/nuxt.config.js",
     "start:with_ts_node": "nuxt start",
