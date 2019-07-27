@@ -1,4 +1,5 @@
 import { Todo } from './state/todo';
+import { hasKey } from '@/utils/type_guard';
 
 export interface TodoState {
   todos: Todo[];
@@ -10,27 +11,20 @@ const defaultState = (): TodoState => ({
 
 export default defaultState;
 
-export const initialStateResolver = (initialState: any): TodoState => {
-  const canStateSetup =
-    initialState.hasOwnProperty('todos') && Array.isArray(initialState.todos);
-
-  if (!canStateSetup) {
-    return defaultState();
-  }
-
+export const initialStateResolver = (initialState: unknown): TodoState => {
   const state = defaultState();
-  const todos = initialState.todos as any[];
-  for (let i = 0; i <= todos.length; i++) {
-    const todo = todos[i];
+  const canStateSetup = (v: unknown): v is { todos: unknown[] } =>
+    hasKey(v, 'todos') && Array.isArray(v.todos);
 
-    if (
-      typeof todo === 'object' &&
-      todo.hasOwnProperty('text') &&
-      todo.hasOwnProperty('done')
-    ) {
-      state.todos.push({ text: todo.text as string, done: !!todo.done });
-    }
+  if (!canStateSetup(initialState)) {
+    return state;
   }
+
+  initialState.todos.forEach(v => {
+    if (hasKey(v, ['text', 'done'])) {
+      state.todos.push({ text: String(v.text), done: !!v.done });
+    }
+  });
 
   return state;
 };
