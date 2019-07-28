@@ -25,9 +25,11 @@ const imageSnapshot = require('@storybook/addon-storyshots-puppeteer')
   });
 
   const beforeScreenshot = (page: Page, { url }: { url: string }) => {
-    if (url.includes('id=components-todo-item--default')) {
+    if (url.includes('id=components-todo-item--')) {
       // change take screenshot size in specific story
       page.setViewport({ width: 300, height: 100 });
+    } else {
+      page.setViewport({ width: 800, height: 600 });
     }
   };
 
