@@ -70,6 +70,7 @@ jobs:
                 name: fetch visual testing expect files
                 command: |
                   git checkout nuxt
+                  git reset --hard origin/nuxt
                   git lfs pull
                   git pull origin nuxt
                   cp -a __tests__ __temp
