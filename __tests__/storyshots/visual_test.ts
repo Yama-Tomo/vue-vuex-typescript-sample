@@ -4,10 +4,11 @@
 
 import path from 'path';
 import initStoryshots from '@storybook/addon-storyshots';
-import { Page } from 'puppeteer';
-// TODO create types file
-const imageSnapshot = require('@storybook/addon-storyshots-puppeteer')
-  .imageSnapshot;
+import { imageSnapshot } from '@storybook/addon-storyshots-puppeteer';
+
+type ImageSnapshotArgs = Required<
+  NonNullable<Parameters<typeof imageSnapshot>[0]>
+>;
 
 (() => {
   if (!process.env.IS_DOCKER) {
@@ -24,12 +25,17 @@ const imageSnapshot = require('@storybook/addon-storyshots-puppeteer')
     fullPage: false,
   });
 
-  const beforeScreenshot = (page: Page, { url }: { url: string }) => {
+  const beforeScreenshot = async (
+    ...args: Parameters<ImageSnapshotArgs['beforeScreenshot']>
+  ) => {
+    const page = args[0];
+    const url = args[1].url;
+
     if (url.includes('id=components-todo-item--')) {
       // change take screenshot size in specific story
-      page.setViewport({ width: 300, height: 100 });
+      await page.setViewport({ width: 300, height: 100 });
     } else {
-      page.setViewport({ width: 800, height: 600 });
+      await page.setViewport({ width: 800, height: 600 });
     }
   };
 
