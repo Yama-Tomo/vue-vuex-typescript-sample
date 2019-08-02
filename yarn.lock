@@ -1873,6 +1873,13 @@
   dependencies:
     "@types/puppeteer" "*"
 
+"@types/jest-image-snapshot@*":
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/@types/jest-image-snapshot/-/jest-image-snapshot-2.8.0.tgz#2f8ed2b23c1b9a8ead32a2f3ee0ef672e5fd01dd"
+  integrity sha512-CsE6PLYGa7hmM8ut1gzkW7iDxrW2xwSv3yJJf2dejwvF7cIPtzHPLpQWO29H4xnzIaLyEB09MiVnYS/LoYpfzw==
+  dependencies:
+    "@types/jest" "*"
+
 "@types/jest@*":
   version "24.0.15"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-24.0.15.tgz#6c42d5af7fe3b44ffff7cc65de7bf741e8fa427f"
@@ -1989,7 +1996,16 @@
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-1.0.1.tgz#0a851d3bd96498fa25c33ab7278ed3bd65f06c3e"
   integrity sha512-l42BggppR6zLmpfU6fq9HEa2oGPEI8yrSPL3GITjfRInppYFahObbIQOQK3UGxEnyQpltZLaPe75046NOZQikw==
 
-"@types/storybook__addon-storyshots@5.1.0":
+"@types/storybook__addon-storyshots-puppeteer@5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@types/storybook__addon-storyshots-puppeteer/-/storybook__addon-storyshots-puppeteer-5.1.0.tgz#af7168b607a2275bb3249e756117df9edc0e9fe0"
+  integrity sha512-XEMKcDMKYZPcyXgSNAUzUKw7Ec8oHJCdL4aJ5CAFa9rdG9XYVTXW2YLWTIEq/9pTQooY+GfS5jgrpOCPCNbJhw==
+  dependencies:
+    "@types/jest-image-snapshot" "*"
+    "@types/puppeteer" "*"
+    "@types/storybook__addon-storyshots" "*"
+
+"@types/storybook__addon-storyshots@*", "@types/storybook__addon-storyshots@5.1.0":
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/@types/storybook__addon-storyshots/-/storybook__addon-storyshots-5.1.0.tgz#4f394f4a3dffd2a998e6a33687293973ca4865dc"
   integrity sha512-WsOoRNHfAN7Zbn80KP44LcePGbcrh0ghAXLMEHO9OssE6wpkzh+kQi5L4otkQU9tHgBrp7TAtXBJctRBDFpE6w==
