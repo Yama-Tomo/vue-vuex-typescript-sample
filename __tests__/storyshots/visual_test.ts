@@ -19,6 +19,7 @@ type ImageSnapshotArgs = Required<
 
   const storybookUrl = `file://${path.resolve('./storybook-static')}`;
 
+  /* eslint-disable-next-line @typescript-eslint/no-var-requires */
   const puppeteerConfig = require('../../jest-puppeteer.config');
 
   const getScreenshotOptions = () => ({

@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { Nuxt } from './nuxt';
+import * as Nuxt from './nuxt';
 
 declare module 'vue/types/options' {
   interface ComponentOptions<V extends Vue> {

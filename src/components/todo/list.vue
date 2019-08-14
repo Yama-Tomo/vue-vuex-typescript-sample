@@ -1,5 +1,4 @@
 <script lang="tsx">
-import { CreateElement } from 'vue';
 import { Component } from 'nuxt-property-decorator';
 import * as vts from 'vue-tsx-support';
 import Item from './item.vue';
@@ -12,7 +11,7 @@ import { objectToArray, pluralize } from '@/components/todo/list/functions';
   },
 })
 class List extends ListComponent.Logic {
-  public template(h: CreateElement, self: ListComponent.Logic) {
+  public template(self: ListComponent.Logic) {
     return (
       <section class="todoapp">
         <header class="header">

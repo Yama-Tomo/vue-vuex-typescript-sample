@@ -2,7 +2,8 @@ import * as _ from 'lodash';
 
 export type Unpacked<T> = T extends { [K in keyof T]: infer U } ? U : never;
 
-export const isObject = (arg: unknown): arg is Object => _.isObject(arg);
+export const isObject = (arg: unknown): arg is Record<string, any> =>
+  _.isObject(arg);
 
 export function hasKey<T extends string[]>(
   arg: unknown,

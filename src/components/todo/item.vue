@@ -1,6 +1,5 @@
 <script lang="tsx">
 import { Component, Vue, Prop } from 'nuxt-property-decorator';
-import { CreateElement } from 'vue';
 import * as vts from 'vue-tsx-support';
 import { Todo } from '../../store_modules/todo/state/todo';
 import { Actions } from '../../mixins/store_helper';
@@ -21,34 +20,6 @@ const liClass = (todo: Todo, editing: boolean) => {
   return stack.join(' ');
 };
 
-const template = (h: CreateElement, self: Item) => {
-  return (
-    <li class={liClass(self.todo, self.editing)}>
-      <div class="view">
-        <input
-          class="toggle"
-          type="checkbox"
-          checked={self.todo.done}
-          onChange={() => self.toggleTodo()}
-        />
-        <label onDblclick={() => self.changeEditMode()}>{self.todo.text}</label>
-        <button class="destroy" onClick={() => self.removeTodo()}>
-          {self.$t('todo.remove')}
-        </button>
-      </div>
-      <input
-        v-show={self.editing}
-        ref="inputText"
-        class="edit"
-        value={self.todo.text}
-        onKeyup={e => self.onKeyUp(e)}
-        onKeypress={e => self.onKeyPress(e)}
-        onBlur={e => self.doneEdit(e)}
-      />
-    </li>
-  );
-};
-
 @Component
 class Item extends Vue {
   @Prop(Object)
@@ -56,10 +27,36 @@ class Item extends Vue {
   @Prop()
   public actions!: Actions<TodoActions>;
 
-  public editing: boolean = false;
+  public editing = false;
 
-  public render(h: CreateElement) {
-    return template(h, this);
+  public render() {
+    return (
+      <li class={liClass(this.todo, this.editing)}>
+        <div class="view">
+          <input
+            class="toggle"
+            type="checkbox"
+            checked={this.todo.done}
+            onChange={() => this.toggleTodo()}
+          />
+          <label onDblclick={() => this.changeEditMode()}>
+            {this.todo.text}
+          </label>
+          <button class="destroy" onClick={() => this.removeTodo()}>
+            {this.$t('todo.remove')}
+          </button>
+        </div>
+        <input
+          v-show={this.editing}
+          ref="inputText"
+          class="edit"
+          value={this.todo.text}
+          onKeyup={e => this.onKeyUp(e)}
+          onKeypress={e => this.onKeyPress(e)}
+          onBlur={e => this.doneEdit(e)}
+        />
+      </li>
+    );
   }
 
   public changeEditMode() {

@@ -7,7 +7,8 @@ import { Build } from '@nuxt/config/types';
 
 const defaultConfigHash: (
   config: Configuration
-) => string = require('hard-source-webpack-plugin/lib/defaultConfigHash');
+) => /* eslint-disable-next-line @typescript-eslint/no-var-requires */
+string = require('hard-source-webpack-plugin/lib/defaultConfigHash');
 
 type Args = Parameters<NonNullable<Build['extend']>>;
 export default function(...args: Args) {

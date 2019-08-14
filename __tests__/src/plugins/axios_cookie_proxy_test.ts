@@ -3,7 +3,7 @@
  */
 
 import { AxiosResponse } from 'axios';
-import { Nuxt } from '@/types/nuxt';
+import * as Nuxt from '@/types/nuxt';
 import plugin from '@/plugins/axios_cookie_proxy';
 import Mock = jest.Mock;
 

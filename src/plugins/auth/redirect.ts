@@ -1,4 +1,4 @@
-import { Nuxt } from '@/types/nuxt';
+import * as Nuxt from '@/types/nuxt';
 
 export const redirect = {
   login: '/login',
