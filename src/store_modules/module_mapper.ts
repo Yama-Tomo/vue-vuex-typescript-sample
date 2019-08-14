@@ -1,10 +1,10 @@
 import * as Todo from './todo/';
 import * as Auth from './auth/';
 
-export namespace modules {
-  export const todo = 'todo';
-  export const auth = 'auth';
-}
+export const modules = {
+  todo: 'todo',
+  auth: 'auth',
+} as const;
 
 export interface StateMaps {
   [modules.todo]: Todo.TodoState;

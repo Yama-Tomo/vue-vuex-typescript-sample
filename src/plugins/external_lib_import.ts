@@ -1,4 +1,4 @@
-import { Nuxt } from '@/types/nuxt';
+import * as Nuxt from '@/types/nuxt';
 import ExternalLibWrapper from '@/utils/external_lib_wrapper';
 
 const sleep = () => new Promise(resolve => setTimeout(resolve, 500));
@@ -13,7 +13,7 @@ const waitLoadedExternalLib = async (assertFunction: () => boolean) => {
 };
 
 export default (
-  ctx: Nuxt.Context,
+  _ctx: Nuxt.Context,
   inject: (
     pluginName: string,
     f: (...args: unknown[]) => unknown | void
@@ -25,6 +25,7 @@ export default (
     try {
       const module = await import('jquery');
       ExternalLibWrapper.jquery = module.default;
+      /* eslint-disable-next-line no-empty */
     } catch (e) {}
   });
 };

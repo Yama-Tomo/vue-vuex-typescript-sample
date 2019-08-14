@@ -1,6 +1,6 @@
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
-import { Nuxt } from '@/types/nuxt';
+import * as Nuxt from '@/types/nuxt';
 
 @Component({
   auth: false,

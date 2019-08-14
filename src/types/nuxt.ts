@@ -10,7 +10,7 @@ import VueI18n, { IVueI18n } from 'vue-i18n';
 import NuxtI18n from 'nuxt-i18n/types/';
 
 interface AuthModule {
-  ctx: Nuxt.Context;
+  ctx: Context;
   options: { [key: string]: any };
   strategies: { [key: string]: any };
   redirect: (name: string, noRouter?: boolean) => void;
@@ -20,22 +20,20 @@ interface AuthModule {
   onRedirect: (cb: (to: string, from: string) => string | undefined) => void;
 }
 
-export namespace Nuxt {
-  export interface Context extends OrgContext {
-    req: OrgContext['req'] & { body: any };
-    app: Vue & {
-      $auth: AuthModule;
-      store: Store<any>;
-      i18n: VueI18n & IVueI18n;
-      localePath(route: string | Route, locale?: string): string;
-      switchLocalePath(locale: string): string;
-      getRouteBaseName(route: Route): string;
-    };
-  }
+export interface Context extends OrgContext {
+  req: OrgContext['req'] & { body: any };
+  app: Vue & {
+    $auth: AuthModule;
+    store: Store<any>;
+    i18n: VueI18n & IVueI18n;
+    localePath(route: string | Route, locale?: string): string;
+    switchLocalePath(locale: string): string;
+    getRouteBaseName(route: Route): string;
+  };
+}
 
-  export interface Error {
-    statusCode: number;
-    path: string;
-    message: string;
-  }
+export interface Error {
+  statusCode: number;
+  path: string;
+  message: string;
 }

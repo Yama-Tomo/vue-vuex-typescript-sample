@@ -1,6 +1,5 @@
 import { Component, Vue, Prop, Watch } from 'nuxt-property-decorator';
 import { Route } from 'vue-router';
-import { CreateElement } from 'vue';
 import { TodoState } from '@/store_modules/todo/state';
 import { Todo } from '@/store_modules/todo/state/todo';
 import { TodoActions } from '@/store_modules/todo/actions';
@@ -25,11 +24,11 @@ export class Logic extends Vue {
 
   public visibility: keyof Filters = 'all';
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public template(h: CreateElement, self: Logic): JSX.Element | void {}
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  public template(_self: Logic): JSX.Element | void {}
 
-  public render(h: CreateElement) {
-    return this.template(h, this);
+  public render() {
+    return this.template(this);
   }
 
   @Watch('$route')

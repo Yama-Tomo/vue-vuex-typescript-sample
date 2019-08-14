@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'nuxt-property-decorator';
-import { Nuxt } from '@/types/nuxt';
+import * as Nuxt from '@/types/nuxt';
 
 // NOTE: 直接 Nuxt.Errorをコンポーネント内で参照するとビルドが通らないので暫定対応
 type Error = Nuxt.Error;

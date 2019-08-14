@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import { Nuxt } from '@/types/nuxt';
+import * as Nuxt from '@/types/nuxt';
 import plugin, { redirect } from '@/plugins/auth/redirect';
 
 let target: Parameters<Nuxt.Context['app']['$auth']['onRedirect']>[0];
@@ -50,7 +50,7 @@ describe('beforeのURIがTOPの場合', () => {
       const context = (nuxtContextMock() as any) as Nuxt.Context;
       plugin(context);
       expect(target(redirect.home, 'from-uri')).toBe('/path/to/before');
-      expect(context.query.hasOwnProperty('redirect')).toBeFalsy();
+      expect('redirect' in context.query).toBeFalsy();
     });
   });
 

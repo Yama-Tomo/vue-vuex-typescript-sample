@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 const fs = require('fs');
 const tsConfigPath = path.resolve('./tsconfig.json');
