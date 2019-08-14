@@ -2,3 +2,5 @@ node_modules
 __api
 dist
 .nuxt
+storybook-static
+coverage
