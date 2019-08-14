@@ -20,10 +20,5 @@
     "schedule": [
       "before 10am on the first day of the month"
     ]
-  },
-  "force": {
-    "lockFileMaintenance": {
-      "enabled": true
-    }
   }
 }
