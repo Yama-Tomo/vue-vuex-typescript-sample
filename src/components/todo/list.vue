@@ -11,69 +11,69 @@ import { objectToArray, pluralize } from '@/components/todo/list/functions';
   },
 })
 class List extends ListComponent.Logic {
-  public template(self: ListComponent.Logic) {
+  public render() {
     return (
       <section class="todoapp">
         <header class="header">
-          <h1>{self.$t('todo.title')}</h1>
+          <h1>{this.$t('todo.title')}</h1>
           <input
             class="new-todo"
             autofocus
             autocomplete="off"
-            placeholder={self.$t('todo.input_placeholder').toString()}
-            onKeypress={e => self.addTodo(e)}
+            placeholder={this.$t('todo.input_placeholder').toString()}
+            onKeypress={e => this.addTodo(e)}
           />
         </header>
-        <section v-show={self.state.todos.length} class="main">
+        <section v-show={this.state.todos.length} class="main">
           <label>
             <input
               class="toggle-all"
               type="checkbox"
-              checked={self.allChecked}
+              checked={this.allChecked}
               onChange={() =>
-                self.actions.toggleAll({ done: !self.allChecked })
+                this.actions.toggleAll({ done: !this.allChecked })
               }
             />
             select all
           </label>
           <ul class="todo-list">
-            {self.filteredTodos.map(todo => (
-              <Item todo={todo} actions={self.actions} />
+            {this.filteredTodos.map(todo => (
+              <Item todo={todo} actions={this.actions} />
             ))}
           </ul>
         </section>
-        <footer v-show={self.state.todos.length} class="footer">
+        <footer v-show={this.state.todos.length} class="footer">
           <span class="todo-count">
-            <strong>{self.remaining}</strong>
-            {self.$t('todo.item_unit', {
-              unit: pluralize(self.remaining, ''),
+            <strong>{this.remaining}</strong>
+            {this.$t('todo.item_unit', {
+              unit: pluralize(this.remaining, ''),
             })}
           </span>
           <ul class="filters">
-            {objectToArray(self.filters).map(filter => (
+            {objectToArray(this.filters).map(filter => (
               <li>
-                {self.visibility === filter.key ? (
-                  self.$t(`todo.filter.${filter.key}`)
+                {this.visibility === filter.key ? (
+                  this.$t(`todo.filter.${filter.key}`)
                 ) : (
                   <a
                     href={`#/${filter.key}`}
-                    class={self.visibility === filter.key ? 'selected' : ''}
+                    class={this.visibility === filter.key ? 'selected' : ''}
                     onClick={() => {
-                      self.visibility = filter.key;
+                      this.visibility = filter.key;
                     }}
                   >
-                    {self.$t(`todo.filter.${filter.key}`)}
+                    {this.$t(`todo.filter.${filter.key}`)}
                   </a>
                 )}
               </li>
             ))}
           </ul>
           <button
-            v-show={self.state.todos.length > self.remaining}
+            v-show={this.state.todos.length > this.remaining}
             class="clear-completed"
-            onClick={() => self.actions.clearCompleted({})}
+            onClick={() => this.actions.clearCompleted({})}
           >
-            {self.$t('todo.clear')}
+            {this.$t('todo.clear')}
           </button>
         </footer>
       </section>

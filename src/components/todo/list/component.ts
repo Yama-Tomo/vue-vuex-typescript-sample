@@ -25,11 +25,7 @@ export class Logic extends Vue {
   public visibility: keyof Filters = 'all';
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  public template(_self: Logic): JSX.Element | void {}
-
-  public render() {
-    return this.template(this);
-  }
+  public render() {}
 
   @Watch('$route')
   public onRouteChanged(route: Route) {
