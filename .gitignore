@@ -4,6 +4,7 @@ node_modules
 /.nuxt
 /storybook-static
 /__tests__/storyshots/__image_snapshots__/__diff_output__
+junit.xml
 
 # local env files
 .env.local
