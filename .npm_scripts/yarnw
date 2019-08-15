@@ -1,0 +1,11 @@
+#!/bin/sh
+
+current=$(cd $(dirname $0);pwd)
+
+if [ -e $current/../.env ]; then
+  set -a
+  source $current/../.env
+  set +a
+fi
+
+yarn $@
