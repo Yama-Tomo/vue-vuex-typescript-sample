@@ -1,0 +1,24 @@
+version: '3.2'
+services:
+  backend:
+    environment:
+      CHANGE_PERMISSION_PATHS: '/usr/local/bundle /app/tmp /app/log'
+    ports:
+      - $BACKEND_PORT:3000
+    volumes:
+      - /app/tmp
+      - /app/log
+
+  puppeteer:
+    environment:
+      CHANGE_PERMISSION_PATHS: '/app/node_modules'
+    ports:
+      - $NUXT_PORT:$NUXT_PORT
+    volumes:
+      - /app/.git
+    volumes:
+      - node_modules_vol:/app/node_modules
+
+volumes:
+  node_modules_vol:
+    driver: local
