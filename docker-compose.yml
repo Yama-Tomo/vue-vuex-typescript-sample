@@ -17,7 +17,10 @@ services:
       - /app/__api
     environment:
       IS_DOCKER: 'true'
+      BACKEND_HOST: http://backend
+      BACKEND_PORT: 3000
       BROWSER_BIN_PATH: /usr/bin/chromium-browser
+      NUXT_BUILD_DIR: /tmp/nuxt-build/
     command: /bin/sh -c "yarn --no-progress && yarn dev"
     depends_on:
       - backend

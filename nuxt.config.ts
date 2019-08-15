@@ -6,6 +6,11 @@ import { redirect as AuthRedirect } from './src/plugins/auth/redirect';
 const port = process.env.NUXT_PORT || 3100;
 const host = process.env.NUXT_HOST || '0.0.0.0';
 const isDev = process.env.NODE_ENV === 'development';
+const backendHost = (() => {
+  const host = process.env.BACKEND_HOST || 'http://localhost';
+  const port = process.env.BACKEND_PORT || 3101;
+  return `${host}:${port}`;
+})();
 
 export default {
   server: {
@@ -16,6 +21,9 @@ export default {
     baseUrl: process.env.BASE_URL || `http://${host}:${port}`,
   },
   srcDir: 'src',
+  ...(process.env.NUXT_BUILD_DIR
+    ? { buildDir: process.env.NUXT_BUILD_DIR }
+    : {}),
   head: {
     title: 'nuxt.js with typescript',
     meta: [
@@ -84,7 +92,7 @@ export default {
     proxy: true,
   },
   proxy: {
-    '/api': process.env.BACKEND_HOST || 'http://localhost:3101',
+    '/api': backendHost,
   },
   auth: {
     plugins: ['~/plugins/auth/redirect.ts'],
