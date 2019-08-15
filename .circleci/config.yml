@@ -84,10 +84,17 @@ jobs:
                 command: |
                   TEST_ARGS="-i --silent --ci --coverage --reporters=jest-junit"
                   [ "$CIRCLE_BRANCH" = "nuxt" ] && TEST_ARGS="$TEST_ARGS -u"
-                  export TEST_ARGS
 
-                  JEST_JUNIT_OUTPUT=reports/jest/results.xml \
-                  LOCAL_UID=$(id -u $USER) LOCAL_GID=$(id -g $USER) \
+                  cat \<<EOF > .env
+                  LOCAL_UID=$(id -u $USER)
+                  LOCAL_GID=$(id -g $USER)
+                  TEST_ARGS=$TEST_ARGS
+                  JEST_JUNIT_OUTPUT=reports/jest/results.xml
+                  E2E_USER_EMAIL=$E2E_USER_EMAIL
+                  E2E_USER_PASSWORD=$E2E_USER_PASSWORD
+                  CODECOV_TOKEN=$CODECOV_TOKEN
+                  EOF
+
                   docker-compose -f docker-compose.yml -f docker-compose.circleci.yml run --rm puppeteer
             - run:
                 command: rm -rf storybook-static # not store artifact on fail test
