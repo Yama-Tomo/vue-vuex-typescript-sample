@@ -7,16 +7,46 @@
 
 ## get started
 
-- starting api server
+- create .env file
+  - This repository include `.env.sample` file
 
-  see `__api/README.md`
+  ```bash
+  $ cp .env.sample .env
+  $ # customize your .env file
+  ```
 
-- starting nuxt dev server
+- add yarn wrapper shell path to $PATH variable
 
-```
-$ yarn
-$ yarn dev
-```
+  ```bash
+  $ export PATH=$PATH:.npm_scripts
+  ```
+
+- starting server
+
+  ```bash
+  $ docker-compose up -d
+  ```
+
+  or, If you want to launch nuxt server on host machine.
+
+  ```bash
+  $ docker-compose up -d backend
+  $ yarnw && yarnw dev # Note: yarnw is yarn wrapper shell
+  ```
+
+- test
+
+  ```bash
+  $ docker-compose run puppeteer sh -c 'yarn && yarn sb:build && yarn test'
+  ```
+
+  or, If you want to run jest on host machine.
+
+  ```bash
+  $ yarnw && yarnw test
+  ```
+
+  NOTICE: visual tests are skipped when run test on host machine. Because occurs test result difference when use the puppeteer installed on each platform
 
 ## note
 
