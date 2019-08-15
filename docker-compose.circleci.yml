@@ -1,30 +1,7 @@
-version: '3'
+version: '3.2'
 services:
-  backend:
-    image: yamatomo/vue-vuex-typescript-sample:ruby
-    environment:
-      LOCAL_UID:
-      LOCAL_GID:
-    volumes:
-      - ./__api:/app
-    command: /bin/sh -c "bundle install && bundle exec rails db:migrate && bundle exec rake db:seed && bundle exec rails s -p 3101 -b '0.0.0.0'"
-
   puppeteer:
-    image: yamatomo/vue-vuex-typescript-sample:puppeteer
     environment:
-      IS_DOCKER: 'true'
-      BACKEND_HOST: http://backend:3101
-      LOCAL_UID:
-      LOCAL_GID:
-      CODECOV_TOKEN:
-      BROWSER_BIN_PATH: /usr/bin/chromium-browser
-      E2E_USER_EMAIL:
-      E2E_USER_PASSWORD:
       TEST_ARGS:
-      JEST_JUNIT_OUTPUT:
-    volumes:
-      - ./:/app
     command: /bin/sh -c "yarn --no-progress && yarn sb:build --quiet && ./docker/puppeteer/wait_for_backend.sh && yarn test $TEST_ARGS && yarn coverage"
-    depends_on:
-      - backend
 
