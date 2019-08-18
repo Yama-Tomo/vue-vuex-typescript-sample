@@ -41,7 +41,7 @@ const config = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node', 'vue'],
   coverageDirectory: './coverage/',
   collectCoverage: false,
-  collectCoverageFrom: ['./src/**', '!./src/i18n/**', '!./src/store/**'],
+  collectCoverageFrom: ['./src/**', '!./src/i18n/**'],
   snapshotSerializers: ['jest-serializer-vue'],
 };
 
