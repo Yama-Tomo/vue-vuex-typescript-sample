@@ -1,3 +1,4 @@
 store/**/actions.ts
 store/**/getters.ts
 store/**/state.ts
+store/auth/*.ts
