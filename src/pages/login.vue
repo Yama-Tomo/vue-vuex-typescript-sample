@@ -21,10 +21,8 @@
 </template>
 
 <script lang="ts">
-import { Component, mixins } from 'nuxt-property-decorator';
-import { StoreHelper, StoreHelperMixin } from '../mixins/store_helper';
-import { modules } from '../store_modules/module_mapper';
-import { AuthState } from '../store_modules/auth/state';
+import { Component, Vue } from 'nuxt-property-decorator';
+import * as StoreHelper from '@/store/helper';
 import * as Nuxt from '@/types/nuxt';
 
 interface PostParams {
@@ -35,14 +33,14 @@ interface PostParams {
 @Component({
   auth: false,
 })
-export default class Login extends mixins(StoreHelperMixin) {
+export default class Login extends Vue {
   public email = '';
   public password = '';
   public isInvalid = false;
   public busy = false;
 
   public asyncData(ctx: Nuxt.Context): Promise<Partial<Login> | void> | void {
-    const authState: AuthState = StoreHelper.getState(ctx.store, modules.auth);
+    const authState = StoreHelper.getState('auth', ctx.store);
     if (authState.loggedIn) {
       ctx.app.$auth.redirect('home');
       return;
@@ -74,8 +72,8 @@ export default class Login extends mixins(StoreHelperMixin) {
     return this.$route.fullPath;
   }
 
-  get authState(): AuthState {
-    return this.getState(modules.auth);
+  get authState() {
+    return StoreHelper.getState('auth', this.$store);
   }
 }
 </script>

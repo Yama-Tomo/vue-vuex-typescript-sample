@@ -1,10 +1,7 @@
 import { Component, Vue, Prop, Watch } from 'nuxt-property-decorator';
 import { Route } from 'vue-router';
-import { TodoState } from '@/store_modules/todo/state';
-import { Todo } from '@/store_modules/todo/state/todo';
-import { TodoActions } from '@/store_modules/todo/actions';
-import { Actions, Getters } from '@/mixins/store_helper';
-import { TodoGetters } from '@/store_modules/todo/getters';
+import { State, Todo } from '@/store/todo';
+import { ActionTree, GetterTree } from '@/store/module_mapper';
 import { InputEvent } from '@/types/dom';
 
 interface Filters {
@@ -16,11 +13,11 @@ interface Filters {
 @Component
 export class Logic extends Vue {
   @Prop()
-  public state!: TodoState;
+  public state!: State;
   @Prop()
-  public actions!: Actions<TodoActions>;
+  public actions!: ActionTree['todo'];
   @Prop()
-  public getters!: Getters<TodoGetters>;
+  public getters!: GetterTree['todo'];
 
   public visibility: keyof Filters = 'all';
 
@@ -78,7 +75,7 @@ export class Logic extends Vue {
       return;
     }
 
-    this.actions.addTodo({ text });
+    this.actions.addTodo(text);
     (e as InputEvent).target.value = '';
   }
 }

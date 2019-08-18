@@ -51,21 +51,19 @@
 </template>
 
 <script lang="ts">
-import { Component, mixins } from 'nuxt-property-decorator';
-import { StoreHelperMixin } from '../mixins/store_helper';
-import { modules } from '../store_modules/module_mapper';
-import { AuthState } from '../store_modules/auth/state';
+import { Component, Vue } from 'nuxt-property-decorator';
+import * as StoreHelper from '@/store/helper';
 
 type Locales = { [key: string]: { [key: string]: string } };
 
 @Component
-export default class DefaultLayout extends mixins(StoreHelperMixin) {
+export default class DefaultLayout extends Vue {
   public signout() {
     this.$auth.logout();
   }
 
   get isLoggedIn(): boolean {
-    return (this.getState(modules.auth) as AuthState).loggedIn;
+    return StoreHelper.getState('auth', this.$store).loggedIn;
   }
 
   get currentPath(): string {

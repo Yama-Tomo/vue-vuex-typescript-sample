@@ -10,15 +10,13 @@
 </template>
 
 <script lang="ts">
-import { Component, mixins } from 'nuxt-property-decorator';
-import { StoreHelperMixin } from '../mixins/store_helper';
-import { modules } from '../store_modules/module_mapper';
-import { AuthState } from '../store_modules/auth/state';
+import { Component, Vue } from 'nuxt-property-decorator';
+import * as StoreHelper from '@/store/helper';
 
 @Component
-export default class About extends mixins(StoreHelperMixin) {
+export default class About extends Vue {
   get email(): string {
-    return (this.getState(modules.auth) as AuthState).user.email;
+    return StoreHelper.getState('auth', this.$store).user.email;
   }
 }
 </script>
