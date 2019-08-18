@@ -15,7 +15,7 @@
   $ # customize your .env file
   ```
 
-- add yarn wrapper shell path to $PATH variable
+- enable yarn wrapper shell
 
   ```bash
   $ source .npm_scripts/yarn-with-dotenv
@@ -43,7 +43,7 @@
   or, If you want to run jest on host machine.
 
   ```bash
-  $ yarn && yarn test
+  $ yarn && yarn sb:build && yarn test
   ```
 
   NOTICE: visual tests are skipped when run test on host machine. Because occurs test result difference when use the puppeteer installed on each platform
