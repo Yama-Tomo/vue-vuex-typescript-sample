@@ -1,4 +1,5 @@
 function yarn() {
+  local args="$@"
   sh -c "
   if [ -e $PWD/.env ]; then
     set -a
@@ -6,7 +7,8 @@ function yarn() {
     set +a
   fi
 
-  command yarn $@
+
+  eval 'command yarn '$args''
   "
 }
 
