@@ -1,23 +1,16 @@
 /* eslint-disable import/first */
-jest.mock('@/store_modules/todo/state', () => ({
+jest.mock('@/store/todo/state', () => ({
   __esModule: true,
-  ...jest.requireActual('@/store_modules/todo/state'),
+  ...jest.requireActual('@/store/todo/state'),
   initialStateResolver: jest.fn(),
 }));
 
 import { Store } from 'vuex';
 import actionContextHelper from '../../../utils/action_context_helper';
-import actions, { TodoActions } from '@/store_modules/todo/actions';
-import { TodoMutations } from '@/store_modules/todo/mutations';
-import { TodoState, initialStateResolver } from '@/store_modules/todo/state';
+import { actions, State, initialStateResolver } from '@/store/todo';
 
-const store = {} as Store<TodoState>;
-const { context, commit } = actionContextHelper<
-  TodoState,
-  {},
-  TodoActions,
-  TodoMutations
->({ todos: [] });
+const store = {} as Store<State>;
+const { context, commit } = actionContextHelper<State>({ todos: [] });
 
 afterEach(() => jest.resetAllMocks());
 
@@ -26,7 +19,7 @@ describe('fetchInitialState', () => {
     const mockData = { dummy: 'test' };
     ((initialStateResolver as any) as jest.Mock).mockReturnValue(mockData);
 
-    await actions.fetchInitialState.bind(store)(context, undefined);
+    await actions.fetchInitialState.bind(store)(context);
 
     expect(commit.mock.calls[0]).toEqual(['resetState', undefined]);
     expect(commit.mock.calls[1]).toEqual(['setInitialState', mockData]);
@@ -35,7 +28,7 @@ describe('fetchInitialState', () => {
 
 describe('addTodo', () => {
   test('called commit methods correctly', () => {
-    actions.addTodo.bind(store)(context, { text: 'aaa' });
+    actions.addTodo.bind(store)(context, 'aaa');
     expect(commit.mock.calls[0]).toEqual([
       'addTodo',
       { text: 'aaa', done: false },
@@ -46,7 +39,7 @@ describe('addTodo', () => {
 describe('removeTodo', () => {
   test('called commit methods correctly', () => {
     const todo = { text: 'test', done: true };
-    actions.removeTodo.bind(store)(context, { todo });
+    actions.removeTodo.bind(store)(context, todo);
 
     expect(commit.mock.calls[0]).toEqual(['removeTodo', todo]);
   });
@@ -75,12 +68,9 @@ describe('toggleAll', () => {
   test('called commit methods correctly', () => {
     const todo1 = { text: 'test', done: true };
     const todo2 = { text: 'test2', done: false };
-    const state: TodoState = { todos: [todo1, todo2] };
+    const state: State = { todos: [todo1, todo2] };
 
-    actions.toggleAll.bind(store)(
-      { ...context, ...{ state } },
-      { done: false }
-    );
+    actions.toggleAll.bind(store)({ ...context, ...{ state } }, false);
 
     expect(commit.mock.calls[0]).toEqual([
       'updateTodo',
@@ -99,9 +89,9 @@ describe('clearCompleted', () => {
     const todo1 = { text: 'test', done: true };
     const todo2 = { text: 'test2', done: false };
     const todo3 = { text: 'test3', done: true };
-    const state: TodoState = { todos: [todo1, todo2, todo3] };
+    const state: State = { todos: [todo1, todo2, todo3] };
 
-    actions.clearCompleted.bind(store)({ ...context, ...{ state } }, {});
+    actions.clearCompleted.bind(store)({ ...context, ...{ state } });
 
     expect(commit.mock.calls[0]).toEqual(['removeTodo', todo1]);
     expect(commit.mock.calls[1]).toEqual(['removeTodo', todo3]);
