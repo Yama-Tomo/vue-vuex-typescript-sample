@@ -1,6 +1,5 @@
 import { MutationTree, ActionTree, GetterTree } from 'vuex';
 import { RootState } from '@/store/module_mapper';
-import { ActionContext } from '@/types/store';
 import * as Store from '@/types/store';
 
 export const state = () => ({
@@ -39,7 +38,7 @@ export interface GetterTree {
 
 // ---------------------------------------------
 
-type Context = ActionContext<State, typeof mutations, RootState>;
+type Context = Store.ActionContext<State, typeof mutations, RootState>;
 export const actions = {
   increment(ctx: Context) {
     ctx.commit('increment', undefined);
