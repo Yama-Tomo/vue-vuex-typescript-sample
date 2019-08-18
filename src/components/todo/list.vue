@@ -30,9 +30,7 @@ class List extends ListComponent.Logic {
               class="toggle-all"
               type="checkbox"
               checked={this.allChecked}
-              onChange={() =>
-                this.actions.toggleAll({ done: !this.allChecked })
-              }
+              onChange={() => this.actions.toggleAll(!this.allChecked)}
             />
             select all
           </label>
@@ -71,7 +69,7 @@ class List extends ListComponent.Logic {
           <button
             v-show={this.state.todos.length > this.remaining}
             class="clear-completed"
-            onClick={() => this.actions.clearCompleted({})}
+            onClick={() => this.actions.clearCompleted()}
           >
             {this.$t('todo.clear')}
           </button>

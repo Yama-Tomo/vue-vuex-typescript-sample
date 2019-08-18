@@ -1,9 +1,8 @@
 <script lang="tsx">
 import { Component, Vue, Prop } from 'nuxt-property-decorator';
 import * as vts from 'vue-tsx-support';
-import { Todo } from '../../store_modules/todo/state/todo';
-import { Actions } from '../../mixins/store_helper';
-import { TodoActions } from '../../store_modules/todo/actions';
+import { Todo } from '@/store/todo';
+import { ActionTree } from '@/store/module_mapper';
 import { InputEvent } from '@/types/dom';
 
 const liClass = (todo: Todo, editing: boolean) => {
@@ -25,7 +24,7 @@ class Item extends Vue {
   @Prop(Object)
   public todo!: Todo;
   @Prop()
-  public actions!: Actions<TodoActions>;
+  public actions!: ActionTree['todo'];
 
   public editing = false;
 
@@ -73,7 +72,7 @@ class Item extends Vue {
   }
 
   public removeTodo() {
-    this.actions.removeTodo({ todo: this.todo });
+    this.actions.removeTodo(this.todo);
   }
 
   public onKeyPress(e: Event) {

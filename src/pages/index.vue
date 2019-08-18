@@ -5,12 +5,10 @@
 </template>
 
 <script lang="ts">
-import { Component, mixins } from 'nuxt-property-decorator';
+import { Component, Vue } from 'nuxt-property-decorator';
 import { Store } from 'vuex';
-import { StoreHelper, StoreHelperMixin, Actions } from '../mixins/store_helper';
-import { modules } from '../store_modules/module_mapper';
 import List from '../components/todo/list.vue';
-import { TodoActions } from '../store_modules/todo/actions';
+import * as StoreHelper from '@/store/helper';
 
 @Component({
   components: {
@@ -18,25 +16,22 @@ import { TodoActions } from '../store_modules/todo/actions';
   },
   auth: false,
 })
-export default class Index extends mixins(StoreHelperMixin) {
+export default class Index extends Vue {
   public async fetch({ store }: { store: Store<any> }) {
-    const actions: Actions<TodoActions> = StoreHelper.getActions(
-      store,
-      modules.todo
-    );
-    await actions.fetchInitialState(undefined);
+    const actions = StoreHelper.getActions('todo', store);
+    await actions.fetchInitialState();
   }
 
   get state() {
-    return this.getState(modules.todo);
+    return StoreHelper.getState('todo', this.$store);
   }
 
   get actions() {
-    return this.getActions(modules.todo);
+    return StoreHelper.getActions('todo', this.$store);
   }
 
   get getters() {
-    return this.getGetters(modules.todo);
+    return StoreHelper.getGetters('todo', this.$store);
   }
 }
 </script>
