@@ -22,7 +22,9 @@ const mutations = {
   },
   resetState(state: State) {
     const resetState = defaultState();
-    for (const key of Object.keys(state) as Array<keyof State>) {
+    for (const key of Object.keys(resetState) as Array<
+      keyof typeof resetState
+    >) {
       state[key] = resetState[key];
     }
   },
