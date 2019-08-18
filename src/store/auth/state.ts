@@ -1,9 +1,9 @@
-export interface User {
+interface User {
   id: number;
   email: string;
 }
 
-export interface AuthState {
+export interface State {
   busy: boolean;
   loggedIn: boolean;
   redirect: null | string;
