@@ -1,0 +1,3 @@
+store/**/actions.ts
+store/**/getters.ts
+store/**/state.ts
