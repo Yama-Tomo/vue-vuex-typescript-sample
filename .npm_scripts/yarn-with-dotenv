@@ -1,0 +1,12 @@
+function yarn() {
+  sh -c "
+  if [ -e $PWD/.env ]; then
+    set -a
+    source $PWD/.env
+    set +a
+  fi
+
+  command yarn $@
+  "
+}
+

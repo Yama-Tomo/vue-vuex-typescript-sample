@@ -18,7 +18,7 @@
 - add yarn wrapper shell path to $PATH variable
 
   ```bash
-  $ export PATH=$PATH:.npm_scripts
+  $ source .npm_scripts/yarn-with-dotenv
   ```
 
 - starting server
@@ -31,7 +31,7 @@
 
   ```bash
   $ docker-compose up -d backend
-  $ yarnw && yarnw dev # Note: yarnw is yarn wrapper shell
+  $ yarn && yarn dev
   ```
 
 - test
@@ -43,7 +43,7 @@
   or, If you want to run jest on host machine.
 
   ```bash
-  $ yarnw && yarnw test
+  $ yarn && yarn test
   ```
 
   NOTICE: visual tests are skipped when run test on host machine. Because occurs test result difference when use the puppeteer installed on each platform
