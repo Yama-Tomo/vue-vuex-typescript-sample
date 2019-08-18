@@ -1,5 +1,4 @@
-import getters, { TodoGetters } from '@/store_modules/todo/getters';
-import { TodoState } from '@/store_modules/todo/state';
+import { getters, State } from '@/store/todo';
 
 describe('reverse', () => {
   test('reverse', () => {
@@ -11,8 +10,7 @@ describe('reverse', () => {
       ],
     };
 
-    const gettersInstance = {} as TodoGetters;
-    expect(getters.reverse(state, gettersInstance, {}, {})).toEqual([
+    expect(getters.reverse(state)).toEqual([
       { text: 'cccc', done: false },
       { text: 'bbbb', done: false },
       { text: 'aaaa', done: true },
@@ -27,10 +25,11 @@ describe('reverse', () => {
         { text: 'bbbb', done: false },
         { text: 'aaaa', done: true },
       ],
-    } as TodoGetters;
+    };
 
-    expect(getters.latest({} as TodoState, gettersInstance, {}, {})(2)).toEqual(
-      [{ text: 'cccc', done: false }, { text: 'bbbb', done: false }]
-    );
+    expect(getters.latest({} as State, gettersInstance)(2)).toEqual([
+      { text: 'cccc', done: false },
+      { text: 'bbbb', done: false },
+    ]);
   });
 });

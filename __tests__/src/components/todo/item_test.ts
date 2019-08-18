@@ -4,12 +4,11 @@
 
 import { mount } from '@vue/test-utils';
 import * as Component from '@/components/todo/item.vue';
-import { TodoActions } from '@/store_modules/todo/actions';
-import { Todo } from '@/store_modules/todo/state/todo';
+import { actions, Todo } from '@/store/todo';
 
 const defaultTodoState = { text: 'aaa', done: false };
 const getWrapper = (arg?: {
-  actions?: { [KEY in keyof TodoActions]?: any };
+  actions?: { [KEY in keyof typeof actions]?: any };
   state?: Todo;
   data?: () => any;
 }) => {
@@ -52,7 +51,7 @@ describe('behaviors', () => {
     const wrapper = getWrapper({ actions: { removeTodo: actionMock } });
 
     wrapper.find('button.destroy').trigger('click');
-    expect(actionMock.mock.calls[0]).toEqual([{ todo: defaultTodoState }]);
+    expect(actionMock.mock.calls[0]).toEqual([defaultTodoState]);
   });
 
   test('todoの入力があった時にステートを変更するvuexのactionを呼び出すこと', () => {
@@ -100,7 +99,7 @@ describe('behaviors', () => {
     const inputEl = wrapper.find('input.edit');
     inputEl.setValue('');
     inputEl.trigger('keypress', { key: 'Enter' });
-    expect(actionMock.mock.calls[0]).toEqual([{ todo: defaultTodoState }]);
+    expect(actionMock.mock.calls[0]).toEqual([defaultTodoState]);
   });
 });
 
