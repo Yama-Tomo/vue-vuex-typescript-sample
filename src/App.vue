@@ -3,27 +3,26 @@
 </template>
 
 <script lang="ts">
-import { Component, Mixins } from 'vue-property-decorator';
-import { StoreHelperMixin } from './mixins/store_helper';
-import { modules } from './modules/module_mapper';
+import { Component, Vue } from 'vue-property-decorator';
 import List from './modules/todo/components/list.vue';
+import * as StoreHelper from '@/modules/store_helper';
 
 @Component({
   components: {
     List,
   },
 })
-export default class App extends Mixins(StoreHelperMixin) {
+export default class App extends Vue {
   get state() {
-    return this.getState(modules.todo);
+    return StoreHelper.getState('todoModule', this.$store);
   }
 
   get actions() {
-    return this.getActions(modules.todo);
+    return StoreHelper.getActions('todoModule', this.$store);
   }
 
   get getters() {
-    return this.getGetters(modules.todo);
+    return StoreHelper.getGetters('todoModule', this.$store);
   }
 }
 </script>

@@ -1,17 +1,16 @@
 <script lang="tsx">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import * as vts from 'vue-tsx-support';
-import Todo from '../store/state/todo';
-import { Actions } from '../../../mixins/store_helper';
-import { TodoActions } from '../store/actions';
 import { HTMLElementEvent } from '../../../types/dom';
+import { Todo } from '@/modules/todo/store';
+import { ActionTree } from '@/modules/module_mapper';
 
 @Component
 export class Item extends Vue {
   @Prop()
   public todo!: Todo;
   @Prop()
-  public actions!: Actions<TodoActions>;
+  public actions!: ActionTree['todoModule'];
 
   public editing = false;
 
@@ -60,11 +59,11 @@ export class Item extends Vue {
   }
 
   public toggleTodo() {
-    this.actions.toggleTodo({ todo: this.todo });
+    this.actions.toggleTodo(this.todo);
   }
 
   public removeTodo() {
-    this.actions.removeTodo({ todo: this.todo });
+    this.actions.removeTodo(this.todo);
   }
 
   public onKeyup(e: Event) {
