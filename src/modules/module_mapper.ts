@@ -2,9 +2,9 @@ import { TodoState } from './todo/store/state';
 import { TodoActions } from './todo/store/actions';
 import { TodoGetters } from './todo/store/getters';
 
-export namespace modules {
-  export const todo = 'todoModule';
-}
+export const modules = {
+  todo: 'todoModule',
+} as const;
 
 export interface StateMaps {
   [modules.todo]: TodoState;

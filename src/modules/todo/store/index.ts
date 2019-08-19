@@ -4,10 +4,9 @@ import actions from './actions';
 import getters from './getters';
 
 export default (initialState?: any) => {
-  const state = defaultState();
-  if (initialState) {
-    initialStateResolver(state, initialState);
-  }
+  const state = initialState
+    ? initialStateResolver(initialState)
+    : defaultState();
 
   return {
     namespaced: true,

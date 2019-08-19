@@ -9,7 +9,7 @@ export interface TodoGetters {
 
 const getters: DefineGetters<TodoGetters, TodoState> = {
   reverse: state => [...state.todos].reverse(),
-  latest: (state, that) => limit => {
+  latest: (_state, that) => limit => {
     return that.reverse.slice(0, limit - 1);
   },
 };
