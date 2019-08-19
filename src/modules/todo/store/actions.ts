@@ -1,53 +1,39 @@
-import { DefineActions } from 'vuex-type-helper';
-import Todo from './state/todo';
-import { TodoState } from './state';
-import { TodoMutations } from './mutations';
+import { ActionTree } from 'vuex';
+import { State, Todo } from './state';
+import mutations from './mutations';
+import { ActionContext } from '@/types/store';
+import { RootState } from '@/modules/module_mapper';
 
-export interface TodoActions {
-  addTodo: {
-    text: string;
-  };
-  removeTodo: {
-    todo: Todo;
-  };
-  editTodo: {
-    todo: Todo;
-    text: string;
-  };
-  toggleTodo: {
-    todo: Todo;
-  };
-  toggleAll: {
-    done: boolean;
-  };
-  clearCompleted: {};
-}
+type Context = ActionContext<State, typeof mutations, RootState>;
 
-const actions: DefineActions<TodoActions, TodoState, TodoMutations> = {
-  addTodo({ commit }, { text }) {
-    commit('addTodo', new Todo(text, false));
+const actions = {
+  addTodo(ctx: Context, text: string) {
+    ctx.commit('addTodo', { text, done: false });
   },
-  removeTodo({ commit }, { todo }) {
-    commit('removeTodo', todo);
+  removeTodo(ctx: Context, todo: Todo) {
+    ctx.commit('removeTodo', todo);
   },
-  editTodo({ commit }, { todo, text }) {
-    commit('updateTodo', { todo, text });
+  editTodo(ctx: Context, { todo, text }: { todo: Todo; text: string }) {
+    ctx.commit('updateTodo', { todo, text });
   },
-  toggleTodo({ commit }, { todo }) {
-    commit('updateTodo', { todo, done: !todo.done });
+  toggleTodo(ctx: Context, todo: Todo) {
+    ctx.commit('updateTodo', { todo, done: !todo.done });
   },
-  toggleAll({ state, commit }, { done }) {
-    state.todos.forEach(todo => {
-      commit('updateTodo', { todo, done });
+  toggleAll(ctx: Context, done: boolean) {
+    ctx.state.todos.forEach(todo => {
+      ctx.commit('updateTodo', { todo, done });
     });
   },
-  clearCompleted({ state, commit }) {
-    state.todos
+  clearCompleted(ctx: Context) {
+    ctx.state.todos
       .filter(todo => todo.done)
       .forEach(todo => {
-        commit('removeTodo', todo);
+        ctx.commit('removeTodo', todo);
       });
   },
 };
+
+// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+const _checkTypes: ActionTree<State, RootState> = actions; // don't remove this line;
 
 export default actions;
