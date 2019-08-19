@@ -1,17 +1,17 @@
-import { DefineGetters } from 'vuex-type-helper';
-import Todo from './state/todo';
-import { TodoState } from './state';
+import { GetterTree } from 'vuex';
+import { State } from './state';
+import { GetterReturnType } from '@/types/store';
+import { RootState } from '@/modules/module_mapper';
 
-export interface TodoGetters {
-  reverse: Todo[];
-  latest: (limit: number) => Todo[];
-}
-
-const getters: DefineGetters<TodoGetters, TodoState> = {
-  reverse: state => [...state.todos].reverse(),
-  latest: (_state, that) => limit => {
-    return that.reverse.slice(0, limit - 1);
-  },
+const getters = {
+  reverse: (state: State) => [...state.todos].reverse(),
+  latest: (_state: State, otherGetters: unknown) => (limit: number) =>
+    (otherGetters as OtherGetters).reverse.slice(0, limit),
 };
+
+type OtherGetters = GetterReturnType<typeof getters>;
+
+// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+const _checkTypes: GetterTree<State, RootState> = getters; // don't remove this line;
 
 export default getters;
