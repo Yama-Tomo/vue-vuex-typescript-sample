@@ -19,7 +19,7 @@ const mutations: DefineMutations<TodoMutations, TodoState> = {
   removeTodo(state, todo) {
     state.todos.splice(state.todos.indexOf(todo), 1);
   },
-  updateTodo(state, { todo, text, done }) {
+  updateTodo(_state, { todo, text, done }) {
     if (text) {
       todo.text = text;
     }

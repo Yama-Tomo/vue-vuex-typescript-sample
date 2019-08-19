@@ -77,7 +77,7 @@ export default class List extends Vue {
   @Prop()
   public getters!: Getters<TodoGetters>;
 
-  public visibility: string = 'all';
+  public visibility = 'all';
 
   get filters() {
     return {
