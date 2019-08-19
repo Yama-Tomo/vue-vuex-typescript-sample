@@ -3,6 +3,9 @@ node_modules
 /dist
 .nuxt
 __api
+.env
+storybook-static
+coverage
 
 # local env files
 .env.local
