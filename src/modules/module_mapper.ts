@@ -1,19 +1,9 @@
-import { TodoState } from './todo/store/state';
-import { TodoActions } from './todo/store/actions';
-import { TodoGetters } from './todo/store/getters';
+import * as Todo from './todo/store';
 
-export const modules = {
-  todo: 'todoModule',
-} as const;
+export type StateTree = Todo.StateTree;
 
-export interface StateMaps {
-  [modules.todo]: TodoState;
-}
+export type RootState = Todo.RootState;
 
-export interface ActionMaps {
-  [modules.todo]: TodoActions;
-}
+export type GetterTree = Todo.GetterTree;
 
-export interface GettersMaps {
-  [modules.todo]: TodoGetters;
-}
+export type ActionTree = Todo.ActionTree;
