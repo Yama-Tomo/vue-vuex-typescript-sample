@@ -56,13 +56,10 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
-import { TodoState } from '../store/state';
-import Todo from '../store/state/todo';
-import { TodoActions } from '../store/actions';
-import { HTMLElementEvent } from '../../../types/dom';
-import { Actions, Getters } from '../../../mixins/store_helper';
-import { TodoGetters } from '../store/getters';
 import Item from './item.vue';
+import { Todo } from '@/modules/todo/store';
+import { HTMLElementEvent } from '@/types/dom';
+import { ActionTree, GetterTree, StateTree } from '@/modules/module_mapper';
 
 @Component({
   components: {
@@ -71,11 +68,11 @@ import Item from './item.vue';
 })
 export default class List extends Vue {
   @Prop()
-  public state!: TodoState;
+  public state!: StateTree['todoModule'];
   @Prop()
-  public actions!: Actions<TodoActions>;
+  public actions!: ActionTree['todoModule'];
   @Prop()
-  public getters!: Getters<TodoGetters>;
+  public getters!: GetterTree['todoModule'];
 
   public visibility = 'all';
 
@@ -117,16 +114,16 @@ export default class List extends Vue {
       return;
     }
 
-    this.actions.addTodo({ text });
+    this.actions.addTodo(text);
     e.target.value = '';
   }
 
   public toggleAll(done: boolean): void {
-    this.actions.toggleAll({ done });
+    this.actions.toggleAll(done);
   }
 
   public clearCompleted(): void {
-    this.actions.clearCompleted({});
+    this.actions.clearCompleted();
   }
 
   public pluralize(wordLength: number, word: string): string {
