@@ -1,7 +1,7 @@
 import { Component, Vue, Prop, Watch } from 'nuxt-property-decorator';
 import { Route } from 'vue-router';
-import { State, Todo } from '@/store/todo';
-import { ActionTree, GetterTree } from '@/store/module_mapper';
+import { Todo } from '@/store/todo';
+import { ActionTree, GetterTree, StateTree } from '@/store/module_mapper';
 import { InputEvent } from '@/types/dom';
 
 interface Filters {
@@ -13,7 +13,7 @@ interface Filters {
 @Component
 export class Logic extends Vue {
   @Prop()
-  public state!: State;
+  public state!: StateTree['todo'];
   @Prop()
   public actions!: ActionTree['todo'];
   @Prop()
