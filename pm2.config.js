@@ -17,9 +17,6 @@ module.exports = {
       out_file: `${basePath}/logs/out.log`,
       merge_logs: true,
       log_date_format: 'YYYY-MM-DD HH:mm Z',
-      env: {
-        NO_RESTORE_TSCONFIG: true,
-      },
     },
   ],
 };
