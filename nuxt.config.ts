@@ -38,9 +38,6 @@ export default {
   build: {
     extractCSS: !isDev,
     extend: extendWebpackConfig,
-    typescript: {
-      ignoreNotFoundWarnings: true,
-    },
   },
   watch: ['~/serverMiddleware/*.ts'],
   hooks: {
@@ -78,6 +75,15 @@ export default {
         langDir: 'i18n/',
         strategy: 'prefix',
         detectBrowserLanguage: false,
+      },
+    ],
+    [
+      '@nuxt/typescript-build',
+      {
+        // NOTE: Use tslint with ForkTsCheckerWebpackPlugin by default.
+        // I want to use eslint, so set this value to false and push plugin to webpack manually in extend.webpack.config.ts
+        typeCheck: false,
+        ignoreNotFoundWarnings: true,
       },
     ],
   ],
