@@ -1,3 +1,16 @@
+/* How to run with pm2 on local machine
+
+  # setup
+    - set this repository root path to basePath variable
+    - run commands
+      $ ln -s . current
+      $ npm i -g pm2
+      $ pm2 start pm2.config.js
+
+  # graceful reload
+    - $ pm2 reload nuxt-sample-app
+*/
+
 // require absolute path
 const basePath = '/path/to/application/';
 
