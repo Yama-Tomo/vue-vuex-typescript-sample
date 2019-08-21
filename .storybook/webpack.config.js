@@ -2,7 +2,15 @@ const path = require('path');
 const cli = require('@nuxt/cli');
 const cmd = new cli.NuxtCommand(undefined, ['--config-file' , path.resolve('./nuxt.config.ts')]);
 
+function setupNuxtTs() {
+  const runtime = require('@nuxt/typescript-runtime');
+  const rootDir = runtime.getRootdirFromArgv();
+  const tsConfigPath = path.resolve(rootDir, 'tsconfig.json');
+  runtime.registerTSNode(tsConfigPath)
+}
+
 async function nuxtWebpackConfig() {
+  setupNuxtTs();
   const config = await cmd.getNuxtConfig({ dev: false, _build: true });
   const nuxt = await cmd.getNuxt(config);
   const builder = await cmd.getBuilder(nuxt);
