@@ -1,16 +1,17 @@
 import * as path from 'path';
-import { Configuration } from 'webpack';
+import { Configuration as WebpackConfiguration } from 'webpack';
 import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import consola from 'consola';
-import { Build } from '@nuxt/config/types';
+import { Configuration as NuxtConfiguration } from '@nuxt/types';
 
 const defaultConfigHash: (
-  config: Configuration
+  config: WebpackConfiguration
 ) => /* eslint-disable-next-line @typescript-eslint/no-var-requires */
 string = require('hard-source-webpack-plugin/lib/defaultConfigHash');
 
-type Args = Parameters<NonNullable<Build['extend']>>;
+type BuildConfiguration = NonNullable<NuxtConfiguration['build']>;
+type Args = Parameters<NonNullable<BuildConfiguration['extend']>>;
 export default function(...args: Args) {
   const config = args[0];
   const ctx = args[1];
@@ -48,7 +49,7 @@ export default function(...args: Args) {
         cacheDirectory: path.resolve(
           './node_modules/.cache/hard-source/[confighash]'
         ),
-        configHash: (webpackConfig?: Configuration) =>
+        configHash: (webpackConfig?: WebpackConfiguration) =>
           (webpackConfig ? defaultConfigHash(webpackConfig) : '') +
           `-${process.env.NODE_ENV}`,
       })
