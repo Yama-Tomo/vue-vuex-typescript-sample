@@ -2,6 +2,7 @@
 node_modules
 /dist
 /.nuxt
+/.storybook/.nuxt
 /storybook-static
 /__tests__/storyshots/__image_snapshots__/__diff_output__
 junit.xml

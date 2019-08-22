@@ -2,6 +2,8 @@ const path = require('path');
 const cli = require('@nuxt/cli');
 const cmd = new cli.NuxtCommand(undefined, ['--config-file', path.resolve('./nuxt.config.ts')]);
 
+const nuxtBuildPath = `${path.resolve(__dirname)}/.nuxt`;
+
 const setupNuxtTs = () => {
   const runtime = require('@nuxt/typescript-runtime');
   const rootDir = runtime.getRootdirFromArgv();
@@ -9,16 +11,32 @@ const setupNuxtTs = () => {
   runtime.registerTSNode(tsConfigPath)
 };
 
-const nuxtWebpackConfig = async (nuxtConfigCustomizer) => {
+const getBuilder = async () => {
   const config = await cmd.getNuxtConfig({ dev: false, _build: true });
-  const nuxt = await cmd.getNuxt(config);
-  const builder = await cmd.getBuilder(nuxt);
-  return builder.getBundleBuilder().getWebpackConfig('Client');
+  const nuxt = await cmd.getNuxt();
+  nuxt.close(); // unnecessary wait
+
+  return cmd.getBuilder(nuxt);
+};
+
+const nuxtWebpackConfig = async (nuxtConfigCustomizer) =>
+  (await getBuilder(nuxtConfigCustomizer)).getBundleBuilder().getWebpackConfig('Client');
+
+const generateNuxtTemplates = async () => {
+  const builder = await getBuilder();
+
+  builder.options.buildDir = nuxtBuildPath;
+  await builder.validatePages();
+  await builder.generateRoutesAndFiles();
 };
 
 exports.customizeWebpackConfig = async (originalConfig, mode) => {
   setupNuxtTs();
-  const nuxtWebpack = await nuxtWebpackConfig();
+
+  const [nuxtWebpack] = await Promise.all([
+    nuxtWebpackConfig(nuxtConfigCustomizer),
+    generateNuxtTemplates(nuxtConfigCustomizer)
+  ]);
 
   const excludeNuxtRules = ['/\\.vue$/i', '/\\.scss$/i'];
   const rules = nuxtWebpack.module.rules
