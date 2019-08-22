@@ -1,7 +1,5 @@
 import { Store } from 'vuex';
 import VueI18n from 'vue-i18n';
-import VueRouter from 'vue-router';
-import { state, actions, mutations, getters } from '@/store/todo';
 import i18nEnMessage from '@/i18n/en';
 
 export const store = (): Store<any> =>
