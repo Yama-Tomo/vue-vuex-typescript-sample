@@ -1,8 +1,6 @@
 import * as path from 'path';
 import { Configuration as WebpackConfiguration } from 'webpack';
 import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
-import consola from 'consola';
 import { Configuration as NuxtConfiguration } from '@nuxt/types';
 
 const defaultConfigHash: (
@@ -14,7 +12,6 @@ type BuildConfiguration = NonNullable<NuxtConfiguration['build']>;
 type Args = Parameters<NonNullable<BuildConfiguration['extend']>>;
 export default function(...args: Args) {
   const config = args[0];
-  const ctx = args[1];
 
   config.externals = {
     jquery: 'jQuery',
@@ -28,22 +25,6 @@ export default function(...args: Args) {
   }
 
   if (config.plugins) {
-    config.plugins = config.plugins.filter(
-      p => p.constructor.name !== 'ForkTsCheckerWebpackPlugin'
-    );
-
-    if (ctx.isClient) {
-      config.plugins.push(
-        new ForkTsCheckerWebpackPlugin({
-          vue: true,
-          tsconfig: path.resolve('tsconfig.json'),
-          eslint: true,
-          formatter: 'codeframe',
-          logger: consola,
-        })
-      );
-    }
-
     config.plugins.push(
       new HardSourceWebpackPlugin({
         cacheDirectory: path.resolve(

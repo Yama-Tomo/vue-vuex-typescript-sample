@@ -80,9 +80,9 @@ export default {
     [
       '@nuxt/typescript-build',
       {
-        // NOTE: Use tslint with ForkTsCheckerWebpackPlugin by default.
-        // I want to use eslint, so set this value to false and push plugin to webpack manually in extend.webpack.config.ts
-        typeCheck: false,
+        typeCheck: {
+          eslint: true,
+        },
         ignoreNotFoundWarnings: true,
       },
     ],
