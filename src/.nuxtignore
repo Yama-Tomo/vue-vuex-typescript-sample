@@ -1,6 +1,7 @@
 store/**/actions.ts
 store/**/getters.ts
 store/**/state.ts
+store/**/mutations.ts
 store/auth/*.ts
 store/helper.ts
 store/module_mapper.ts
