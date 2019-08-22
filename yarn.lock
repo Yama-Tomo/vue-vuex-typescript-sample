@@ -1208,13 +1208,12 @@
     serve-static "^1.14.1"
     server-destroy "^1.0.1"
 
-"@nuxt/types@0.2.4":
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/@nuxt/types/-/types-0.2.4.tgz#53fd997bfe733e4d52b27d65f8502f8b918f8c91"
-  integrity sha512-XcizLG2PD3EHXx5JIqjKZzc5s8MjfDhTmx5BxRiamN8O4t+eiG+TRwJDpbxz2Qrw7AWnD/4hwWvEgqcSbXIBhQ==
+"@nuxt/types@0.2.5":
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/@nuxt/types/-/types-0.2.5.tgz#d75bab75a55021bb16e9921ed2b625a88326d65b"
+  integrity sha512-PWIScKe/2E/HqcVAxrNH1FSoRJSifH63dtR9BEfxOHR2p2sOBE/iHPBLPWC5wyHUN44Cx0Evou0LWhjoAio8CQ==
   dependencies:
     "@types/babel__core" "^7.1.2"
-    "@types/chokidar" "^2.1.3"
     "@types/compression" "^1.0.1"
     "@types/connect" "^3.4.32"
     "@types/etag" "^1.8.0"
@@ -1229,21 +1228,21 @@
     "@types/webpack-dev-middleware" "^2.0.3"
     "@types/webpack-hot-middleware" "^2.16.5"
 
-"@nuxt/typescript-build@0.1.10":
-  version "0.1.10"
-  resolved "https://registry.yarnpkg.com/@nuxt/typescript-build/-/typescript-build-0.1.10.tgz#1a25021cb5d1b08886afaa9d4f295d51c227e6ca"
-  integrity sha512-xxzKM0gIUpoOh3Rz/sRYXxHy1v5p4kk4EAGH8KV2LIlokKSuEiHOxaPCfBMZmHOCFHMnqvS5iGEG0qwAzF7G2w==
+"@nuxt/typescript-build@0.1.11":
+  version "0.1.11"
+  resolved "https://registry.yarnpkg.com/@nuxt/typescript-build/-/typescript-build-0.1.11.tgz#a03e54660d78433b345f6a2c7dec16f1362c3b52"
+  integrity sha512-UuoYy/7uG7c0cWBafGtuU7fOsCwpdpgqr/jE/hFCON35f8cQ1lz+r1tFWC9GK8eNVlS5VaPD1ASV+CgaqKmlqg==
   dependencies:
-    "@nuxt/types" "0.2.4"
+    "@nuxt/types" "0.2.5"
     consola "^2.10.1"
     fork-ts-checker-webpack-plugin "^1.5.0"
     ts-loader "^6.0.4"
     typescript "^3.5.3"
 
-"@nuxt/typescript-runtime@0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@nuxt/typescript-runtime/-/typescript-runtime-0.1.2.tgz#382b7c59b9b058c720057da308f5a5c8b3ddb9b4"
-  integrity sha512-yFRl7D2khhNPdizIfBXr6YNCSApvX4+qKf4f1/WRRFKdP8NLWQhWUPVfxh5agYaqoOYw3AWYlracCO3RePXOKg==
+"@nuxt/typescript-runtime@0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@nuxt/typescript-runtime/-/typescript-runtime-0.1.3.tgz#e4e8c65ca7058fe6a5d7455d20fc1c367e1eb772"
+  integrity sha512-fgzGLFU3/MV8veL/fFVQG+9t6LMnnBf42MivfK8CHUcAueppKe24le7DUWPJGi+31rMUMaSm4E1HziOqiMWYkw==
   dependencies:
     ts-node "^8.3.0"
     typescript "^3.5.3"
@@ -1762,13 +1761,6 @@
   dependencies:
     "@types/connect" "*"
     "@types/node" "*"
-
-"@types/chokidar@^2.1.3":
-  version "2.1.3"
-  resolved "https://registry.yarnpkg.com/@types/chokidar/-/chokidar-2.1.3.tgz#123ab795dba6d89be04bf076e6aecaf8620db674"
-  integrity sha512-6qK3xoLLAhQVTucQGHTySwOVA1crHRXnJeLwqK6KIFkkKa2aoMFXh+WEi8PotxDtvN6MQJLyYN9ag9P6NLV81w==
-  dependencies:
-    chokidar "*"
 
 "@types/clean-css@*":
   version "4.2.1"
@@ -3816,21 +3808,6 @@ check-types@^8.0.3:
   resolved "https://registry.yarnpkg.com/check-types/-/check-types-8.0.3.tgz#3356cca19c889544f2d7a95ed49ce508a0ecf552"
   integrity sha512-YpeKZngUmG65rLudJ4taU7VLkOCTMhNl/u4ctNC56LQS/zJTyNH0Lrtwm1tfTsbLlwvlfsA2d1c8vCf/Kh2KwQ==
 
-chokidar@*, chokidar@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.0.2.tgz#0d1cd6d04eb2df0327446188cd13736a3367d681"
-  integrity sha512-c4PR2egjNjI1um6bamCQ6bUNPDiyofNQruHvKgHQ4gDUP/ITSVSzNsiI5OWtHOsX323i5ha/kk4YmOZ1Ktg7KA==
-  dependencies:
-    anymatch "^3.0.1"
-    braces "^3.0.2"
-    glob-parent "^5.0.0"
-    is-binary-path "^2.1.0"
-    is-glob "^4.0.1"
-    normalize-path "^3.0.0"
-    readdirp "^3.1.1"
-  optionalDependencies:
-    fsevents "^2.0.6"
-
 chokidar@^2.0.2, chokidar@^2.0.4:
   version "2.1.6"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-2.1.6.tgz#b6cad653a929e244ce8a834244164d241fa954c5"
@@ -3849,6 +3826,21 @@ chokidar@^2.0.2, chokidar@^2.0.4:
     upath "^1.1.1"
   optionalDependencies:
     fsevents "^1.2.7"
+
+chokidar@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.0.2.tgz#0d1cd6d04eb2df0327446188cd13736a3367d681"
+  integrity sha512-c4PR2egjNjI1um6bamCQ6bUNPDiyofNQruHvKgHQ4gDUP/ITSVSzNsiI5OWtHOsX323i5ha/kk4YmOZ1Ktg7KA==
+  dependencies:
+    anymatch "^3.0.1"
+    braces "^3.0.2"
+    glob-parent "^5.0.0"
+    is-binary-path "^2.1.0"
+    is-glob "^4.0.1"
+    normalize-path "^3.0.0"
+    readdirp "^3.1.1"
+  optionalDependencies:
+    fsevents "^2.0.6"
 
 chownr@^1.1.1:
   version "1.1.2"
