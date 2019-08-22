@@ -12,9 +12,9 @@ const setupNuxtTs = () => {
   runtime.registerTSNode(tsConfigPath)
 };
 
-const getBuilder = async () => {
+const getBuilder = async (nuxtConfigCustomizer) => {
   const config = await cmd.getNuxtConfig({ dev: false, _build: true });
-  const nuxt = await cmd.getNuxt();
+  const nuxt = await cmd.getNuxt(await nuxtConfigCustomizer(config));
   nuxt.close(); // unnecessary wait
 
   return cmd.getBuilder(nuxt);
@@ -23,15 +23,15 @@ const getBuilder = async () => {
 const nuxtWebpackConfig = async (nuxtConfigCustomizer) =>
   (await getBuilder(nuxtConfigCustomizer)).getBundleBuilder().getWebpackConfig('Client');
 
-const generateNuxtTemplates = async () => {
-  const builder = await getBuilder();
+const generateNuxtTemplates = async (nuxtConfigCustomizer) => {
+  const builder = await getBuilder(nuxtConfigCustomizer);
 
   builder.options.buildDir = nuxtBuildPath;
   await builder.validatePages();
   await builder.generateRoutesAndFiles();
 };
 
-exports.customizeWebpackConfig = async (originalConfig, mode) => {
+exports.customizeWebpackConfig = async (originalConfig, mode, nuxtConfigCustomizer = async (config) => config) => {
   setupNuxtTs();
 
   const [nuxtWebpack] = await Promise.all([
