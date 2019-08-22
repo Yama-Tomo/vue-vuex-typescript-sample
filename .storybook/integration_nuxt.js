@@ -47,7 +47,7 @@ exports.customizeWebpackConfig = async (originalConfig, mode, nuxtConfigCustomiz
       loaders: ['style-loader', 'css-loader', 'sass-loader']
     });
 
-  const pickNuxtPlugin = ['WarningIgnorePlugin', 'ForkTsCheckerWebpackPlugin'];
+  const pickNuxtPlugin = ['WarningIgnorePlugin', 'ForkTsCheckerWebpackPlugin', 'HardSourceWebpackPlugin'];
   const plugins = nuxtWebpack.plugins
    .filter(plugin => pickNuxtPlugin.includes(plugin.constructor.name))
    .concat(
