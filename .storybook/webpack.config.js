@@ -5,5 +5,8 @@ module.exports = ({ config, mode }) => {
   // You can change the configuration based on that.
   // 'PRODUCTION' is used when building the static version of storybook.
 
-  return customizeWebpackConfig(config, mode);
+  return customizeWebpackConfig(config, mode, async (nuxtConfig) => ({
+    ...nuxtConfig,
+    ...{ hooks: {} }
+  }));
 };
