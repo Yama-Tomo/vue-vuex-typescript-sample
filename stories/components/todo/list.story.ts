@@ -9,6 +9,10 @@ const setup = (
   initState: State,
   extendCtx?: NonNullable<ConstructorParameters<VueConstructor>[0]>
 ) => {
+  if (Helper.isRunWithJest()) {
+    return () => ({});
+  }
+
   const store = Helper.store();
   store.commit('todo/setInitialState', initState);
 
