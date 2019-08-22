@@ -1,52 +1,9 @@
-const path = require('path');
-const cli = require('@nuxt/cli');
-const cmd = new cli.NuxtCommand(undefined, ['--config-file' , path.resolve('./nuxt.config.ts')]);
+const { customizeWebpackConfig } = require('./integration_nuxt');
 
-function setupNuxtTs() {
-  const runtime = require('@nuxt/typescript-runtime');
-  const rootDir = runtime.getRootdirFromArgv();
-  const tsConfigPath = path.resolve(rootDir, 'tsconfig.json');
-  runtime.registerTSNode(tsConfigPath)
-}
-
-async function nuxtWebpackConfig() {
-  setupNuxtTs();
-  const config = await cmd.getNuxtConfig({ dev: false, _build: true });
-  const nuxt = await cmd.getNuxt(config);
-  const builder = await cmd.getBuilder(nuxt);
-  return builder.getBundleBuilder().getWebpackConfig('Client');
-}
-
-module.exports = async ({ config, mode }) => {
+module.exports = ({ config, mode }) => {
   // `mode` has a value of 'DEVELOPMENT' or 'PRODUCTION'
   // You can change the configuration based on that.
   // 'PRODUCTION' is used when building the static version of storybook.
 
-  const nuxtWebpack = await nuxtWebpackConfig();
-
-  const excludeNuxtRules = ['/\\.vue$/i', '/\\.jsx?$/i', '/\\.scss$/i'];
-  const rules = nuxtWebpack.module.rules
-    .filter(rule => !excludeNuxtRules.includes(rule.test.toString()))
-    .concat({
-      test: /\.s?css$/,
-      loaders: ['style-loader', 'css-loader', 'sass-loader']
-    });
-
-  const pickNuxtPlugin = ['WarningIgnorePlugin'];
-  if (mode === 'DEVELOPMENT') {
-    pickNuxtPlugin.push('ForkTsCheckerWebpackPlugin');
-  }
-
-  const plugins = nuxtWebpack.plugins
-    .filter(plugin => pickNuxtPlugin.includes(plugin.constructor.name));
-
-  config.plugins = config.plugins.concat(plugins);
-  config.module.rules = config.module.rules.concat(rules);
-  config.resolve.alias = {
-    ...config.resolve.alias,
-    ...nuxtWebpack.resolve.alias
-  };
-  config.resolve.extensions = config.resolve.extensions.concat(nuxtWebpack.resolve.extensions);
-
-  return config;
+  return customizeWebpackConfig(config, mode);
 };
