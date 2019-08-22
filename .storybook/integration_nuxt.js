@@ -1,6 +1,7 @@
 const path = require('path');
 const cli = require('@nuxt/cli');
 const cmd = new cli.NuxtCommand(undefined, ['--config-file', path.resolve('./nuxt.config.ts')]);
+const webpack = require('webpack');
 
 const nuxtBuildPath = `${path.resolve(__dirname)}/.nuxt`;
 
@@ -48,7 +49,13 @@ exports.customizeWebpackConfig = async (originalConfig, mode) => {
 
   const pickNuxtPlugin = ['WarningIgnorePlugin', 'ForkTsCheckerWebpackPlugin'];
   const plugins = nuxtWebpack.plugins
-   .filter(plugin => pickNuxtPlugin.includes(plugin.constructor.name));
+   .filter(plugin => pickNuxtPlugin.includes(plugin.constructor.name))
+   .concat(
+     new webpack.ProvidePlugin({
+       StoryBookNuxtIntegrationVuex: `${nuxtBuildPath}/store`,
+       StoryBookNuxtIntegrationRouter: `${nuxtBuildPath}/router`,
+     }),
+   );
 
   originalConfig.plugins = originalConfig.plugins.concat(plugins);
   originalConfig.module.rules = originalConfig.module.rules.concat(rules);

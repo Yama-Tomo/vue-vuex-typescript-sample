@@ -49,6 +49,8 @@ module.exports = {
     url: true,
     user: true,
     timeout: true,
+    StoryBookNuxtIntegrationVuex: true,
+    StoryBookNuxtIntegrationRouter: true,
   },
 }
 
