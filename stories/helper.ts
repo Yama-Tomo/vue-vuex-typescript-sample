@@ -12,3 +12,7 @@ export const i18n = () =>
   });
 
 export const router = () => StoryBookNuxtIntegrationRouter.createRouter();
+
+export const isRunWithJest = () =>
+  typeof StoryBookNuxtIntegrationVuex === 'undefined' ||
+  typeof StoryBookNuxtIntegrationRouter === 'undefined';

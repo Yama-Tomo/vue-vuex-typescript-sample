@@ -9,6 +9,12 @@ const setup = (
   initState: State,
   extendCtx?: NonNullable<ConstructorParameters<VueConstructor>[0]>
 ) => {
+  if (Helper.isRunWithJest()) {
+    // NOTE: storyshots実行時はwebpackを介していないのでヘルパーのstoreやrouterはundefinedなのでこのまま実行するとエラーになってしまうのと
+    // puppeteerにstorybookのpathだけを渡せられればよいのでわざわざcomponentの準備はしない
+    return () => ({});
+  }
+
   const store = Helper.store();
   store.commit('todo/setInitialState', initState);
 
