@@ -86,6 +86,7 @@ export default {
         ignoreNotFoundWarnings: true,
       },
     ],
+    '@nuxtjs/vuetify',
   ],
   plugins: [
     '~/plugins/axios_cookie_proxy.ts',
