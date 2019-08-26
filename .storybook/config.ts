@@ -1,12 +1,29 @@
-import { configure } from '@storybook/vue';
+import { configure, addDecorator } from '@storybook/vue';
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
+import Vuetify from 'vuetify';
+import * as Helper from '../stories/helper';
 
 if (process.env.NODE_ENV === 'test') {
   require('babel-plugin-require-context-hook/register')();
 }
 
+// NOTE: see also @nuxtjs/vuetify/lib/module.js
+if (process.env.NODE_ENV === 'production') {
+  require('vuetify/src/styles/main.sass');
+} else if (process.env.NODE_ENV === 'development') {
+  require('vuetify/dist/vuetify.css');
+}
+
 Vue.use(VueI18n);
+Vue.use(Vuetify);
+
+addDecorator(() => {
+  return {
+    template: '<v-app><story/></v-app>',
+    vuetify: new Vuetify({ icons: { iconfont: 'mdi' } }),
+  };
+});
 
 function loadStories() {
   const req = require.context('../stories', true, /.story.tsx?$/);

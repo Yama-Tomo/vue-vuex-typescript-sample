@@ -1,5 +1,6 @@
 import { Store } from 'vuex';
 import VueI18n from 'vue-i18n';
+import Vuetify from 'vuetify';
 import i18nEnMessage from '@/i18n/en';
 
 export const store = (): Store<any> =>
@@ -16,3 +17,5 @@ export const router = () => StoryBookNuxtIntegrationRouter.createRouter();
 export const isRunWithJest = () =>
   typeof StoryBookNuxtIntegrationVuex === 'undefined' ||
   typeof StoryBookNuxtIntegrationRouter === 'undefined';
+
+export const vuetify = () => new Vuetify({ icons: { iconfont: 'mdi' } });
