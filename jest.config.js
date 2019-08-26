@@ -37,6 +37,7 @@ const config = {
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
     '^~/(.*)$': '<rootDir>/src/$1',
+    '\\.(css|scss)$': '<rootDir>/node_modules/jest-css-modules',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node', 'vue'],
   coverageDirectory: './coverage/',

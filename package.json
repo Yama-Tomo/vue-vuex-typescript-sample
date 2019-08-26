@@ -79,6 +79,7 @@
     "hard-source-webpack-plugin": "0.13.1",
     "husky": "3.0.5",
     "jest": "24.8.0",
+    "jest-css-modules": "2.1.0",
     "jest-junit": "8.0.0",
     "jest-puppeteer": "4.3.0",
     "jest-serializer-vue": "2.0.2",
