@@ -1,6 +1,7 @@
 <script lang="tsx">
 import { Component, Vue, Prop } from 'nuxt-property-decorator';
 import * as vts from 'vue-tsx-support';
+import { mdiDelete } from '@mdi/js';
 import { Todo } from '@/store/todo';
 import { ActionTree } from '@/store/module_mapper';
 import { InputEvent } from '@/types/dom';
@@ -30,31 +31,37 @@ class Item extends Vue {
 
   public render() {
     return (
-      <li class={liClass(this.todo, this.editing)}>
-        <div class="view">
-          <input
-            class="toggle"
-            type="checkbox"
-            checked={this.todo.done}
+      <v-list-item class={liClass(this.todo, this.editing)}>
+        <v-list-item-content>
+          <v-checkbox
+            class="shrink mr-2 mt-0"
+            hide-details
+            input-value={this.todo.done}
             onChange={() => this.toggleTodo()}
           />
-          <label onDblclick={() => this.changeEditMode()}>
+          <div
+            class="text"
+            onClick={() => this.changeEditMode()}
+            v-show={!this.editing}
+          >
             {this.todo.text}
-          </label>
-          <button class="destroy" onClick={() => this.removeTodo()}>
-            {this.$t('todo.remove')}
-          </button>
-        </div>
-        <input
-          v-show={this.editing}
-          ref="inputText"
-          class="edit"
-          value={this.todo.text}
-          onKeyup={e => this.onKeyUp(e)}
-          onKeypress={e => this.onKeyPress(e)}
-          onBlur={e => this.doneEdit(e)}
-        />
-      </li>
+          </div>
+          <v-text-field
+            ref="inputText"
+            value={this.todo.text}
+            v-show={this.editing}
+            onKeyup={(e: Event) => this.onKeyUp(e)}
+            onKeypress={(e: Event) => this.onKeyPress(e)}
+            onBlur={(e: Event) => this.doneEdit(e)}
+            hide-details
+          />
+        </v-list-item-content>
+        <v-list-item-action>
+          <v-btn icon onClick={() => this.removeTodo()}>
+            <v-icon>{mdiDelete}</v-icon>
+          </v-btn>
+        </v-list-item-action>
+      </v-list-item>
     );
   }
 
@@ -111,20 +118,30 @@ export default vts.ofType<Props>().convert(Item);
 </script>
 
 <style lang="scss" scoped>
-label {
-  padding-right: 10px;
-  padding-left: 10px;
-}
-
-.editing {
-  label {
-    color: #888;
+.todo {
+  &.editing {
+    background-color: #fafafa;
   }
-}
 
-.completed {
-  label {
-    text-decoration: line-through;
+  &.completed {
+    .text {
+      text-decoration: line-through;
+    }
+  }
+
+  .v-list-item__content {
+    overflow: inherit;
+
+    .v-input {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
+    .text {
+      display: flex;
+      flex: 1;
+      cursor: pointer;
+    }
   }
 }
 </style>

@@ -21,6 +21,8 @@ export class Logic extends Vue {
 
   public visibility: keyof Filters = 'all';
 
+  public input = '';
+
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   public render() {}
 
@@ -68,15 +70,12 @@ export class Logic extends Vue {
   }
 
   public addTodo(e: Event): void {
-    if ((e as KeyboardEvent).key !== 'Enter') return;
+    this.input = (e as InputEvent).target.value.trim();
 
-    const text = (e as InputEvent).target.value.trim();
-    if (!text) {
-      return;
-    }
+    if ((e as KeyboardEvent).key !== 'Enter' || !this.input) return;
 
-    this.actions.addTodo(text);
-    (e as InputEvent).target.value = '';
+    this.actions.addTodo(this.input);
+    this.input = '';
   }
 }
 

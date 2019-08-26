@@ -1,57 +1,79 @@
 <template>
-  <div>
-    <header class="header">
-      Vuex tutorial with typescript and Nuxt.js
-    </header>
-    <div class="signin">
-      <nuxt-link
-        v-if="!isLoggedIn && currentPath != localePath('login')"
-        :to="localePath('login') + redirectParam"
-      >
-        {{ $t('link.sign_in') }}
-      </nuxt-link>
-      <a v-if="isLoggedIn" :href="localePath('logout') + redirectParam">{{
-        $t('link.sign_out')
-      }}</a>
-    </div>
-    <nuxt class="container" />
-    <hr />
-    <div class="container">
-      <nuxt-link
-        v-if="currentPath != localePath('index')"
-        :to="localePath('index')"
-      >
-        {{ $t('link.home') }}
-      </nuxt-link>
-      <nuxt-link
-        v-if="currentPath != localePath('about')"
-        :to="localePath('about')"
-      >
-        {{ $t('link.about') }}
-      </nuxt-link>
-      <nuxt-link
-        v-if="currentPath != localePath('secret')"
-        :to="localePath('secret')"
-      >
-        {{ $t('link.secret') }}
-      </nuxt-link>
-      <br />
-      {{ $t('other_lang') }}:
-      <template v-for="locale in locales">
-        <nuxt-link
-          v-if="locale.code !== $i18n.locale"
-          :key="locale.code"
-          :to="switchLocalePath(locale.code)"
-        >
-          {{ locale.code }}
-        </nuxt-link>
-      </template>
-    </div>
-  </div>
+  <v-app>
+    <v-app-bar app class="header">
+      <v-toolbar-title>
+        vuex tutorial with nuxt.js
+      </v-toolbar-title>
+
+      <div class="flex-grow-1" />
+
+      <v-toolbar-items>
+        <v-menu bottom left offset-y>
+          <template v-slot:activator="{ on }">
+            <v-btn text color="white" v-on="on"
+              >contents<v-icon>{{ mdiMenuDown }}</v-icon></v-btn
+            >
+          </template>
+          <v-list>
+            <v-list-item :to="localePath('index')" nuxt exact>
+              <v-list-item-title>{{ $t('link.home') }}</v-list-item-title>
+            </v-list-item>
+            <v-list-item :to="localePath('about')" nuxt>
+              <v-list-item-title>{{ $t('link.about') }}</v-list-item-title>
+            </v-list-item>
+            <v-list-item :to="localePath('secret')" nuxt>
+              <v-list-item-title>{{ $t('link.secret') }}</v-list-item-title>
+            </v-list-item>
+
+            <v-divider />
+
+            <v-list-item
+              v-if="!isLoggedIn"
+              :to="localePath('login') + redirectParam"
+              nuxt
+            >
+              <v-list-item-title>{{ $t('link.sign_in') }}</v-list-item-title>
+            </v-list-item>
+            <v-list-item
+              v-if="isLoggedIn"
+              :href="localePath('logout') + redirectParam"
+            >
+              <v-list-item-title>{{ $t('link.sign_out') }}</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </v-toolbar-items>
+
+      <v-menu bottom left offset-y :min-width="200">
+        <template v-slot:activator="{ on }">
+          <v-btn color="#fafafa" icon v-on="on">
+            <v-icon>{{ mdiWeb }}</v-icon>
+          </v-btn>
+        </template>
+        <v-list>
+          <template v-for="locale in locales">
+            <v-list-item
+              :key="locale.code"
+              :to="switchLocalePath(locale.code)"
+              nuxt
+            >
+              <v-list-item-title>{{ locale.code }}</v-list-item-title>
+            </v-list-item>
+          </template>
+        </v-list>
+      </v-menu>
+    </v-app-bar>
+    <v-content>
+      <v-container fluid>
+        <nuxt />
+      </v-container>
+    </v-content>
+  </v-app>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
+import { mdiMenuDown, mdiWeb } from '@mdi/js';
 import * as StoreHelper from '@/store/helper';
 
 type Locales = { [key: string]: { [key: string]: string } };
@@ -60,6 +82,14 @@ type Locales = { [key: string]: { [key: string]: string } };
 export default class DefaultLayout extends Vue {
   public signout() {
     this.$auth.logout();
+  }
+
+  get mdiMenuDown(): string {
+    return mdiMenuDown;
+  }
+
+  get mdiWeb(): string {
+    return mdiWeb;
   }
 
   get isLoggedIn(): boolean {
@@ -83,22 +113,12 @@ export default class DefaultLayout extends Vue {
 <style scoped lang="scss">
 @import '../assets/css/variables';
 
+.v-application.theme--light {
+  background-color: white;
+}
+
 .header {
   background-color: $nuxt-color;
   color: white;
-  margin: 0px;
-  padding: 10px;
-  font-size: 20px;
-}
-
-.container {
-  margin: 15px;
-}
-
-.signin {
-  float: right;
-  text-align: right;
-  margin-top: 10px;
-  margin-right: 15px;
 }
 </style>
