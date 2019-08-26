@@ -19,9 +19,18 @@ Vue.use(VueI18n);
 Vue.use(Vuetify);
 
 addDecorator(() => {
+  if (Helper.isRunWithJest()) {
+    // NOTE: storyshots実行時はwebpackを介していないのでヘルパーのstoreやrouterはundefinedなのでこのまま実行するとエラーになってしまうのと
+    // puppeteerにstorybookのpathだけを渡せられればよいのでわざわざcomponentの準備はしない
+    return {};
+  }
+
   return {
     template: '<v-app><story/></v-app>',
+    store: Helper.store(),
     vuetify: new Vuetify({ icons: { iconfont: 'mdi' } }),
+    i18n: Helper.i18n(),
+    router: Helper.router(),
   };
 });
 
