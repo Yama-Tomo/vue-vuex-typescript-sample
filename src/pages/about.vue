@@ -1,26 +1,45 @@
 <template>
   <div>
     <h1>About</h1>
-    <a href="https://github.com/vuejs/vuex/tree/dev/examples/todomvc"
-      >https://github.com/vuejs/vuex/tree/dev/examples/todomvc</a
-    >
-    <h2>using libraries</h2>
-    <ul>
-      <li>
-        typescript v3<br />
-        <img src="~/assets/image/typescript_logo.png" />
-      </li>
-      <li>
-        nuxt.js v2<br />
-        <img src="~/assets/image/nuxt_logo.png" />
-      </li>
-      <li>
-        <a href="https://github.com/nuxt-community/auth-module">@nuxtjs/auth</a>
-      </li>
-      <li>
-        <a href="https://github.com/nuxt-community/nuxt-i18n">nuxt-i18n</a>
-      </li>
-    </ul>
+    <a href="https://github.com/vuejs/vuex/tree/dev/examples/todomvc">
+      https://github.com/vuejs/vuex/tree/dev/examples/todomvc
+    </a>
+    <v-divider></v-divider>
+    <v-list subheader two-line>
+      <v-subheader>using libraries</v-subheader>
+      <v-list-item>
+        <v-list-item-content>
+          <v-list-item-title>typescript</v-list-item-title>
+          <v-list-item-subtitle
+            ><img src="~/assets/image/typescript_logo.png"
+          /></v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+      <v-list-item>
+        <v-list-item-content>
+          <v-list-item-title>nuxt.js</v-list-item-title>
+          <v-list-item-subtitle
+            ><img src="~/assets/image/nuxt_logo.png"
+          /></v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+      <v-list-item>
+        <v-list-item-content>
+          <v-list-item-title>@nuxtjs/auth</v-list-item-title>
+          <v-list-item-subtitle>
+            <a href="https://github.com/nuxt-community/auth-module">github</a>
+          </v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+      <v-list-item>
+        <v-list-item-content>
+          <v-list-item-title>nuxt-i18n</v-list-item-title>
+          <v-list-item-subtitle>
+            <a href="https://github.com/nuxt-community/nuxt-i18n">github</a>
+          </v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+    </v-list>
   </div>
 </template>
 
@@ -55,11 +74,16 @@ export default class About extends Vue {
 </script>
 
 <style scoped lang="scss">
-img {
-  max-width: 150px;
+.v-divider {
+  margin-top: 16px;
+  margin-bottom: 16px;
 }
 
-li:not(:first-child) {
-  margin-top: 10px;
+.v-list > div {
+  padding: 0;
+}
+
+img {
+  max-width: 150px;
 }
 </style>

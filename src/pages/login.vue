@@ -1,23 +1,40 @@
 <template>
-  <div>
-    <h1>login</h1>
-    <form ref="form" :action="currentPath" method="post">
-      <div v-if="isInvalid" class="error">
-        email or password is incorrect
-      </div>
-      <div>
-        <label>email</label><br />
-        <input v-model="email" type="text" name="email" />
-      </div>
-      <div>
-        <label>Password</label><br />
-        <input v-model="password" type="password" name="password" />
-      </div>
-      <button :disabled="busy" @click="onSignInClick">
-        sign in
-      </button>
-    </form>
-  </div>
+  <v-row justify="center">
+    <v-col cols="12" sm="6" md="6">
+      <h1>login</h1>
+      <v-form
+        ref="form"
+        v-model="valid"
+        :action="currentPath"
+        method="post"
+        @submit="valid = false"
+      >
+        <v-alert v-if="isLoginIncorrect" type="error">
+          email or password is incorrect
+        </v-alert>
+        <v-text-field
+          v-model="email"
+          label="E-mail"
+          name="email"
+          :rules="validationRules('name')"
+          required
+        />
+        <v-text-field
+          v-model="password"
+          type="password"
+          label="password"
+          name="password"
+          :rules="validationRules('password')"
+          required
+        />
+        <div class="btn-box">
+          <v-btn color="primary" type="submit" :disabled="!valid">
+            sign in
+          </v-btn>
+        </div>
+      </v-form>
+    </v-col>
+  </v-row>
 </template>
 
 <script lang="ts">
@@ -36,8 +53,8 @@ interface PostParams {
 export default class Login extends Vue {
   public email = '';
   public password = '';
-  public isInvalid = false;
-  public busy = false;
+  public isLoginIncorrect = false;
+  public valid = false;
 
   public asyncData(ctx: Nuxt.Context): Promise<Partial<Login> | void> | void {
     const authState = StoreHelper.getState('auth', ctx.store);
@@ -58,14 +75,13 @@ export default class Login extends Vue {
           return ctx.app.$auth.redirect('home');
         })
         .catch(() => {
-          return { email: postParams.email, isInvalid: true };
+          return { email: postParams.email, isLoginIncorrect: true };
         });
     }
   }
 
-  public onSignInClick() {
-    this.busy = true;
-    (this.$refs.form as HTMLFormElement).submit();
+  public validationRules(propName: string) {
+    return [(v: string): boolean | string => !!v || `${propName} is required`];
   }
 
   get currentPath(): string {
@@ -77,18 +93,13 @@ export default class Login extends Vue {
   }
 }
 </script>
-<style lang="scss" scoped>
-.error {
-  color: #ff5458;
-}
-</style>
 
-<style scoped lang="scss">
-button {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  font-size: 15px;
-  width: 110px;
-  border-radius: 5px;
+<style lang="scss" scoped>
+form {
+  margin-top: 16px;
+
+  .btn-box {
+    text-align: right;
+  }
 }
 </style>
