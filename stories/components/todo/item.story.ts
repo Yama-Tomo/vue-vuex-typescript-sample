@@ -1,6 +1,5 @@
 import { storiesOf } from '@storybook/vue';
-import { VueConstructor } from 'vue';
-import * as Helper from '../../helper';
+import Vue, { VueConstructor } from 'vue';
 import Item from '@/components/todo/item.vue';
 import * as StoreHelper from '@/store/helper';
 import { State } from '@/store/todo';
@@ -8,30 +7,22 @@ import { State } from '@/store/todo';
 const setup = (
   initState: State,
   extendCtx?: NonNullable<ConstructorParameters<VueConstructor>[0]>
-) => {
-  if (Helper.isRunWithJest()) {
-    // NOTE: storyshots実行時はwebpackを介していないのでヘルパーのstoreやrouterはundefinedなのでこのまま実行するとエラーになってしまうのと
-    // puppeteerにstorybookのpathだけを渡せられればよいのでわざわざcomponentの準備はしない
-    return () => ({});
-  }
+) => () => ({
+  ...{
+    components: { Item },
+    template: '<Item :actions=actions :todo=todo />',
+    data(this: Vue) {
+      const actions = StoreHelper.getActions('todo', this.$store);
+      const state = StoreHelper.getState('todo', this.$store);
 
-  const store = Helper.store();
-  store.commit('todo/setInitialState', initState);
-
-  const actions = StoreHelper.getActions('todo', store);
-  const state = StoreHelper.getState('todo', store);
-
-  return () => ({
-    ...{
-      components: { Item },
-      template: '<Item :actions=actions :todo=todo />',
-      store,
-      data: () => ({ todo: state.todos[0], actions }),
-      i18n: Helper.i18n(),
+      return { todo: state.todos[0], actions };
     },
-    ...(extendCtx || {}),
-  });
-};
+    beforeCreate(this: Vue) {
+      this.$store.commit('todo/setInitialState', initState);
+    },
+  },
+  ...(extendCtx || {}),
+});
 
 storiesOf('components.todo.item', module)
   .add('default', setup({ todos: [{ text: 'aaaa', done: true }] }))

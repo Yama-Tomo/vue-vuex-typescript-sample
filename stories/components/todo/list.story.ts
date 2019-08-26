@@ -1,6 +1,5 @@
 import { storiesOf } from '@storybook/vue';
-import { VueConstructor } from 'vue';
-import * as Helper from '../../helper';
+import Vue, { VueConstructor } from 'vue';
 import List from '@/components/todo/list.vue';
 import * as StoreHelper from '@/store/helper';
 import { State } from '@/store/todo';
@@ -8,30 +7,23 @@ import { State } from '@/store/todo';
 const setup = (
   initState: State,
   extendCtx?: NonNullable<ConstructorParameters<VueConstructor>[0]>
-) => {
-  if (Helper.isRunWithJest()) {
-    return () => ({});
-  }
+) => () => ({
+  ...{
+    components: { List },
+    template: '<List :state=state :actions=actions :getters=getters />',
+    data(this: Vue) {
+      const actions = StoreHelper.getActions('todo', this.$store);
+      const getters = StoreHelper.getGetters('todo', this.$store);
+      const state = StoreHelper.getState('todo', this.$store);
 
-  const store = Helper.store();
-  store.commit('todo/setInitialState', initState);
-
-  const actions = StoreHelper.getActions('todo', store);
-  const getters = StoreHelper.getGetters('todo', store);
-  const state = StoreHelper.getState('todo', store);
-
-  return () => ({
-    ...{
-      components: { List },
-      template: '<List :state=state :actions=actions :getters=getters />',
-      store,
-      data: () => ({ state, actions, getters }),
-      i18n: Helper.i18n(),
-      router: Helper.router(),
+      return { actions, getters, state };
     },
-    ...(extendCtx || {}),
-  });
-};
+    beforeCreate(this: Vue) {
+      this.$store.commit('todo/setInitialState', initState);
+    },
+  },
+  ...(extendCtx || {}),
+});
 
 storiesOf('components.todo.list', module)
   .add(
