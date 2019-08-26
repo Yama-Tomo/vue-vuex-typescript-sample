@@ -59,7 +59,10 @@ exports.customizeWebpackConfig = async (originalConfig, mode, nuxtConfigCustomiz
     .filter(plugin => plugin.constructor.name !== 'VueLoaderPlugin')
     .concat(plugins);
 
-  originalConfig.module.rules = originalConfig.module.rules.concat(rules);
+  originalConfig.module.rules = originalConfig.module.rules
+    .filter(rule => rule.test.test('.md'))
+    .concat(nuxtWebpack.module.rules);
+
   originalConfig.resolve.alias = {
     ...originalConfig.resolve.alias,
     ...nuxtWebpack.resolve.alias
