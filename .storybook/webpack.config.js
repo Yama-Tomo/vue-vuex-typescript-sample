@@ -7,6 +7,15 @@ module.exports = ({ config, mode }) => {
 
   return customizeWebpackConfig(config, mode, async (nuxtConfig) => ({
     ...nuxtConfig,
-    ...{ hooks: {} }
+    ...{
+      build: {
+        ...nuxtConfig.build,
+        ...{
+          // NOTE: prevent chunk files by `@nuxt/vue-app/template/router.js`
+          splitChunks: { layouts: false, pages: false, commons: false },
+        },
+      },
+      hooks: {}
+    }
   }));
 };
