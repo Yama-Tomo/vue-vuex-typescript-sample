@@ -34,7 +34,7 @@ type ImageSnapshotArgs = Required<
 
     if (url.includes('id=components-todo-item--')) {
       // change take screenshot size in specific story
-      await page.setViewport({ width: 300, height: 100 });
+      await page.setViewport({ width: 400, height: 100 });
     } else {
       await page.setViewport({ width: 800, height: 600 });
     }
@@ -47,6 +47,9 @@ type ImageSnapshotArgs = Required<
       getScreenshotOptions,
       beforeScreenshot,
       chromeExecutablePath: puppeteerConfig.launch.executablePath,
+      getGotoOptions: () => ({
+        waitUntil: 'networkidle2',
+      }),
     }),
   });
 })();
