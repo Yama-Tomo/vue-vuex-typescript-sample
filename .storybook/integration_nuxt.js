@@ -39,25 +39,26 @@ exports.customizeWebpackConfig = async (originalConfig, mode, nuxtConfigCustomiz
     generateNuxtTemplates(nuxtConfigCustomizer)
   ]);
 
-  const excludeNuxtRules = ['/\\.vue$/i', '/\\.scss$/i'];
-  const rules = nuxtWebpack.module.rules
-    .filter(rule => !excludeNuxtRules.includes(rule.test.toString()))
-    .concat({
-      test: /\.s?css$/,
-      loaders: ['style-loader', 'css-loader', 'sass-loader']
-    });
-
-  const pickNuxtPlugin = ['WarningIgnorePlugin', 'ForkTsCheckerWebpackPlugin', 'HardSourceWebpackPlugin'];
   const plugins = nuxtWebpack.plugins
-   .filter(plugin => pickNuxtPlugin.includes(plugin.constructor.name))
-   .concat(
-     new webpack.ProvidePlugin({
-       StoryBookNuxtIntegrationVuex: `${nuxtBuildPath}/store`,
-       StoryBookNuxtIntegrationRouter: `${nuxtBuildPath}/router`,
-     }),
-   );
+    .filter(
+      plugin =>
+        ![
+          'VueSSRClientPlugin', // => prevent output server/client.manifest.json
+          'HtmlWebpackPlugin',  // => prevent output server/index.{ssr|spa}.html
+          'WebpackBarPlugin',
+        ].includes(plugin.constructor.name)
+    )
+    .concat(
+      new webpack.ProvidePlugin({
+        StoryBookNuxtIntegrationVuex: `${nuxtBuildPath}/store`,
+        StoryBookNuxtIntegrationRouter: `${nuxtBuildPath}/router`,
+      })
+    );
 
-  originalConfig.plugins = originalConfig.plugins.concat(plugins);
+  originalConfig.plugins = originalConfig.plugins
+    .filter(plugin => plugin.constructor.name !== 'VueLoaderPlugin')
+    .concat(plugins);
+
   originalConfig.module.rules = originalConfig.module.rules.concat(rules);
   originalConfig.resolve.alias = {
     ...originalConfig.resolve.alias,
