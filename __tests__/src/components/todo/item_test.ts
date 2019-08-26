@@ -2,9 +2,14 @@
  * @jest-environment jsdom
  */
 
-import { mount } from '@vue/test-utils';
+import { mount, createLocalVue } from '@vue/test-utils';
+import Vuetify from 'vuetify';
 import * as Component from '@/components/todo/item.vue';
 import { actions, Todo } from '@/store/todo';
+
+const localVue = createLocalVue();
+localVue.use(Vuetify);
+const vuetify = new Vuetify();
 
 const defaultTodoState = { text: 'aaa', done: false };
 const getWrapper = (arg?: {
@@ -14,6 +19,8 @@ const getWrapper = (arg?: {
 }) => {
   const options = {
     data: arg ? arg.data : () => ({}),
+    localVue,
+    vuetify,
     propsData: {
       todo: {
         ...defaultTodoState,
@@ -34,23 +41,23 @@ describe('behaviors', () => {
     const actionMock = jest.fn();
     const wrapper = getWrapper({ actions: { toggleTodo: actionMock } });
 
-    wrapper.find('.view input.toggle').trigger('click');
+    wrapper.find('input[type="checkbox"]').trigger('click');
     expect(actionMock.mock.calls[0]).toEqual([{ todo: defaultTodoState }]);
   });
 
-  test('ラベルをダブルクリックしたら編集モードになること', () => {
+  test('ラベルをクリックしたら編集モードになること', () => {
     const wrapper = getWrapper();
 
-    wrapper.find('.view label').trigger('dblclick');
-    expect(wrapper.find('input.edit').isVisible()).toBe(true);
-    expect(wrapper.find('li').classes()).toContain('editing');
+    wrapper.find('.text').trigger('click');
+    expect(wrapper.find('.v-text-field input').isVisible()).toBe(true);
+    expect(wrapper.find('.v-list-item').classes()).toContain('editing');
   });
 
   test('削除ボタンを押された時にステートを削除するvuexのactionを呼び出すこと', () => {
     const actionMock = jest.fn();
     const wrapper = getWrapper({ actions: { removeTodo: actionMock } });
 
-    wrapper.find('button.destroy').trigger('click');
+    wrapper.find('button').trigger('click');
     expect(actionMock.mock.calls[0]).toEqual([defaultTodoState]);
   });
 
@@ -65,7 +72,7 @@ describe('behaviors', () => {
 
     const appendText = '--append';
     const changeVal = defaultTodoState.text + appendText;
-    const inputEl = wrapper.find('input.edit');
+    const inputEl = wrapper.find('.v-text-field input');
 
     inputEl.trigger('keyup', { key: appendText });
     inputEl.setValue((inputEl.element as HTMLInputElement).value + appendText);
@@ -82,7 +89,7 @@ describe('behaviors', () => {
       },
     });
 
-    const inputEl = wrapper.find('input.edit');
+    const inputEl = wrapper.find('.v-text-field input');
     inputEl.trigger('keyup', { key: 'Escape' });
     expect(inputEl.isVisible()).toBe(false);
   });
@@ -96,7 +103,7 @@ describe('behaviors', () => {
       actions: { removeTodo: actionMock },
     });
 
-    const inputEl = wrapper.find('input.edit');
+    const inputEl = wrapper.find('.v-text-field input');
     inputEl.setValue('');
     inputEl.trigger('keypress', { key: 'Enter' });
     expect(actionMock.mock.calls[0]).toEqual([defaultTodoState]);
@@ -119,7 +126,7 @@ describe('rendering', () => {
       state: { text: 'hogehoge', done: true },
     });
 
-    expect(wrapper.find('li').classes()).toContain('completed');
+    expect(wrapper.find('.v-list-item').classes()).toContain('completed');
   });
 
   test('renders correctly', () => {

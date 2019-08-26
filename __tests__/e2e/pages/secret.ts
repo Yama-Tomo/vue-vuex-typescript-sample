@@ -20,10 +20,7 @@ export default class Secret {
   }
 
   public async assertThisPageVisited() {
-    const text = await this.page.$eval(
-      '#__layout > div > div:nth-child(3) > h1',
-      el => el.textContent
-    );
+    const text = await this.page.$eval('main h1', el => el.textContent);
     expect(text).toEqual('Secret');
   }
 }

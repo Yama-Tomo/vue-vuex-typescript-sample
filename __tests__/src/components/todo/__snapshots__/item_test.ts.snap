@@ -1,27 +1,97 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering renders correctly 1`] = `
-<li
-  class="todo editing"
+<div
+  class="v-list-item theme--light todo editing"
+  tabindex="-1"
 >
   <div
-    class="view"
+    class="v-list-item__content"
   >
-    <input
-      class="toggle"
-      type="checkbox"
-    />
-    <label>
-      aaa
-    </label>
-    <button
-      class="destroy"
+    <div
+      class="v-input v-input--hide-details theme--light v-input--selection-controls v-input--checkbox shrink mr-2 mt-0"
     >
-      [Mocked i18n] todo.remove
+      <div
+        class="v-input__control"
+      >
+        <div
+          class="v-input__slot"
+        >
+          <div
+            class="v-input--selection-controls__input"
+          >
+            <input
+              aria-checked="false"
+              id="input-67"
+              role="checkbox"
+              type="checkbox"
+              value=""
+            />
+            <div
+              class="v-input--selection-controls__ripple"
+            />
+            <i
+              aria-hidden="true"
+              class="v-icon notranslate material-icons theme--light"
+            >
+              $vuetify.icons.checkboxOff
+            </i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="text"
+      style="display: none;"
+    >
+      aaa
+    </div>
+    <div
+      class="v-input v-input--hide-details v-input--is-label-active v-input--is-dirty theme--light v-text-field"
+    >
+      <div
+        class="v-input__control"
+      >
+        <div
+          class="v-input__slot"
+        >
+          <div
+            class="v-text-field__slot"
+          >
+            <input
+              id="input-69"
+              type="text"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="v-list-item__action"
+  >
+    <button
+      class="v-btn v-btn--flat v-btn--icon v-btn--round theme--light v-size--default"
+      type="button"
+    >
+      <span
+        class="v-btn__content"
+      >
+        <svg
+          aria-hidden="true"
+          class="v-icon notranslate v-icon--svg theme--light"
+          height="24"
+          role="img"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z"
+          />
+        </svg>
+      </span>
     </button>
   </div>
-  <input
-    class="edit"
-  />
-</li>
+</div>
 `;
