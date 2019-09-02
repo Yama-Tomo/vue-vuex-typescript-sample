@@ -17,7 +17,10 @@ const getBuilder = async (nuxtConfigCustomizer) => {
   const nuxt = await cmd.getNuxt(await nuxtConfigCustomizer(config));
   nuxt.close(); // unnecessary wait
 
-  return cmd.getBuilder(nuxt);
+  const builder = await cmd.getBuilder(nuxt);
+  await nuxt.callHook('build:before', builder, builder.options.build);
+
+  return builder;
 };
 
 const nuxtWebpackConfig = async (nuxtConfigCustomizer) =>
