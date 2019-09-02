@@ -37,8 +37,17 @@ type ImageSnapshotArgs = Required<
       await page.setViewport({ width: 400, height: 100 });
     } else {
       await page.setViewport({ width: 800, height: 600 });
+
+      if (url.includes('components-todo-list--')) {
+        // NOTE: focus out
+        await page.click('body');
+        // wait for css transition
+        await page.waitFor(300);
+      }
     }
   };
+
+  jest.setTimeout(100000);
 
   initStoryshots({
     suite: 'Image storyshots',
