@@ -2,6 +2,7 @@ import * as path from 'path';
 import { Configuration as WebpackConfiguration } from 'webpack';
 import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
 import { Configuration as NuxtConfiguration } from '@nuxt/types';
+import VuetifyJsxLoader from 'vuetify-jsx-loader';
 
 const defaultConfigHash: (
   config: WebpackConfiguration
@@ -41,5 +42,9 @@ export default function(...args: Args) {
         { test: /extract-css-chunks-webpack-plugin[\\/]dist[\\/]loader/ },
       ])
     );
+
+    if (process.env.NODE_ENV === 'production') {
+      config.plugins.push(new VuetifyJsxLoader());
+    }
   }
 }
