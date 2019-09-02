@@ -11,6 +11,7 @@ if (process.env.NODE_ENV === 'test') {
 // NOTE: see also @nuxtjs/vuetify/lib/module.js
 if (process.env.NODE_ENV === 'production') {
   require('vuetify/src/styles/main.sass');
+  require('vuetify/lib/components/VApp');
 } else if (process.env.NODE_ENV === 'development') {
   require('vuetify/dist/vuetify.css');
 }
