@@ -88,7 +88,8 @@ jobs:
                   LOCAL_UID=$(id -u $USER)
                   LOCAL_GID=$(id -g $USER)
                   TEST_ARGS=$TEST_ARGS
-                  JEST_JUNIT_OUTPUT=reports/jest/results.xml
+                  JEST_JUNIT_OUTPUT_DIR=reports/jest/
+                  JEST_JUNIT_OUTPUT_NAME=results.xml
                   E2E_USER_EMAIL=$E2E_USER_EMAIL
                   E2E_USER_PASSWORD=$E2E_USER_PASSWORD
                   CODECOV_TOKEN=$CODECOV_TOKEN
