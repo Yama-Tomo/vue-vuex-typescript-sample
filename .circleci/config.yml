@@ -10,14 +10,14 @@ commands:
     steps:
       - restore_cache:
           keys:
-            - nuxt-node-modules-v2-{{ checksum "yarn.lock" }}
+            - nuxt-node-modules-v3-{{ checksum "yarn.lock" }}
       - run:
           command: |
             [ "`which yarn`" != "" ] && yarn || true
   save_node_module_cache:
     steps:
       - save_cache:
-          key: nuxt-node-modules-v2-{{ checksum "yarn.lock" }}
+          key: nuxt-node-modules-v3-{{ checksum "yarn.lock" }}
           paths: node_modules
   setup_git_lfs:
     steps:
@@ -55,7 +55,6 @@ jobs:
             - yarn_install
             - run:
                 command: yarn lint .
-            - save_node_module_cache
 
   test:
     machine: true
