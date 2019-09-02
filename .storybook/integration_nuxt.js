@@ -73,5 +73,7 @@ exports.customizeWebpackConfig = async (originalConfig, mode, nuxtConfigCustomiz
 
   originalConfig.resolve.extensions = originalConfig.resolve.extensions.concat(nuxtWebpack.resolve.extensions);
 
+  originalConfig.performance = { hints: false };
+
   return originalConfig;
 };
