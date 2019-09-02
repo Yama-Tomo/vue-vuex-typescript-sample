@@ -51,7 +51,7 @@ jobs:
             - checkout
             - run:
                 name: install depend packages
-                command: apk add --no-cache --update ca-certificates
+                command: apk add --no-cache --update ca-certificates git
             - yarn_install
             - run:
                 command: yarn lint .
