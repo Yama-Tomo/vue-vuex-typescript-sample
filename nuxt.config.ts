@@ -80,9 +80,7 @@ export default {
     [
       '@nuxt/typescript-build',
       {
-        typeCheck: {
-          eslint: true,
-        },
+        typeCheck: { eslint: true },
         ignoreNotFoundWarnings: true,
       },
     ],
