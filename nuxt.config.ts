@@ -2,6 +2,7 @@ import bodyParser from 'body-parser';
 import passThroughMiddleware from './src/server_middleware/pass_through';
 import extendWebpackConfig from './extend.webpack.config';
 import { redirect as AuthRedirect } from './src/plugins/auth/redirect';
+import { ModuleContext } from '@/types/nuxt_module';
 
 const port = process.env.NUXT_PORT || 3100;
 const host = process.env.NUXT_HOST || '0.0.0.0';
@@ -37,7 +38,6 @@ export default {
   css: ['~/assets/css/main.scss'],
   build: {
     extractCSS: !isDev,
-    extend: extendWebpackConfig,
   },
   watch: ['~/serverMiddleware/*.ts'],
   hooks: {
@@ -87,6 +87,12 @@ export default {
       },
     ],
     '@nuxtjs/vuetify',
+    // IMPORTANT! This module must always be the last stack
+    function(this: ModuleContext) {
+      this.nuxt.hook('build:before', () =>
+        this.extendBuild(extendWebpackConfig)
+      );
+    },
   ],
   plugins: [
     '~/plugins/axios_cookie_proxy.ts',
