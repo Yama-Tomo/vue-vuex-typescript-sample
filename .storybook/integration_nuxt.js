@@ -1,6 +1,11 @@
+/* eslint @typescript-eslint/no-var-requires: 0 */
+
 const path = require('path');
 const cli = require('@nuxt/cli');
-const cmd = new cli.NuxtCommand(undefined, ['--config-file', path.resolve('./nuxt.config.ts')]);
+const cmd = new cli.NuxtCommand(undefined, [
+  '--config-file',
+  path.resolve('./nuxt.config.ts'),
+]);
 const webpack = require('webpack');
 
 const nuxtBuildPath = `${path.resolve(__dirname)}/.nuxt`;
@@ -9,10 +14,10 @@ const setupNuxtTs = () => {
   const runtime = require('@nuxt/typescript-runtime');
   const rootDir = runtime.getRootdirFromArgv();
   const tsConfigPath = path.resolve(rootDir, 'tsconfig.json');
-  runtime.registerTSNode(tsConfigPath)
+  runtime.registerTSNode(tsConfigPath);
 };
 
-const getBuilder = async (nuxtConfigCustomizer) => {
+const getBuilder = async nuxtConfigCustomizer => {
   const config = await cmd.getNuxtConfig({ dev: false, _build: true });
   const nuxt = await cmd.getNuxt(await nuxtConfigCustomizer(config));
   nuxt.close(); // unnecessary wait
@@ -23,10 +28,12 @@ const getBuilder = async (nuxtConfigCustomizer) => {
   return builder;
 };
 
-const nuxtWebpackConfig = async (nuxtConfigCustomizer) =>
-  (await getBuilder(nuxtConfigCustomizer)).getBundleBuilder().getWebpackConfig('Client');
+const nuxtWebpackConfig = async nuxtConfigCustomizer =>
+  (await getBuilder(nuxtConfigCustomizer))
+    .getBundleBuilder()
+    .getWebpackConfig('Client');
 
-const generateNuxtTemplates = async (nuxtConfigCustomizer) => {
+const generateNuxtTemplates = async nuxtConfigCustomizer => {
   const builder = await getBuilder(nuxtConfigCustomizer);
 
   builder.options.buildDir = nuxtBuildPath;
@@ -34,12 +41,16 @@ const generateNuxtTemplates = async (nuxtConfigCustomizer) => {
   await builder.generateRoutesAndFiles();
 };
 
-exports.customizeWebpackConfig = async (originalConfig, mode, nuxtConfigCustomizer = async (config) => config) => {
+exports.customizeWebpackConfig = async (
+  originalConfig,
+  _mode,
+  nuxtConfigCustomizer = config => config
+) => {
   setupNuxtTs();
 
   const [nuxtWebpack] = await Promise.all([
     nuxtWebpackConfig(nuxtConfigCustomizer),
-    generateNuxtTemplates(nuxtConfigCustomizer)
+    generateNuxtTemplates(nuxtConfigCustomizer),
   ]);
 
   const plugins = nuxtWebpack.plugins
@@ -47,7 +58,7 @@ exports.customizeWebpackConfig = async (originalConfig, mode, nuxtConfigCustomiz
       plugin =>
         ![
           'VueSSRClientPlugin', // => prevent output server/client.manifest.json
-          'HtmlWebpackPlugin',  // => prevent output server/index.{ssr|spa}.html
+          'HtmlWebpackPlugin', // => prevent output server/index.{ssr|spa}.html
           'WebpackBarPlugin',
         ].includes(plugin.constructor.name)
     )
@@ -68,10 +79,12 @@ exports.customizeWebpackConfig = async (originalConfig, mode, nuxtConfigCustomiz
 
   originalConfig.resolve.alias = {
     ...originalConfig.resolve.alias,
-    ...nuxtWebpack.resolve.alias
+    ...nuxtWebpack.resolve.alias,
   };
 
-  originalConfig.resolve.extensions = originalConfig.resolve.extensions.concat(nuxtWebpack.resolve.extensions);
+  originalConfig.resolve.extensions = originalConfig.resolve.extensions.concat(
+    nuxtWebpack.resolve.extensions
+  );
 
   originalConfig.performance = { hints: false };
 

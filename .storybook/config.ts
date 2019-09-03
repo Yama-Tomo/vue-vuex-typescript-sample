@@ -4,6 +4,7 @@ import VueI18n from 'vue-i18n';
 import Vuetify from 'vuetify';
 import * as Helper from '../stories/helper';
 
+/* eslint-disable @typescript-eslint/no-var-requires */
 if (process.env.NODE_ENV === 'test') {
   require('babel-plugin-require-context-hook/register')();
 }
@@ -15,6 +16,8 @@ if (process.env.NODE_ENV === 'production') {
 } else if (process.env.NODE_ENV === 'development') {
   require('vuetify/dist/vuetify.css');
 }
+
+/* eslint-disable @typescript-eslint/no-var-requires */
 
 Vue.use(VueI18n);
 Vue.use(Vuetify);
