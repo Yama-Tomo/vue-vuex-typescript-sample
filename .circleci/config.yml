@@ -93,6 +93,7 @@ jobs:
                   E2E_USER_EMAIL=$E2E_USER_EMAIL
                   E2E_USER_PASSWORD=$E2E_USER_PASSWORD
                   CODECOV_TOKEN=$CODECOV_TOKEN
+                  RAILS_HOSTS=backend
                   EOF
 
                   docker-compose -f docker-compose.yml -f docker-compose.circleci.yml run --rm puppeteer
