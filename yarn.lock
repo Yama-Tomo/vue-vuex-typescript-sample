@@ -1398,17 +1398,17 @@
     consola "^2.5.6"
     http-proxy-middleware "^0.19.1"
 
-"@nuxtjs/vuetify@1.6.1":
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/vuetify/-/vuetify-1.6.1.tgz#b80a67438331d19f5495f6beeecd571b2b5274f2"
-  integrity sha512-I/WgpuulIDOg6ocl5yA7ETyD3oVEYx2ZmXN97axItxgP2nqD77oJxaxb1TKaK1R2kMbpXTGgeGoLZyo1ZRajvA==
+"@nuxtjs/vuetify@1.6.2":
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/vuetify/-/vuetify-1.6.2.tgz#9a69645db739e04bc845c60fd4e6338379b34f8b"
+  integrity sha512-5dHBaR/RzqzicWrt1G3Gpi4jVRG6ky/lmXpXjFvoAgmyIWpA0Ddbok/HFnRvidQl5/rbD3jhfh0S7Gpx9ZDH2w==
   dependencies:
     consola "^2.10.1"
     deepmerge "^4.0.0"
     fibers "^4.0.1"
     sass "^1.22.10"
     sass-loader "^8.0.0"
-    vuetify "^2.0.11"
+    vuetify "^2.0.12"
     vuetify-loader "^1.3.0"
 
 "@nuxtjs/youch@^4.2.3":
@@ -13295,10 +13295,10 @@ vuetify-loader@^1.3.0:
   dependencies:
     loader-utils "^1.2.0"
 
-vuetify@^2.0.11:
-  version "2.0.11"
-  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.0.11.tgz#4679d6d37e4594daec930b28f1bc7083bcc76ca6"
-  integrity sha512-H5g0Wf/KHS1t29X+kh5hkj25dZNITCDtOb3UGl1YXx5Ua3xXUfXBRjKP50BJ7uZtQ3Jk9CiwoA6k3Lstv6zFow==
+vuetify@^2.0.12:
+  version "2.0.12"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.0.12.tgz#700b546b504a0b58ba2b8f137a3acea271fc7661"
+  integrity sha512-9/ymYftmk7UIcZRsnzDj75VvN9iIVvmNh2zbSxq/6IN1lEfCLmty8DJCUJNl/QddeQv+4KKjEGnKnxN83zs+1g==
 
 vuex-class@^0.3.2:
   version "0.3.2"
