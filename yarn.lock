@@ -13279,9 +13279,10 @@ vue@2.6.10, vue@^2.0.0, vue@^2.6.10:
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
   integrity sha512-ImThpeNU9HbdZL3utgMCq0oiMzAkt1mcgy3/E6zWC/G6AaQoeuFdsl9nDhTDU3X1R6FK7nsIUuRACVcjI+A2GQ==
 
-"vuetify-jsx-loader@https://github.com/Yama-Tomo/vuetify-jsx-loader":
-  version "0.1.0"
-  resolved "https://github.com/Yama-Tomo/vuetify-jsx-loader#42dc2a2f56615d6e95df42d4a571723dffd6b91b"
+vuetify-jsx-loader@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/vuetify-jsx-loader/-/vuetify-jsx-loader-0.1.1.tgz#4b3059796aeb9e192d053068b1804796bbbefc9b"
+  integrity sha512-dyTxcJKzWhxwLdhyx8PRUKuIdssM+LTSFHVynZECfGzKx33vM+L1dtaD7XPn2LfpCcuAym3PWELaIrNf5xjj2A==
   dependencies:
     "@babel/parser" "^7.5.5"
     "@babel/traverse" "^7.5.5"
