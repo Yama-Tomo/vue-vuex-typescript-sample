@@ -1215,10 +1215,10 @@
     serve-static "^1.14.1"
     server-destroy "^1.0.1"
 
-"@nuxt/types@0.2.9":
-  version "0.2.9"
-  resolved "https://registry.yarnpkg.com/@nuxt/types/-/types-0.2.9.tgz#5d903226ba6f87940bd9d23602f89a402971f355"
-  integrity sha512-LL5k5oBjRhNci1mLMJUM3LTGxoPLGfxkSFhuU6VGGj33qEDBENRMejAWWX+kPG8lVG6DGr2P4HtLsnX+ZH1PuQ==
+"@nuxt/types@0.2.11":
+  version "0.2.11"
+  resolved "https://registry.yarnpkg.com/@nuxt/types/-/types-0.2.11.tgz#a7bd4b51de50e86a2d1e2581a82a784872053aa9"
+  integrity sha512-amPwYCAK5SMqjy8+5rrExX8iDPxqvF0yFOZAJFJybBFdjZ9S0H7vqDtKFaVjEv1bN+tJe8bE2fZYR3wG8ZyBkg==
   dependencies:
     "@types/babel__core" "^7.1.3"
     "@types/compression" "^1.0.1"
@@ -1235,12 +1235,12 @@
     "@types/webpack-dev-middleware" "^2.0.3"
     "@types/webpack-hot-middleware" "^2.16.5"
 
-"@nuxt/typescript-build@0.2.4":
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/@nuxt/typescript-build/-/typescript-build-0.2.4.tgz#be2373213488955cb3ec6809faabfb7ed7967738"
-  integrity sha512-Y8wHJvA3tMDUC4XgmR29iCEY1JHQMJYAROAIDiZobvedpVmHXxuTei5s1/uoj79ZV6P6hN7myh/wsErUocu5jw==
+"@nuxt/typescript-build@0.2.6":
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/@nuxt/typescript-build/-/typescript-build-0.2.6.tgz#41fd91c32239401d8e34de4013b44d9aa4606e75"
+  integrity sha512-C2dVdKa7UrhX0ok8buvazRreKYyHSzNNez1zFmDESBJ9f8JspXZzTEeg0TLyoNgX+2tSWsN1mZQsqCOU2kiexw==
   dependencies:
-    "@nuxt/types" "0.2.9"
+    "@nuxt/types" "0.2.11"
     consola "^2.10.1"
     fork-ts-checker-webpack-plugin "^1.5.0"
     ts-loader "^6.0.4"
