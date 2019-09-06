@@ -42,7 +42,7 @@
     "@babel/preset-env": "7.5.5",
     "@babel/runtime-corejs2": "7.5.5",
     "@mdi/js": "4.2.95",
-    "@nuxt/typescript-build": "0.2.4",
+    "@nuxt/typescript-build": "0.2.6",
     "@nuxt/typescript-runtime": "0.1.5",
     "@nuxtjs/eslint-config-typescript": "0.1.2",
     "@nuxtjs/vuetify": "1.6.3",
