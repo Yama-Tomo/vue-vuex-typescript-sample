@@ -1392,22 +1392,22 @@
     webpack-node-externals "^1.7.2"
     webpackbar "^4.0.0"
 
-"@nuxtjs/auth@4.8.2":
-  version "4.8.2"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/auth/-/auth-4.8.2.tgz#0276fe3a4291b61ec0b7fd4328d43a118d47f603"
-  integrity sha512-LG+71qTGxValqDyhG1Zou5YyJSMQtMq4MaXd0gXsFFYlsPDEyysYtidoAG+LhUsO9grmAwWTvcqkXO2d94LNUg==
+"@nuxtjs/auth@4.8.3":
+  version "4.8.3"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/auth/-/auth-4.8.3.tgz#037509e0dea0329c9dae7be4f743cd9ff701efa5"
+  integrity sha512-t9RsEH/IdEl+tzR3qOV6lQlXv0sqD4CTdtJnpseVL7lBn1f1cKGGyDXsWdhOWiIKeLu7tl9HFzKXfKCQTNKzgA==
   dependencies:
-    "@nuxtjs/axios" "^5.5.4"
+    "@nuxtjs/axios" "^5.6.0"
     body-parser "^1.19.0"
-    consola "^2.9.0"
+    consola "^2.10.1"
     cookie "^0.4.0"
     dotprop "^1.2.0"
     is-https "^1.0.0"
-    js-cookie "^2.2.0"
+    js-cookie "^2.2.1"
     lodash "^4.17.15"
-    nanoid "^2.0.3"
+    nanoid "^2.1.0"
 
-"@nuxtjs/axios@5.6.0", "@nuxtjs/axios@^5.5.4":
+"@nuxtjs/axios@5.6.0", "@nuxtjs/axios@^5.6.0":
   version "5.6.0"
   resolved "https://registry.yarnpkg.com/@nuxtjs/axios/-/axios-5.6.0.tgz#30fd28c8a409ea32c92c76b26202e5da068f814c"
   integrity sha512-Rl4nnudm+sSkMtgfSEAeA5bq6aFpbBoYVXLXWaDxfydslukRd2SdEDdGv0gHE7F/jtIw+JfptWDHCHnzuoO/Ng==
@@ -8158,7 +8158,7 @@ js-beautify@^1.6.12, js-beautify@^1.6.14:
     mkdirp "~0.5.1"
     nopt "~4.0.1"
 
-js-cookie@^2.2.0:
+js-cookie@^2.2.0, js-cookie@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/js-cookie/-/js-cookie-2.2.1.tgz#69e106dc5d5806894562902aa5baec3744e9b2b8"
   integrity sha512-HvdH2LzI/EAZcUwA8+0nKNtWHqS+ZmijLA30RwZA0bo7ToCckjK5MkGhjED9KoRcXO6BaGI3I9UIzSA1FKFPOQ==
@@ -9076,7 +9076,7 @@ nan@^2.12.1:
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.0.tgz#7818f722027b2459a86f0295d434d1fc2336c52c"
   integrity sha512-INOFj37C7k3AfaNTtX8RhsTw7qRy7eLET14cROi9+5HAVbbHuIWUHEauBv5qT4Av2tWasiTY1Jw6puUNqRJXQg==
 
-nanoid@^2.0.3:
+nanoid@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-2.1.0.tgz#3de3dbd68cfb2f3bd52550e2bfd439cf75040eb2"
   integrity sha512-g5WwS+p6Cm+zQhO2YOpRbQThZVnNb7DDq74h8YDCLfAGynrEOrbx2E16dc8ciENiP1va5sqaAruqn2sN+xpkWg==
