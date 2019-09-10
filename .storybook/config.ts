@@ -39,7 +39,7 @@ addDecorator(() => {
 });
 
 function loadStories() {
-  const req = require.context('../stories', true, /.story.tsx?$/);
+  const req = require.context('../stories', true, /.story.(tsx?$|vue$)/);
   req.keys().forEach(filename => req(filename));
 }
 
