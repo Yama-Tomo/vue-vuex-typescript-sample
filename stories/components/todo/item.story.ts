@@ -5,7 +5,7 @@ import * as StoreHelper from '@/store/helper';
 import { State } from '@/store/todo';
 
 const setup = (
-  initState: State,
+  initState: () => State,
   extendCtx?: NonNullable<ConstructorParameters<VueConstructor>[0]>
 ) => () => ({
   ...{
@@ -18,22 +18,19 @@ const setup = (
       return { todo: state.todos[0], actions };
     },
     beforeCreate(this: Vue) {
-      this.$store.commit('todo/setInitialState', initState);
+      this.$store.commit('todo/setInitialState', initState());
     },
   },
   ...(extendCtx || {}),
 });
 
 storiesOf('components.todo.item', module)
-  .add('default', setup({ todos: [{ text: 'aaaa', done: true }] }))
+  .add('default', setup(() => ({ todos: [{ text: 'aaaa', done: true }] })))
   .add(
     'edit mode',
-    setup(
-      { todos: [{ text: 'bbbb', done: false }] },
-      {
-        mounted() {
-          (this as any).$children[0].editing = 1;
-        },
-      }
-    )
+    setup(() => ({ todos: [{ text: 'bbbb', done: false }] }), {
+      mounted() {
+        (this as any).$children[0].editing = 1;
+      },
+    })
   );
