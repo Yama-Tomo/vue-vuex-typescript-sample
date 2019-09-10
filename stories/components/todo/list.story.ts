@@ -4,23 +4,19 @@ import List from '@/components/todo/list.vue';
 import * as StoreHelper from '@/store/helper';
 import { State } from '@/store/todo';
 
-const setup = (
-  initState: () => State,
-  extendCtx?: NonNullable<ConstructorParameters<VueConstructor>[0]>
-) => () => ({
-  ...{
-    components: { List },
-    template: '<List :state=state :actions=actions :getters=getters />',
-    data(this: Vue) {
-      const actions = StoreHelper.getActions('todo', this.$store);
-      const getters = StoreHelper.getGetters('todo', this.$store);
-      const state = StoreHelper.getState('todo', this.$store);
+type VueOpts = ConstructorParameters<VueConstructor>[0];
+const setup = (initState: () => State, extendCtx?: VueOpts) => () => ({
+  components: { List },
+  template: '<List :state=state :actions=actions :getters=getters />',
+  data(this: Vue) {
+    const actions = StoreHelper.getActions('todo', this.$store);
+    const getters = StoreHelper.getGetters('todo', this.$store);
+    const state = StoreHelper.getState('todo', this.$store);
 
-      return { actions, getters, state };
-    },
-    beforeCreate(this: Vue) {
-      this.$store.commit('todo/setInitialState', initState());
-    },
+    return { actions, getters, state };
+  },
+  beforeCreate(this: Vue) {
+    this.$store.commit('todo/setInitialState', initState());
   },
   ...(extendCtx || {}),
 });
