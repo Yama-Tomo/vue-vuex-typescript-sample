@@ -91,7 +91,7 @@
     "ts-jest": "24.0.2",
     "ts-loader": "6.0.4",
     "ts-node": "8.3.0",
-    "typescript": "3.6.2",
+    "typescript": "3.6.3",
     "vue-fragment": "1.5.1",
     "vue-jest": "3.0.5",
     "vue-loader": "15.7.1",
