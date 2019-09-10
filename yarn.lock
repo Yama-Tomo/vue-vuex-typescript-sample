@@ -1448,10 +1448,10 @@
     consola "^2.5.6"
     http-proxy-middleware "^0.19.1"
 
-"@nuxtjs/vuetify@1.8.2":
-  version "1.8.2"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/vuetify/-/vuetify-1.8.2.tgz#15a6b7c884efc09f0afa60021c5de37ca460f198"
-  integrity sha512-uj6++916i+n0ZFGsKSsDEkWWVV9UAFR7yzBlSGLd/rrWntTnoT3uw2HzBCLz6rTabHKpD6ZCh2rhVbwSrzRdkQ==
+"@nuxtjs/vuetify@1.8.3":
+  version "1.8.3"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/vuetify/-/vuetify-1.8.3.tgz#ab8190aa569d342984f43153afd76b0c58d0c31c"
+  integrity sha512-KIbT/f0fRJLZti5E3hpq/ad3Qa5zq37Dt6fc+PChokmdqLJ0FcVvfMeCQjweRAy/X0lkK1AYGDwzIcUaDSJvew==
   dependencies:
     deepmerge "^4.0.0"
     fibers "^4.0.1"
