@@ -1,0 +1,21 @@
+#!/bin/bash
+
+function execute_yarn_why {
+  local json=$1
+  local len=$(echo $json | jq length)
+  local i
+  for i in $(seq 0 $(($len - 1))); do
+    package=$(echo $json | jq -r .[$i])
+    result=$(yarn why $package)
+
+    if [ `echo "$result" | grep -c Found` -ne 1 ]; then
+      echo "========= $package ========="
+      echo "$result"
+      echo ""
+    fi  
+  done
+}
+
+execute_yarn_why "$(cat package.json | jq -r '.dependencies | keys')"
+execute_yarn_why "$(cat package.json | jq -r '.devDependencies | keys')"
+
