@@ -98,7 +98,7 @@
     "vue-template-compiler": "2.6.10",
     "vue-tsx-support": "2.3.2",
     "vuetify-jsx-loader": "0.1.1",
-    "webpack": "4.40.3",
+    "webpack": "4.41.0",
     "yaml-loader": "0.5.0"
   },
   "browserslist": [
