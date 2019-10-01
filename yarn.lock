@@ -2118,10 +2118,17 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.1.tgz#f1a11e7babb0c3cad68100be381d1e064c68f1f6"
   integrity sha512-CFzn9idOEpHrgdw8JsoTkaDDyRWk1jrzIV8djzcgpq0y9tG4B4lFT+Nxh52DVpDXV+n4+NPNv7M1Dj5uMp6XFg==
 
-"@types/puppeteer@*", "@types/puppeteer@1.19.1":
+"@types/puppeteer@*":
   version "1.19.1"
   resolved "https://registry.yarnpkg.com/@types/puppeteer/-/puppeteer-1.19.1.tgz#942ca62288953a0f5fbbc25c103b5f2ba28b60ab"
   integrity sha512-ReWZvoEfMiJIA3AG+eM+nCx5GKrU2ANVYY5TC0nbpeiTCtnJbcqnmBbR8TkXMBTvLBYcuTOAELbTcuX73siDNQ==
+  dependencies:
+    "@types/node" "*"
+
+"@types/puppeteer@1.20.0":
+  version "1.20.0"
+  resolved "https://registry.yarnpkg.com/@types/puppeteer/-/puppeteer-1.20.0.tgz#8a09062a744ca1e2f0607468d810b149ab7cf97f"
+  integrity sha512-V3nWu/ENNW7LzHumrgf1D+HnIEQHE+nHThq9MTPmGjQC75SVlWsalCp1OaZFaDeuUgWOmQPIBhSLz0cz+Hlz8w==
   dependencies:
     "@types/node" "*"
 
@@ -5615,10 +5622,10 @@ eslint-visitor-keys@^1.0.0, eslint-visitor-keys@^1.1.0:
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-1.1.0.tgz#e2a82cea84ff246ad6fb57f9bde5b46621459ec2"
   integrity sha512-8y9YjtM1JBJU/A9Kc+SbaOV4y29sSWckBwMHa+FGtVj5gN/sbnKDf6xJUl+8g7FAij9LVaP8C24DUiH/f/2Z9A==
 
-eslint@6.4.0:
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/eslint/-/eslint-6.4.0.tgz#5aa9227c3fbe921982b2eda94ba0d7fae858611a"
-  integrity sha512-WTVEzK3lSFoXUovDHEbkJqCVPEPwbhCq4trDktNI6ygs7aO41d4cDT0JFAT5MivzZeVLWlg7vHL+bgrQv/t3vA==
+eslint@6.5.1:
+  version "6.5.1"
+  resolved "https://registry.yarnpkg.com/eslint/-/eslint-6.5.1.tgz#828e4c469697d43bb586144be152198b91e96ed6"
+  integrity sha512-32h99BoLYStT1iq1v2P9uwpyznQ4M2jRiFB6acitKz52Gqn+vPaMDUTB1bYi1WN4Nquj2w+t+bimYUG83DC55A==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     ajv "^6.10.0"
@@ -8526,10 +8533,10 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
   integrity sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=
 
-lint-staged@9.3.0:
-  version "9.3.0"
-  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-9.3.0.tgz#522a79f166050ab5777887348f2cbdb03f71acac"
-  integrity sha512-OuL3xo6XpBErl16+3W9PdnFmgeGp12lM8I1Ii/B56S8Edy1kyrf4W8VD4IBn9v17QlutRQEWUJ54YF/VVQ7J2A==
+lint-staged@9.4.0:
+  version "9.4.0"
+  resolved "https://registry.yarnpkg.com/lint-staged/-/lint-staged-9.4.0.tgz#dd4abcc9a82539fd290aed1584e3241b8f8af687"
+  integrity sha512-jTu1KoGiGTSffM539wK+3igVqDGVsby3KwDBaXL471YndahkjnavLX+R5Nsk49JwklyMo0ZAXay1BaoyA6d2Jw==
   dependencies:
     chalk "^2.4.2"
     commander "^2.20.0"
@@ -9448,10 +9455,10 @@ number-is-nan@^1.0.0:
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
-nuxt-i18n@6.2.1:
-  version "6.2.1"
-  resolved "https://registry.yarnpkg.com/nuxt-i18n/-/nuxt-i18n-6.2.1.tgz#c8148d45543a05837a2edbf199d9e6826ba80ccd"
-  integrity sha512-kpreVj4/VaagGsW9wVRTnNGBbiR/jWyOwJ1PiFd+GNAGGK4jmuQmugniB3/s4Z8yJH9xp5tZRZc3XJK/lz839Q==
+nuxt-i18n@6.3.0:
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/nuxt-i18n/-/nuxt-i18n-6.3.0.tgz#b2af4a36f5dad1442a1b165d254a5b0f5137626f"
+  integrity sha512-kx+L1qtvuc0KGKtn5qqIHIPHtyK3eLKxfMX2ai2WIISAz/pQPtAgEzL/xzun5UJ6uWja04NGpqa+FsQ/uwFZeg==
   dependencies:
     "@babel/parser" "^7.5.5"
     "@babel/traverse" "^7.5.5"
@@ -12967,7 +12974,18 @@ ts-jest@24.1.0:
     semver "^5.5"
     yargs-parser "10.x"
 
-ts-loader@6.1.2, ts-loader@^6.1.2:
+ts-loader@6.2.0:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/ts-loader/-/ts-loader-6.2.0.tgz#52d3993ecbc5474c1513242388e1049da0fce880"
+  integrity sha512-Da8h3fD+HiZ9GvZJydqzk3mTC9nuOKYlJcpuk+Zv6Y1DPaMvBL+56GRzZFypx2cWrZFMsQr869+Ua2slGoLxvQ==
+  dependencies:
+    chalk "^2.3.0"
+    enhanced-resolve "^4.0.0"
+    loader-utils "^1.0.2"
+    micromatch "^4.0.0"
+    semver "^6.0.0"
+
+ts-loader@^6.1.2:
   version "6.1.2"
   resolved "https://registry.yarnpkg.com/ts-loader/-/ts-loader-6.1.2.tgz#ff6bc767334970226438949fbde2e211147a1325"
   integrity sha512-dudxFKm0Ellrg/gLNlu+97/UgwvoMK0SdUVImPUSzq3IcRUVtShylZvcMX+CgvCQL1BEKb913NL0gAP1GA/OFw==
