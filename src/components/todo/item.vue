@@ -24,6 +24,7 @@ const liClass = (todo: Todo, editing: boolean) => {
 class Item extends Vue {
   @Prop(Object)
   public todo!: Todo;
+
   @Prop()
   public actions!: ActionTree['todo'];
 
