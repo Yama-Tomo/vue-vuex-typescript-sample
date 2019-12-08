@@ -14,8 +14,10 @@ interface Filters {
 export class Logic extends Vue {
   @Prop()
   public state!: StateTree['todo'];
+
   @Prop()
   public actions!: ActionTree['todo'];
+
   @Prop()
   public getters!: GetterTree['todo'];
 
