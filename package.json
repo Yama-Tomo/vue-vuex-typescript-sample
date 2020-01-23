@@ -45,7 +45,7 @@
     "@nuxt/typescript-build": "0.2.10",
     "@nuxt/typescript-runtime": "0.1.7",
     "@nuxtjs/eslint-config-typescript": "1.0.0",
-    "@nuxtjs/vuetify": "1.8.6",
+    "@nuxtjs/vuetify": "2.0.0-alpha.4",
     "@storybook/addon-storyshots": "5.2.6",
     "@storybook/addon-storyshots-puppeteer": "5.2.6",
     "@storybook/vue": "5.2.6",
