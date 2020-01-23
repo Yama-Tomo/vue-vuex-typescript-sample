@@ -1,7 +1,7 @@
 import { configure, addDecorator } from '@storybook/vue';
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
-import Vuetify from 'vuetify';
+import Vuetify from 'vuetify/lib';
 import * as Helper from '../stories/helper';
 
 /* eslint-disable @typescript-eslint/no-var-requires */
