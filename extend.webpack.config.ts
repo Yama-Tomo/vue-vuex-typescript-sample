@@ -43,9 +43,6 @@ export default function(...args: Args) {
       ])
     );
 
-    if (process.env.NODE_ENV === 'production') {
-      config.plugins.push(new VuetifyJsxLoader());
-    }
     config.plugins.push(new VuetifyJsxLoader());
   }
 }
