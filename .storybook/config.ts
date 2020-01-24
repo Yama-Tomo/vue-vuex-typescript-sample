@@ -23,7 +23,7 @@ addDecorator(() => {
     template: '<v-app><story/></v-app>',
     components: { VApp },
     store: Helper.store(),
-    vuetify: new Vuetify({ icons: { iconfont: 'mdi' } }),
+    vuetify: Helper.vuetify(),
     i18n: Helper.i18n(),
     router: Helper.router(),
   };
