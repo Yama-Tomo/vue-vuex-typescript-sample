@@ -104,6 +104,9 @@
     "webpack": "4.41.2",
     "yaml-loader": "0.5.0"
   },
+  "resolutions": {
+    "vue-style-loader": "https://github.com/Yama-Tomo/vue-style-loader/archive/master.tar.gz"
+  },
   "browserslist": [
     "> 1%",
     "last 2 versions",
