@@ -38,7 +38,10 @@ const actions = {
       ctx.commit('resetState', undefined);
 
       const initialState = initialStateResolver({
-        todos: [{ text: 'aaaa', done: false }, { text: 'bbbb', done: true }],
+        todos: [
+          { text: 'aaaa', done: false },
+          { text: 'bbbb', done: true },
+        ],
       });
       ctx.commit('setInitialState', initialState);
     });

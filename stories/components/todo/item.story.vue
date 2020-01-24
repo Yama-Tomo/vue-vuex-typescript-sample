@@ -22,7 +22,10 @@ const setup = (initState: () => State, extendCtx?: VueOpts) => () => ({
 });
 
 storiesOf('components.todo.item', module)
-  .add('default', setup(() => ({ todos: [{ text: 'aaaa', done: true }] })))
+  .add(
+    'default',
+    setup(() => ({ todos: [{ text: 'aaaa', done: true }] }))
+  )
   .add(
     'edit mode',
     setup(() => ({ todos: [{ text: 'bbbb', done: false }] }), {
