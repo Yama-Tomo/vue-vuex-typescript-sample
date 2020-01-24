@@ -1,7 +1,7 @@
 import { configure, addDecorator } from '@storybook/vue';
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
-import Vuetify from 'vuetify/lib';
+import Vuetify, { VApp } from 'vuetify/lib';
 import * as Helper from '../stories/helper';
 
 /* eslint-disable @typescript-eslint/no-var-requires */
@@ -21,6 +21,7 @@ addDecorator(() => {
 
   return {
     template: '<v-app><story/></v-app>',
+    components: { VApp },
     store: Helper.store(),
     vuetify: new Vuetify({ icons: { iconfont: 'mdi' } }),
     i18n: Helper.i18n(),
