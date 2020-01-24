@@ -117,7 +117,7 @@ export default class DefaultLayout extends Vue {
   background-color: white;
 }
 
-.header {
+.v-app-bar.v-toolbar.header {
   background-color: $nuxt-color;
   color: white;
 }
