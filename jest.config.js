@@ -38,6 +38,7 @@ const config = {
     '^@/(.*)$': '<rootDir>/src/$1',
     '^~/(.*)$': '<rootDir>/src/$1',
     '\\.(css|scss)$': '<rootDir>/node_modules/jest-css-modules',
+    '^vuetify/lib$': 'vuetify',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node', 'vue'],
   coverageDirectory: './coverage/',
