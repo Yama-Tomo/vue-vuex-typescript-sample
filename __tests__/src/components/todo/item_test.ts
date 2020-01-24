@@ -2,6 +2,7 @@
  * @jest-environment jsdom
  */
 
+import Vue from 'vue';
 import { mount, createLocalVue } from '@vue/test-utils';
 import Vuetify from 'vuetify';
 import * as Component from '@/components/todo/item.vue';
@@ -45,10 +46,12 @@ describe('behaviors', () => {
     expect(actionMock.mock.calls[0]).toEqual([{ todo: defaultTodoState }]);
   });
 
-  test('ラベルをクリックしたら編集モードになること', () => {
+  test('ラベルをクリックしたら編集モードになること', async () => {
     const wrapper = getWrapper();
 
     wrapper.find('.text').trigger('click');
+
+    await Vue.nextTick();
     expect(wrapper.find('.v-text-field input').isVisible()).toBe(true);
     expect(wrapper.find('.v-list-item').classes()).toContain('editing');
   });
@@ -82,7 +85,7 @@ describe('behaviors', () => {
     ]);
   });
 
-  test('todoの入力があった時にescを押されたらテキストボックスが非表示になること', () => {
+  test('todoの入力があった時にescを押されたらテキストボックスが非表示になること', async () => {
     const wrapper = getWrapper({
       data() {
         return { editing: true };
@@ -91,6 +94,8 @@ describe('behaviors', () => {
 
     const inputEl = wrapper.find('.v-text-field input');
     inputEl.trigger('keyup', { key: 'Escape' });
+    await Vue.nextTick();
+
     expect(inputEl.isVisible()).toBe(false);
   });
 
