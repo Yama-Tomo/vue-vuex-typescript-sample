@@ -1,4 +1,8 @@
-import { MutationTree, ActionTree, GetterTree } from 'vuex';
+import {
+  MutationTree,
+  ActionTree as VuexActionTree,
+  GetterTree as VuexGetterTree,
+} from 'vuex';
 import { RootState } from '@/store/module_mapper';
 import * as Store from '@/types/store';
 
@@ -30,7 +34,7 @@ export const getters = {
 };
 
 // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-const _checkGetterTypes: GetterTree<State, Context['rootState']> = getters; // don't remove this line;
+const _checkGetterTypes: VuexGetterTree<State, Context['rootState']> = getters; // don't remove this line;
 
 export interface GetterTree {
   'todo/sub1': Store.GetterReturnType<typeof getters>;
@@ -46,7 +50,7 @@ export const actions = {
 };
 
 // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-const _checkActionTypes: ActionTree<State, Context['rootState']> = actions; // don't remove this line;
+const _checkActionTypes: VuexActionTree<State, Context['rootState']> = actions; // don't remove this line;
 
 export interface ActionTree {
   'todo/sub1': Store.DispatchArgs<typeof actions>;

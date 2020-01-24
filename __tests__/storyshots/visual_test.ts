@@ -13,7 +13,8 @@ type ImageSnapshotArgs = Required<
 (() => {
   if (!process.env.IS_DOCKER) {
     // run `yarn test:use-docker yarn test __tests__/storyshots` after run yarn sb:build if you want run this test
-    test.skip('not running visual testing in not Docker environment', () => {});
+    test.skip('not running visual testing in not Docker environment', () =>
+      null);
     return;
   }
 
@@ -22,9 +23,11 @@ type ImageSnapshotArgs = Required<
   /* eslint-disable-next-line @typescript-eslint/no-var-requires */
   const puppeteerConfig = require('../../jest-puppeteer.config');
 
-  const getScreenshotOptions = () => ({
-    fullPage: false,
-  });
+  const getScreenshotOptions = () =>
+    ({
+      fullPage: false,
+      encoding: 'base64',
+    } as const);
 
   const beforeScreenshot = async (
     ...args: Parameters<ImageSnapshotArgs['beforeScreenshot']>

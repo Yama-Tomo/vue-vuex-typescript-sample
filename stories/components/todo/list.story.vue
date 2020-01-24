@@ -24,14 +24,23 @@ storiesOf('components.todo.list', module)
   .add(
     'default',
     setup(() => ({
-      todos: [{ text: 'aaaa', done: true }, { text: 'bbbb', done: false }],
+      todos: [
+        { text: 'aaaa', done: true },
+        { text: 'bbbb', done: false },
+      ],
     }))
   )
-  .add('empty data', setup(() => ({ todos: [] })))
+  .add(
+    'empty data',
+    setup(() => ({ todos: [] }))
+  )
   .add(
     'all done todo',
     setup(() => ({
-      todos: [{ text: 'aaaa', done: true }, { text: 'bbbb', done: true }],
+      todos: [
+        { text: 'aaaa', done: true },
+        { text: 'bbbb', done: true },
+      ],
     }))
   );
 </script>
