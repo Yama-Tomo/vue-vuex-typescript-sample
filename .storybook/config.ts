@@ -9,6 +9,9 @@ if (process.env.NODE_ENV === 'test') {
   require('babel-plugin-require-context-hook/register')();
 }
 
+require('vuetify/dist/vuetify.css');
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 Vue.use(VueI18n);
 Vue.use(Vuetify);
 
