@@ -15,6 +15,7 @@ RUN apk update && apk upgrade \
       procps \
       git \
     && npm i -g npm \
+    && rm -f /usr/local/bin/yarn* && rm -rf /opt/yarn* \
     && npm i -g yarn \
     && rm -rf /var/lib/apt/lists/* \
               /var/cache/apk/* \
