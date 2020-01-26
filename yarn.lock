@@ -4207,6 +4207,7 @@ fsevents@^1.2.7:
   dependencies:
     bindings "^1.5.0"
     nan "^2.12.1"
+    node-pre-gyp "*"
 
 fstream@^1.0.0, fstream@^1.0.12:
   version "1.0.12"
