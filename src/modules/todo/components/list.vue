@@ -69,8 +69,10 @@ import { ActionTree, GetterTree, StateTree } from '@/modules/module_mapper';
 export default class List extends Vue {
   @Prop()
   public state!: StateTree['todoModule'];
+
   @Prop()
   public actions!: ActionTree['todoModule'];
+
   @Prop()
   public getters!: GetterTree['todoModule'];
 

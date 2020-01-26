@@ -9,6 +9,7 @@ import { ActionTree } from '@/modules/module_mapper';
 export class Item extends Vue {
   @Prop()
   public todo!: Todo;
+
   @Prop()
   public actions!: ActionTree['todoModule'];
 
