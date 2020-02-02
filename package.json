@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@nuxtjs/auth": "4.8.5",
-    "@nuxtjs/axios": "5.9.4",
+    "@nuxtjs/axios": "5.9.5",
     "body-parser": "1.19.0",
     "lodash": "4.17.15",
     "nuxt": "2.11.0",
