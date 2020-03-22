@@ -20,6 +20,12 @@ exports[`rendering renders correctly 1`] = `
           <div
             class="v-input--selection-controls__input"
           >
+            <i
+              aria-hidden="true"
+              class="v-icon notranslate material-icons theme--light"
+            >
+              $checkboxOff
+            </i>
             <input
               aria-checked="false"
               id="input-67"
@@ -28,14 +34,8 @@ exports[`rendering renders correctly 1`] = `
               value=""
             />
             <div
-              class="v-input--selection-controls__ripple"
+              class="v-input--selection-controls__ripple primary--text"
             />
-            <i
-              aria-hidden="true"
-              class="v-icon notranslate material-icons theme--light"
-            >
-              $checkboxOff
-            </i>
           </div>
         </div>
       </div>
@@ -83,10 +83,10 @@ exports[`rendering renders correctly 1`] = `
         >
           <svg
             aria-hidden="true"
-            height="32"
+            height="24"
             role="img"
             viewBox="0 0 24 24"
-            width="32"
+            width="24"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
