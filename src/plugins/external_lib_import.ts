@@ -1,7 +1,7 @@
 import * as Nuxt from '@/types/nuxt';
 import ExternalLibWrapper from '@/utils/external_lib_wrapper';
 
-const sleep = () => new Promise(resolve => setTimeout(resolve, 500));
+const sleep = () => new Promise((resolve) => setTimeout(resolve, 500));
 
 const waitLoadedExternalLib = async (assertFunction: () => boolean) => {
   if (assertFunction()) {

@@ -29,7 +29,7 @@ class List extends ListComponent.Logic {
           <v-row justify="center" class="filter">
             <v-col cols="6" sm="6">
               <v-tabs grow>
-                {objectToArray(this.filters).map(filter => (
+                {objectToArray(this.filters).map((filter) => (
                   <v-tab
                     href={`#/${filter.key}`}
                     onClick={() => {
@@ -53,7 +53,7 @@ class List extends ListComponent.Logic {
           {this.filteredTodos.length > 0 && (
             <Fragment>
               <v-list>
-                {this.filteredTodos.map(todo => (
+                {this.filteredTodos.map((todo) => (
                   <Item todo={todo} actions={this.actions} />
                 ))}
               </v-list>

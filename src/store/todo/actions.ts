@@ -20,14 +20,14 @@ const actions = {
     ctx.commit('updateTodo', { todo, done: !todo.done });
   },
   toggleAll(ctx: Context, done: boolean) {
-    ctx.state.todos.forEach(todo => {
+    ctx.state.todos.forEach((todo) => {
       ctx.commit('updateTodo', { todo, done });
     });
   },
   clearCompleted(ctx: Context) {
     ctx.state.todos
-      .filter(todo => todo.done)
-      .forEach(todo => {
+      .filter((todo) => todo.done)
+      .forEach((todo) => {
         ctx.commit('removeTodo', todo);
       });
   },

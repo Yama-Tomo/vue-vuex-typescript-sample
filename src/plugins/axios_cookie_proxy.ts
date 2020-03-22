@@ -6,7 +6,7 @@ export default (ctx: Nuxt.Context) => {
     return;
   }
 
-  ctx.$axios.interceptors.response.use(response => {
+  ctx.$axios.interceptors.response.use((response) => {
     const cookie: string[] | null = response.headers['set-cookie'];
 
     if (Array.isArray(cookie) && cookie.length) {
@@ -19,13 +19,13 @@ export default (ctx: Nuxt.Context) => {
             ? currentCookie
             : isNum(currentCookie)
             ? [String(currentCookie)]
-            : [currentCookie])().forEach(v => {
+            : [currentCookie])().forEach((v) => {
           if (!v) {
             return;
           }
 
           const [key] = v.split('=');
-          if (!cookie.some(v => v.includes(key))) {
+          if (!cookie.some((v) => v.includes(key))) {
             cookie.push(v);
           }
         });

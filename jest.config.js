@@ -48,8 +48,8 @@ const config = {
 };
 
 const isNeedPuppeteer =
-  !process.argv.filter(arg => arg.includes('__tests__/')).length ||
-  process.argv.filter(arg => arg.includes('__tests__/e2e')).length;
+  !process.argv.filter((arg) => arg.includes('__tests__/')).length ||
+  process.argv.filter((arg) => arg.includes('__tests__/e2e')).length;
 
 if (isNeedPuppeteer) {
   config.preset = 'jest-puppeteer';

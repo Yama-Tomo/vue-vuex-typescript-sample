@@ -11,7 +11,7 @@ string = require('hard-source-webpack-plugin/lib/defaultConfigHash');
 
 type BuildConfiguration = NonNullable<NuxtConfiguration['build']>;
 type Args = Parameters<NonNullable<BuildConfiguration['extend']>>;
-export default function(...args: Args) {
+export default function (...args: Args) {
   const config = args[0];
 
   config.externals = {

@@ -42,11 +42,11 @@ export default class Top {
     todoContent: string,
     liElement: ElementHandle<Element>
   ) {
-    await getElement(liElement, '.text').then(e => e.click());
+    await getElement(liElement, '.text').then((e) => e.click());
     await page.waitFor(100);
 
     const inputEle = await (() => {
-      return liElement.$('.v-text-field input').then(e => {
+      return liElement.$('.v-text-field input').then((e) => {
         if (e === null) throw new Error('not found input element');
 
         return e;
@@ -63,17 +63,19 @@ export default class Top {
   }
 
   public getTodoContent(liElement: ElementHandle<Element>) {
-    return getElement(liElement, '.text').then(e =>
-      page.evaluate(_e => (_e as Element).textContent, e)
+    return getElement(liElement, '.text').then((e) =>
+      page.evaluate((_e) => (_e as Element).textContent, e)
     );
   }
 
   public removeTodo(liElement: ElementHandle<Element>) {
-    return getElement(liElement, 'button').then(e => e.click());
+    return getElement(liElement, 'button').then((e) => e.click());
   }
 
   public completeTodo(liElement: ElementHandle<Element>) {
-    return getElement(liElement, "input[type='checkbox']").then(e => e.click());
+    return getElement(liElement, "input[type='checkbox']").then((e) =>
+      e.click()
+    );
   }
 
   public getActiveTodoElements() {
