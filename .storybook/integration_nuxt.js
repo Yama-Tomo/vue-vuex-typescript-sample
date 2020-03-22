@@ -7,7 +7,7 @@ const webpack = require('webpack');
 
 const nuxtBuildPath = `${path.resolve(__dirname)}/.nuxt`;
 
-const getBuilder = async nuxtConfigCustomizer => {
+const getBuilder = async (nuxtConfigCustomizer) => {
   const cmd = await cli.commands.default('build');
 
   const cmdInstance = new cli.NuxtCommand(cmd, undefined, hooks);
@@ -32,10 +32,10 @@ const getBuilder = async nuxtConfigCustomizer => {
   return builder;
 };
 
-const nuxtWebpackConfig = builder =>
+const nuxtWebpackConfig = (builder) =>
   builder.bundleBuilder.getWebpackConfig('Client');
 
-const generateNuxtTemplates = async builder => {
+const generateNuxtTemplates = async (builder) => {
   builder.options.buildDir = nuxtBuildPath;
 
   await builder.validatePages();
@@ -46,7 +46,7 @@ const generateNuxtTemplates = async builder => {
 exports.customizeWebpackConfig = async (
   originalConfig,
   _mode,
-  nuxtConfigCustomizer = config => config
+  nuxtConfigCustomizer = (config) => config
 ) => {
   const builder = await getBuilder(nuxtConfigCustomizer);
 
@@ -59,7 +59,7 @@ exports.customizeWebpackConfig = async (
 
   const plugins = nuxtWebpack.plugins
     .filter(
-      plugin =>
+      (plugin) =>
         ![
           'VueSSRClientPlugin', // => prevent output server/client.manifest.json
           'HtmlWebpackPlugin', // => prevent output server/index.{ssr|spa}.html
@@ -74,11 +74,11 @@ exports.customizeWebpackConfig = async (
     );
 
   originalConfig.plugins = originalConfig.plugins
-    .filter(plugin => plugin.constructor.name !== 'VueLoaderPlugin')
+    .filter((plugin) => plugin.constructor.name !== 'VueLoaderPlugin')
     .concat(plugins);
 
   originalConfig.module.rules = originalConfig.module.rules
-    .filter(rule => rule.test.test('.md'))
+    .filter((rule) => rule.test.test('.md'))
     .concat(nuxtWebpack.module.rules);
 
   originalConfig.resolve.alias = {

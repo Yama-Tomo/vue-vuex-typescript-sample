@@ -59,7 +59,7 @@ export default class Layout {
     );
 
     await this.page.waitForFunction(
-      c => window.location.href !== c,
+      (c) => window.location.href !== c,
       { polling: 'raf' },
       currentUrl
     );

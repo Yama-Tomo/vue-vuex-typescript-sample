@@ -21,5 +21,5 @@ export function hasKey(arg: unknown, key: string | string[]): boolean {
   }
 
   const keys = Array.isArray(key) ? key : [key];
-  return keys.every(k => k in arg);
+  return keys.every((k) => k in arg);
 }

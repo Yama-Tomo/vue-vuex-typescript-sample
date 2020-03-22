@@ -86,7 +86,7 @@ export default {
     ],
     '@nuxtjs/vuetify',
     // IMPORTANT! This module must always be the last stack
-    function(this: ModuleContext) {
+    function (this: ModuleContext) {
       this.nuxt.hook('build:before', () =>
         this.extendBuild(extendWebpackConfig)
       );

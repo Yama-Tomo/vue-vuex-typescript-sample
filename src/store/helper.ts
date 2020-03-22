@@ -15,10 +15,7 @@ export const getActions = <K extends keyof ActionTree>(
         return actions;
       }
 
-      const assignKey = name
-        .split('/')
-        .slice(nestLevel)
-        .join('.');
+      const assignKey = name.split('/').slice(nestLevel).join('.');
       const dispatch = (payload: unknown) => store.dispatch(name, payload);
       return set(actions, assignKey, dispatch);
     },

@@ -1,7 +1,7 @@
 import { ElementHandle } from 'puppeteer';
 
 export async function deleteAll(element: ElementHandle<Element>) {
-  const inputVal = await page.evaluate(e => e.value, element);
+  const inputVal = await page.evaluate((e) => e.value, element);
   if (inputVal === null) return;
 
   await element.focus();

@@ -54,13 +54,13 @@ export class Logic extends Vue {
   public get filters(): Filters {
     return {
       all: (todos: Todo[]) => todos,
-      active: (todos: Todo[]) => todos.filter(todo => !todo.done),
-      completed: (todos: Todo[]) => todos.filter(todo => todo.done),
+      active: (todos: Todo[]) => todos.filter((todo) => !todo.done),
+      completed: (todos: Todo[]) => todos.filter((todo) => todo.done),
     };
   }
 
   public get allChecked(): boolean {
-    return this.state.todos.every(todo => todo.done);
+    return this.state.todos.every((todo) => todo.done);
   }
 
   public get filteredTodos() {
@@ -68,7 +68,7 @@ export class Logic extends Vue {
   }
 
   public get remaining() {
-    return this.state.todos.filter(todo => !todo.done).length;
+    return this.state.todos.filter((todo) => !todo.done).length;
   }
 
   public addTodo(e: Event): void {
