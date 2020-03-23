@@ -28,8 +28,8 @@
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "1.0.2",
     "@types/lodash": "4.14.149",
-    "@typescript-eslint/eslint-plugin": "2.24.0",
-    "@typescript-eslint/parser": "2.24.0",
+    "@typescript-eslint/eslint-plugin": "2.25.0",
+    "@typescript-eslint/parser": "2.25.0",
     "@vue/cli-plugin-babel": "4.2.3",
     "@vue/cli-plugin-typescript": "4.2.3",
     "@vue/cli-service": "4.2.3",
