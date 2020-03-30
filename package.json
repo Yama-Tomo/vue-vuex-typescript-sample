@@ -31,7 +31,7 @@
     "body-parser": "1.19.0",
     "lodash": "4.17.15",
     "nuxt": "2.12.1",
-    "nuxt-i18n": "6.7.0",
+    "nuxt-i18n": "6.7.1",
     "nuxt-property-decorator": "2.5.1",
     "vue": "2.6.11",
     "vuex-type-helper": "1.2.2"
