@@ -9866,10 +9866,10 @@ number-is-nan@^1.0.0:
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
-nuxt-i18n@6.9.2:
-  version "6.9.2"
-  resolved "https://registry.yarnpkg.com/nuxt-i18n/-/nuxt-i18n-6.9.2.tgz#6197bbb386cabca95615733100363c4887632475"
-  integrity sha512-OTf75IagoTHIC9b4sOfnzFCBv/YP+GuZTq9Yo70qKDn+9TRXzXQSkEzJJdqujJbRq9l3yjTYUWRbcrmp5ZeyrA==
+nuxt-i18n@6.9.3:
+  version "6.9.3"
+  resolved "https://registry.yarnpkg.com/nuxt-i18n/-/nuxt-i18n-6.9.3.tgz#063a97ebc6927671d9e4b35aa964620874cefc18"
+  integrity sha512-H3IYT7tKpRpcowxQFabXyf5Ap6GhBcZ6i9I3raVG5t1QdH/yzkC3F/PrMz3xewwLoW+h8jKV6PFcFGHgky24/Q==
   dependencies:
     "@babel/parser" "^7.5.5"
     "@babel/traverse" "^7.5.5"
@@ -9877,7 +9877,7 @@ nuxt-i18n@6.9.2:
     cookie "^0.4.0"
     is-https "^1.0.0"
     js-cookie "^2.2.1"
-    vue-i18n "8.16.0"
+    vue-i18n "^8.17.3"
     vue-i18n-extensions "^0.2.1"
 
 nuxt-property-decorator@2.7.2:
@@ -13883,10 +13883,10 @@ vue-i18n-extensions@^0.2.1:
   resolved "https://registry.yarnpkg.com/vue-i18n-extensions/-/vue-i18n-extensions-0.2.1.tgz#86ebea45a1f9c9594cd124f264e107aea193d7dd"
   integrity sha512-xBrItI7bEwBnG7eAlnyUARP41JYYn2+ABMR8q1Yh5FM9hHCbs4XPZwG+4+FPeIZ6b5gYk4YUP//m+fWiuU9z9A==
 
-vue-i18n@8.16.0:
-  version "8.16.0"
-  resolved "https://registry.yarnpkg.com/vue-i18n/-/vue-i18n-8.16.0.tgz#f84188a36a4cc3c876427b869c7c5a82d6696080"
-  integrity sha512-cp9JOsx4ETzlCsnD22FE8ZhAmD8kcyNLRKV0DPsS7bBNTCdIlOKuyTGonWKYcGCUtNMtwemDWRBevRm8eevBVg==
+vue-i18n@^8.17.3:
+  version "8.17.3"
+  resolved "https://registry.yarnpkg.com/vue-i18n/-/vue-i18n-8.17.3.tgz#f366082d5784c3c35e8ffda733cb3f3990a3900d"
+  integrity sha512-sWjGOL7dXo6rYcPQmlY8FN/beLxq2aCnTZMSxfW0yW78rRGpqWrqXJURH56kvMYCnyNCepBjGWEEW0rbFiig5Q==
 
 vue-jest@3.0.5:
   version "3.0.5"
