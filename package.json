@@ -40,10 +40,10 @@
   },
   "devDependencies": {
     "@babel/core": "7.9.0",
-    "@nuxt/typescript-build": "0.6.5",
-    "@nuxt/typescript-runtime": "0.4.5",
+    "@nuxt/typescript-build": "0.6.6",
+    "@nuxt/typescript-runtime": "0.4.6",
     "@nuxtjs/eslint-config-typescript": "1.0.2",
-    "@nuxtjs/vuetify": "2.0.0-beta.0",
+    "@nuxtjs/vuetify": "2.0.0-beta.2",
     "@storybook/addon-storyshots": "5.3.18",
     "@storybook/addon-storyshots-puppeteer": "5.3.18",
     "@storybook/vue": "5.3.18",
