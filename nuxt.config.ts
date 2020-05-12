@@ -38,6 +38,19 @@ export default {
   css: ['~/assets/css/main.scss'],
   build: {
     extractCSS: !isDev,
+    babel: {
+      presets({ isServer }: { isServer: boolean }) {
+        return [
+          [
+            require.resolve('@nuxt/babel-preset-app'),
+            {
+              buildTarget: isServer ? 'server' : 'client',
+              corejs: { version: 3 },
+            },
+          ],
+        ];
+      },
+    },
   },
   watch: ['~/serverMiddleware/*.ts'],
   hooks: {
