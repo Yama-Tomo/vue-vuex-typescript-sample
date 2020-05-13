@@ -6,9 +6,9 @@ module.exports = {
   parserOptions: {
     parser: '@typescript-eslint/parser',
     sourceType: 'module',
-// relate issues: https://github.com/typescript-eslint/typescript-eslint/issues/404, https://github.com/mysticatea/vue-eslint-parser/issues/45
-//    project: './tsconfig.json',
-//    extraFileExtensions: ['.vue']
+    // relate issues: https://github.com/typescript-eslint/typescript-eslint/issues/404, https://github.com/mysticatea/vue-eslint-parser/issues/45
+    //    project: './tsconfig.json',
+    //    extraFileExtensions: ['.vue']
   },
   rules: {
     semi: 'off',
@@ -16,28 +16,34 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/camelcase': ['error', { properties: 'never' }],
-    "@typescript-eslint/no-empty-interface": ["error", { allowSingleExtends: true } ],
+    '@typescript-eslint/no-empty-interface': [
+      'error',
+      { allowSingleExtends: true },
+    ],
     // https://github.com/eslint/eslint/issues/12058
-    'comma-dangle': ['error', {
-      'arrays': 'always-multiline',
-      'exports': 'always-multiline',
-      'imports': 'always-multiline',
-      'objects': 'always-multiline',
-      'functions': 'never',
-    }],
+    'comma-dangle': [
+      'error',
+      {
+        arrays: 'always-multiline',
+        exports: 'always-multiline',
+        imports: 'always-multiline',
+        objects: 'always-multiline',
+        functions: 'never',
+      },
+    ],
     'prettier/prettier': [
       'error',
       {
-        'singleQuote': true,
-        'trailingComma': 'es5'
-      }
-    ]
+        singleQuote: true,
+        trailingComma: 'es5',
+      },
+    ],
   },
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
-//    'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    //    'plugin:@typescript-eslint/recommended-requiring-type-checking',
     '@nuxtjs/eslint-config-typescript',
     'plugin:prettier/recommended',
     'prettier/@typescript-eslint',
@@ -59,5 +65,4 @@ module.exports = {
     StoryBookNuxtIntegrationVuex: true,
     StoryBookNuxtIntegrationRouter: true,
   },
-}
-
+};
