@@ -1,10 +1,9 @@
-import { ActionTree } from 'vuex';
 import { initialStateResolver, State, Todo } from './state';
-import mutations from './mutations';
-import { ActionContext } from '@/types/store';
+import { MutationTree } from './mutations';
+import { ActionContext, Dispatchers } from '@/types/store';
 import { RootState } from '@/store/module_mapper';
 
-type Context = ActionContext<State, typeof mutations, RootState>;
+type Context = ActionContext<State, MutationTree, RootState>;
 
 const actions = {
   addTodo(ctx: Context, text: string) {
@@ -48,7 +47,5 @@ const actions = {
   },
 };
 
-// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-const _checkTypes: ActionTree<State, RootState> = actions; // don't remove this line;
-
 export default actions;
+export type ActionTree = Dispatchers<State, typeof actions>;

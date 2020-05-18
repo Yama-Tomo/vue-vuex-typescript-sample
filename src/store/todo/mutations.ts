@@ -1,5 +1,5 @@
-import { MutationTree } from 'vuex';
 import defaultState, { State, Todo } from './state';
+import * as Store from '@/types/store';
 
 const mutations = {
   addTodo(state: State, todo: Todo) {
@@ -33,7 +33,5 @@ const mutations = {
   },
 };
 
-// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-const _checkTypes: MutationTree<State> = mutations; // don't remove this line;
-
 export default mutations;
+export type MutationTree = Store.Mutations<State, typeof mutations>;
