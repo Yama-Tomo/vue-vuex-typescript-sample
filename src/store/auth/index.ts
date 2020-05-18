@@ -1,7 +1,5 @@
 import { State } from './state';
 
-export interface StateTree {
+export type StateTree = {
   auth: State;
-}
-
-export type RootState = Pick<StateTree, 'auth'>;
+};
