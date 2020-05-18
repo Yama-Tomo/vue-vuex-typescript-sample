@@ -1,13 +1,13 @@
 import { hasKey } from '@/utils/type_guard';
 
-export interface Todo {
+export type Todo = {
   text: string;
   done: boolean;
-}
+};
 
-export interface State {
+export type State = {
   todos: Todo[];
-}
+};
 
 export default function state(): State {
   return {
