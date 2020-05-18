@@ -1,8 +1,3 @@
-import {
-  MutationTree,
-  ActionTree as VuexActionTree,
-  GetterTree as VuexGetterTree,
-} from 'vuex';
 import { RootState } from '@/store/module_mapper';
 import * as Store from '@/types/store';
 
@@ -12,9 +7,6 @@ export const state = () => ({
 });
 
 export type State = ReturnType<typeof state>;
-export interface StateTree {
-  'todo/sub1': State;
-}
 
 // ---------------------------------------------
 
@@ -24,8 +16,7 @@ export const mutations = {
   },
 };
 
-// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-const _checkMutationTypes: MutationTree<State> = mutations; // don't remove this line;
+export type MutationTree = Store.Mutations<State, typeof mutations>;
 
 // ---------------------------------------------
 
@@ -33,25 +24,15 @@ export const getters = {
   currentNumber: (state: State) => `current value is ${state.counter}`,
 };
 
-// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-const _checkGetterTypes: VuexGetterTree<State, Context['rootState']> = getters; // don't remove this line;
-
-export interface GetterTree {
-  'todo/sub1': Store.GetterReturnType<typeof getters>;
-}
+export type GetterTree = Store.Getters<State, typeof getters>;
 
 // ---------------------------------------------
 
-type Context = Store.ActionContext<State, typeof mutations, RootState>;
+type Context = Store.ActionContext<State, MutationTree, RootState>;
 export const actions = {
   increment(ctx: Context) {
     ctx.commit('increment', undefined);
   },
 };
 
-// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-const _checkActionTypes: VuexActionTree<State, Context['rootState']> = actions; // don't remove this line;
-
-export interface ActionTree {
-  'todo/sub1': Store.DispatchArgs<typeof actions>;
-}
+export type ActionTree = Store.Dispatchers<State, typeof actions>;
