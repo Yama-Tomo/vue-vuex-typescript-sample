@@ -41,7 +41,7 @@
   "devDependencies": {
     "@babel/core": "7.9.6",
     "@nuxt/typescript-build": "0.6.6",
-    "@nuxt/typescript-runtime": "0.4.6",
+    "@nuxt/typescript-runtime": "0.4.7",
     "@nuxtjs/eslint-config-typescript": "2.0.0",
     "@nuxtjs/vuetify": "2.0.0-beta.2",
     "@storybook/addon-storyshots": "5.3.18",
@@ -52,7 +52,7 @@
     "@types/hard-source-webpack-plugin": "1.0.1",
     "@types/jest-environment-puppeteer": "4.3.1",
     "@types/lodash": "4.14.151",
-    "@types/puppeteer": "2.1.0",
+    "@types/puppeteer": "2.1.1",
     "@vue/test-utils": "1.0.3",
     "babel-core": "7.0.0-bridge.0",
     "babel-plugin-require-context-hook": "1.0.0",
