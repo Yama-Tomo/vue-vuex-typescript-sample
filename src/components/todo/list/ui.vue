@@ -1,19 +1,41 @@
 <script lang="tsx">
-import { Component } from 'nuxt-property-decorator';
+import Vue, { PropType, VNode } from 'vue';
 import * as vts from 'vue-tsx-support';
 import { Fragment } from 'vue-fragment';
-import Item from './item.vue';
-import * as ListComponent from './list/component';
+import Item from '../item.vue';
 import { objectToArray, pluralize } from '@/components/todo/list/functions';
+import { ActionTree, StateTree } from '@/store/module_mapper';
+import { Todo } from '@/store/todo';
+import { ComponentProps } from '@/types/vue';
 
-@Component({
-  components: {
-    Fragment,
-    Item,
+type Filters = {
+  all: (todos: Todo[]) => Todo[];
+  active: (todos: Todo[]) => Todo[];
+  completed: (todos: Todo[]) => Todo[];
+};
+
+const Component = Vue.extend({
+  props: {
+    state: { type: Object as PropType<StateTree['todo']>, default: undefined },
+    actions: {
+      type: Object as PropType<ActionTree['todo']>,
+      default: undefined,
+    },
+    filters: { type: Object as PropType<Filters>, default: undefined },
+    filteredTodos: { type: Array as PropType<Todo[]>, default: undefined },
+    setVisibility: {
+      type: Function as PropType<(type: keyof Filters) => void>,
+      default: undefined,
+    },
+    addTodo: {
+      type: Function as PropType<(e: Event) => void>,
+      default: undefined,
+    },
+    allChecked: { type: Boolean as PropType<boolean>, default: undefined },
+    input: { type: String as PropType<string>, default: undefined },
+    remaining: { type: Number as PropType<number>, default: undefined },
   },
-})
-class List extends ListComponent.Logic {
-  public render() {
+  render(): VNode {
     return (
       <Fragment>
         <header class="header">
@@ -33,7 +55,7 @@ class List extends ListComponent.Logic {
                   <v-tab
                     href={`#/${filter.key}`}
                     onClick={() => {
-                      this.visibility = filter.key;
+                      this.setVisibility(filter.key);
                     }}
                   >
                     {this.$t(`todo.filter.${filter.key}`)}
@@ -81,10 +103,11 @@ class List extends ListComponent.Logic {
         </section>
       </Fragment>
     );
-  }
-}
+  },
+});
 
-export default vts.ofType<ListComponent.Props>().convert(List);
+type Props = ComponentProps<typeof Component>;
+export default vts.ofType<Props>().convert(Component);
 </script>
 
 <style lang="scss" scoped>

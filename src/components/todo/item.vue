@@ -1,12 +1,12 @@
 <script lang="tsx">
-import { Component, Vue, Prop } from 'nuxt-property-decorator';
+import Vue, { PropType, VNode } from 'vue';
 import * as vts from 'vue-tsx-support';
 import { mdiDelete } from '@mdi/js';
-import { Todo } from '@/store/todo';
-import { ActionTree } from '@/store/module_mapper';
+import { ActionTree, StateTree } from '@/store/module_mapper';
 import { InputEvent } from '@/types/dom';
+import { ComponentProps } from '@/types/vue';
 
-const liClass = (todo: Todo, editing: boolean) => {
+const liClass = (todo: Props['todo'], editing: boolean) => {
   const stack = ['todo'];
 
   if (todo.done) {
@@ -20,17 +20,68 @@ const liClass = (todo: Todo, editing: boolean) => {
   return stack.join(' ');
 };
 
-@Component
-class Item extends Vue {
-  @Prop(Object)
-  public todo!: Todo;
+type LocalState = {
+  editing: boolean;
+};
 
-  @Prop()
-  public actions!: ActionTree['todo'];
+const Component = Vue.extend({
+  props: {
+    todo: {
+      type: Object as PropType<StateTree['todo']['todos'][number]>,
+      default: undefined,
+    },
+    actions: {
+      type: Object as PropType<ActionTree['todo']>,
+      default: undefined,
+    },
+  },
+  data(): LocalState {
+    return {
+      editing: false,
+    };
+  },
+  methods: {
+    changeEditMode() {
+      this.editing = true;
+      this.$nextTick(() => (this.$refs.inputText as HTMLInputElement).focus());
+    },
+    editTodo(text: string) {
+      return this.actions.editTodo({ todo: this.todo, text });
+    },
+    toggleTodo() {
+      this.actions.toggleTodo({ todo: this.todo });
+    },
+    removeTodo() {
+      this.actions.removeTodo(this.todo);
+    },
+    onKeyPress(e: Event) {
+      const keyCode = (e as KeyboardEvent).key;
+      if (keyCode === 'Enter') {
+        this.doneEdit(e);
+      }
+    },
+    onKeyUp(e: Event) {
+      const keyCode = (e as KeyboardEvent).key;
+      if (keyCode === 'Escape') {
+        this.cancelEdit(e);
+      }
+    },
+    doneEdit(e: Event) {
+      const value = (e as InputEvent).target.value.trim();
 
-  public editing = false;
-
-  public render() {
+      if (!value) {
+        this.removeTodo();
+      } else if (this.editing) {
+        this.editTodo(value);
+        this.editing = false;
+      }
+    },
+    cancelEdit(e: Event) {
+      (e as InputEvent).target.value = this.todo.text;
+      this.editing = false;
+    },
+  },
+  render(): VNode {
     return (
       <v-list-item class={liClass(this.todo, this.editing)}>
         <v-list-item-content>
@@ -64,58 +115,11 @@ class Item extends Vue {
         </v-list-item-action>
       </v-list-item>
     );
-  }
+  },
+});
 
-  public changeEditMode() {
-    this.editing = true;
-    this.$nextTick(() => (this.$refs.inputText as HTMLInputElement).focus());
-  }
-
-  public editTodo(text: string) {
-    return this.actions.editTodo({ todo: this.todo, text });
-  }
-
-  public toggleTodo() {
-    this.actions.toggleTodo({ todo: this.todo });
-  }
-
-  public removeTodo() {
-    this.actions.removeTodo(this.todo);
-  }
-
-  public onKeyPress(e: Event) {
-    const keyCode = (e as KeyboardEvent).key;
-    if (keyCode === 'Enter') {
-      this.doneEdit(e);
-    }
-  }
-
-  public onKeyUp(e: Event) {
-    const keyCode = (e as KeyboardEvent).key;
-    if (keyCode === 'Escape') {
-      this.cancelEdit(e);
-    }
-  }
-
-  public doneEdit(e: Event) {
-    const value = (e as InputEvent).target.value.trim();
-
-    if (!value) {
-      this.removeTodo();
-    } else if (this.editing) {
-      this.editTodo(value);
-      this.editing = false;
-    }
-  }
-
-  public cancelEdit(e: Event) {
-    (e as InputEvent).target.value = this.todo.text;
-    this.editing = false;
-  }
-}
-
-type Props = Pick<Item, 'todo' | 'actions'>;
-export default vts.ofType<Props>().convert(Item);
+type Props = ComponentProps<typeof Component>;
+export default vts.ofType<Props>().convert(Component);
 </script>
 
 <style lang="scss" scoped>

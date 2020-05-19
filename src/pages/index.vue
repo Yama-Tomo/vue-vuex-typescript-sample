@@ -1,11 +1,13 @@
 <template>
-  <List :state="state" :actions="actions" :getters="getters" />
+  <div>
+    <List :state="state" :actions="actions" :getters="getters" />
+  </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
 import { Store } from 'vuex';
-import List from '../components/todo/list.vue';
+import List from '../components/todo/list/index.vue';
 import * as StoreHelper from '@/store/helper';
 
 @Component({
