@@ -32,7 +32,6 @@
     "lodash": "4.17.15",
     "nuxt": "2.12.2",
     "nuxt-i18n": "6.11.1",
-    "nuxt-property-decorator": "2.7.2",
     "vue": "2.6.11",
     "vue-fragment": "1.5.1",
     "vue-tsx-support": "2.3.3",
