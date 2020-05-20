@@ -89,11 +89,11 @@ export default class Top {
   }
 
   public filterActiveTodo() {
-    return this.page.click('main a.v-tab:nth-of-type(2)');
+    return this.page.click('main .v-tab:nth-of-type(3)');
   }
 
   public filterCompletedTodo() {
-    return this.page.click('main a.v-tab:nth-of-type(3)');
+    return this.page.click('main .v-tab:nth-of-type(4)');
   }
 
   public async gotoOtherLangThisPage() {
