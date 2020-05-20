@@ -9,9 +9,9 @@ import { Todo } from '@/store/todo';
 import { ComponentProps } from '@/types/vue';
 
 type Filters = {
-  all: (todos: Todo[]) => Todo[];
-  active: (todos: Todo[]) => Todo[];
-  completed: (todos: Todo[]) => Todo[];
+  all: () => void;
+  active: () => void;
+  completed: () => void;
 };
 
 const Component = Vue.extend({
@@ -23,10 +23,6 @@ const Component = Vue.extend({
     },
     filters: { type: Object as PropType<Filters>, default: undefined },
     filteredTodos: { type: Array as PropType<Todo[]>, default: undefined },
-    setVisibility: {
-      type: Function as PropType<(type: keyof Filters) => void>,
-      default: undefined,
-    },
     addTodo: {
       type: Function as PropType<(e: Event) => void>,
       default: undefined,
@@ -52,12 +48,7 @@ const Component = Vue.extend({
             <v-col cols="6" sm="6">
               <v-tabs grow>
                 {objectToArray(this.filters).map((filter) => (
-                  <v-tab
-                    href={`#/${filter.key}`}
-                    onClick={() => {
-                      this.setVisibility(filter.key);
-                    }}
-                  >
+                  <v-tab onClick={filter.value}>
                     {this.$t(`todo.filter.${filter.key}`)}
                   </v-tab>
                 ))}

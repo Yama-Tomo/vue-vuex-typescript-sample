@@ -3,7 +3,6 @@ import Vue, { PropType, VNode } from 'vue';
 import { Route } from 'vue-router';
 import * as vts from 'vue-tsx-support';
 import PresentationalComponent from '@/components/todo/list/ui.vue';
-import { Todo } from '@/store/todo';
 import { ActionTree, GetterTree, StateTree } from '@/store/module_mapper';
 import { InputEvent } from '@/types/dom';
 import { ComponentProps } from '@/types/vue';
@@ -36,16 +35,24 @@ const Component = Vue.extend({
   computed: {
     filters(): UiProps['filters'] {
       return {
-        all: (todos: Todo[]) => todos,
-        active: (todos: Todo[]) => todos.filter((todo) => !todo.done),
-        completed: (todos: Todo[]) => todos.filter((todo) => todo.done),
+        all: () => this.$router.push(`#/all`),
+        active: () => this.$router.push(`#/active`),
+        completed: () => this.$router.push(`#/completed`),
       };
     },
     allChecked(): UiProps['allChecked'] {
       return this.state.todos.every((todo) => todo.done);
     },
     filteredTodos(): UiProps['filteredTodos'] {
-      return this.filters[this.visibility](this.state.todos);
+      if (this.visibility === 'active') {
+        return this.state.todos.filter((todo) => !todo.done);
+      }
+
+      if (this.visibility === 'completed') {
+        return this.state.todos.filter((todo) => todo.done);
+      }
+
+      return this.state.todos;
     },
     remaining(): UiProps['remaining'] {
       return this.state.todos.filter((todo) => !todo.done).length;
@@ -90,9 +97,6 @@ const Component = Vue.extend({
         actions={this.actions}
         filters={this.filters}
         filteredTodos={this.filteredTodos}
-        setVisibility={(visibleType) => {
-          this.visibility = visibleType;
-        }}
         addTodo={this.addTodo}
         allChecked={this.allChecked}
         input={this.input}
