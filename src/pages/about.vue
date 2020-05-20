@@ -44,14 +44,29 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator';
+import Vue, { PropType } from 'vue';
+import * as vts from 'vue-tsx-support';
 import ExternalLibWrapper from '@/utils/external_lib_wrapper';
+import * as Nuxt from '@/types/nuxt';
 
-@Component({
+const Component = Vue.extend({
   auth: false,
-})
-export default class About extends Vue {
-  public head() {
+  props: {
+    error: { type: Object as PropType<Nuxt.Error>, default: undefined },
+  },
+  computed: {
+    statusCode(): number {
+      return this.error.statusCode;
+    },
+  },
+  async created() {
+    if (this.$importJQuery) {
+      await this.$importJQuery();
+      // eslint-disable-next-line no-unused-vars,@typescript-eslint/no-unused-vars
+      const jqueryVersion = ExternalLibWrapper.jquery.fn.jquery;
+    }
+  },
+  head() {
     return {
       script: [
         {
@@ -61,16 +76,10 @@ export default class About extends Vue {
         },
       ],
     };
-  }
+  },
+});
 
-  public async created() {
-    if (this.$importJQuery) {
-      await this.$importJQuery();
-      // eslint-disable-next-line no-unused-vars,@typescript-eslint/no-unused-vars
-      const jqueryVersion = ExternalLibWrapper.jquery.fn.jquery;
-    }
-  }
-}
+export default vts.ofType().convert(Component);
 </script>
 
 <style scoped lang="scss">

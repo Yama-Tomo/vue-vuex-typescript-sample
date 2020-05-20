@@ -1,14 +1,15 @@
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator';
+import Vue from 'vue';
+import * as vts from 'vue-tsx-support';
 import * as Nuxt from '@/types/nuxt';
 
-@Component({
+const Component = Vue.extend({
   auth: false,
-})
-export default class DefaultLayout extends Vue {
-  public async fetch(ctx: Nuxt.Context) {
+  async fetch(ctx: Nuxt.Context) {
     await ctx.app.$auth.logout();
     ctx.app.$auth.redirect('home');
-  }
-}
+  },
+});
+
+export default vts.ofType().convert(Component);
 </script>

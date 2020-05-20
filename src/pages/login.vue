@@ -38,25 +38,22 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator';
+import Vue from 'vue';
+import * as vts from 'vue-tsx-support';
+import { StateTree } from '@/store/module_mapper';
 import * as StoreHelper from '@/store/helper';
 import * as Nuxt from '@/types/nuxt';
 
-interface PostParams {
+type LocalState = {
   email: string;
   password: string;
-}
+  isLoginIncorrect: boolean;
+  valid: boolean;
+};
 
-@Component({
+const Component = Vue.extend({
   auth: false,
-})
-export default class Login extends Vue {
-  public email = '';
-  public password = '';
-  public isLoginIncorrect = false;
-  public valid = false;
-
-  public asyncData(ctx: Nuxt.Context): Promise<Partial<Login> | void> | void {
+  asyncData(ctx: Nuxt.Context): Promise<Partial<LocalState> | void> | void {
     const authState = StoreHelper.getState('auth', ctx.store);
     if (authState.loggedIn) {
       ctx.app.$auth.redirect('home');
@@ -64,7 +61,8 @@ export default class Login extends Vue {
     }
 
     if (process.server && ctx.req.method === 'POST' && ctx.req.body !== null) {
-      const postParams: PostParams = ctx.req.body as any;
+      const postParams: Pick<LocalState, 'email' | 'password'> = ctx.req
+        .body as any;
       const data = {
         user: { email: postParams.email, password: postParams.password },
       };
@@ -78,20 +76,33 @@ export default class Login extends Vue {
           return { email: postParams.email, isLoginIncorrect: true };
         });
     }
-  }
+  },
+  data(): LocalState {
+    return {
+      email: '',
+      password: '',
+      isLoginIncorrect: false,
+      valid: false,
+    };
+  },
+  computed: {
+    currentPath(): string {
+      return this.$route.fullPath;
+    },
+    authState(): StateTree['auth'] {
+      return StoreHelper.getState('auth', this.$store);
+    },
+  },
+  methods: {
+    validationRules(propName: string) {
+      return [
+        (v: string): boolean | string => !!v || `${propName} is required`,
+      ];
+    },
+  },
+});
 
-  public validationRules(propName: string) {
-    return [(v: string): boolean | string => !!v || `${propName} is required`];
-  }
-
-  get currentPath(): string {
-    return this.$route.fullPath;
-  }
-
-  get authState() {
-    return StoreHelper.getState('auth', this.$store);
-  }
-}
+export default vts.ofType().convert(Component);
 </script>
 
 <style lang="scss" scoped>

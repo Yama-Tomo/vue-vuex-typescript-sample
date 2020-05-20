@@ -13,19 +13,20 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'nuxt-property-decorator';
+import Vue, { PropType } from 'vue';
+import * as vts from 'vue-tsx-support';
 import * as Nuxt from '@/types/nuxt';
 
-// NOTE: 直接 Nuxt.Errorをコンポーネント内で参照するとビルドが通らないので暫定対応
-type Error = Nuxt.Error;
+const Component = Vue.extend({
+  props: {
+    error: { type: Object as PropType<Nuxt.Error>, default: undefined },
+  },
+  computed: {
+    statusCode(): number {
+      return this.error.statusCode;
+    },
+  },
+});
 
-@Component
-export default class About extends Vue {
-  @Prop(Object)
-  public error!: Error;
-
-  get statusCode(): number {
-    return this.error.statusCode;
-  }
-}
+export default vts.ofType().convert(Component);
 </script>

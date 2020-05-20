@@ -1,37 +1,40 @@
-<template>
-  <div>
-    <List :state="state" :actions="actions" :getters="getters" />
-  </div>
-</template>
-
-<script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator';
-import { Store } from 'vuex';
-import List from '../components/todo/list/index.vue';
+<script lang="tsx">
+import Vue, { VNode } from 'vue';
+import * as vts from 'vue-tsx-support';
 import * as StoreHelper from '@/store/helper';
+import List from '@/components/todo/list/index.vue';
+import { ActionTree, StateTree, GetterTree } from '@/store/module_mapper';
+import * as Nuxt from '@/types/nuxt';
 
-@Component({
-  components: {
-    List,
-  },
+const Component = Vue.extend({
   auth: false,
-})
-export default class Index extends Vue {
-  public async fetch({ store }: { store: Store<any> }) {
+  async fetch({ store }: Nuxt.Context) {
     const actions = StoreHelper.getActions('todo', store);
     await actions.fetchInitialState();
-  }
+  },
+  computed: {
+    state(): StateTree['todo'] {
+      return StoreHelper.getState('todo', this.$store);
+    },
+    actions(): ActionTree['todo'] {
+      return StoreHelper.getActions('todo', this.$store);
+    },
+    getters(): GetterTree['todo'] {
+      return StoreHelper.getGetters('todo', this.$store);
+    },
+  },
+  render(): VNode {
+    return (
+      <div>
+        <List
+          state={this.state}
+          actions={this.actions}
+          getters={this.getters}
+        />
+      </div>
+    );
+  },
+});
 
-  get state() {
-    return StoreHelper.getState('todo', this.$store);
-  }
-
-  get actions() {
-    return StoreHelper.getActions('todo', this.$store);
-  }
-
-  get getters() {
-    return StoreHelper.getGetters('todo', this.$store);
-  }
-}
+export default vts.ofType().convert(Component);
 </script>

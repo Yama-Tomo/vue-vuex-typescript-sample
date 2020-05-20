@@ -72,42 +72,42 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator';
+import Vue from 'vue';
+import * as vts from 'vue-tsx-support';
 import { mdiMenuDown, mdiWeb } from '@mdi/js';
 import * as StoreHelper from '@/store/helper';
 
 type Locales = { [key: string]: { [key: string]: string } };
 
-@Component
-export default class DefaultLayout extends Vue {
-  public signout() {
-    this.$auth.logout();
-  }
+const Component = Vue.extend({
+  computed: {
+    mdiMenuDown(): string {
+      return mdiMenuDown;
+    },
+    mdiWeb(): string {
+      return mdiWeb;
+    },
+    isLoggedIn(): boolean {
+      return StoreHelper.getState('auth', this.$store).loggedIn;
+    },
+    currentPath(): string {
+      return this.$route.path;
+    },
+    redirectParam(): string {
+      return '?redirect=' + encodeURIComponent(this.$route.fullPath);
+    },
+    locales(): Locales {
+      return (this.$root.$i18n as any).locales as Locales;
+    },
+  },
+  methods: {
+    signout() {
+      this.$auth.logout();
+    },
+  },
+});
 
-  get mdiMenuDown(): string {
-    return mdiMenuDown;
-  }
-
-  get mdiWeb(): string {
-    return mdiWeb;
-  }
-
-  get isLoggedIn(): boolean {
-    return StoreHelper.getState('auth', this.$store).loggedIn;
-  }
-
-  get currentPath(): string {
-    return this.$route.path;
-  }
-
-  get redirectParam(): string {
-    return '?redirect=' + encodeURIComponent(this.$route.fullPath);
-  }
-
-  get locales(): Locales {
-    return (this.$root.$i18n as any).locales as Locales;
-  }
-}
+export default vts.ofType().convert(Component);
 </script>
 
 <style scoped lang="scss">
