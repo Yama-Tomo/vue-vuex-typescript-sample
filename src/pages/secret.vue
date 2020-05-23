@@ -1,12 +1,12 @@
 <script lang="tsx">
 import Vue, { VNode } from 'vue';
 import * as vts from 'vue-tsx-support';
-import * as StoreHelper from '@/store/helper';
+import { getState } from '@/store';
 
 const Component = Vue.extend({
   computed: {
     email(): string {
-      return StoreHelper.getState('auth', this.$store).user.email;
+      return getState('auth', this.$store).user.email;
     },
   },
   render(): VNode {

@@ -40,9 +40,8 @@
 <script lang="ts">
 import Vue from 'vue';
 import * as vts from 'vue-tsx-support';
-import { StateTree } from '@/store/module_mapper';
-import * as StoreHelper from '@/store/helper';
 import * as Nuxt from '@/types/nuxt';
+import { StateTree, getState } from '@/store';
 
 type LocalState = {
   email: string;
@@ -54,7 +53,7 @@ type LocalState = {
 const Component = Vue.extend({
   auth: false,
   asyncData(ctx: Nuxt.Context): Promise<Partial<LocalState> | void> | void {
-    const authState = StoreHelper.getState('auth', ctx.store);
+    const authState = getState('auth', ctx.store);
     if (authState.loggedIn) {
       ctx.app.$auth.redirect('home');
       return;
@@ -90,7 +89,7 @@ const Component = Vue.extend({
       return this.$route.fullPath;
     },
     authState(): StateTree['auth'] {
-      return StoreHelper.getState('auth', this.$store);
+      return getState('auth', this.$store);
     },
   },
   methods: {

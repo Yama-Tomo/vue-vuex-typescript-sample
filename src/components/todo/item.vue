@@ -2,9 +2,9 @@
 import Vue, { PropType, VNode } from 'vue';
 import * as vts from 'vue-tsx-support';
 import { mdiDelete } from '@mdi/js';
-import { ActionTree, StateTree } from '@/store/module_mapper';
 import { InputEvent } from '@/types/dom';
 import { ComponentProps } from '@/types/vue';
+import { ActionTree, StateTree } from '@/store';
 
 const liClass = (todo: Props['todo'], editing: boolean) => {
   const stack = ['todo'];

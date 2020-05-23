@@ -75,7 +75,7 @@
 import Vue from 'vue';
 import * as vts from 'vue-tsx-support';
 import { mdiMenuDown, mdiWeb } from '@mdi/js';
-import * as StoreHelper from '@/store/helper';
+import { getState } from '@/store';
 
 type Locales = { [key: string]: { [key: string]: string } };
 
@@ -88,7 +88,7 @@ const Component = Vue.extend({
       return mdiWeb;
     },
     isLoggedIn(): boolean {
-      return StoreHelper.getState('auth', this.$store).loggedIn;
+      return getState('auth', this.$store).loggedIn;
     },
     currentPath(): string {
       return this.$route.path;

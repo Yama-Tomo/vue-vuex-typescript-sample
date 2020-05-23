@@ -4,9 +4,8 @@ import * as vts from 'vue-tsx-support';
 import { Fragment } from 'vue-fragment';
 import Item from '../item.vue';
 import { objectToArray, pluralize } from '@/components/todo/list/functions';
-import { ActionTree, StateTree } from '@/store/module_mapper';
-import { Todo } from '@/store/todo';
 import { ComponentProps } from '@/types/vue';
+import { ActionTree, StateTree } from '@/store';
 
 type Filters = {
   all: () => void;
@@ -22,7 +21,10 @@ const Component = Vue.extend({
       default: undefined,
     },
     filters: { type: Object as PropType<Filters>, default: undefined },
-    filteredTodos: { type: Array as PropType<Todo[]>, default: undefined },
+    filteredTodos: {
+      type: Array as PropType<StateTree['todo']['todos']>,
+      default: undefined,
+    },
     addTodo: {
       type: Function as PropType<(e: Event) => void>,
       default: undefined,
