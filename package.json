@@ -26,7 +26,7 @@
     "vuex-type-helper": "1.2.2"
   },
   "devDependencies": {
-    "@nuxtjs/eslint-config-typescript": "1.0.2",
+    "@nuxtjs/eslint-config-typescript": "2.0.0",
     "@types/lodash": "4.14.152",
     "@typescript-eslint/eslint-plugin": "2.32.0",
     "@typescript-eslint/parser": "2.32.0",
