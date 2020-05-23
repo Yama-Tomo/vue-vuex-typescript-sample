@@ -57,8 +57,8 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import Item from './item.vue';
+import { HTMLElementEvent } from '@/types';
 import { Todo } from '@/modules/todo/store';
-import { HTMLElementEvent } from '@/types/dom';
 import { ActionTree, GetterTree, RootState } from '@/modules/store';
 
 @Component({

@@ -1,7 +1,7 @@
 <script lang="tsx">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import * as vts from 'vue-tsx-support';
-import { HTMLElementEvent } from '../../../types/dom';
+import { HTMLElementEvent } from '@/types';
 import { Todo } from '@/modules/todo/store';
 import { ActionTree } from '@/modules/store';
 
