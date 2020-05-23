@@ -21,7 +21,6 @@
   },
   "dependencies": {
     "vue": "2.6.11",
-    "vue-property-decorator": "8.4.2",
     "vuex": "3.4.0",
     "vuex-type-helper": "1.2.2"
   },

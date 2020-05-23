@@ -4460,7 +4460,6 @@ fsevents@^1.2.7:
   dependencies:
     bindings "^1.5.0"
     nan "^2.12.1"
-    node-pre-gyp "*"
 
 fsevents@~2.1.2:
   version "2.1.2"
@@ -9756,11 +9755,6 @@ vscode-uri@^1.0.6:
   resolved "https://registry.yarnpkg.com/vscode-uri/-/vscode-uri-1.0.8.tgz#9769aaececae4026fb6e22359cb38946580ded59"
   integrity sha512-obtSWTlbJ+a+TFRYGaUumtVwb+InIUVI0Lu0VBUAPmj2cU5JutEXg3xUE0c2J5Tcy7h2DEKVJBFi+Y9ZSFzzPQ==
 
-vue-class-component@^7.1.0:
-  version "7.2.2"
-  resolved "https://registry.yarnpkg.com/vue-class-component/-/vue-class-component-7.2.2.tgz#aecc6d28801f64c61eb04407cf3a5476da26b0c0"
-  integrity sha512-QjVfjRffux0rUBNtxr1hvUxDrfifDvk9q/OSdB/sKIlfxAudDF2E1YTeiEC+qOYIOOBGWkgSKQSnast6H+S38w==
-
 vue-eslint-parser@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-7.0.0.tgz#a4ed2669f87179dedd06afdd8736acbb3a3864d6"
@@ -9788,13 +9782,6 @@ vue-loader@^15.9.1:
     loader-utils "^1.1.0"
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
-
-vue-property-decorator@8.4.2:
-  version "8.4.2"
-  resolved "https://registry.yarnpkg.com/vue-property-decorator/-/vue-property-decorator-8.4.2.tgz#016e17f259f73bc547e77a50ce282ba18db4ee41"
-  integrity sha512-IqbARlvgPE2pzKfbecKxsu2yEH0Wv7hfHR6m4eZA3LTnNw9hveAX77vDfLFyTeMISS5N7Kucp/xRSHjcQ6bAfQ==
-  dependencies:
-    vue-class-component "^7.1.0"
 
 vue-style-loader@^4.1.0, vue-style-loader@^4.1.2:
   version "4.1.2"
