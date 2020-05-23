@@ -11,7 +11,7 @@ module.exports = {
     'babel/semi': 'error',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
-    '@typescript-eslint/camelcase': ['error', { properties: 'never' }],
+    '@typescript-eslint/naming-convention': ['error'],
     '@typescript-eslint/no-empty-interface': [
       'error',
       { allowSingleExtends: true },
