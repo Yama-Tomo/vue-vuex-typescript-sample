@@ -15,11 +15,11 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue';
 import * as vts from 'vue-tsx-support';
-import * as Nuxt from '@/types/nuxt';
+import { NuxtError } from '@/types';
 
 const Component = Vue.extend({
   props: {
-    error: { type: Object as PropType<Nuxt.Error>, default: undefined },
+    error: { type: Object as PropType<NuxtError>, default: undefined },
   },
   computed: {
     statusCode(): number {

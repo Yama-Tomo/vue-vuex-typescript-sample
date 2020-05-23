@@ -1,8 +1,8 @@
-import * as Nuxt from '@/types/nuxt';
+import { NuxtContext } from '@/types';
 
 export default (
-  _req: Nuxt.Context['req'],
-  _res: Nuxt.Context['res'],
+  _req: NuxtContext['req'],
+  _res: NuxtContext['res'],
   next: () => void
 ) => {
   next();

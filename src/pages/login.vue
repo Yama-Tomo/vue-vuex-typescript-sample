@@ -40,8 +40,8 @@
 <script lang="ts">
 import Vue from 'vue';
 import * as vts from 'vue-tsx-support';
-import * as Nuxt from '@/types/nuxt';
 import { StateTree, getState } from '@/store';
+import { NuxtContext } from '@/types';
 
 type LocalState = {
   email: string;
@@ -52,7 +52,7 @@ type LocalState = {
 
 const Component = Vue.extend({
   auth: false,
-  asyncData(ctx: Nuxt.Context): Promise<Partial<LocalState> | void> | void {
+  asyncData(ctx: NuxtContext): Promise<Partial<LocalState> | void> | void {
     const authState = getState('auth', ctx.store);
     if (authState.loggedIn) {
       ctx.app.$auth.redirect('home');

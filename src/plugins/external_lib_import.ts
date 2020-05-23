@@ -1,4 +1,4 @@
-import * as Nuxt from '@/types/nuxt';
+import { NuxtContext } from '@/types';
 import ExternalLibWrapper from '@/utils/external_lib_wrapper';
 
 const sleep = () => new Promise((resolve) => setTimeout(resolve, 500));
@@ -13,7 +13,7 @@ const waitLoadedExternalLib = async (assertFunction: () => boolean) => {
 };
 
 export default (
-  _ctx: Nuxt.Context,
+  _ctx: NuxtContext,
   inject: (
     pluginName: string,
     f: (...args: unknown[]) => unknown | void

@@ -1,10 +1,26 @@
 import Vue from 'vue';
+import { ExtendedVue } from 'vue/types/vue';
 import { Route } from 'vue-router';
 import { Store } from 'vuex';
 import { Context as OrgContext } from '@nuxt/types';
 // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
 import { NuxtAxiosInstance } from '@nuxtjs/axios';
 import VueI18n, { IVueI18n } from 'vue-i18n';
+import { TsxComponent } from 'vue-tsx-support';
+
+export type ComponentProps<T> = T extends ExtendedVue<
+  any,
+  any,
+  any,
+  any,
+  infer P
+>
+  ? unknown extends P
+    ? T extends TsxComponent<any, infer P2, any, any>
+      ? P2
+      : never
+    : P
+  : never;
 
 interface AuthModule {
   ctx: Context;
@@ -17,7 +33,7 @@ interface AuthModule {
   onRedirect: (cb: (to: string, from: string) => string | undefined) => void;
 }
 
-export interface Context extends OrgContext {
+export interface NuxtContext extends OrgContext {
   req: OrgContext['req'] & { body: any };
   app: Vue & {
     $auth: AuthModule;
@@ -29,7 +45,7 @@ export interface Context extends OrgContext {
   };
 }
 
-export interface Error {
+export interface NuxtError {
   statusCode: number;
   path: string;
   message: string;

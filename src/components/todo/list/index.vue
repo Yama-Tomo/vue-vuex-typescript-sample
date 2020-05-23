@@ -3,9 +3,8 @@ import Vue, { PropType, VNode } from 'vue';
 import { Route } from 'vue-router';
 import * as vts from 'vue-tsx-support';
 import PresentationalComponent from '@/components/todo/list/ui.vue';
-import { InputEvent } from '@/types/dom';
-import { ComponentProps } from '@/types/vue';
 import { ActionTree, GetterTree, StateTree } from '@/store';
+import { InputEvent, ComponentProps } from '@/types';
 
 type UiProps = ComponentProps<typeof PresentationalComponent>;
 

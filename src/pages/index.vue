@@ -2,7 +2,6 @@
 import Vue, { VNode } from 'vue';
 import * as vts from 'vue-tsx-support';
 import List from '@/components/todo/list/index.vue';
-import * as Nuxt from '@/types/nuxt';
 import {
   ActionTree,
   StateTree,
@@ -11,10 +10,11 @@ import {
   getState,
   getGetters,
 } from '@/store';
+import { NuxtContext } from '@/types';
 
 const Component = Vue.extend({
   auth: false,
-  async fetch({ store }: Nuxt.Context) {
+  async fetch({ store }: NuxtContext) {
     const actions = getActions('todo', store);
     await actions.fetchInitialState();
   },

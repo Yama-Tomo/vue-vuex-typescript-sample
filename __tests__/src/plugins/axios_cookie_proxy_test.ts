@@ -3,11 +3,11 @@
  */
 
 import { AxiosResponse } from 'axios';
-import * as Nuxt from '@/types/nuxt';
+import { NuxtContext } from '@/types';
 import plugin from '@/plugins/axios_cookie_proxy';
 import Mock = jest.Mock;
 
-let target: Parameters<Nuxt.Context['app']['$axios']['onResponse']>[0];
+let target: Parameters<NuxtContext['app']['$axios']['onResponse']>[0];
 const nuxtContextMock = () => ({
   $axios: {
     interceptors: {
@@ -48,7 +48,7 @@ describe('レスポンスヘッダにcookieの値が存在しない場合', () =
       config: {},
     };
 
-    const context = (nuxtContextMock() as any) as Nuxt.Context;
+    const context = (nuxtContextMock() as any) as NuxtContext;
     plugin(context);
     expect(target(response)).toBe(response);
     expect(context.$axios.defaults.headers.common.cookie).toBe(null);
@@ -70,7 +70,7 @@ describe('レスポンスヘッダにcookieの値が存在する場合', () => {
       config: {},
     };
 
-    const context = (nuxtContextMock() as any) as Nuxt.Context;
+    const context = (nuxtContextMock() as any) as NuxtContext;
     context.res.getHeader = () => [
       'key1=xxxxxx; expires=Sun, 07-Jul-2019 04:23:15 GMT; path=/; domain=.hogehoge.com',
       'key2=yyyyyy; expires=Sun, 07-Jul-2019 04:23:15 GMT; path=/; domain=.hogehoge.com',

@@ -4,8 +4,8 @@ import * as vts from 'vue-tsx-support';
 import { Fragment } from 'vue-fragment';
 import Item from '../item.vue';
 import { objectToArray, pluralize } from '@/components/todo/list/functions';
-import { ComponentProps } from '@/types/vue';
 import { ActionTree, StateTree } from '@/store';
+import { ComponentProps } from '@/types';
 
 type Filters = {
   all: () => void;

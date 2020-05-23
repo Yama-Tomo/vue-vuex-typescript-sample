@@ -1,7 +1,7 @@
 import isNum from 'lodash/isNumber';
-import * as Nuxt from '@/types/nuxt';
+import { NuxtContext } from '@/types';
 
-export default (ctx: Nuxt.Context) => {
+export default (ctx: NuxtContext) => {
   if (!process.server) {
     return;
   }

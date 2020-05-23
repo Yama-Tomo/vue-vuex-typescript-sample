@@ -1,4 +1,4 @@
-import * as Nuxt from '@/types/nuxt';
+import { NuxtContext } from '@/types';
 
 export const redirect = {
   login: '/login',
@@ -6,7 +6,7 @@ export const redirect = {
   home: '/home',
 };
 
-export default (ctx: Nuxt.Context) => {
+export default (ctx: NuxtContext) => {
   ctx.app.$auth.onRedirect((to: string) => {
     if (to === redirect.login) {
       const redirectUrl = encodeURIComponent(ctx.route.fullPath);
