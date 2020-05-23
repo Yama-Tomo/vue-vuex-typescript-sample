@@ -1,7 +1,9 @@
 import { Store } from 'vuex';
 import set from 'lodash/set';
 import get from 'lodash/get';
-import { ActionTree, StateTree, GetterTree } from './module_mapper';
+import { ActionTree, RootState, GetterTree } from './module_mapper';
+
+export * from './module_mapper';
 
 export const getActions = <K extends keyof ActionTree>(
   namespace: K,
@@ -57,7 +59,7 @@ export const getGetters = <K extends keyof GetterTree>(
   }, {});
 };
 
-export const getState = <K extends keyof StateTree>(
+export const getState = <K extends keyof RootState>(
   namespace: K,
   store: Store<any>
-): StateTree[K] => get(store.state, namespace.replace(/\//, '.'));
+): RootState[K] => get(store.state, namespace.replace(/\//, '.'));

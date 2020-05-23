@@ -59,7 +59,7 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 import Item from './item.vue';
 import { Todo } from '@/modules/todo/store';
 import { HTMLElementEvent } from '@/types/dom';
-import { ActionTree, GetterTree, StateTree } from '@/modules/module_mapper';
+import { ActionTree, GetterTree, RootState } from '@/modules/store';
 
 @Component({
   components: {
@@ -68,7 +68,7 @@ import { ActionTree, GetterTree, StateTree } from '@/modules/module_mapper';
 })
 export default class List extends Vue {
   @Prop()
-  public state!: StateTree['todoModule'];
+  public state!: RootState['todoModule'];
 
   @Prop()
   public actions!: ActionTree['todoModule'];

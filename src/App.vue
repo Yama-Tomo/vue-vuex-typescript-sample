@@ -5,7 +5,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import List from './modules/todo/components/list.vue';
-import * as StoreHelper from '@/modules/store_helper';
+import * as StoreHelper from '@/modules/store';
 
 @Component({
   components: {

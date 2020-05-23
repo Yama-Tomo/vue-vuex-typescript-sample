@@ -3,7 +3,7 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 import * as vts from 'vue-tsx-support';
 import { HTMLElementEvent } from '../../../types/dom';
 import { Todo } from '@/modules/todo/store';
-import { ActionTree } from '@/modules/module_mapper';
+import { ActionTree } from '@/modules/store';
 
 @Component
 export class Item extends Vue {

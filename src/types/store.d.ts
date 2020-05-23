@@ -1,29 +1,36 @@
 import { DefineActions } from 'vuex-type-helper';
+import { ActionTree, GetterTree, MutationTree } from 'vuex';
+import { RootState } from '@/modules/store';
 
-type Functions = Record<string, (...arg: any[]) => void>;
-
-export type MutationArgs<M extends Functions> = {
+type MutationArgs<M extends MutationTree<any>> = {
   [P in keyof M]: Parameters<M[P]>[1];
 };
 
 // prettier-ignore
-type Actions<S, M extends Functions> = DefineActions<Record<string, any>, S, MutationArgs<M>>;
+type Actions<S, M extends MutationTree<S>> = DefineActions<Record<string, any>, S, MutationArgs<M>>;
 // prettier-ignore
-type _ActionContext<S, M extends Functions> = Parameters<Actions<S, M>[string]>[0];
+type _ActionContext<S, M extends MutationTree<S>> = Parameters<Actions<S, M>[string]>[0];
 
-export type ActionContext<S, M extends Functions, RootState> = {
+export type ActionContext<S, M extends MutationTree<S>, RootState> = {
   [P in keyof _ActionContext<S, M>]: 'rootState' extends P
     ? RootState
     : _ActionContext<S, M>[P];
 };
 
-export type DispatchArgs<A extends Functions> = {
-  [P in keyof A]: Parameters<A[P]>[1] extends undefined
-    ? () => Promise<any> | void
-    : (payload: Parameters<A[P]>[1]) => Promise<any> | void;
+export type Mutations<S, M extends MutationTree<S>> = M;
+
+type NoArgDispatcher = () => Promise<any> | void;
+
+export type Dispatchers<S, A extends ActionTree<S, RootState>> = {
+  [P in keyof A]: A[P] extends undefined
+    ? NoArgDispatcher
+    : A[P] extends (...args: infer PARAMS) => any
+    ? undefined extends PARAMS[1]
+      ? NoArgDispatcher
+      : (payload: PARAMS[1]) => Promise<any> | void
+    : never;
 };
 
-// prettier-ignore
-export type GetterReturnType<G extends Record<string, (...arg: any[]) => any>> = {
+export type Getters<S, G extends GetterTree<S, RootState>> = {
   [P in keyof G]: ReturnType<G[P]>;
 };
