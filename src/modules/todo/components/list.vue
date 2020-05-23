@@ -55,87 +55,86 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator';
+import Vue, { PropType } from 'vue';
+import * as vts from 'vue-tsx-support';
 import Item from './item.vue';
-import { HTMLElementEvent } from '@/types';
+import { HTMLElementEvent, ComponentProps } from '@/types';
 import { Todo } from '@/modules/todo/store';
 import { ActionTree, GetterTree, RootState } from '@/modules/store';
 
-@Component({
-  components: {
-    Item,
+type LocalState = {
+  visibility: 'all' | 'active' | 'completed';
+};
+
+const Component = Vue.extend({
+  components: { Item },
+  props: {
+    state: {
+      type: Object as PropType<RootState['todoModule']>,
+      default: undefined,
+    },
+    actions: {
+      type: Object as PropType<ActionTree['todoModule']>,
+      default: undefined,
+    },
+    getters: {
+      type: Object as PropType<GetterTree['todoModule']>,
+      default: undefined,
+    },
   },
-})
-export default class List extends Vue {
-  @Prop()
-  public state!: RootState['todoModule'];
-
-  @Prop()
-  public actions!: ActionTree['todoModule'];
-
-  @Prop()
-  public getters!: GetterTree['todoModule'];
-
-  public visibility = 'all';
-
-  get filters() {
+  data(): LocalState {
     return {
-      all: (todos: Todo[]) => todos,
-      active: (todos: Todo[]) => todos.filter(todo => !todo.done),
-      completed: (todos: Todo[]) => todos.filter(todo => todo.done),
+      visibility: 'all',
     };
-  }
-
-  get todos() {
-    return this.state.todos;
-  }
-
-  get allChecked(): boolean {
-    return this.todos.every(todo => todo.done);
-  }
-
-  get filteredTodos() {
-    if (
-      this.visibility === 'all' ||
-      this.visibility === 'active' ||
-      this.visibility === 'completed'
-    ) {
+  },
+  computed: {
+    filters(): { [K in LocalState['visibility']]: (todos: Todo[]) => Todo[] } {
+      return {
+        all: (todos: Todo[]) => todos,
+        active: (todos: Todo[]) => todos.filter(todo => !todo.done),
+        completed: (todos: Todo[]) => todos.filter(todo => todo.done),
+      };
+    },
+    todos(): RootState['todoModule']['todos'] {
+      return this.state.todos;
+    },
+    allChecked(): boolean {
+      return this.todos.every(todo => todo.done);
+    },
+    filteredTodos(): RootState['todoModule']['todos'] {
       return this.filters[this.visibility](this.todos);
-    }
+    },
+    remaining(): number {
+      return this.todos.filter(todo => !todo.done).length;
+    },
+  },
+  methods: {
+    addTodo(e: HTMLElementEvent<HTMLInputElement>): void {
+      const text = e.target.value.trim();
+      if (!text) {
+        return;
+      }
 
-    return [];
-  }
+      this.actions.addTodo(text);
+      e.target.value = '';
+    },
+    toggleAll(done: boolean): void {
+      this.actions.toggleAll(done);
+    },
+    clearCompleted(): void {
+      this.actions.clearCompleted();
+    },
+    pluralize(wordLength: number, word: string): string {
+      return wordLength === 1 ? word : word + 's';
+    },
+    capitalize(word: string): string {
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    },
+  },
+});
 
-  get remaining() {
-    return this.todos.filter(todo => !todo.done).length;
-  }
-
-  public addTodo(e: HTMLElementEvent<HTMLInputElement>): void {
-    const text = e.target.value.trim();
-    if (!text) {
-      return;
-    }
-
-    this.actions.addTodo(text);
-    e.target.value = '';
-  }
-
-  public toggleAll(done: boolean): void {
-    this.actions.toggleAll(done);
-  }
-
-  public clearCompleted(): void {
-    this.actions.clearCompleted();
-  }
-
-  public pluralize(wordLength: number, word: string): string {
-    return wordLength === 1 ? word : word + 's';
-  }
-
-  public capitalize(word: string): string {
-    return word.charAt(0).toUpperCase() + word.slice(1);
-  }
-}
+type Props = ComponentProps<typeof Component>;
+export default vts.ofType<Props>().convert(Component);
 </script>
 
 <style lang="scss" scoped>
