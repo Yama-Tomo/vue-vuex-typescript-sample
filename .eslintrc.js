@@ -12,22 +12,28 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/camelcase': ['error', { properties: 'never' }],
-    "@typescript-eslint/no-empty-interface": ["error", { allowSingleExtends: true } ],
+    '@typescript-eslint/no-empty-interface': [
+      'error',
+      { allowSingleExtends: true },
+    ],
     // https://github.com/eslint/eslint/issues/12058
-    'comma-dangle': ['error', {
-      'arrays': 'always-multiline',
-      'exports': 'always-multiline',
-      'imports': 'always-multiline',
-      'objects': 'always-multiline',
-      'functions': 'never',
-    }],
+    'comma-dangle': [
+      'error',
+      {
+        arrays: 'always-multiline',
+        exports: 'always-multiline',
+        imports: 'always-multiline',
+        objects: 'always-multiline',
+        functions: 'never',
+      },
+    ],
     'prettier/prettier': [
       'error',
       {
-        'singleQuote': true,
-        'trailingComma': 'es5'
-      }
-    ]
+        singleQuote: true,
+        trailingComma: 'es5',
+      },
+    ],
   },
   extends: [
     'eslint:recommended',
@@ -39,5 +45,5 @@ module.exports = {
     'prettier',
     'prettier/babel',
     'prettier/vue',
-  ]
-}
+  ],
+};
