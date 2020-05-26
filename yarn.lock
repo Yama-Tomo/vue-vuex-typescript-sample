@@ -9993,10 +9993,10 @@ number-is-nan@^1.0.0:
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
-nuxt-i18n@6.11.1:
-  version "6.11.1"
-  resolved "https://registry.yarnpkg.com/nuxt-i18n/-/nuxt-i18n-6.11.1.tgz#4dfe37d98e973dd0fe6f284e2c8fd5215bd1a17a"
-  integrity sha512-nyr53JhHRoF3Ig6slUaXRALtAUOyGbKonL5AcNXxGkRdHpzF9HJ6mZ13W2wZCf2AiH3XatRYEh6GAmwLAOUj3A==
+nuxt-i18n@6.12.0:
+  version "6.12.0"
+  resolved "https://registry.yarnpkg.com/nuxt-i18n/-/nuxt-i18n-6.12.0.tgz#d56a500dec6d3028790a8971dac32fbf625c1031"
+  integrity sha512-d4bn8J13XVyCIbt2ARq7tk+9yiN4rrWAkCe/UA/pvhkJGAxUbrO56xL4xIPzSlT5fZ66lqTssxKq/F7H9MTMdA==
   dependencies:
     "@babel/parser" "^7.5.5"
     "@babel/traverse" "^7.5.5"
