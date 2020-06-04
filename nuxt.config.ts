@@ -95,6 +95,11 @@ export default {
       {
         typeCheck: { eslint: true },
         ignoreNotFoundWarnings: true,
+        loaders: {
+          ts: {
+            appendTsSuffixTo: [],
+          },
+        },
       },
     ],
     '@nuxtjs/vuetify',
