@@ -1,13 +1,12 @@
-/* eslint-disable import/first */
-jest.mock('@/store/todo/state', () => ({
-  __esModule: true,
-  ...jest.requireActual('@/store/todo/state'),
-  initialStateResolver: jest.fn(),
-}));
-
 import { Store } from 'vuex';
 import actionContextHelper from '../../../utils/action_context_helper';
 import { actions, State, initialStateResolver } from '@/store/todo';
+
+jest.mock('@/store/todo/state', () => ({
+  __esModule: true,
+  ...jest.requireActual<State>('@/store/todo/state'),
+  initialStateResolver: jest.fn(),
+}));
 
 const store = {} as Store<State>;
 const { context, commit } = actionContextHelper<State>({ todos: [] });
