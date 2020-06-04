@@ -73,7 +73,7 @@ jobs:
                   git lfs pull
                   git pull origin nuxt
                   cp -a __tests__ __temp
-                  find __temp -type f | grep -v  -e '__snapshots__' -e '__image_snapshots__' | xargs rm -f
+                  find __temp -type f | grep -v -e '__image_snapshots__' | xargs rm -f
                   git checkout $CIRCLE_BRANCH
                   cp -a __temp/* __tests__/
                   rm -rf __temp
