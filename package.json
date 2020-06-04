@@ -75,7 +75,7 @@
     "puppeteer": "3.3.0",
     "ts-jest": "26.1.0",
     "ts-loader": "7.0.5",
-    "typescript": "3.9.3",
+    "typescript": "3.9.5",
     "vue-jest": "3.0.5",
     "vuetify-jsx-loader": "0.1.2",
     "yaml-loader": "0.6.0"
