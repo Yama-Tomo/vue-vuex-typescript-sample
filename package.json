@@ -38,7 +38,7 @@
     "vuex-type-helper": "1.2.2"
   },
   "devDependencies": {
-    "@babel/core": "7.9.6",
+    "@babel/core": "7.10.2",
     "@nuxt/typescript-build": "1.0.1",
     "@nuxt/typescript-runtime": "0.4.8",
     "@nuxtjs/eslint-config-typescript": "2.0.0",
@@ -72,9 +72,9 @@
     "json-loader": "0.5.7",
     "lint-staged": "10.2.8",
     "prettier": "2.0.5",
-    "puppeteer": "3.1.0",
-    "ts-jest": "26.0.0",
-    "ts-loader": "6.2.2",
+    "puppeteer": "3.3.0",
+    "ts-jest": "26.1.0",
+    "ts-loader": "7.0.5",
     "typescript": "3.9.3",
     "vue-jest": "3.0.5",
     "vuetify-jsx-loader": "0.1.2",
