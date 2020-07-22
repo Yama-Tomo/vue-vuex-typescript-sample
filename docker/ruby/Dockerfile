@@ -4,7 +4,8 @@ WORKDIR /app
 COPY __api/Gemfile* ./
 
 RUN apk add --no-cache --virtual .build-deps ruby-dev libc-dev musl-dev g++ make \
-    && apk add --no-cache sqlite-dev tzdata su-exec \
+    && apk add --no-cache sqlite-dev tzdata su-exec libxml2-dev libxslt-dev \
+    && bundle config build.nokogiri --use-system-libraries \
     && bundle install --jobs=$(getconf _NPROCESSORS_ONLN) \
     && apk del .build-deps \
     && rm -rf /var/lib/apt/lists/* \
