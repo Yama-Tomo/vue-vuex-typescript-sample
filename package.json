@@ -84,8 +84,7 @@
     "yaml-loader": "0.6.0"
   },
   "resolutions": {
-    "vue-style-loader": "https://github.com/Yama-Tomo/vue-style-loader/archive/master.tar.gz",
-    "fork-ts-checker-webpack-plugin": "https://github.com/Yama-Tomo/fork-ts-checker-webpack-plugin/archive/dist/5.0.10-rc1.tar.gz"
+    "vue-style-loader": "https://github.com/Yama-Tomo/vue-style-loader/archive/master.tar.gz"
   },
   "browserslist": [
     "> 1%",
