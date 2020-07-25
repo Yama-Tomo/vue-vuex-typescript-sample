@@ -93,13 +93,10 @@ export default {
     [
       '@nuxt/typescript-build',
       {
-        typeCheck: { eslint: true },
-        ignoreNotFoundWarnings: true,
-        loaders: {
-          ts: {
-            appendTsSuffixTo: [],
-          },
+        typeCheck: {
+          eslint: { files: './**/*.{ts,tsx,js,vue}' },
         },
+        ignoreNotFoundWarnings: true,
       },
     ],
     '@nuxtjs/vuetify',
