@@ -1,17 +1,15 @@
 import * as path from 'path';
 import { Configuration as WebpackConfiguration } from 'webpack';
 import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
-import { Configuration as NuxtConfiguration } from '@nuxt/types';
 import VuetifyJsxLoader from 'vuetify-jsx-loader';
+import { ExtendBuildArgs } from './src/types/nuxt_module';
 
 const defaultConfigHash: (
   config: WebpackConfiguration
 ) => /* eslint-disable-next-line @typescript-eslint/no-var-requires */
 string = require('hard-source-webpack-plugin/lib/defaultConfigHash');
 
-type BuildConfiguration = NonNullable<NuxtConfiguration['build']>;
-type Args = Parameters<NonNullable<BuildConfiguration['extend']>>;
-export default function (...args: Args) {
+export default function (...args: ExtendBuildArgs) {
   const config = args[0];
 
   config.externals = {
