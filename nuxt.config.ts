@@ -93,7 +93,9 @@ export default {
     [
       '@nuxt/typescript-build',
       {
-        typeCheck: { eslint: true },
+        typeCheck: {
+          eslint: { files: './**/*.{ts,tsx,js,vue}' },
+        },
         ignoreNotFoundWarnings: true,
         loaders: {
           ts: {
