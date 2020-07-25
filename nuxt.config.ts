@@ -97,11 +97,6 @@ export default {
           eslint: { files: './**/*.{ts,tsx,js,vue}' },
         },
         ignoreNotFoundWarnings: true,
-        loaders: {
-          ts: {
-            appendTsSuffixTo: [],
-          },
-        },
       },
     ],
     '@nuxtjs/vuetify',
