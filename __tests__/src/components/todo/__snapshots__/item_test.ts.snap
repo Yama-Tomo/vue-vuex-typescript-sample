@@ -28,7 +28,7 @@ exports[`rendering renders correctly 1`] = `
             </i>
             <input
               aria-checked="false"
-              id="input-67"
+              id="input-59"
               role="checkbox"
               type="checkbox"
               value=""
@@ -59,7 +59,7 @@ exports[`rendering renders correctly 1`] = `
             class="v-text-field__slot"
           >
             <input
-              id="input-69"
+              id="input-61"
               type="text"
             />
           </div>
