@@ -5,6 +5,9 @@ const config = {
       babelConfig: {
         plugins: ['require-context-hook'],
       },
+      diagnostics: {
+        pathRegex: /^(?!.*\/node_modules\/).*\.tsx?$/,
+      },
     },
     'vue-jest': {
       babelConfig: {
@@ -32,6 +35,7 @@ const config = {
     '\\.(ts|tsx)$': 'ts-jest',
     '\\.yml$': 'jest-yaml-transform',
   },
+  transformIgnorePatterns: ['/node_modules/.*.jsx?$'],
   testMatch: ['**/__tests__/**/*_test.[jt]s?(x)'],
   testPathIgnorePatterns: ['node_modules', '__api'],
   moduleNameMapper: {
