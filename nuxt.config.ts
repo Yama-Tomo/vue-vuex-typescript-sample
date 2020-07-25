@@ -2,7 +2,7 @@ import bodyParser from 'body-parser';
 import passThroughMiddleware from './src/server_middleware/pass_through';
 import extendWebpackConfig from './extend.webpack.config';
 import { redirect as AuthRedirect } from './src/plugins/auth/redirect';
-import { ModuleContext } from '@/types/nuxt_module';
+import { ModuleContext } from './src/types/nuxt_module';
 
 const port = process.env.NUXT_PORT || 3100;
 const host = process.env.NUXT_HOST || '0.0.0.0';

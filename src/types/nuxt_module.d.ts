@@ -1,7 +1,8 @@
-import { Configuration as NuxtConfiguration } from '@nuxt/types';
+import { NuxtOptions } from '@nuxt/types';
 
-type BuildConfiguration = NonNullable<NuxtConfiguration['build']>;
-type ExtendBuildArgs = Parameters<NonNullable<BuildConfiguration['extend']>>;
+export type ExtendBuildArgs = Parameters<
+  NonNullable<NuxtOptions['build']['extend']>
+>;
 
 export interface ModuleContext {
   nuxt: {
