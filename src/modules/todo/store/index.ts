@@ -5,13 +5,13 @@ import mutations from './mutations';
 import actions, { ActionTree as TodoActTree } from './actions';
 import getters, { GetterTree as TodoGetterTree } from './getters';
 
-type moduleNameSpace = 'todoModule';
+type ModuleNameSpace = 'todoModule';
 
 export * from './state';
 
 export const module = (
   initialState?: unknown
-): Record<moduleNameSpace, Module<State, RootState>> => {
+): Record<ModuleNameSpace, Module<State, RootState>> => {
   const state = initialState
     ? initialStateResolver(initialState)
     : defaultState();
@@ -27,6 +27,6 @@ export const module = (
   };
 };
 
-export type StateTree = Record<moduleNameSpace, State>;
-export type GetterTree = Record<moduleNameSpace, TodoGetterTree>;
-export type ActionTree = Record<moduleNameSpace, TodoActTree>;
+export type StateTree = Record<ModuleNameSpace, State>;
+export type GetterTree = Record<ModuleNameSpace, TodoGetterTree>;
+export type ActionTree = Record<ModuleNameSpace, TodoActTree>;
