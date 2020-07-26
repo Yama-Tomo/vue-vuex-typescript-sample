@@ -26,7 +26,7 @@
     ]
   },
   "dependencies": {
-    "@mdi/js": "5.3.45",
+    "@mdi/js": "5.4.45",
     "@nuxtjs/auth": "4.9.1",
     "body-parser": "1.19.0",
     "lodash": "4.17.19",
@@ -68,7 +68,7 @@
     "husky": "4.2.5",
     "jest": "26.1.0",
     "jest-css-modules": "2.1.0",
-    "jest-junit": "11.0.1",
+    "jest-junit": "11.1.0",
     "jest-puppeteer": "4.4.0",
     "jest-serializer-vue": "2.0.2",
     "jest-yaml-transform": "0.2.0",
