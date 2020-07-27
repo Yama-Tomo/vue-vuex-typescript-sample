@@ -42,7 +42,7 @@
     "@nuxt/types": "2.13.3",
     "@nuxt/typescript-build": "2.0.0",
     "@nuxt/typescript-runtime": "1.0.0",
-    "@nuxtjs/eslint-config-typescript": "2.0.0",
+    "@nuxtjs/eslint-config-typescript": "2.1.0",
     "@nuxtjs/vuetify": "2.0.0-beta.2",
     "@storybook/addon-storyshots": "next",
     "@storybook/addon-storyshots-puppeteer": "next",
