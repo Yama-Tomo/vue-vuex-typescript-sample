@@ -282,7 +282,7 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
-"@babel/parser@^7.1.0", "@babel/parser@^7.1.6", "@babel/parser@^7.10.4", "@babel/parser@^7.11.0", "@babel/parser@^7.11.1", "@babel/parser@^7.4.3", "@babel/parser@^7.5.5", "@babel/parser@^7.6.0", "@babel/parser@^7.7.0", "@babel/parser@^7.9.3", "@babel/parser@^7.9.6":
+"@babel/parser@^7.1.0", "@babel/parser@^7.1.6", "@babel/parser@^7.10.4", "@babel/parser@^7.11.0", "@babel/parser@^7.11.1", "@babel/parser@^7.11.3", "@babel/parser@^7.4.3", "@babel/parser@^7.5.5", "@babel/parser@^7.6.0", "@babel/parser@^7.7.0", "@babel/parser@^7.9.6":
   version "7.11.3"
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.11.3.tgz#9e1eae46738bcd08e23e867bab43e7b95299a8f9"
   integrity sha512-REo8xv7+sDxkKvoxEywIdsNFiZLybwdI7hcT5uEPyQrSMB4YQ973BfC9OOrD/81MaIjh6UxdulIQXkjmiH3PcA==
@@ -1013,7 +1013,7 @@
     "@babel/parser" "^7.10.4"
     "@babel/types" "^7.10.4"
 
-"@babel/traverse@^7.1.0", "@babel/traverse@^7.10.4", "@babel/traverse@^7.11.0", "@babel/traverse@^7.4.3", "@babel/traverse@^7.5.5", "@babel/traverse@^7.7.0", "@babel/traverse@^7.9.0":
+"@babel/traverse@^7.1.0", "@babel/traverse@^7.10.4", "@babel/traverse@^7.11.0", "@babel/traverse@^7.4.3", "@babel/traverse@^7.5.5", "@babel/traverse@^7.7.0":
   version "7.11.0"
   resolved "https://registry.yarnpkg.com/@babel/traverse/-/traverse-7.11.0.tgz#9b996ce1b98f53f7c3e4175115605d56ed07dd24"
   integrity sha512-ZB2V+LskoWKNpMq6E5UUCrjtDUh5IOTAyIl0dTjIEoXum/iKWkoIEKIRDnUucO6f+2FzNkE0oD4RLKoPIufDtg==
@@ -15226,13 +15226,13 @@ vue@2.6.11, vue@^2.6.11:
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"
   integrity sha512-VfPwgcGABbGAue9+sfrD4PuwFar7gPb1yl1UK1MwXoQPAw0BKSqWfoYCT/ThFrdEVWoI51dBuyCoiNU9bZDZxQ==
 
-vuetify-jsx-loader@0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/vuetify-jsx-loader/-/vuetify-jsx-loader-0.1.2.tgz#3f3bd42bde145bf9ae4c58b80dee250a028c23fb"
-  integrity sha512-DJja865lIfzv3Pd/SO4Gm44sLguj22uO+aP3mVqOU0r0GCxZZD+0FQzWUE299GEKgqO8Ggu5b57XQZdq2GvU0g==
+vuetify-jsx-loader@0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/vuetify-jsx-loader/-/vuetify-jsx-loader-0.1.3.tgz#6bbf89c1587bdab0d7e7732eca5062fca6e0247a"
+  integrity sha512-st8eh3n74nxs56ktB3HGYUb0QgtExEhq9w9a8fyGPsJBbFJDaCccgTFEFojAhPl7uoyF2qNfz5iWruEm/QFnNw==
   dependencies:
-    "@babel/parser" "^7.9.3"
-    "@babel/traverse" "^7.9.0"
+    "@babel/parser" "^7.11.3"
+    "@babel/traverse" "^7.11.0"
     loader-utils "^2.0.0"
     rewire "^5.0.0"
 
