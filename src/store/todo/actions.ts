@@ -1,7 +1,7 @@
-import { initialStateResolver, State, Todo } from './state';
-import { MutationTree } from './mutations';
 import { ActionContext, Dispatchers } from '@/types/store';
 import { RootState } from '@/store/module_mapper';
+import { initialStateResolver, State, Todo } from './state';
+import { MutationTree } from './mutations';
 
 type Context = ActionContext<State, MutationTree, RootState>;
 

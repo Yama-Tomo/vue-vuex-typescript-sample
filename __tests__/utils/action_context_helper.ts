@@ -4,7 +4,12 @@ import { ActionContext } from 'vuex-type-helper';
 export default <T1>(
   state: T1
 ): {
-  context: ActionContext<T1, {}, {}, {}>;
+  context: ActionContext<
+    T1,
+    Record<string, unknown>,
+    Record<string, unknown>,
+    Record<string, unknown>
+  >;
   commit: jest.Mock<any, any>;
 } => {
   const commit = jest.fn();
@@ -12,7 +17,12 @@ export default <T1>(
   const context = ({
     commit,
     state,
-  } as any) as ActionContext<T1, {}, {}, {}>;
+  } as any) as ActionContext<
+    T1,
+    Record<string, unknown>,
+    Record<string, unknown>,
+    Record<string, unknown>
+  >;
 
   return { context, commit };
 };
