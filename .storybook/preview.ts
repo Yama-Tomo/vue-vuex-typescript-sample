@@ -1,4 +1,4 @@
-import { configure, addDecorator } from '@storybook/vue';
+import { addDecorator } from '@storybook/vue';
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
 import Vuetify, { VApp } from 'vuetify/lib';
@@ -31,10 +31,3 @@ addDecorator(() => {
     router: Helper.router(),
   };
 });
-
-function loadStories() {
-  const req = require.context('../stories', true, /.story.(tsx?$|vue$)/);
-  req.keys().forEach((filename) => req(filename));
-}
-
-configure(loadStories, module);
