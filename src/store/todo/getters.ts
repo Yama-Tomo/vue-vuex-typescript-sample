@@ -1,5 +1,5 @@
-import { State } from './state';
 import { Getters } from '@/types/store';
+import { State } from './state';
 
 const getters = {
   reverse: (state: State) => [...state.todos].reverse(),

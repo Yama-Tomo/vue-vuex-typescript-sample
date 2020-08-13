@@ -9,6 +9,7 @@ type MutationArgs<M extends MutationTree<any>> = {
 // prettier-ignore
 type Actions<S, M extends MutationTree<S>> = DefineActions<Record<string, any>, S, MutationArgs<M>>;
 // prettier-ignore
+// eslint-disable-next-line @typescript-eslint/naming-convention
 type _ActionContext<S, M extends MutationTree<S>> = Parameters<Actions<S, M>[string]>[0];
 
 export type ActionContext<S, M extends MutationTree<S>, RootState> = {
