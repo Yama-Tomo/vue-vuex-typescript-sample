@@ -81,7 +81,7 @@ jobs:
             - run:
                 name: jest
                 command: |
-                  TEST_ARGS="-i --silent --ci --coverage --reporters=jest-junit"
+                  TEST_ARGS="-i --ci --coverage --reporters=jest-junit"
                   [ "$CIRCLE_BRANCH" = "nuxt" ] && TEST_ARGS="$TEST_ARGS -u"
 
                   cat \<<EOF > .env
