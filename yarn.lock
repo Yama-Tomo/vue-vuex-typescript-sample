@@ -1983,13 +1983,13 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@storybook/addon-storyshots-puppeteer@6.0.6":
-  version "6.0.6"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-storyshots-puppeteer/-/addon-storyshots-puppeteer-6.0.6.tgz#b5c9f6818e00ff680239018cccb2d97dfef5b643"
-  integrity sha512-lX/CyprAsNRwC1n3rQ/hIM69rIIawjdaVJJ1S/p9Q1ZcjpkqnKD2Gdb40NpxmyLOIr6MA1wvPXMFpK9DCvNyVw==
+"@storybook/addon-storyshots-puppeteer@6.0.7":
+  version "6.0.7"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-storyshots-puppeteer/-/addon-storyshots-puppeteer-6.0.7.tgz#76bcce32f459e564584572df8f1b79c4671c9ecb"
+  integrity sha512-s4VQCjoKDZ8LDBl0qKea405YLwoIiF14V28WwoFTYoF35b+V2QQFWLwk/w5ykCyugu/wIB0qN566SsBuwKKS/w==
   dependencies:
     "@storybook/csf" "0.0.1"
-    "@storybook/node-logger" "6.0.6"
+    "@storybook/node-logger" "6.0.7"
     "@types/jest-image-snapshot" "^2.8.0"
     "@wordpress/jest-puppeteer-axe" "^1.5.0"
     core-js "^3.0.1"
@@ -2261,6 +2261,17 @@
   version "6.0.6"
   resolved "https://registry.yarnpkg.com/@storybook/node-logger/-/node-logger-6.0.6.tgz#c77ed4e41e3cc8c8fe9768ad9806415ceca1ccd7"
   integrity sha512-+ai5lGw+xoY7pfTaiy3DEA+8OQifdS1El32J4Cmq7KEbY4vuDjholqg4Un2lmsb2+fBIkdJMzYAzY1729zsTxw==
+  dependencies:
+    "@types/npmlog" "^4.1.2"
+    chalk "^4.0.0"
+    core-js "^3.0.1"
+    npmlog "^4.1.2"
+    pretty-hrtime "^1.0.3"
+
+"@storybook/node-logger@6.0.7":
+  version "6.0.7"
+  resolved "https://registry.yarnpkg.com/@storybook/node-logger/-/node-logger-6.0.7.tgz#76638f6886e2e02e90c83d76ca14003c63b0f2fc"
+  integrity sha512-taxAut8iNKszCr53YTcLutKWl7KRJqZ/nYXXcbwLMF8M5L6BA/EaUQTxCCXGozHQyTr6+yPyzXnOki70R5Pq3g==
   dependencies:
     "@types/npmlog" "^4.1.2"
     chalk "^4.0.0"
