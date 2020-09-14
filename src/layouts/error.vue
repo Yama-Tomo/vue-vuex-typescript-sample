@@ -1,14 +1,8 @@
 <template>
   <div>
-    <h1 v-if="statusCode === 404">
-      Sorry Not Found...
-    </h1>
-    <h1 v-else>
-      Internal Server Error
-    </h1>
-    <nuxt-link to="/">
-      Home
-    </nuxt-link>
+    <h1 v-if="statusCode === 404">Sorry Not Found...</h1>
+    <h1 v-else>Internal Server Error</h1>
+    <nuxt-link to="/"> Home </nuxt-link>
   </div>
 </template>
 
