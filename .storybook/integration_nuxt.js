@@ -1,6 +1,7 @@
 /* eslint @typescript-eslint/no-var-requires: 0 */
 
 const path = require('path');
+const fs = require('fs');
 const cli = require('@nuxt/cli');
 const hooks = require('@nuxt/typescript-runtime').hooks;
 const webpack = require('webpack');
@@ -41,6 +42,10 @@ const generateNuxtTemplates = async (builder) => {
   await builder.validatePages();
   builder.validateTemplate();
   await builder.generateRoutesAndFiles();
+  await fs.writeFileSync(
+    `${nuxtBuildPath}/router.scrollBehavior.js`,
+    'export default function() {}'
+  );
 };
 
 exports.customizeWebpackConfig = async (
