@@ -41,7 +41,7 @@
     "@babel/core": "7.11.6",
     "@nuxt/types": "2.14.5",
     "@nuxt/typescript-build": "2.0.3",
-    "@nuxt/typescript-runtime": "1.0.0",
+    "@nuxt/typescript-runtime": "2.0.0",
     "@nuxtjs/eslint-config-typescript": "3.0.0",
     "@nuxtjs/vuetify": "2.0.0-beta.2",
     "@storybook/addon-storyshots": "6.0.21",
