@@ -1,9 +1,7 @@
 <template>
   <v-app>
     <v-app-bar app class="header">
-      <v-toolbar-title>
-        vuex tutorial with nuxt.js
-      </v-toolbar-title>
+      <v-toolbar-title> vuex tutorial with nuxt.js </v-toolbar-title>
 
       <div class="flex-grow-1" />
 
