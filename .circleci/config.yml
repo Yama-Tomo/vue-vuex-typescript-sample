@@ -4,7 +4,7 @@ references:
   node_runtime_config: &node_runtime_config
     working_directory: ~/work
     docker:
-      - image: node:12.18-alpine
+      - image: node:12.19-alpine
 
 commands:
   yarn_install:
