@@ -2340,20 +2340,20 @@
     rc9 "^1.0.0"
     std-env "^2.2.1"
 
-"@nuxt/types@2.14.7":
-  version "2.14.7"
-  resolved "https://registry.yarnpkg.com/@nuxt/types/-/types-2.14.7.tgz#f34536749b07ceeebaf21621d9816d2a71c53eee"
-  integrity sha512-7aLOQDCb4wYMGHYj0EVBieqMC4aOo7ZVFP5jjWxuWSjzOroRWVE3TB10+wcu9E7FoOPT99vd4+bJ+He/WpDpBQ==
+"@nuxt/types@2.14.5":
+  version "2.14.5"
+  resolved "https://registry.yarnpkg.com/@nuxt/types/-/types-2.14.5.tgz#426236eda1790f15c123110421c6d222c3d02c8f"
+  integrity sha512-1gOiwv6K4eNJbrYb68jtmZup/0gw6dGeu6fhUykyCcJS3emt+tzf6V0Lvg7WblJ/1xkzQfnNfbrbCm1CJpRAHg==
   dependencies:
     "@types/autoprefixer" "^9.7.2"
-    "@types/babel__core" "^7.1.10"
+    "@types/babel__core" "^7.1.9"
     "@types/compression" "^1.7.0"
     "@types/connect" "^3.4.33"
     "@types/etag" "^1.8.0"
     "@types/file-loader" "^4.2.0"
     "@types/html-minifier" "^4.0.0"
     "@types/less" "^3.0.1"
-    "@types/node" "^12.12.67"
+    "@types/node" "^12.12.56"
     "@types/node-sass" "^4.11.1"
     "@types/optimize-css-assets-webpack-plugin" "^5.0.1"
     "@types/pug" "^2.0.4"
@@ -2981,7 +2981,7 @@
     "@types/babel__template" "*"
     "@types/babel__traverse" "*"
 
-"@types/babel__core@^7.1.10":
+"@types/babel__core@^7.1.9":
   version "7.1.10"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.10.tgz#ca58fc195dd9734e77e57c6f2df565623636ab40"
   integrity sha512-x8OM8XzITIMyiwl5Vmo2B1cR1S1Ipkyv4mdlbJjMa1lmuKvKY9FrBbEANIaMlnWn5Rf7uO+rC/VgYabNkE17Hw==
@@ -3301,7 +3301,7 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.10.1.tgz#cc323bad8e8a533d4822f45ce4e5326f36e42177"
   integrity sha512-aYNbO+FZ/3KGeQCEkNhHFRIzBOUgc7QvcVNKXbfnhDkSfwUv91JsQQa10rDgKSTSLkXZ1UIyPe4FJJNVgw1xWQ==
 
-"@types/node@^12.12.67":
+"@types/node@^12.12.56":
   version "12.19.1"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.19.1.tgz#303f74c8a2b35644594139e948b2be470ae1186f"
   integrity sha512-/xaVmBBjOGh55WCqumLAHXU9VhjGtmyTGqJzFBXRWZzByOXI5JAJNx9xPVGEsNizrNwcec92fQMj458MWfjN1A==
