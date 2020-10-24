@@ -6,7 +6,16 @@ export default (ctx: NuxtContext) => {
     return;
   }
 
-  ctx.$axios.interceptors.response.use((response) => {
+  // set the cookie that came from the browser
+  ctx.$axios.onRequest((config) => {
+    if (!('common' in config.headers)) {
+      config.headers.common = { cookie: ctx.req.headers.cookie };
+    } else {
+      config.headers.common.cookie = ctx.req.headers.cookie;
+    }
+  });
+
+  ctx.$axios.onResponse((response) => {
     const cookie: string[] | null = response.headers['set-cookie'];
 
     if (Array.isArray(cookie) && cookie.length) {
@@ -33,7 +42,7 @@ export default (ctx: NuxtContext) => {
 
       ctx.res.setHeader('Set-Cookie', cookie);
       // NOTE: 複数回，axiosを使った通信に対応するため送られてきたcookieをデフォルトのヘッダーに代入
-      ctx.$axios.defaults.headers.common.cookie = cookie.join('; ');
+      ctx.req.headers.cookie = cookie.join('; ');
     }
 
     return response;
