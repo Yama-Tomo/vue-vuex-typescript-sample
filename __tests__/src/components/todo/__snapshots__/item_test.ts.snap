@@ -79,14 +79,13 @@ exports[`rendering renders correctly 1`] = `
       >
         <span
           aria-hidden="true"
-          class="v-icon notranslate v-icon--svg theme--light"
+          class="v-icon notranslate theme--light"
         >
           <svg
             aria-hidden="true"
-            height="24"
+            class="v-icon__svg"
             role="img"
             viewBox="0 0 24 24"
-            width="24"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
