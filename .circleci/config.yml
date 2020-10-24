@@ -13,7 +13,7 @@ commands:
             - nuxt-node-modules-v3-{{ checksum "yarn.lock" }}
       - run:
           command: |
-            [ "`which yarn`" != "" ] && yarn || true
+            [ "`which yarn`" != "" ] && yarn --unsafe-perm || true
   save_node_module_cache:
     steps:
       - save_cache:
