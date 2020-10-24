@@ -1,8 +1,7 @@
-import Vue from 'vue';
 import { NuxtContext } from './nuxt';
 
 declare module 'vue/types/options' {
-  interface ComponentOptions<V extends Vue> {
+  interface ComponentOptions {
     auth?: boolean;
   }
 }
