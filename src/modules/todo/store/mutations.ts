@@ -1,17 +1,17 @@
-import { State, Todo } from './state';
 import { Mutations } from '@/types';
+import { State, Todo } from './state';
 
 const mutations = {
-  addTodo(state: State, todo: Todo) {
+  addTodo(state: State, todo: Todo): void {
     state.todos.push(todo);
   },
-  removeTodo(state: State, todo: Todo) {
+  removeTodo(state: State, todo: Todo): void {
     state.todos.splice(state.todos.indexOf(todo), 1);
   },
   updateTodo(
     _state: State,
     { todo, text, done }: { todo: Todo; text?: string; done?: boolean }
-  ) {
+  ): void {
     if (text) {
       todo.text = text;
     }

@@ -2,9 +2,9 @@ import 'vue-tsx-support/enable-check';
 
 declare global {
   namespace JSX {
-    // tslint:disable no-empty-interface
+    // eslint-disable-next-line no-undef
     interface Element extends VNode {}
-    // tslint:disable no-empty-interface
+    // eslint-disable-next-line no-undef
     interface ElementClass extends Vue {}
     interface IntrinsicElements {
       [elem: string]: any;

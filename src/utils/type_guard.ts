@@ -10,11 +10,13 @@ export function hasKey<T extends string[]>(
   keys: T
 ): arg is Record<Unpacked<T>, unknown>;
 
+// eslint-disable-next-line no-redeclare
 export function hasKey<T extends string>(
   arg: unknown,
   keys: T
 ): arg is Record<T, unknown>;
 
+// eslint-disable-next-line no-redeclare
 export function hasKey(arg: unknown, key: string | string[]): boolean {
   if (!isObject(arg)) {
     return false;
