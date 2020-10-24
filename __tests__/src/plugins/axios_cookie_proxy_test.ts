@@ -10,12 +10,9 @@ import Mock = jest.Mock;
 let target: Parameters<NuxtContext['app']['$axios']['onResponse']>[0];
 const nuxtContextMock = () => ({
   $axios: {
-    interceptors: {
-      response: {
-        use: (cb: typeof target) => {
-          target = cb;
-        },
-      },
+    onRequest: jest.fn(),
+    onResponse: (cb: typeof target) => {
+      target = cb;
     },
     defaults: {
       headers: {
@@ -27,6 +24,9 @@ const nuxtContextMock = () => ({
   },
   res: {
     setHeader: jest.fn(),
+  },
+  req: {
+    headers: {},
   },
 });
 
@@ -51,7 +51,6 @@ describe('レスポンスヘッダにcookieの値が存在しない場合', () =
     const context = (nuxtContextMock() as any) as NuxtContext;
     plugin(context);
     expect(target(response)).toBe(response);
-    expect(context.$axios.defaults.headers.common.cookie).toBe(null);
     expect((context.res.setHeader as Mock).mock.calls.length).toBe(0);
   });
 });
@@ -79,7 +78,7 @@ describe('レスポンスヘッダにcookieの値が存在する場合', () => {
 
     plugin(context);
     expect(target(response)).toBe(response);
-    expect(context.$axios.defaults.headers.common.cookie).toBe(
+    expect(context.req.headers.cookie).toBe(
       'key2=new-value; expires=Sun, 07-Jul-2019 04:23:15 GMT; path=/; domain=.hogehoge.com; ' +
         'key1=xxxxxx; expires=Sun, 07-Jul-2019 04:23:15 GMT; path=/; domain=.hogehoge.com; ' +
         'key3=zzzzzz; expires=Sun, 07-Jul-2019 04:23:15 GMT; path=/; domain=.hogehoge.com'

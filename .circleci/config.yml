@@ -1,5 +1,11 @@
 version: 2.1
 
+references:
+  docker_hub_authentication: &docker_hub_authentication
+    auth:
+      username: $DOCKERHUB_USER
+      password: $DOCKERHUB_PASSWORD
+
 parameters:
   run_api_trigger_jobs:
     type: boolean
@@ -13,7 +19,7 @@ commands:
             - nuxt-node-modules-v3-{{ checksum "yarn.lock" }}
       - run:
           command: |
-            [ "`which yarn`" != "" ] && yarn || true
+            [ "`which yarn`" != "" ] && yarn --unsafe-perm || true
   save_node_module_cache:
     steps:
       - save_cache:
@@ -42,7 +48,8 @@ jobs:
   lint:
     working_directory: /home/circleci/project
     docker:
-      - image: node:12.18-alpine
+      - image: node:12.19-alpine
+        <<: *docker_hub_authentication
     steps:
       - run: ':' # declared noop command because in order to use the conditional step need one or more tasks or the when statement
       - unless:
@@ -96,6 +103,7 @@ jobs:
                   RAILS_HOSTS=backend
                   EOF
 
+                  docker login -u $DOCKERHUB_USER -p $DOCKERHUB_PASSWORD
                   docker-compose -f docker-compose.yml -f docker-compose.circleci.yml run --rm puppeteer
             - run:
                 command: rm -rf storybook-static # not store artifact on fail test
@@ -136,15 +144,15 @@ jobs:
             git commit -m "[ci skip] chore: update snapshot files" -m "" -m "relate: $CIRCLE_SHA1"
             git push origin nuxt
 
-  something:
-    docker:
-      - image: node:12.18-alpine
-    steps:
-      - run: ':'
-      - when:
-          condition: << pipeline.parameters.run_api_trigger_jobs >>
-          steps:
-            - run: echo "run something"
+  #something:
+  #  docker:
+  #    - image: node:12.19-alpine
+  #  steps:
+  #    - run: ':'
+  #    - when:
+  #        condition: << pipeline.parameters.run_api_trigger_jobs >>
+  #        steps:
+  #          - run: echo "run something"
 
 workflows:
   build:
@@ -160,6 +168,6 @@ workflows:
                 - nuxt
   ## how to trigger bellow workflow
   # curl -u ${TOKEN}: --header 'Content-Type: application/json' -X POST -d '{"parameters": {"run_api_trigger_jobs": true}, "branch": "'${BRANCH}'"}' https://circleci.com/api/v2/project/gh/Yama-Tomo/vue-vuex-typescript-sample/pipeline
-  trigger_api:
-    jobs:
-      - something
+  #trigger_api:
+  #  jobs:
+  #    - something

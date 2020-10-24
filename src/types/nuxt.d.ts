@@ -1,4 +1,4 @@
-import Vue from 'vue';
+import Vue, { VueConstructor } from 'vue';
 import { ExtendedVue } from 'vue/types/vue';
 import { Route } from 'vue-router';
 import { Store } from 'vuex';
@@ -6,7 +6,7 @@ import { Context as OrgContext } from '@nuxt/types';
 // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
 import { NuxtAxiosInstance } from '@nuxtjs/axios';
 import VueI18n, { IVueI18n } from 'vue-i18n';
-import { TsxComponent } from 'vue-tsx-support';
+import * as vts from 'vue-tsx-support';
 
 export type ComponentProps<T> = T extends ExtendedVue<
   any,
@@ -16,14 +16,16 @@ export type ComponentProps<T> = T extends ExtendedVue<
   infer P
 >
   ? unknown extends P
-    ? T extends TsxComponent<any, infer P2, any, any>
-      ? P2
+    ? T extends VueConstructor<
+        vts._TsxComponentInstanceV3<infer R, any, any, any, any, any>
+      >
+      ? R
       : never
     : P
   : never;
 
 interface AuthModule {
-  ctx: Context;
+  ctx: OrgContext;
   options: { [key: string]: any };
   strategies: { [key: string]: any };
   redirect: (name: string, noRouter?: boolean) => void;

@@ -5,6 +5,7 @@ import { mdiDelete } from '@mdi/js';
 import { ActionTree, StateTree } from '@/store';
 import { InputEvent, ComponentProps } from '@/types';
 
+// eslint-disable-next-line no-use-before-define
 const liClass = (todo: Props['todo'], editing: boolean) => {
   const stack = ['todo'];
 
