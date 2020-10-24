@@ -1,8 +1,8 @@
+import Vue, { VueConstructor } from 'vue';
 import { ExtendedVue } from 'vue/types/vue';
-import { TsxComponent } from 'vue-tsx-support';
+import * as vts from 'vue-tsx-support';
 
 declare module '*.vue' {
-  import Vue from 'vue';
   export default Vue;
 }
 
@@ -14,8 +14,10 @@ export type ComponentProps<T> = T extends ExtendedVue<
   infer P
 >
   ? unknown extends P
-    ? T extends TsxComponent<any, infer P2, any, any>
-      ? P2
+    ? T extends VueConstructor<
+        vts._TsxComponentInstanceV3<infer R, any, any, any, any, any>
+      >
+      ? R
       : never
     : P
   : never;
