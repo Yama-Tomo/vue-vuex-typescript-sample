@@ -60,7 +60,7 @@
     "babel-plugin-require-context-hook": "1.0.0",
     "babel-plugin-rewire": "1.2.0",
     "babel-preset-vue": "2.0.2",
-    "codecov": "3.8.0",
+    "codecov": "3.8.1",
     "eslint": "7.12.1",
     "eslint-config-prettier": "6.15.0",
     "eslint-plugin-babel": "5.3.1",
