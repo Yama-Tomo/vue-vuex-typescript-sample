@@ -31,7 +31,7 @@ const actions = {
       });
   },
   fetchInitialState(ctx: Context) {
-    return new Promise((resolve: () => void) => {
+    return new Promise<void>((resolve) => {
       setTimeout(() => resolve(), 1500);
     }).then(() => {
       ctx.commit('resetState', undefined);
