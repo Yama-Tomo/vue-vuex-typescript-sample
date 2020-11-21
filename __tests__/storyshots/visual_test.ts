@@ -45,7 +45,7 @@ type ImageSnapshotArgs = Required<
         // NOTE: focus out
         await page.click('body');
         // wait for css transition
-        await page.waitFor(300);
+        await page.waitForTimeout(300);
       }
     }
   };

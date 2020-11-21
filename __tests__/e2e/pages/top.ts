@@ -43,7 +43,7 @@ export default class Top {
     liElement: ElementHandle<Element>
   ) {
     await getElement(liElement, '.text').then((e) => e.click());
-    await page.waitFor(100);
+    await page.waitForTimeout(100);
 
     const inputEle = await (() => {
       return liElement.$('.v-text-field input').then((e) => {
@@ -55,7 +55,7 @@ export default class Top {
 
     await deleteAll(inputEle);
     await inputEle.type(todoContent + '\n');
-    await page.waitFor(100);
+    await page.waitForTimeout(100);
   }
 
   public getTodoElements() {
