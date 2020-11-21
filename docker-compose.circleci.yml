@@ -1,5 +1,5 @@
 version: '3.2'
 services:
   puppeteer:
-    command: /bin/sh -c "yarn --no-progress && yarn sb:build --quiet && ./docker/puppeteer/wait_for_backend.sh $${BACKEND_HOST}:$${BACKEND_PORT} && yarn test $${TEST_ARGS} && yarn coverage"
+    command: /bin/sh -c "yarn --no-progress && yarn sb:build --quiet && ./docker/puppeteer/wait_for_backend.sh $${BACKEND_HOST}:$${BACKEND_PORT} && yarn tsc --noEmit && yarn test $${TEST_ARGS} && yarn coverage"
 

@@ -7,7 +7,7 @@
 
       <v-toolbar-items>
         <v-menu bottom left offset-y>
-          <template v-slot:activator="{ on }">
+          <template #activator="{ on }">
             <v-btn text color="white" v-on="on"
               >contents<v-icon>{{ mdiMenuDown }}</v-icon></v-btn
             >
@@ -43,7 +43,7 @@
       </v-toolbar-items>
 
       <v-menu bottom left offset-y :min-width="200">
-        <template v-slot:activator="{ on }">
+        <template #activator="{ on }">
           <v-btn color="#fafafa" icon v-on="on">
             <v-icon>{{ mdiWeb }}</v-icon>
           </v-btn>
@@ -61,11 +61,11 @@
         </v-list>
       </v-menu>
     </v-app-bar>
-    <v-content>
+    <v-main>
       <v-container fluid>
         <nuxt />
       </v-container>
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 

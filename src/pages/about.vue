@@ -54,6 +54,17 @@ const Component = Vue.extend({
   props: {
     error: { type: Object as PropType<NuxtError>, default: undefined },
   },
+  head() {
+    return {
+      script: [
+        {
+          src: 'https://code.jquery.com/jquery-3.4.0.js',
+          integrity: 'sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo=',
+          crossorigin: 'anonymous',
+        },
+      ],
+    };
+  },
   computed: {
     statusCode(): number {
       return this.error.statusCode;
@@ -65,17 +76,6 @@ const Component = Vue.extend({
       // eslint-disable-next-line no-unused-vars,@typescript-eslint/no-unused-vars
       const jqueryVersion = ExternalLibWrapper.jquery.fn.jquery;
     }
-  },
-  head() {
-    return {
-      script: [
-        {
-          src: 'https://code.jquery.com/jquery-3.4.0.js',
-          integrity: 'sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo=',
-          crossorigin: 'anonymous',
-        },
-      ],
-    };
   },
 });
 
