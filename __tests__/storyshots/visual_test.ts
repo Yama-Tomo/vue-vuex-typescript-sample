@@ -57,8 +57,6 @@ type ImageSnapshotArgs = Required<
     test: imageSnapshot({
       storybookUrl,
       getScreenshotOptions,
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
       beforeScreenshot,
       chromeExecutablePath: puppeteerConfig.launch.executablePath,
       getGotoOptions: () => ({
