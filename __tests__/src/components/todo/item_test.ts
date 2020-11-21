@@ -7,10 +7,9 @@ import { mount, createLocalVue } from '@vue/test-utils';
 import Vuetify from 'vuetify';
 import * as Component from '@/components/todo/item.vue';
 import { actions, Todo } from '@/store/todo';
+Vue.use(Vuetify);
 
 const localVue = createLocalVue();
-localVue.use(Vuetify);
-const vuetify = new Vuetify();
 
 const defaultTodoState = { text: 'aaa', done: false };
 const getWrapper = (arg?: {
@@ -19,9 +18,9 @@ const getWrapper = (arg?: {
   data?: () => any;
 }) => {
   const options = {
-    data: arg ? arg.data : () => ({}),
+    data: arg && arg.data ? arg.data : () => ({}),
     localVue,
-    vuetify,
+    vuetify: new Vuetify(),
     propsData: {
       todo: {
         ...defaultTodoState,
