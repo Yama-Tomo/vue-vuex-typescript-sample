@@ -34,7 +34,7 @@
     "nuxt-i18n": "6.15.4",
     "vue": "2.6.12",
     "vue-fragment": "1.5.1",
-    "vue-tsx-support": "3.0.2",
+    "vue-tsx-support": "3.0.3",
     "vuex-type-helper": "1.2.2"
   },
   "devDependencies": {
