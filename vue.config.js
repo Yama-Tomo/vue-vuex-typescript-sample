@@ -2,7 +2,7 @@ const isDev = process.env.NODE_ENV !== 'production';
 const path = require('path');
 const filename = isDev ? 'index' : 'index-[hash]';
 
-const ManifestPlugin = require('webpack-manifest-plugin');
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 
 class IgnoreNotFoundExportPlugin {
   apply(compiler) {
@@ -26,6 +26,6 @@ module.exports = {
     config.output.path = path.resolve(__dirname, './dist');
 
     config.plugins.unshift(new IgnoreNotFoundExportPlugin());
-    config.plugins.push(new ManifestPlugin());
+    config.plugins.push(new WebpackManifestPlugin());
   },
 };
