@@ -31,7 +31,7 @@
     "body-parser": "1.19.0",
     "lodash": "4.17.20",
     "nuxt": "2.14.10",
-    "nuxt-i18n": "6.15.4",
+    "nuxt-i18n": "6.16.0",
     "vue": "2.6.12",
     "vue-fragment": "1.5.1",
     "vue-tsx-support": "3.0.3",
