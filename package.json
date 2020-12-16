@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.12.10",
-    "@babel/preset-env": "7.12.10",
+    "@babel/preset-env": "7.12.11",
     "@nuxt/types": "2.14.11",
     "@nuxt/typescript-build": "2.0.3",
     "@nuxt/typescript-runtime": "2.0.0",
