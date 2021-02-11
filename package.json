@@ -38,8 +38,8 @@
     "vuex-type-helper": "1.2.2"
   },
   "devDependencies": {
-    "@babel/core": "7.12.13",
-    "@babel/preset-env": "7.12.13",
+    "@babel/core": "7.12.16",
+    "@babel/preset-env": "7.12.16",
     "@nuxt/types": "2.14.12",
     "@nuxt/typescript-build": "2.0.4",
     "@nuxt/typescript-runtime": "2.0.1",
