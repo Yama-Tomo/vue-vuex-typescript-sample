@@ -30,7 +30,7 @@
     "@nuxtjs/auth": "4.9.1",
     "body-parser": "1.19.0",
     "lodash": "4.17.20",
-    "nuxt": "2.14.12",
+    "nuxt": "2.15.2",
     "nuxt-i18n": "6.16.0",
     "vue": "2.6.12",
     "vue-fragment": "1.5.1",
@@ -40,7 +40,7 @@
   "devDependencies": {
     "@babel/core": "7.12.16",
     "@babel/preset-env": "7.12.16",
-    "@nuxt/types": "2.14.12",
+    "@nuxt/types": "2.15.2",
     "@nuxt/typescript-build": "2.0.4",
     "@nuxt/typescript-runtime": "2.0.1",
     "@nuxtjs/eslint-config-typescript": "5.0.0",
