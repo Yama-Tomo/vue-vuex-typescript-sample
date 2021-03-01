@@ -56,10 +56,7 @@ module.exports = {
     //    'plugin:@typescript-eslint/recommended-requiring-type-checking',
     '@nuxtjs/eslint-config-typescript',
     'plugin:prettier/recommended',
-    'prettier/@typescript-eslint',
     'prettier',
-    'prettier/babel',
-    'prettier/vue',
   ],
   env: {
     jest: true,
