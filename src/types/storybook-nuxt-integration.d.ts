@@ -8,7 +8,8 @@ declare global {
   };
 
   const StoryBookNuxtIntegrationRouter: {
-    createRouter: () => VueRouter;
+    // eslint-disable-next-line @typescript-eslint/ban-types
+    createRouter: (ssrContext: {}, hoge: {}) => VueRouter;
     routerOptions: any;
   };
 }

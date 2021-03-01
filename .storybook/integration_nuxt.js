@@ -40,7 +40,6 @@ const generateNuxtTemplates = async (builder) => {
   builder.options.buildDir = nuxtBuildPath;
 
   await builder.validatePages();
-  builder.validateTemplate();
   await builder.generateRoutesAndFiles();
   await fs.writeFileSync(
     `${nuxtBuildPath}/router.scrollBehavior.js`,
