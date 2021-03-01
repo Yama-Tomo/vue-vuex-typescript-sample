@@ -31,7 +31,7 @@ export type GetterTree = Store.Getters<State, typeof getters>;
 type Context = Store.ActionContext<State, MutationTree, RootState>;
 export const actions = {
   increment(ctx: Context) {
-    ctx.commit('increment', undefined);
+    ctx.commit('increment');
   },
 };
 
