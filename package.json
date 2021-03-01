@@ -9,11 +9,6 @@
     "lint": "eslint --ext .ts,.tsx,.js,.vue --format codeframe --color",
     "lint-staged": "lint-staged"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "yarn lint --fix"
