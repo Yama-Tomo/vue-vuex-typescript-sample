@@ -50,10 +50,6 @@ module.exports = {
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
     '@nuxtjs/eslint-config-typescript',
-    'plugin:prettier/recommended',
-    'prettier/@typescript-eslint',
     'prettier',
-    'prettier/babel',
-    'prettier/vue',
   ],
 };
