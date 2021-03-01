@@ -15,11 +15,6 @@
     "sb:build": "build-storybook",
     "postinstall": ".npm_scripts/uninstall_specific_packages.sh"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,vue}": [
       "yarn lint --fix"
