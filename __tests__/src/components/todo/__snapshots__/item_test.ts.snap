@@ -69,7 +69,7 @@ exports[`rendering renders correctly 1`] = `
     class="v-list-item__action"
   >
     <button
-      class="v-btn v-btn--flat v-btn--icon v-btn--round theme--light v-size--default"
+      class="v-btn v-btn--icon v-btn--round theme--light v-size--default"
       type="button"
     >
       <span
