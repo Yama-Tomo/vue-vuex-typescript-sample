@@ -133,7 +133,7 @@ export default {
         tokenRequired: false,
       },
     },
-    ...{ redirect: AuthRedirect },
+    redirect: AuthRedirect,
     rewriteRedirects: false,
     fullPathRedirect: true,
   },
