@@ -129,6 +129,7 @@ export default {
           logout: { url: '/users/sign_out', method: 'delete' },
           user: { url: '/users/show', propertyName: 'user' },
         },
+        autoFetchUser: false,
         tokenRequired: false,
       },
     },
