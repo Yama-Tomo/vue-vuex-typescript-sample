@@ -46,17 +46,19 @@ const Component = Vue.extend({
           />
         </header>
         <section v-show={this.state.todos.length} class="main">
-          <v-row justify="center" class="filter">
-            <v-col cols="6" sm="6">
-              <v-tabs grow>
-                {objectToArray(this.filters).map((filter) => (
-                  <v-tab onClick={filter.value}>
-                    {this.$t(`todo.filter.${filter.key}`)}
-                  </v-tab>
-                ))}
-              </v-tabs>
-            </v-col>
-          </v-row>
+          <v-container fluid>
+            <v-row justify="center" class="filter">
+              <v-col cols="6" sm="6">
+                <v-tabs grow>
+                  {objectToArray(this.filters).map((filter) => (
+                    <v-tab onClick={filter.value}>
+                      {this.$t(`todo.filter.${filter.key}`)}
+                    </v-tab>
+                  ))}
+                </v-tabs>
+              </v-col>
+            </v-row>
+          </v-container>
           <v-checkbox
             class="toggle-all"
             onChange={() => this.actions.toggleAll(!this.allChecked)}
@@ -75,24 +77,26 @@ const Component = Vue.extend({
               <v-divider />
             </Fragment>
           )}
-          <v-row>
-            <v-col cols="6" sm="6">
-              <strong>{this.remaining}</strong>
-              {this.$t('todo.item_unit', {
-                unit: pluralize(this.remaining, ''),
-              })}
-            </v-col>
-            <v-col cols="6" sm="6" align="right">
-              <v-btn
-                small
-                color="error"
-                onClick={() => this.actions.clearCompleted()}
-                v-show={this.filteredTodos.length > this.remaining}
-              >
-                {this.$t('todo.clear')}
-              </v-btn>
-            </v-col>
-          </v-row>
+          <v-container fluid>
+            <v-row>
+              <v-col cols="6" sm="6">
+                <strong>{this.remaining}</strong>
+                {this.$t('todo.item_unit', {
+                  unit: pluralize(this.remaining, ''),
+                })}
+              </v-col>
+              <v-col cols="6" sm="6" align="right">
+                <v-btn
+                  small
+                  color="error"
+                  onClick={() => this.actions.clearCompleted()}
+                  v-show={this.filteredTodos.length > this.remaining}
+                >
+                  {this.$t('todo.clear')}
+                </v-btn>
+              </v-col>
+            </v-row>
+          </v-container>
         </section>
       </Fragment>
     );
