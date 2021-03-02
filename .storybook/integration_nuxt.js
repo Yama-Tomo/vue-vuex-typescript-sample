@@ -48,7 +48,7 @@ const generateNuxtTemplates = async (builder) => {
 
 exports.customizeWebpackConfig = async (
   originalConfig,
-  _mode,
+  mode,
   nuxtConfigCustomizer = (config) => config
 ) => {
   const builder = await getBuilder(nuxtConfigCustomizer);
@@ -96,6 +96,7 @@ exports.customizeWebpackConfig = async (
   originalConfig.performance = { hints: false };
   originalConfig.devtool = nuxtWebpack.devtool;
   originalConfig.optimization = nuxtWebpack.optimization;
+  originalConfig.optimization.minimize = mode === 'PRODUCTION';
 
   return originalConfig;
 };
