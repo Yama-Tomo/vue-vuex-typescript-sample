@@ -20,7 +20,7 @@ describe('fetchInitialState', () => {
 
     await actions.fetchInitialState.bind(store)(context);
 
-    expect(commit.mock.calls[0]).toEqual(['resetState', undefined]);
+    expect(commit.mock.calls[0]).toEqual(['resetState']);
     expect(commit.mock.calls[1]).toEqual(['setInitialState', mockData]);
   });
 });
