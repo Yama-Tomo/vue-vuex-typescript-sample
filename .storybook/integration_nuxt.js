@@ -3,7 +3,6 @@
 const path = require('path');
 const fs = require('fs');
 const cli = require('@nuxt/cli');
-const hooks = require('@nuxt/typescript-runtime').hooks;
 const webpack = require('webpack');
 
 const nuxtBuildPath = `${path.resolve(__dirname)}/.nuxt`;
@@ -11,7 +10,7 @@ const nuxtBuildPath = `${path.resolve(__dirname)}/.nuxt`;
 const getBuilder = async (nuxtConfigCustomizer) => {
   const cmd = await cli.commands.default('build');
 
-  const cmdInstance = new cli.NuxtCommand(cmd, undefined, hooks);
+  const cmdInstance = new cli.NuxtCommand(cmd);
   await cmdInstance.callHook('run:before', {
     argv: [],
     cmd,
