@@ -13,8 +13,7 @@ module.exports = {
   },
   browserContext: 'incognito',
   server: {
-    // NOTE: start with ts-node because ts-jest need tsconfig.json
-    command: 'yarn build && yarn start:with_ts_node',
+    command: 'yarn build && yarn start',
     port: process.env.NUXT_PORT ? Number(process.env.NUXT_PORT) : 3100,
     launchTimeout: 120000,
   },

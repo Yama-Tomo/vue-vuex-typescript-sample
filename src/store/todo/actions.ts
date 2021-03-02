@@ -34,7 +34,7 @@ const actions = {
     return new Promise<void>((resolve) => {
       setTimeout(() => resolve(), 1500);
     }).then(() => {
-      ctx.commit('resetState', undefined);
+      ctx.commit('resetState');
 
       const initialState = initialStateResolver({
         todos: [

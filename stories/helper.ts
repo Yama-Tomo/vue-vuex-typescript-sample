@@ -12,7 +12,7 @@ export const i18n = () =>
     messages: { en: i18nEnMessage },
   });
 
-export const router = () => StoryBookNuxtIntegrationRouter.createRouter();
+export const router = () => StoryBookNuxtIntegrationRouter.createRouter({}, {});
 
 export const isRunWithJest = () =>
   typeof StoryBookNuxtIntegrationVuex === 'undefined' ||

@@ -78,11 +78,6 @@ describe('レスポンスヘッダにcookieの値が存在する場合', () => {
 
     plugin(context);
     expect(target(response)).toBe(response);
-    expect(context.req.headers.cookie).toBe(
-      'key2=new-value; expires=Sun, 07-Jul-2019 04:23:15 GMT; path=/; domain=.hogehoge.com; ' +
-        'key1=xxxxxx; expires=Sun, 07-Jul-2019 04:23:15 GMT; path=/; domain=.hogehoge.com; ' +
-        'key3=zzzzzz; expires=Sun, 07-Jul-2019 04:23:15 GMT; path=/; domain=.hogehoge.com'
-    );
     expect((context.res.setHeader as Mock).mock.calls[0]).toEqual([
       'Set-Cookie',
       [
