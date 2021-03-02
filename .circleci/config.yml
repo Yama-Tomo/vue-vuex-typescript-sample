@@ -48,7 +48,7 @@ jobs:
   lint:
     working_directory: /home/circleci/project
     docker:
-      - image: node:12.20-alpine
+      - image: node:14-alpine
         <<: *docker_hub_authentication
     steps:
       - run: ':' # declared noop command because in order to use the conditional step need one or more tasks or the when statement
