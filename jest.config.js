@@ -6,7 +6,7 @@ const config = {
         plugins: ['require-context-hook'],
       },
       diagnostics: {
-        pathRegex: /^(?!.*\/node_modules\/).*\.tsx?$/,
+        exclude: ['node_modules'],
       },
     },
     'vue-jest': {
