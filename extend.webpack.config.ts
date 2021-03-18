@@ -3,6 +3,9 @@ import { Configuration as WebpackConfiguration } from 'webpack';
 import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
 import VuetifyJsxLoader from 'vuetify-jsx-loader';
 import { ExtendBuildArgs } from './src/types/nuxt_module';
+// NOTE: A trick to cache cjs code transpile by jiti for server-side rendering.
+//  vue-jsx-support was changed from commonjs to es2015 in v3.1.0.
+import 'vue-tsx-support';
 
 const defaultConfigHash: (
   config: WebpackConfiguration
@@ -11,7 +14,6 @@ string = require('hard-source-webpack-plugin/lib/defaultConfigHash');
 
 export default function (...args: ExtendBuildArgs) {
   const config = args[0];
-
   config.externals = {
     jquery: 'jQuery',
   };
