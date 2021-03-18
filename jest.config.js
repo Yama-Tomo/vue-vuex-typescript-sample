@@ -34,8 +34,9 @@ const config = {
     '.*\\.(vue)$': 'vue-jest',
     '\\.(ts|tsx)$': 'ts-jest',
     '\\.yml$': 'jest-yaml-transform',
+    '\\js$': 'babel-jest',
   },
-  transformIgnorePatterns: ['/node_modules/.*.jsx?$'],
+  transformIgnorePatterns: ['/node_modules/(?!vue-tsx-support)'],
   testMatch: ['**/__tests__/**/*_test.[jt]s?(x)'],
   testPathIgnorePatterns: ['node_modules', '__api'],
   moduleNameMapper: {
