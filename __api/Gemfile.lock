@@ -184,7 +184,7 @@ DEPENDENCIES
   byebug
   devise
   jbuilder (~> 2.5)
-  listen (>= 3.0.5, < 3.5)
+  listen (>= 3.0.5, < 3.6)
   puma (~> 5.2.0)
   rails (~> 6.1.0)
   sass-rails (~> 6.0.0)
@@ -195,7 +195,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 RUBY VERSION
-   ruby 3.0.0p0
+   ruby 3.0.1p64
 
 BUNDLED WITH
-   2.2.3
+   2.2.15
