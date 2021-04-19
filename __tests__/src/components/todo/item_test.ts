@@ -74,7 +74,7 @@ describe('behaviors', () => {
 
     const appendText = '--append';
     const changeVal = defaultTodoState.text + appendText;
-    const inputEl = wrapper.find('.v-text-field input');
+    const inputEl = wrapper.find('.v-text-field__slot input');
 
     inputEl.trigger('keyup', { key: appendText });
     inputEl.setValue((inputEl.element as HTMLInputElement).value + appendText);
@@ -91,7 +91,7 @@ describe('behaviors', () => {
       },
     });
 
-    const inputEl = wrapper.find('.v-text-field input');
+    const inputEl = wrapper.find('.v-text-field__slot input');
     inputEl.trigger('keyup', { key: 'Escape' });
     await Vue.nextTick();
 
@@ -107,7 +107,7 @@ describe('behaviors', () => {
       actions: { removeTodo: actionMock },
     });
 
-    const inputEl = wrapper.find('.v-text-field input');
+    const inputEl = wrapper.find('.v-text-field__slot input');
     inputEl.setValue('');
     inputEl.trigger('keypress', { key: 'Enter' });
     expect(actionMock.mock.calls[0]).toEqual([defaultTodoState]);
