@@ -72,7 +72,8 @@
   },
   "resolutions": {
     "vue-style-loader": "https://github.com/Yama-Tomo/vue-style-loader/archive/master.tar.gz",
-    "ts-loader": "8.1.0"
+    "ts-loader": "8.1.0",
+    "css-loader": "4.3.0"
   },
   "browserslist": [
     "> 1%",
