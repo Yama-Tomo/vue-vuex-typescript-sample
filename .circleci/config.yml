@@ -139,8 +139,8 @@ jobs:
               exit 0
             fi
 
-            git config user.email "mazda13bturbo@gmail.com"
-            git config user.name "Yama-Tomo"
+            git config user.email $SNAPSHOT_GIT_PUSH_EMAIL
+            git config user.name $SNAPSHOT_GIT_PUSH_USER_NAME
             git commit -m "[ci skip] chore: update snapshot files" -m "" -m "relate: $CIRCLE_SHA1"
             git push origin nuxt
 

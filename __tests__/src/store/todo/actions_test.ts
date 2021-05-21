@@ -16,7 +16,7 @@ afterEach(() => jest.resetAllMocks());
 describe('fetchInitialState', () => {
   test('called commit methods correctly', async () => {
     const mockData = { dummy: 'test' };
-    ((initialStateResolver as any) as jest.Mock).mockReturnValue(mockData);
+    (initialStateResolver as any as jest.Mock).mockReturnValue(mockData);
 
     await actions.fetchInitialState.bind(store)(context);
 
