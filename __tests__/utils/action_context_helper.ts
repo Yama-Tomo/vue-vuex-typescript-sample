@@ -14,10 +14,10 @@ export default <T1>(
 } => {
   const commit = jest.fn();
 
-  const context = ({
+  const context = {
     commit,
     state,
-  } as any) as ActionContext<
+  } as any as ActionContext<
     T1,
     Record<string, unknown>,
     Record<string, unknown>,
