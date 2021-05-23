@@ -3,6 +3,9 @@ const { customizeWebpackConfig } = require('./integration_nuxt');
 
 module.exports = {
   stories: ['../stories/**/*.story.@(tsx|mdx|vue)'],
+  features: {
+    postcss: false,
+  },
   babel: ({ presets }) => {
     const isBabelPresetEnv = (preset) =>
       (Array.isArray(preset) ? preset[0] : preset).includes(
