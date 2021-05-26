@@ -33,7 +33,7 @@
   "devDependencies": {
     "@nuxt/types": "2.15.6",
     "@nuxt/typescript-build": "2.1.0",
-    "@nuxtjs/eslint-config-typescript": "6.0.0",
+    "@nuxtjs/eslint-config-typescript": "6.0.1",
     "@nuxtjs/vuetify": "2.0.0-beta.2",
     "@storybook/addon-storyshots": "6.2.9",
     "@storybook/addon-storyshots-puppeteer": "6.2.9",
