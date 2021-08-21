@@ -1,6 +1,6 @@
 import { Store } from 'vuex';
-import { actions, State, initialStateResolver } from '@/store/todo';
 import actionContextHelper from '../../../utils/action_context_helper';
+import { actions, State, initialStateResolver } from '@/store/todo';
 
 jest.mock('@/store/todo/state', () => ({
   __esModule: true,

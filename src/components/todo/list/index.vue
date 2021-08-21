@@ -1,6 +1,7 @@
 <script lang="tsx">
-import Vue, { PropType, VNode } from 'vue';
-import { Route } from 'vue-router';
+import Vue from 'vue';
+import type { PropType, VNode } from 'vue';
+import type { Route } from 'vue-router';
 import * as vts from 'vue-tsx-support';
 import PresentationalComponent from '@/components/todo/list/ui.vue';
 import { ActionTree, GetterTree, StateTree } from '@/store';

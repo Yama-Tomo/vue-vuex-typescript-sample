@@ -14,7 +14,7 @@ type ImageSnapshotArgs = Required<
   if (!process.env.IS_DOCKER) {
     // run `yarn test:use-docker yarn test __tests__/storyshots` after run yarn sb:build if you want run this test
     test.skip('not running visual testing in not Docker environment', () =>
-      null);
+      undefined);
     return;
   }
 

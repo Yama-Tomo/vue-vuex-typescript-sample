@@ -1,5 +1,5 @@
-import * as Store from '@/types/store';
 import defaultState, { State, Todo } from './state';
+import * as Store from '@/types/store';
 
 const mutations = {
   addTodo(state: State, todo: Todo) {

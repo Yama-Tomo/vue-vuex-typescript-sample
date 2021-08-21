@@ -44,7 +44,8 @@
 </template>
 
 <script lang="ts">
-import Vue, { PropType } from 'vue';
+import Vue from 'vue';
+import type { PropType } from 'vue';
 import * as vts from 'vue-tsx-support';
 import ExternalLibWrapper from '@/utils/external_lib_wrapper';
 import { NuxtError } from '@/types';
