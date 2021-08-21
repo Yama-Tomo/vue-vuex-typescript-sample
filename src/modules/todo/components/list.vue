@@ -57,10 +57,10 @@
 <script lang="ts">
 import Vue, { PropType } from 'vue';
 import * as vts from 'vue-tsx-support';
+import Item from './item.vue';
 import { HTMLElementEvent, ComponentProps } from '@/types';
 import { Todo } from '@/modules/todo/store';
 import { ActionTree, GetterTree, RootState } from '@/modules/store';
-import Item from './item.vue';
 
 type LocalState = {
   visibility: 'all' | 'active' | 'completed';

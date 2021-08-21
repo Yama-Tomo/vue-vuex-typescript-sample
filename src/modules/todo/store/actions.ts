@@ -1,7 +1,7 @@
-import { ActionContext, Dispatchers } from '@/types';
-import { RootState } from '@/modules/store';
 import { State, Todo } from './state';
 import { MutationTree } from './mutations';
+import { ActionContext, Dispatchers } from '@/types';
+import { RootState } from '@/modules/store';
 
 type Context = ActionContext<State, MutationTree, RootState>;
 
