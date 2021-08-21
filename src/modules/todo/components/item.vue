@@ -51,9 +51,9 @@ const Component = Vue.extend({
       }
     },
     doneEdit(e: Event) {
-      const value = (e as HTMLElementEvent<
-        HTMLInputElement
-      >).target.value.trim();
+      const value = (
+        e as HTMLElementEvent<HTMLInputElement>
+      ).target.value.trim();
 
       if (!value) {
         this.removeTodo();
@@ -93,8 +93,8 @@ const Component = Vue.extend({
           ref="inputText"
           value={this.todo.text}
           v-show={this.editing}
-          onKeyup={e => this.onKeyup(e)}
-          onBlur={e => this.doneEdit(e)}
+          onKeyup={(e) => this.onKeyup(e)}
+          onBlur={(e) => this.doneEdit(e)}
         />
       </li>
     );

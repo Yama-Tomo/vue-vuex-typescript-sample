@@ -92,21 +92,21 @@ const Component = Vue.extend({
     filters(): { [K in LocalState['visibility']]: (todos: Todo[]) => Todo[] } {
       return {
         all: (todos: Todo[]) => todos,
-        active: (todos: Todo[]) => todos.filter(todo => !todo.done),
-        completed: (todos: Todo[]) => todos.filter(todo => todo.done),
+        active: (todos: Todo[]) => todos.filter((todo) => !todo.done),
+        completed: (todos: Todo[]) => todos.filter((todo) => todo.done),
       };
     },
     todos(): RootState['todoModule']['todos'] {
       return this.state.todos;
     },
     allChecked(): boolean {
-      return this.todos.every(todo => todo.done);
+      return this.todos.every((todo) => todo.done);
     },
     filteredTodos(): RootState['todoModule']['todos'] {
       return this.filters[this.visibility](this.todos);
     },
     remaining(): number {
-      return this.todos.filter(todo => !todo.done).length;
+      return this.todos.filter((todo) => !todo.done).length;
     },
   },
   methods: {
