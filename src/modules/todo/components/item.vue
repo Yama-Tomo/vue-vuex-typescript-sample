@@ -1,5 +1,6 @@
 <script lang="tsx">
-import Vue, { PropType } from 'vue';
+import Vue from 'vue';
+import type { PropType } from 'vue';
 import * as vts from 'vue-tsx-support';
 import { HTMLElementEvent, ComponentProps } from '@/types';
 import { Todo } from '@/modules/todo/store';

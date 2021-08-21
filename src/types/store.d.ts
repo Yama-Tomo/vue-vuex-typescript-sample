@@ -1,5 +1,5 @@
 import { DefineActions } from 'vuex-type-helper';
-import { ActionTree, GetterTree, MutationTree } from 'vuex';
+import type { ActionTree, GetterTree, MutationTree } from 'vuex';
 import { RootState } from '@/modules/store';
 
 type MutationArgs<M extends MutationTree<any>> = {

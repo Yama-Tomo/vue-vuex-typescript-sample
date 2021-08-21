@@ -55,7 +55,8 @@
 </template>
 
 <script lang="ts">
-import Vue, { PropType } from 'vue';
+import Vue from 'vue';
+import type { PropType } from 'vue';
 import * as vts from 'vue-tsx-support';
 import Item from './item.vue';
 import { HTMLElementEvent, ComponentProps } from '@/types';
