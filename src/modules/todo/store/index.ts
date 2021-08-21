@@ -1,4 +1,4 @@
-import { Module } from 'vuex';
+import type { Module } from 'vuex';
 import { RootState } from '../../module_mapper';
 import defaultState, { initialStateResolver, State } from './state';
 import mutations from './mutations';

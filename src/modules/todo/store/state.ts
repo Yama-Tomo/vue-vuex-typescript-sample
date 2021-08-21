@@ -28,7 +28,7 @@ export const initialStateResolver = (initialState: unknown): State => {
     return resolvedState;
   }
 
-  initialState.todoModule.todos.forEach(v => {
+  initialState.todoModule.todos.forEach((v) => {
     if (hasKey(v, ['text', 'done'])) {
       resolvedState.todos.push({ text: String(v.text), done: !!v.done });
     }

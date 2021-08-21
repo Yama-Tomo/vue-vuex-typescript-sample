@@ -1,4 +1,5 @@
-import Vue, { VueConstructor } from 'vue';
+import Vue from 'vue';
+import type { VueConstructor } from 'vue';
 import { ExtendedVue } from 'vue/types/vue';
 import * as vts from 'vue-tsx-support';
 

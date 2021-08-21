@@ -1,5 +1,5 @@
-import { Mutations } from '@/types';
 import { State, Todo } from './state';
+import { Mutations } from '@/types';
 
 const mutations = {
   addTodo(state: State, todo: Todo): void {
