@@ -1,5 +1,6 @@
 <script lang="tsx">
-import Vue, { PropType, VNode } from 'vue';
+import Vue from 'vue';
+import type { PropType, VNode } from 'vue';
 import * as vts from 'vue-tsx-support';
 import { Fragment } from 'vue-fragment';
 import Item from '../item.vue';

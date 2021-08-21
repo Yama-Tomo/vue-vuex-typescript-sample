@@ -1,5 +1,6 @@
 <script lang="tsx">
-import Vue, { PropType, VNode } from 'vue';
+import Vue from 'vue';
+import type { PropType, VNode } from 'vue';
 import * as vts from 'vue-tsx-support';
 import { mdiDelete } from '@mdi/js';
 import { ActionTree, StateTree } from '@/store';

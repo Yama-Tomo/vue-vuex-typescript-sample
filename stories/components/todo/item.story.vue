@@ -1,6 +1,7 @@
 <script lang="tsx">
 import { storiesOf } from '@storybook/vue';
-import Vue, { VueConstructor } from 'vue';
+import Vue from 'vue';
+import type { VueConstructor } from 'vue';
 import Item from '@/components/todo/item.vue';
 import * as StoreHelper from '@/store/helper';
 import { State } from '@/store/todo';

@@ -7,7 +7,8 @@
 </template>
 
 <script lang="ts">
-import Vue, { PropType } from 'vue';
+import Vue from 'vue';
+import type { PropType } from 'vue';
 import * as vts from 'vue-tsx-support';
 import { NuxtError } from '@/types';
 

@@ -1,11 +1,11 @@
-import Vue, { VueConstructor } from 'vue';
+import type Vue, { VueConstructor } from 'vue';
 import { ExtendedVue } from 'vue/types/vue';
-import { Route } from 'vue-router';
+import type { Route } from 'vue-router';
 import { Store } from 'vuex';
 import { Context as OrgContext } from '@nuxt/types';
 // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
 import { NuxtAxiosInstance } from '@nuxtjs/axios';
-import VueI18n, { IVueI18n } from 'vue-i18n';
+import type VueI18n, { IVueI18n } from 'vue-i18n';
 import * as vts from 'vue-tsx-support';
 
 export type ComponentProps<T> = T extends ExtendedVue<

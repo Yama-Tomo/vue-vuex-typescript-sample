@@ -1,5 +1,6 @@
 <script lang="tsx">
-import Vue, { VNode } from 'vue';
+import Vue from 'vue';
+import type { VNode } from 'vue';
 import * as vts from 'vue-tsx-support';
 import List from '@/components/todo/list/index.vue';
 import {
