@@ -2,10 +2,10 @@
 import Vue, { PropType, VNode } from 'vue';
 import * as vts from 'vue-tsx-support';
 import { Fragment } from 'vue-fragment';
+import Item from '../item.vue';
 import { objectToArray, pluralize } from '@/components/todo/list/functions';
 import { ActionTree, StateTree } from '@/store';
 import { ComponentProps } from '@/types';
-import Item from '../item.vue';
 
 type Filters = {
   all: () => void;
