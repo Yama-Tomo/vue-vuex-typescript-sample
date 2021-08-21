@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import Vuex from 'vuex';
+import Vuex, { Store } from 'vuex';
 import App from './App.vue';
 import { TodoModule } from './modules/store';
 
@@ -8,7 +8,7 @@ Vue.use(Vuex);
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const vuexStore = (initialState?: any) => {
-  return new Vuex.Store({
+  return new Store({
     modules: {
       ...TodoModule(initialState),
     },
@@ -17,5 +17,5 @@ const vuexStore = (initialState?: any) => {
 
 new Vue({
   store: vuexStore((window as any).__INITIAL_STATE__),
-  render: h => h(App),
+  render: (h) => h(App),
 }).$mount('#app');
