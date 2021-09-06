@@ -20,7 +20,7 @@
     ]
   },
   "dependencies": {
-    "@mdi/js": "5.9.55",
+    "@mdi/js": "6.1.95",
     "@nuxtjs/auth": "4.9.1",
     "body-parser": "1.19.0",
     "lodash": "4.17.21",
