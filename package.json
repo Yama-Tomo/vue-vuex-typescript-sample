@@ -42,7 +42,7 @@
     "@types/expect-puppeteer": "4.4.7",
     "@types/hard-source-webpack-plugin": "1.0.3",
     "@types/jest-environment-puppeteer": "4.4.1",
-    "@types/lodash": "4.14.173",
+    "@types/lodash": "4.14.174",
     "@types/puppeteer": "5.4.4",
     "@vue/babel-preset-jsx": "1.2.4",
     "@vue/test-utils": "1.2.2",
