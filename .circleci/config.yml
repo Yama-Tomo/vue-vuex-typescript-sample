@@ -4,7 +4,7 @@ references:
   node_runtime_config: &node_runtime_config
     working_directory: ~/work
     docker:
-      - image: node:16-alpine
+      - image: node:17-alpine
         auth:
           username: $DOCKERHUB_USER
           password: $DOCKERHUB_PASSWORD
