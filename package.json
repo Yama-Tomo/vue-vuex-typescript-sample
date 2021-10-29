@@ -46,6 +46,7 @@
     "@types/puppeteer": "5.4.4",
     "@vue/babel-preset-jsx": "1.2.4",
     "@vue/test-utils": "1.2.2",
+    "@vue/vue2-jest": "^27.0.0-alpha.3",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "27.3.1",
     "babel-plugin-rewire": "1.2.0",
@@ -67,7 +68,6 @@
     "puppeteer": "10.2.0",
     "ts-jest": "27.0.7",
     "typescript": "4.4.4",
-    "vue-jest": "3.0.7",
     "vuetify-jsx-loader": "0.1.4",
     "yaml-loader": "0.6.0"
   },

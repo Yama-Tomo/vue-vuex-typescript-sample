@@ -9,15 +9,6 @@ const config = {
         exclude: ['node_modules'],
       },
     },
-    'vue-jest': {
-      babelConfig: {
-        presets: [
-          ['@babel/preset-env', { useBuiltIns: 'entry', corejs: 3 }],
-          '@vue/babel-preset-jsx',
-        ],
-        plugins: ['rewire'],
-      },
-    },
     url: {
       base: process.env.base_url
         ? process.env.base_url
@@ -31,7 +22,7 @@ const config = {
   },
   reporters: ['default', 'jest-junit'],
   transform: {
-    '.*\\.(vue)$': 'vue-jest',
+    '.*\\.(vue)$': '@vue/vue2-jest',
     '\\.(ts|tsx)$': 'ts-jest',
     '\\.yml$': 'jest-yaml-transform',
   },
