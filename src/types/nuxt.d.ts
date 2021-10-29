@@ -4,7 +4,7 @@ import type { Route } from 'vue-router';
 import { Store } from 'vuex';
 import { Context as OrgContext } from '@nuxt/types';
 // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-import { NuxtAxiosInstance } from '@nuxtjs/axios';
+import type { NuxtAxiosInstance } from '@nuxtjs/axios';
 import type VueI18n, { IVueI18n } from 'vue-i18n';
 import * as vts from 'vue-tsx-support';
 

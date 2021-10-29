@@ -1,6 +1,8 @@
 import * as path from 'path';
 import { Configuration as WebpackConfiguration } from 'webpack';
-import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
+import HardSourceWebpackPlugin, {
+  ExcludeModulePlugin,
+} from 'hard-source-webpack-plugin';
 import VuetifyJsxLoader from 'vuetify-jsx-loader';
 import { ExtendBuildArgs } from './src/types/nuxt_module';
 
@@ -36,7 +38,7 @@ export default function (...args: ExtendBuildArgs) {
     );
 
     config.plugins.push(
-      new HardSourceWebpackPlugin.ExcludeModulePlugin([
+      new ExcludeModulePlugin([
         { test: /extract-css-chunks-webpack-plugin[\\/]dist[\\/]loader/ },
       ])
     );

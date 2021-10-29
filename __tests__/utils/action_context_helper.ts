@@ -1,4 +1,4 @@
-import { ActionContext } from 'vuex-type-helper';
+import type { ActionContext } from 'vuex-type-helper';
 
 // eslint-disable-next-line arrow-parens
 export default <T1>(
