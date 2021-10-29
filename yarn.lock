@@ -6795,7 +6795,7 @@ eslint-config-standard@^16.0.3:
   resolved "https://registry.yarnpkg.com/eslint-config-standard/-/eslint-config-standard-16.0.3.tgz#6c8761e544e96c531ff92642eeb87842b8488516"
   integrity sha512-x4fmJL5hGqNJKGHSjnLdgA6U6h1YW/G2dW9fA+cyVur4SK6lyue8+UgNKWlZtUDTXvgKDD/Oa3GQjmB5kjtVvg==
 
-eslint-formatter-codeframe@^7.32.1:
+eslint-formatter-codeframe@7.32.1:
   version "7.32.1"
   resolved "https://registry.yarnpkg.com/eslint-formatter-codeframe/-/eslint-formatter-codeframe-7.32.1.tgz#50ef4024e1a533709564b62263c90dbf668a1a00"
   integrity sha512-DK/3Q3+zVKq/7PdSYiCxPrsDF8H/TRMK5n8Hziwr4IMkMy+XiKSwbpj25AdajS63I/B61Snetq4uVvX9fOLyAg==
