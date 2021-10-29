@@ -1,0 +1,12 @@
+{
+  env: {
+    "test": {
+      "presets": [
+        "@vue/babel-preset-jsx"
+      ],
+      "plugins": [
+        "rewire"
+      ]
+    }
+  }
+}
