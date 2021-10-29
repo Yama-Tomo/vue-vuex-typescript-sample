@@ -1,4 +1,4 @@
-import bodyParser from 'body-parser';
+import { urlencoded } from 'body-parser';
 import passThroughMiddleware from './src/server_middleware/pass_through';
 import extendWebpackConfig from './extend.webpack.config';
 import { redirect as AuthRedirect } from './src/plugins/auth/redirect';
@@ -140,8 +140,5 @@ export default {
   router: {
     middleware: ['auth'],
   },
-  serverMiddleware: [
-    bodyParser.urlencoded({ extended: true }),
-    passThroughMiddleware,
-  ],
+  serverMiddleware: [urlencoded({ extended: true }), passThroughMiddleware],
 };
